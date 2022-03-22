@@ -6,18 +6,22 @@ from email import encoders
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
+from database_package import OfficerDatabase
+###
+
 
 class Two_factor_authentication:
     def __init__(self, login, password):
         self.login = login
         self.password = password
+        self.data_base = OfficerDatabase("customs_officers")
 
     def login_to_the_system(self):
         count = 0
         message, code = self.message
         user_login = self.login
         user_password = str(self.password)
-        if user_login == "Tony" and user_password == "12345":
+        if self.data_base.check_data("customs_officers_users", user_login, user_password):
             print("Аутентификация пройдена!")
             try:
                 self.send_email(email="antonmakeev18@gmail.com", msg=message)

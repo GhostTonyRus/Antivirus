@@ -11,5 +11,20 @@
 # class MainScript:
 #     def __init__(self):
 #         officer_database = OfficerDatabase("customs_officers_database.db")
+from antivirus_package import Two_factor_authentication
 
-print("hello")
+class StartProgramm:
+
+    def __init__(self):
+        pass
+
+    def hello(self):
+        login = input("Введите login\n>>>").strip()
+        password = input("Введите пароль:\n>>>").strip()
+        self.antivirus_methods = Two_factor_authentication(login, password)  # модуль аутентификации и идентификации
+        self.antivirus_methods.login_to_the_system()
+
+if __name__ == '__main__':
+    s_p = StartProgramm()
+    s_p.hello()
+

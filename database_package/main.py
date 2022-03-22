@@ -112,6 +112,28 @@ class DataBase:
         except Error as err:
             return err
 
+    def check_data(self, table_name, login, password):
+        """проверяем введённые данные"""
+        users = {}
+        try:
+            with self.connection:
+                self.cursor.execute(f"""
+                SELECT login, password FROM `{table_name}` WHERE login = "{login}" AND password = "{password}" 
+                """)
+                data = self.cursor.fetchall()
+                if data:
+                    for d in data:
+                        users[d[0]] = d[1]
+                        for user_login, user_password in users.items():
+                            if user_login == login and user_password == password:
+                                return True
+                            else:
+                                return "ВВЕДЕНЫ НЕВЕРНЫЕ ДАННЫЕ!"
+        except sqlite3.Error as err:
+            return err
+
+
+
     def drop_table(self, table_name: str):
         """метод для удаления таблци из бащы данных"""
         try:
@@ -144,9 +166,12 @@ class DataBase:
 class OfficerDatabase(DataBase):
     """База данных, содержащаяся в себя информацию о дложностных лицах"""
 
+    __logger = Logging("database_package")
+
     def __init__(self, database_name):
         super(OfficerDatabase, self).__init__(database_name)
         self.access_levels = {
+            0: "SuperUser",
             1:
                 ["младший лейтенант таможенной службы",
                  "лейтенант таможенной службы",
@@ -168,7 +193,7 @@ class OfficerDatabase(DataBase):
                     f"""CREATE TABLE IF NOT EXISTS {table_name} (
                 user_id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT,
-                soname TEXT
+                soname TEXT,
                 rank TEXT,
                 email TEXT,
                 login TEXT,
@@ -185,7 +210,7 @@ class OfficerDatabase(DataBase):
     def insert_data_to_table(self, table_name: str, *args):
         values = args
         rank = args[2]
-        self.access_level = None # переменная, со значением ранга доступа
+        self.access_level = None  # переменная, со значением ранга доступа
         for idx in range(1, 4):
             level = self.access_levels.get(idx)
             if rank in level:
@@ -193,7 +218,10 @@ class OfficerDatabase(DataBase):
         try:
             with self.connection:
                 self.cursor.execute("""
-                INSERT INTO `{table_name}` VALUES (NULL, "{}", "{}", "{}", "{}", "{}", "{}", "{}"); 
+                INSERT INTO `{table_name}` 
+                    (user_id, name, soname, rank, email, login, password, access_level)
+                VALUES 
+                    (NULL, "{}", "{}", "{}", "{}", "{}", "{}", "{}")
                 """.format(table_name=table_name, *values))
                 self.connection.commit()
                 self.__logger.register_database_actions(
@@ -214,8 +242,7 @@ class OfficerDatabase(DataBase):
                 # print("id - Имя - Фамилия - Отчетсво - email - Пароль - Подтвердите пароль")
                 for d in data:
                     if d:
-                        res = f"{d[0]} - {d[1]} - {d[2]} - {d[3]}"
-                        # print(res)
+                        res = f"{d[0]} - {d[1]} - {d[2]} - {d[3]} - {d[4]} - {d[5]} - {d[6]} - {d[7]}"
                         data_from_db[d[0]] = res
                     else:
                         print("Данные отсутствуют")
@@ -390,12 +417,21 @@ if __name__ == '__main__':
     # users_db.create_table("users")
     # print(users_db.get_tables_from_database())
     # users_db.get_data_from_table("users")
-    # users_db.insert_data_to_table("users", "Stark", "Tony", "Николаевич", "tonystark18@gmail.com", "Rocestear200", "Rocestear200")
+    # users_db.insert_data_to_table("users", "Anthony", "Tony", "Николаевич", "tonystark18@gmail.com", "Rocestear200", "Rocestear200")
     # # users_db.delete_date_from_table(1)
     # users_db.delete_database("customs_user.db")
 
     officers_db = OfficerDatabase("customs_officers.db")
-    officers_db.create_table("customs_officers_users")
+    # officers_db.create_table("customs_officers_users")
     # print(officers_db.get_tables_from_database())
-    # officers_db.insert_data_to_table("antonmakeev18@gmail.com", "Anthony", "12345")
-    # print(officers_db.get_data_from_table("customs_officers_users.db"))
+    # officers_db.insert_data_to_table("customs_officers_users",
+    #     "admin",
+    #     "admin",
+    #     "administrator",
+    #     "admin@gmail.com",
+    #     "Admin",
+    #     "Admin",
+    #     0
+    # )
+    # print(officers_db.get_data_from_table("customs_officers_users"))
+    print(officers_db.check_data("customs_officers_users", "Admin", "Admin"))
