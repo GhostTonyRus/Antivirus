@@ -37,8 +37,12 @@ class InfoSystem:
         # (домножаем на 0.125 для перевода в мегабайты)
         return download, upload
 
+    def main(self):
+        self.get_system_info()
+        self.get_time_zone_and_time()
+        self.get_download_and_upload_internet_speed()
 
-s = InfoSystem()
-print(s.get_system_info())
-print(s.get_time_zone_and_time())
-print(s.get_download_and_upload_internet_speed())
+if __name__ == '__main__':
+
+    info = InfoSystem()
+    info.main()

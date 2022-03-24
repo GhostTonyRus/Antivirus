@@ -67,6 +67,25 @@ class DataBase:
         self.__path = f"C:\\PycharmProjects\\ANTIVIRUS\\database_package\\{self.database_name}"
         self.connection = sqlite3.connect(self.__path)
         self.cursor = self.connection.cursor()
+        self.MANUAL = """
+        +-------------------------------------------------+
+        | 1 | получить таблицы из базы данных             |
+        +-------------------------------------------------+
+        | 2 | создать таблицу (введите название таблиц)   |
+        +-------------------------------------------------+
+        | 3 | вставить данные в таблицу                   |
+        |   | (название таблиц, данные через запятую:     |
+        +-------------------------------------------------+
+        | 4 | получить данные из таблиц                   |
+        +-------------------------------------------------+
+        | 5 | обновить данные в таблице                   |
+        +-------------------------------------------------+
+        | 6 | удалить данные из таблицы                   |
+        +-------------------------------------------------+
+        | 7 | удалить таблицу                             |
+        +-------------------------------------------------+
+        | exit/0 | выйти из меню баз данных               |
+        +-------------------------------------------------+\n"""
         if not self.database_name in os.listdir():
             self.__logger.register_database_actions(
                 f"инициализация базы данных {self.database_name} | {self.__custom_datetime}\n")
@@ -75,8 +94,8 @@ class DataBase:
         """метод для получения таблиц из базы данных"""
         try:
             with self.connection:
-                self.cursor.execute("""
-                        SELECT name FROM SQLITE_MASTER WHERE TYPE = "table" """)
+                self.cursor.execute(f"""
+                        SELECT name FROM SQLITE_MASTER WHERE TYPE = "tables" """)
                 result = self.cursor.fetchall()
                 self.__logger.register_database_actions(
                     f"вывод существующих таблиц из базы данных"
@@ -118,7 +137,7 @@ class DataBase:
         try:
             with self.connection:
                 self.cursor.execute(f"""
-                SELECT login, password FROM `{table_name}` WHERE login = "{login}" AND password = "{password}" 
+                SELECT login, password FROM `{table_name}` WHERE login = "{login}" AND password = "{password}"
                 """)
                 data = self.cursor.fetchall()
                 if data:
@@ -131,8 +150,6 @@ class DataBase:
                                 return "ВВЕДЕНЫ НЕВЕРНЫЕ ДАННЫЕ!"
         except sqlite3.Error as err:
             return err
-
-
 
     def drop_table(self, table_name: str):
         """метод для удаления таблци из бащы данных"""
@@ -198,7 +215,7 @@ class OfficerDatabase(DataBase):
                 email TEXT,
                 login TEXT,
                 password TEXT,
-                access_level INTEGER NULL) 
+                access_level INTEGER NULL)
                 """
                 )
             self.connection.commit()
@@ -218,9 +235,9 @@ class OfficerDatabase(DataBase):
         try:
             with self.connection:
                 self.cursor.execute("""
-                INSERT INTO `{table_name}` 
+                INSERT INTO `{table_name}`
                     (user_id, name, soname, rank, email, login, password, access_level)
-                VALUES 
+                VALUES
                     (NULL, "{}", "{}", "{}", "{}", "{}", "{}", "{}")
                 """.format(table_name=table_name, *values))
                 self.connection.commit()
@@ -258,21 +275,24 @@ class CustomsDeclarationsDataBase:
     pass
 
 
-class UsersDataBase:
+class UsersDataBase(DataBase):
     __logger = Logging("database_package")  # журнал логирования
 
-    def __init__(self, database_name):
-        self.__datetime = datetime.now()
-        self.__custom_datetime = self.__datetime.strftime('%Y-%m-%d %H:%M:%S')
-        self.database_name = database_name
-        self.__path = f"C:\\PycharmProjects\\ANTIVIRUS\\database_package\\{self.database_name}"
-        self.connection = sqlite3.connect(self.__path)
-        self.cursor = self.connection.cursor()
-        if not self.database_name in os.listdir():
-            self.__logger.register_database_actions(
-                f"инициализация базы данных {self.database_name} | {self.__custom_datetime}\n")
+    # def __init__(self, database_name):
+    #     self.__datetime = datetime.now()
+    #     self.__custom_datetime = self.__datetime.strftime('%Y-%m-%d %H:%M:%S')
+    #     self.database_name = database_name
+    #     self.__path = f"C:\\PycharmProjects\\ANTIVIRUS\\database_package\\{self.database_name}"
+    #     self.connection = sqlite3.connect(self.__path)
+    #     self.cursor = self.connection.cursor()
+    #     if not self.database_name in os.listdir():
+    #         self.__logger.register_database_actions(
+    #             f"инициализация базы данных {self.database_name} | {self.__custom_datetime}\n")
 
-    def get_tables_from_database(self):
+    def __init__(self, database_name):
+        super(UsersDataBase, self).__init__(database_name)
+
+    def get_tables_from_database(self, *args):
         """метод для получения таблиц из базы данных"""
         try:
             with self.connection:
@@ -296,7 +316,7 @@ class UsersDataBase:
                 CREATE TABLE IF NOT EXISTS `{table_name}`(
                 user_id INTEGER PRIMARY KEY AUTOINCREMENT,
                 soname TEXT,
-                name TEXT, 
+                name TEXT,
                 patronymic TEXT,
                 email TEXT,
                 password TEXT)
@@ -315,9 +335,9 @@ class UsersDataBase:
             with self.connection:
                 # (NULL, "{soname}", "{name}", "{patronymic}", "{email}", "{password}", "{confirm_password}")""")
                 self.cursor.execute("""
-                INSERT INTO `{table_name}` 
-                    (user_id, soname, name, patronymic, email, password) 
-                VALUES 
+                INSERT INTO `{table_name}`
+                    (user_id, soname, name, patronymic, email, password)
+                VALUES
                     (NULL, "{}", "{}", "{}", "{}", "{}")""".format(table_name=table_name, *values))
                 self.connection.commit()
                 self.__logger.register_database_actions(
@@ -340,7 +360,7 @@ class UsersDataBase:
                 # print("id - Имя - Фамилия - Отчетсво - email - Пароль - Подтвердите пароль")
                 for d in data:
                     if d:
-                        res = f"{d[0]} - {d[1]} - {d[2]} - {d[3]} - {d[4]} - {d[5]} - {d[6]}"
+                        res = f"{d[0]} - {d[1]} - {d[2]} - {d[3]} - {d[4]} - {d[5]}"
                         # print(res)
                         data_from_db[d[0]] = res
                     else:
@@ -348,7 +368,8 @@ class UsersDataBase:
                 self.__logger.register_database_actions(
                     f"получаем данные из таблицы {table_name}"
                 )
-                return "\n" + "\n".join(data_from_db.values())
+                # return "\n" + "\n".join(data_from_db.values())
+                print("\n" + "\n".join(data_from_db.values()))
         except Error as err:
             ...
             # logger.error(err)
@@ -410,9 +431,70 @@ class UsersDataBase:
             ...
             # logger.debug(err)
 
+    @property
+    def manual(self):
+        return self.MANUAL
+
+    def main(self):
+        functions_dict = {
+            "1": self.get_tables_from_database,
+            "2": self.create_table,
+            "3": self.insert_data_to_table,
+            "4": self.get_data_from_table,
+            "5": self.update_data_in_table,
+            "6": self.delete_date_from_table,
+            "7": self.drop_table
+        }
+        while True:
+            response = input(">>> ").split()
+            command = str(response[0])
+            values = response[1:]
+            res = functions_dict.get(command)
+            if res:
+                print(res(*values))
+            elif res == "exit":
+                print("выход из модуля баз данных")
+                break
+            else:
+                print("Данная функция не поддерживается!!!")
+                break
+
+
+class DataBaseMain():
+    def __init__(self):
+        pass
+
+    def main(self):
+        manual = f"""
+        Список доступных баз данных:
+        1. customs_officers.db - база данных, содержащая информацию о должностных лицах,
+        2. customs_user.db - база данных, содержащая информацию, о пользоватлях
+        Для доступа к нужной базе данных введите её название на английском языке или номер из списка.
+        Для выхода из модуля введите exit или 0.\n
+        >>> """
+        db_list = ["customs_officers.db", "customs_user.db"]
+        while True:
+            response = str(input(manual))
+            if response == "customs_user.db" or response == "1":
+                db_name = "customs_user.db"
+                customs_users_db = UsersDataBase(db_name)
+                print(customs_users_db.MANUAL)
+                print(customs_users_db.main())
+            elif response == "customs_officers.db" or response == "2":
+                db_name = "customs_officers.db"
+                customs_officers_db = OfficerDatabase(db_name)
+                print("...")
+            elif response == "exit" or response == "0":
+                print("выход из модуля базы данных")
+                break
+            else:
+                print("Такой баз данных нет!")
+
 
 if __name__ == '__main__':
     ...
+    db = DataBaseMain()
+    db.main()
     # users_db = UsersDataBase("customs_user.db")
     # users_db.create_table("users")
     # print(users_db.get_tables_from_database())
@@ -421,7 +503,8 @@ if __name__ == '__main__':
     # # users_db.delete_date_from_table(1)
     # users_db.delete_database("customs_user.db")
 
-    officers_db = OfficerDatabase("customs_officers.db")
+    # officers_db = OfficerDatabase("customs_officers.db")
+    # print(officers_db.get_tables_from_database())
     # officers_db.create_table("customs_officers_users")
     # print(officers_db.get_tables_from_database())
     # officers_db.insert_data_to_table("customs_officers_users",
@@ -434,4 +517,4 @@ if __name__ == '__main__':
     #     0
     # )
     # print(officers_db.get_data_from_table("customs_officers_users"))
-    print(officers_db.check_data("customs_officers_users", "Admin", "Admin"))
+

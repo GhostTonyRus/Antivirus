@@ -84,6 +84,8 @@ class Monitor(Thread):
             )
         pythoncom.CoUninitialize()
 
+    def main(self):
+        self.start()
 
 if __name__ == '__main__':
     mon_creation = Monitor("creation")
