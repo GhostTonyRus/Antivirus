@@ -11,16 +11,14 @@ from database_package import OfficerDatabase
 
 
 class Two_factor_authentication:
-    def __init__(self, login, password):
-        self.login = login
-        self.password = password
+    def __init__(self):
         self.data_base = OfficerDatabase("customs_officers")
 
-    def login_to_the_system(self):
+    def login_to_the_system(self, login, password):
         count = 0
         message, code = self.message
-        user_login = self.login
-        user_password = str(self.password)
+        user_login = login
+        user_password = str(password)
         if self.data_base.check_data("customs_officers_users", user_login, user_password):
             print("Аутентификация пройдена!")
             try:
@@ -43,6 +41,8 @@ class Two_factor_authentication:
             except Exception as err:
                 print(err)
                 print("Не удалось отправить письмо!")
+        else:
+            print("Введеные неверные данные!")
 
     @property
     def message(self):
@@ -50,7 +50,7 @@ class Two_factor_authentication:
         message = MIMEMultipart()
         text_message = f"""Two-factor authentication\nYour login code: {code}"""
         message["From"] = "From developer"
-        message["To"] = self.login
+        message["To"] = ""
         message["Subject"] = "login code"
         message.attach(MIMEText(text_message, "plain"))
         return text_message, code
@@ -81,5 +81,5 @@ class Two_factor_authentication:
         smtp_server.quit()
 
 if __name__ == '__main__':
-    test = Two_factor_authentication("Tony", "12345")
-    test.login_to_the_system()
+    test = Two_factor_authentication()
+    test.login_to_the_system("Admin", "Admin")

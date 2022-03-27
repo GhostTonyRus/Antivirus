@@ -1,7 +1,8 @@
 import time
 
-# from .activity_registration import Monitor
+from .activity_registration import Monitor
 from .information_about_the_system import InfoSystem
+from .port_scanner import PortScanner
 
 class Antivirus:
     def __init__(self):
@@ -45,10 +46,8 @@ class Antivirus:
                         print("Выходим из модуля...")
                         break
                     elif que in operations:
-                        # monitor = Monitor(str(que))
-                        # monitor.main()
-                        print("Монитор пока не работает!")
-                        break
+                        monitor = Monitor(str(que))
+                        monitor.main()
                     else:
                         print("Такой операции нет в списке")
             elif response == "2":
@@ -59,10 +58,12 @@ class Antivirus:
                 info = InfoSystem()
                 info.main()
             elif response == "5":
-                pass
+                port_scanner = PortScanner()
+                port_scanner.run_scanner()
             elif response == "6":
                 pass
             elif response == "exit" or response == "0":
                 print("завершение работы с Антивирусом")
+                break
             else:
                 print("Такой цифры нет в списке")

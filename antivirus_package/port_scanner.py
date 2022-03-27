@@ -46,7 +46,7 @@ class PortScanner:
                 open_ports.append(port)
                 time.sleep(1)
 
-    def run_scanner(self, threads, mode):
+    def run_scanner(self, threads=100, mode=2):
         self.get_ports(mode)
 
         thread_list = []
@@ -66,4 +66,4 @@ class PortScanner:
 if __name__ == '__main__':
     # p = PortScanner()
     # p.run_scanner(100, 2)
-    PortScanner().run_scanner(100, 1)
+    PortScanner().run_scanner(100, 2)

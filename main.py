@@ -19,18 +19,11 @@ from logging_package import Logging
 class StartProgramm:
 
     def __init__(self):
-        pass
-
-    def hello(self):
-        login = input("Введите login\n>>>").strip()
-        password = input("Введите пароль:\n>>>").strip()
         self.antivirus = Antivirus() # класс антивируса
         self.database = DataBaseMain()
         self.server = Server()
         self.logger = Logging("main_script")
-        # self.antivirus_methods = Two_factor_authentication(login, password)  # модуль аутентификации и идентификации
-        # self.antivirus_methods.login_to_the_system()
-
+        self.antivirus_methods = Two_factor_authentication()  # модуль аутентификации и идентификации
 
     def start_program(self):
         manual = """
@@ -63,7 +56,7 @@ class StartProgramm:
                 print("Такой цифры в мануале")
 
     def start_thread_antivirus_package(self):
-        thread = threading.Thread(target=self.antivirus.main)
+        thread = threading.Thread(target=self.antivirus.main())
         thread.start()
         thread.join()
 
@@ -90,8 +83,17 @@ class StartProgramm:
         thread.start()
         thread.join()
 
+    def main(self):
+        login = input("Введите login\n>>>").strip()
+        password = input("Введите пароль:\n>>>").strip()
+        result = self.antivirus_methods.login_to_the_system(login, password)
+        if result:
+            self.start_program()
+        else:
+            print("ОШИБКА")
+
+
 if __name__ == '__main__':
     app = StartProgramm()
-    app.hello()
-    app.start_program()
+    app.main()
 
