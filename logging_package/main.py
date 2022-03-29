@@ -89,4 +89,5 @@ class Logging:
                     print(err)
 
 if __name__ == '__main__':
-    pass
+    log = Logging("loging")
+    log.get_action()

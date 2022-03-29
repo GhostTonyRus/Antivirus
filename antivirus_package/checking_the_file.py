@@ -53,9 +53,9 @@ class CheckFile:
 
 if __name__ == '__main__':
     ...
-    # test = CheckFile("C:\\PycharmProjects\\Antivirus\\requirements.txt")
-    # data = test.main()
-    # print(data)
+    test = CheckFile("C:\\PycharmProjects\\Antivirus\\README.md")
+    data = test.main()
+    print(data)
     # test2 = SaveDataJson.dump_json(data)
     # test2.load_json()
     # test2 = SaveDataJson.load_json()

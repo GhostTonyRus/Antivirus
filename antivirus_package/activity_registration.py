@@ -12,9 +12,6 @@ notify_filter_operation = "operation"
 notify_filter_deletion = "deletion"
 notify_filter_modification = "modification"
 
-
-
-
 def date_time_format(date_time):
     year = date_time[:4]
     month = date_time[4:6]
@@ -23,7 +20,6 @@ def date_time_format(date_time):
     minutes = date_time[10:12]
     seconds = date_time[12:14]
     return f"{day}/{month}/{year} {hour}:{minutes}:{seconds}"
-
 
 class ProcessMonitor:
     def __init__(self, notify_filter="operation"):
