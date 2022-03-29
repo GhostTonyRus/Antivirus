@@ -21,11 +21,11 @@ class Antivirus:
         +----------------------------------------+
         | 5 | сканер портов                      |
         +----------------------------------------+
-        | 6 | заблокировать сайт                 |
+        | 6 | заблокировать IP                   |
         +----------------------------------------+
         | exit/0 | выйти из Антивируса           |
-        +----------------------------------------+\n
-        >>>
+        +----------------------------------------+
+        \n>>>
         """
         while True:
             response = str(input(manual))
@@ -56,7 +56,7 @@ class Antivirus:
                 pass
             elif response == "4":
                 info = InfoSystem()
-                info.main()
+                print(info.main())
             elif response == "5":
                 port_scanner = PortScanner()
                 port_scanner.run_scanner()
@@ -67,3 +67,8 @@ class Antivirus:
                 break
             else:
                 print("Такой цифры нет в списке")
+
+
+if __name__ == '__main__':
+    antivirus = Antivirus()
+    antivirus.main()

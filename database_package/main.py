@@ -320,7 +320,7 @@ if __name__ == '__main__':
     # users_db.insert_data_to_table("users", "Anthony", "Tony", "Николаевич", "tonystark18@gmail.com", "Rocestear200", "Rocestear200")
     # # users_db.delete_date_from_table(1)
     # users_db.delete_database("customs_user.db")
-
+    # users_db.get_data_from_table("users")
     # officers_db = OfficerDatabase("customs_officers")
     # officers_db.create_table("customs_officers_users")
     # print(officers_db.get_tables_from_database())

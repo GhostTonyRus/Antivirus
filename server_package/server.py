@@ -54,7 +54,7 @@ class Server:
         self.__clients = []
         self.__msg_datetime = datetime.now()
         self.__custom_msg_datetime = self.__msg_datetime.strftime('%Y-%m-%d %H:%M:%S')
-        __file = "customs_user.db"
+        __file = "customs_user"
         try:
             self.__user_db = UsersDataBase(__file)
         except Exception as err:
@@ -65,6 +65,14 @@ class Server:
             "3" :"добавить данные в таблицу",
             "4" :"изменить данные в таблице"
         }
+
+    def thread_stop_server(self):
+        msg = input("Введите 'stop' для остановки работы сереера:\n>>>")
+        print(msg)
+        if msg == "stop":
+            thhread = threading.Thread(target=self.stop_server)
+            thhread.start()
+            thhread.join()
 
     def thread_db_connection(self, func, table_name):
         thread = threading.Thread(target=func, args=(table_name,))
@@ -198,10 +206,27 @@ class Server:
 
     def main(self, server_address, number_of_clients):
         """главный метод, отвечающий за запуск и бинд сервера"""
-        self.bind_server(server_address)
-        self.start_server(number_of_clients)
-
+        manual = """
+        +--------------------------------+
+        | 1 | для запуска сервера        |
+        +--------------------------------+
+        | exit/0 | выход из меню сервера |
+        +--------------------------------+
+        """
+        print(manual)
+        while True:
+            response = str(input("\n>>> "))
+            if response == "1":
+                self.bind_server(server_address)
+                self.start_server(number_of_clients)
+            elif response == "exit" or response == "0":
+                print("выход из меню сервера")
+                break
+            else:
+                print("Такой команды нет!")
+                continue
 
 if __name__ == '__main__':
     server = Server()
     server.main(SERVER_ADDRESS, 10)
+

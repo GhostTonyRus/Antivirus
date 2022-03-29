@@ -11,8 +11,8 @@ import psutil # для работы с низкоуровнеными систе
 
 class InfoSystem:
     def __init__(self):
-        self.__speedtest = Speedtest()
-
+        # self.__speedtest = Speedtest()
+        ...
     def get_system_info(self):
         operating_system_discharge = platform.machine() # разряд операционной системы
         operating_system = platform.platform() # наименование операционной системе
@@ -21,12 +21,20 @@ class InfoSystem:
         processor_name = platform.processor() # наименование процессора
         cpu_frequency = psutil.cpu_freq() # частота процессора
         MAC_address = get_mac()
-        return operating_system_discharge, operating_system, platform_name, name_operation_system, processor_name, cpu_frequency, MAC_address
+        info = {
+            "разряд операционной системы": operating_system_discharge,
+            "наименование операционной системы": operating_system,
+            "информаицо об операционной системе": name_operation_system,
+            "аименвоание процессора": processor_name,
+            "частота процессора": cpu_frequency
+        }
+        for key, value in info.items():
+            print(f"{key} - {value}")
 
     def get_time_zone_and_time(self):
         zone = psutil.boot_time() # время, заданное на компьютере
         time = datetime.fromtimestamp(zone) # переводим данные в читабельный вид
-        return str(time)[:19]
+        return f"системное время - {str(time)[:19]}"
 
     def get_download_and_upload_internet_speed(self):
         download = float(str(self.__speedtest.download())[0:2] + "."
@@ -38,9 +46,11 @@ class InfoSystem:
         return download, upload
 
     def main(self):
+        print("Запуск сбора данных о системе")
         self.get_system_info()
-        self.get_time_zone_and_time()
-        self.get_download_and_upload_internet_speed()
+        print(self.get_time_zone_and_time())
+        # self.get_download_and_upload_internet_speed()
+        print("Сбор окончен")
 
 if __name__ == '__main__':
 

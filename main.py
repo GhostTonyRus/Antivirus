@@ -46,7 +46,7 @@ class StartProgramm:
             elif response == "2":
                 self.start_thread_database_package()
             elif response == "3":
-                pass
+                self.start_server_package()
             elif response == "4":
                 self.start_logging_package()
             elif response == "exit" or response == "0":
