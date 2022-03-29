@@ -215,8 +215,8 @@ class UsersDataBase(DataBaseClass):
                 self.__logger.register_database_actions(
                     f"получаем данные из таблицы {table_name}"
                 )
-                # return "\n" + "\n".join(data_from_db.values())
-                print("\n" + "\n".join(data_from_db.values()))
+                return "\n" + "\n".join(data_from_db.values())
+                # print("\n" + "\n".join(data_from_db.values()))
         except Error as err:
             ...
             # logger.error(err)

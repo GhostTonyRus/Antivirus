@@ -23,20 +23,18 @@ IP = "127.0.0.1"
 PORT = 12345
 SERVER_ADDRESS = (IP, PORT)
 MANUAL = """
-+---+----------------------------------+
-| 1 | посмотреть таблицы в базе данных |
-+---+----------------------------------+
-| 2 | получить данные из таблицы       |
-+---+----------------------------------+
-| 3 | добавить данные в таблицу        |
-+--------------------------------------+
-| 4 | изменить данные в таблице        |
-+--------------------------------------+
-
-Для просмотра таблицы ввести цифру "1";
-Для получения данных из таблицы ввести цифру "2" и название таблицы;
-Для добавления данных в таблицу ввести цифру "3" название таблицы и данные через пробел
-Для измения данных в таблице ввести  цифру "4" id поля и значение через пробел
++---+--------------------------------------------------+
+| 1 | посмотреть таблицы в базе данных                 |
++---+--------------------------------------------------+
+| 2 | получить данные из таблицы                       |
+|   | (введите название таблицы)                       |
++---+--------------------------------------------------+
+| 3 | добавить данные в таблицу                        |
+|   | (введите название таблицы и данные через пробел) |
++------------------------------------------------------+
+| 4 | изменить данные в таблице                        |
+|   | (id поля и значение через пробел)                |
++------------------------------------------------------+
 """
 
 class Server:
@@ -54,11 +52,11 @@ class Server:
         self.__clients = []
         self.__msg_datetime = datetime.now()
         self.__custom_msg_datetime = self.__msg_datetime.strftime('%Y-%m-%d %H:%M:%S')
-        __file = "customs_user.db"
-        try:
-            self.__user_db = UsersDataBase(__file)
-        except Exception as err:
-            print(err)
+        # __file = "customs_user.db"
+        # try:
+        #     self.__user_db = UsersDataBase(__file)
+        # except Exception as err:
+        #     print(err)
         self.server_commands = {
             "1" :"посмотреть таблицы в базе данных",
             "2" :"получить данные из таблицы",
@@ -115,7 +113,7 @@ class Server:
             continue
 
     def get_users_connection_and_messages(self, connection, client_address):
-        user_db = UsersDataBase("customs_user.db")
+        user_db = UsersDataBase("customs_user")
         """ожидаем подключения от пользователей"""
         while True:
             # получаем тип подключения из словаря
@@ -131,7 +129,7 @@ class Server:
                     break
                 try:
                     data = data.decode("utf-8").split()
-                    number_command = data[0]
+                    self.number_command = data[0]
                 except IndexError:
                     self.__action_log.register_server_actions(
                         f"Сообщение от пользователя: {client_address}: 'exit'")
@@ -147,11 +145,14 @@ class Server:
                     print(f"Сообщение от пользователя {client_address}: {data}")
                     self.__action_log.register_server_actions(
                         f"Сообщение от пользователя {client_address}: {data}")
-                    if number_command == "1":
-                        connection.sendall(user_db.get_tables_from_database().encode("utf-8"))
-                    elif number_command == "2":
-                        connection.sendall(user_db.get_data_from_table("users").encode("utf-8"))
-                    elif number_command == "3":
+                    if self.number_command == "1":
+                        data = user_db.get_tables_from_database()
+                        self.send_message(connection, data)
+                    elif self.number_command == "2":
+                        # connection.sendall(user_db.get_data_from_table("users").encode("utf-8"))
+                        data =  user_db.get_data_from_table("users")
+                        self.send_message(connection, data)
+                    elif self.number_command == "3":
                         table_name = data[1]
                         values = data[2:]
                         try:
@@ -159,8 +160,9 @@ class Server:
                             ...
                         except Exception as err:
                             self.close_connection(connection)
-                        connection.sendall(f"Данные успешно добавлены! {data[1]}".encode("utf-8"))
-                    elif number_command == "4":
+                        log = f"Данные успешно добавлены! {data[1]}"
+                        self.send_message(connection, log)
+                    elif self.number_command == "4":
                         table_name = data[1]
                         id = data[2]
                         row = data[3]
@@ -169,7 +171,8 @@ class Server:
                             user_db.update_data_in_table(table_name, id, row, value)
                         except Exception as err:
                             self.close_connection(connection)
-                        connection.sendall("Данные успешно обновлены!".encode("utf-8"))
+                        log = "Данные успешно обновлены!"
+                        self.send_message(connection, log)
 
             except socket.error as error:
                 self.close_connection(connection)

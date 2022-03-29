@@ -1,8 +1,8 @@
 import time
 
-from .activity_registration import Monitor
-from .information_about_the_system import InfoSystem
-from .port_scanner import PortScanner
+from antivirus_package.activity_registration import Monitor
+from antivirus_package.information_about_the_system import InfoSystem
+from antivirus_package.port_scanner import PortScanner
 
 class Antivirus:
     def __init__(self):
@@ -24,8 +24,8 @@ class Antivirus:
         | 6 | заблокировать сайт                 |
         +----------------------------------------+
         | exit/0 | выйти из Антивируса           |
-        +----------------------------------------+\n
-        >>>
+        +----------------------------------------+
+        \n>>>
         """
         while True:
             response = str(input(manual))
@@ -67,3 +67,7 @@ class Antivirus:
                 break
             else:
                 print("Такой цифры нет в списке")
+
+if __name__ == '__main__':
+    antivirus = Antivirus()
+    antivirus.main()
