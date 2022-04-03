@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>569</width>
-    <height>503</height>
+    <width>1140</width>
+    <height>839</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -206,7 +206,7 @@ QToolBox::tab{
                   <x>0</x>
                   <y>0</y>
                   <width>198</width>
-                  <height>383</height>
+                  <height>719</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -306,7 +306,7 @@ QToolBox::tab{
                   <x>0</x>
                   <y>0</y>
                   <width>198</width>
-                  <height>383</height>
+                  <height>719</height>
                  </rect>
                 </property>
                 <attribute name="icon">

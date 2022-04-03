@@ -53,6 +53,5 @@ class InfoSystem:
         print("Сбор окончен")
 
 if __name__ == '__main__':
-
     info = InfoSystem()
     info.main()
