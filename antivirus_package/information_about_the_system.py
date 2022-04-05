@@ -21,20 +21,27 @@ class InfoSystem:
         processor_name = platform.processor() # наименование процессора
         cpu_frequency = psutil.cpu_freq() # частота процессора
         MAC_address = get_mac()
-        info = {
-            "разряд операционной системы": operating_system_discharge,
-            "наименование операционной системы": operating_system,
-            "информаицо об операционной системе": name_operation_system,
-            "аименвоание процессора": processor_name,
-            "частота процессора": cpu_frequency
-        }
-        for key, value in info.items():
-            print(f"{key} - {value}")
-
-    def get_time_zone_and_time(self):
         zone = psutil.boot_time() # время, заданное на компьютере
         time = datetime.fromtimestamp(zone) # переводим данные в читабельный вид
-        return f"системное время - {str(time)[:19]}"
+        # info = {
+        #     "разряд операционной системы": operating_system_discharge,
+        #     "наименование операционной системы": operating_system,
+        #     "информаицо об операционной системе": name_operation_system,
+        #     "аименвоание процессора": processor_name,
+        #     "частота процессора": cpu_frequency
+        # }
+        # for key, value in info.items():
+        #     print(f"{key} - {value}")
+        info = f"""
+        разряд операционной системы: {operating_system_discharge}
+        наименование операционной системы: {operating_system}
+        информаицо об операционной системе: {name_operation_system}
+        аименвоание процессора": {processor_name}
+        частота процессора: {cpu_frequency}
+        системное время: {str(time)[:19]}
+        """
+        return info
+
 
     def get_download_and_upload_internet_speed(self):
         download = float(str(self.__speedtest.download())[0:2] + "."
@@ -49,7 +56,7 @@ class InfoSystem:
         print("Запуск сбора данных о системе")
         self.get_system_info()
         print(self.get_time_zone_and_time())
-        self.get_download_and_upload_internet_speed()
+        # self.get_download_and_upload_internet_speed()
         print("Сбор окончен")
 
 if __name__ == '__main__':

@@ -62,9 +62,9 @@ class PortScanner:
         for thread in thread_list:
             thread.join()
 
-        print("Открытые порты:", open_ports)
+        return f"Открытые порты: {open_ports}"
 
 if __name__ == '__main__':
     # p = PortScanner()
     # p.run_scanner(100, 2)
-    PortScanner().run_scanner(100, 1)
+    PortScanner().run_scanner(10, 1)
