@@ -50,7 +50,7 @@ class MyWindow(QtWidgets.QMainWindow):
         ######################################
         self.ui.btn_antivirus_manual.clicked.connect(lambda: self.show_antivirus_manual())
         self.ui.btn_activity_registration.clicked.connect(lambda: self.show_activity_registration())
-        self.ui.btn_information_about_system.clicked.connect(lambda: self.show_information_about_system())
+        self.ui.btn_information_about_system.clicked.connect(self.show_information_about_system)
         self.ui.btn_port_scaner.clicked.connect(lambda: self.port_scanner())
 
     # перетаскивание окна
@@ -105,7 +105,7 @@ class MyWindow(QtWidgets.QMainWindow):
 
     def show_information_about_system(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_information_about_system)
-        system_info = self.info.get_system_info()
+        system_info = self.info.main()
         self.ui.listWidget_information_about_system.addItem(system_info)
 
     def show_check_usb(self):
@@ -113,7 +113,7 @@ class MyWindow(QtWidgets.QMainWindow):
 
     def port_scanner(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_port_scaner)
-        port_scanner = self.port_scaner.run_scanner()
+        port_scanner = self.port_scaner.main()
         self.ui.listWidget_port_scaner.addItem(port_scanner)
 
     def IP_block(self):
@@ -125,3 +125,4 @@ if __name__ == '__main__':
     my_window = MyWindow()
     my_window.show()
     sys.exit(app.exec_())
+

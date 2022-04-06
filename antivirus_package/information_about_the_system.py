@@ -53,12 +53,10 @@ class InfoSystem:
         return download, upload
 
     def main(self):
-        print("Запуск сбора данных о системе")
-        self.get_system_info()
-        print(self.get_time_zone_and_time())
-        # self.get_download_and_upload_internet_speed()
-        print("Сбор окончен")
+        res = self.get_system_info()
+        return res
+
 
 if __name__ == '__main__':
     info = InfoSystem()
-    info.main()
+    print(info.main())

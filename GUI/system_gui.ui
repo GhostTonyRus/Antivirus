@@ -490,8 +490,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>260</width>
-                      <height>558</height>
+                      <width>100</width>
+                      <height>30</height>
                      </rect>
                     </property>
                     <attribute name="label">
@@ -540,8 +540,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>260</width>
-                      <height>558</height>
+                      <width>100</width>
+                      <height>30</height>
                      </rect>
                     </property>
                     <attribute name="label">
@@ -566,8 +566,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>260</width>
-                      <height>558</height>
+                      <width>100</width>
+                      <height>30</height>
                      </rect>
                     </property>
                     <attribute name="label">
@@ -707,6 +707,7 @@ p, li { white-space: pre-wrap; }
                   </item>
                  </layout>
                 </widget>
+                <widget class="QWidget" name="page_usb_lock"/>
                 <widget class="QWidget" name="page_registration_activity">
                  <layout class="QVBoxLayout" name="verticalLayout_13">
                   <item>
