@@ -490,8 +490,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>100</width>
-                      <height>30</height>
+                      <width>260</width>
+                      <height>558</height>
                      </rect>
                     </property>
                     <attribute name="label">
@@ -540,8 +540,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>100</width>
-                      <height>30</height>
+                      <width>260</width>
+                      <height>558</height>
                      </rect>
                     </property>
                     <attribute name="label">
@@ -566,8 +566,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>100</width>
-                      <height>30</height>
+                      <width>260</width>
+                      <height>558</height>
                      </rect>
                     </property>
                     <attribute name="label">
@@ -726,7 +726,19 @@ p, li { white-space: pre-wrap; }
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_14">
                      <item>
-                      <widget class="QListView" name="lv_activity_registrariob"/>
+                      <widget class="QPlainTextEdit" name="plainTextEdit_for_activity_registration">
+                       <property name="font">
+                        <font>
+                         <pointsize>12</pointsize>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                       <property name="readOnly">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
                      </item>
                     </layout>
                    </widget>
@@ -923,7 +935,45 @@ p, li { white-space: pre-wrap; }
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_18">
                      <item>
-                      <widget class="QListWidget" name="listWidget_port_scaner"/>
+                      <widget class="QPlainTextEdit" name="plainTextEdit_port_scanner">
+                       <property name="font">
+                        <font>
+                         <pointsize>12</pointsize>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignBottom">
+                   <widget class="QFrame" name="frame_17">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_8">
+                     <item>
+                      <widget class="QPushButton" name="btn_start_port_scanner">
+                       <property name="font">
+                        <font>
+                         <pointsize>12</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                       <property name="text">
+                        <string>НАЧАТЬ СКАНИРОВАНИЕ</string>
+                       </property>
+                      </widget>
                      </item>
                     </layout>
                    </widget>

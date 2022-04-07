@@ -89,4 +89,3 @@ if __name__ == '__main__':
 
     mon_deletion = Monitor("deletion")
     mon_deletion.start()
-

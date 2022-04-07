@@ -15,13 +15,16 @@ from queue import Queue
 from progress.bar import IncrementalBar
 
 queue = Queue()
-open_ports = []
 PORT_MIN = 0
 PORT_MAX = 65535
 IP = "127.0.0.1"
 
 
 class PortScanner:
+
+    def __init__(self):
+        self.open_ports = []
+
     def portscan(self, port):
         try:
             server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -43,7 +46,7 @@ class PortScanner:
             port = queue.get()
             if self.portscan(port):
                 print(f"Порт {port} открыт")
-                open_ports.append(port)
+                self.open_ports.append(port)
                 time.sleep(1)
 
     def run_scanner(self, threads, mode):
@@ -63,10 +66,10 @@ class PortScanner:
             thread.join()
 
     def main(self):
-        res = self.run_scanner(10, 1)
-        return f"Открытые порты: {res}"
+        res = self.run_scanner(100, 1)
+        return f"Открытые порты: {self.open_ports}"
 
 if __name__ == '__main__':
     # p = PortScanner()
     # p.run_scanner(100, 2)
-    PortScanner().run_scanner(10, 1)
+    print(PortScanner().main())

@@ -4,7 +4,37 @@ from PyQt5.QtCore import QPoint, QPropertyAnimation
 from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import QGraphicsDropShadowEffect, QSizeGrip, QDesktopWidget
 from system_gui import Ui_MainWindow
-from antivirus_package import InfoSystem, PortScanner
+from antivirus_package import InfoSystem, PortScanner, Monitor
+import time
+
+
+class ActivityRegistrationThread(QtCore.QThread):
+    signal = QtCore.pyqtSignal(str)
+
+    def __init__(self):
+        super(ActivityRegistrationThread, self).__init__()
+        self.monitor = Monitor("creation")
+
+    def run(self):
+        # while True:
+        #     res = self.monitor.main()
+        #     self.signal.emit(res)
+        pass
+
+class PortScannerThread(QtCore.QThread):
+
+    signal = QtCore.pyqtSignal(str)
+
+    def __init__(self):
+        super(PortScannerThread, self).__init__()
+        self.port_scanner = PortScanner()
+
+    def run(self):
+        res = self.port_scanner.main()
+        self.signal.emit(res)
+
+
+
 
 class MyWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -49,9 +79,27 @@ class MyWindow(QtWidgets.QMainWindow):
         # настройка кнопок модуля антивируса #
         ######################################
         self.ui.btn_antivirus_manual.clicked.connect(lambda: self.show_antivirus_manual())
-        self.ui.btn_activity_registration.clicked.connect(lambda: self.show_activity_registration())
-        self.ui.btn_information_about_system.clicked.connect(self.show_information_about_system)
-        self.ui.btn_port_scaner.clicked.connect(lambda: self.port_scanner())
+
+        # настройка регистрации активности
+        self.activity_registration_thread = ActivityRegistrationThread()
+        self.activity_registration_thread.signal.connect(self.insert_activity_registration_value)
+        self.ui.btn_activity_registration.clicked.connect(lambda: self.show_activity_registration_page())
+        self.ui.btn_start_activity_registration.clicked.connect(self.start_activity_registration_thread)
+
+        # настройка порт сканер
+        self.port_scanner_thread = PortScannerThread()
+        self.port_scanner_thread.signal.connect(self.insert_value)
+        self.ui.btn_start_port_scanner.clicked.connect(self.start_port_scanner_thread)
+        self.ui.btn_port_scaner.clicked.connect(lambda: self.show_port_scanner())
+
+    def show_activity_registration_page(self):
+        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_registration_activity)
+
+    def insert_activity_registration_value(self, value):
+        self.ui.plainTextEdit_for_activity_registration.appendPlainText(value)
+
+    def start_activity_registration_thread(self):
+        self.activity_registration_thread.start()
 
     # перетаскивание окна
     def center(self):
@@ -98,7 +146,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_about_antivirus)
 
     def show_activity_registration(self):
-        ...
+        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_registration_activity)
 
     def show_check_file(self):
         ...
@@ -111,14 +159,20 @@ class MyWindow(QtWidgets.QMainWindow):
     def show_check_usb(self):
         ...
 
-    def port_scanner(self):
+    ###############
+    # ПОРТ СКАНЕР #
+    ###############
+    def start_port_scanner_thread(self):
+        self.port_scanner_thread.start()
+
+    def show_port_scanner(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_port_scaner)
-        port_scanner = self.port_scaner.main()
-        self.ui.listWidget_port_scaner.addItem(port_scanner)
+
+    def insert_value(self, value):
+        self.ui.plainTextEdit_port_scanner.appendPlainText(value)
 
     def IP_block(self):
         ...
-
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
