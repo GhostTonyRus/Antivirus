@@ -4,7 +4,6 @@ OS: Window7 and later
 Eject the usb storage when the usb device plugin your PC!
 '''
 from time import sleep
-import http.client
 import subprocess
 
 class UsbLock:

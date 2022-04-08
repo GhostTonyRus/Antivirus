@@ -46,7 +46,7 @@ class PortScanner:
             port = queue.get()
             if self.portscan(port):
                 print(f"Порт {port} открыт")
-                self.open_ports.append(port)
+                self.open_ports.append(str(port))
                 time.sleep(1)
 
     def run_scanner(self, threads, mode):
@@ -67,7 +67,7 @@ class PortScanner:
 
     def main(self):
         res = self.run_scanner(100, 1)
-        return f"Открытые порты: {self.open_ports}"
+        return f"Открытые порты: {', '.join(self.open_ports)}"
 
 if __name__ == '__main__':
     # p = PortScanner()

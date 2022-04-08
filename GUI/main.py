@@ -3,8 +3,7 @@ from PyQt5 import QtWidgets, QtGui, QtCore, Qt
 from PyQt5.QtCore import QPoint, QPropertyAnimation
 from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import QGraphicsDropShadowEffect, QSizeGrip, QDesktopWidget
-
-from  GUI.test_ui import Ui_MainWindow
+from GUI.test_ui import Ui_MainWindow
 
 
 class MyWindow(QtWidgets.QMainWindow):

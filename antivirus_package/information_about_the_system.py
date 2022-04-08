@@ -11,12 +11,13 @@ import psutil # для работы с низкоуровнеными систе
 
 class InfoSystem:
     def __init__(self):
-        self.__speedtest = Speedtest()
+        # self.__speedtest = Speedtest()
+        ...
 
     def get_system_info(self):
         operating_system_discharge = platform.machine() # разряд операционной системы
         operating_system = platform.platform() # наименование операционной системе
-        platform_name = platform.uname() # информаци о операционной системе
+        platform_name = platform.uname() # информация о операционной системе
         name_operation_system = platform.system() # название операционной системы
         processor_name = platform.processor() # наименование процессора
         cpu_frequency = psutil.cpu_freq() # частота процессора
@@ -35,8 +36,8 @@ class InfoSystem:
         info = f"""
         разряд операционной системы: {operating_system_discharge}
         наименование операционной системы: {operating_system}
-        информаицо об операционной системе: {name_operation_system}
-        аименвоание процессора": {processor_name}
+        информация об операционной системе: {name_operation_system}
+        наименование процессора": {processor_name}
         частота процессора: {cpu_frequency}
         системное время: {str(time)[:19]}
         """

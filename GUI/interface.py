@@ -4,7 +4,7 @@ from PyQt5.QtCore import QPoint, QPropertyAnimation
 from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import QGraphicsDropShadowEffect, QSizeGrip, QDesktopWidget
 from system_gui import Ui_MainWindow
-from antivirus_package import InfoSystem, PortScanner, Monitor
+from antivirus_package import InfoSystem, PortScanner, Monitor, UsbLock
 import time
 
 
@@ -16,10 +16,17 @@ class ActivityRegistrationThread(QtCore.QThread):
         self.monitor = Monitor("creation")
 
     def run(self):
-        # while True:
-        #     res = self.monitor.main()
-        #     self.signal.emit(res)
-        pass
+        self.monitor.main()
+        while True:
+            time.sleep(3)
+            try:
+                with open("C:\\PycharmProjects\\Antivirus\\antivirus_package\\activity_registratiom.txt") as file:
+                    res = file.readlines()
+                    for i in res:
+                        self.signal.emit(str(i))
+            except FileExistsError as err:
+                self.signal.emit("НЕТ ДАННЫХ!")
+
 
 class PortScannerThread(QtCore.QThread):
 
@@ -34,7 +41,16 @@ class PortScannerThread(QtCore.QThread):
         self.signal.emit(res)
 
 
+class CheckUsbThread(QtCore.QThread):
 
+    signal = QtCore.pyqtSignal(str)
+
+    def __init__(self):
+        super(CheckUsbThread, self).__init__()
+        self.check_usb = UsbLock()
+
+    def run(self):
+        ...
 
 class MyWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -79,27 +95,20 @@ class MyWindow(QtWidgets.QMainWindow):
         # настройка кнопок модуля антивируса #
         ######################################
         self.ui.btn_antivirus_manual.clicked.connect(lambda: self.show_antivirus_manual())
+        self.ui.btn_information_about_system.clicked.connect(lambda: self.show_information_about_system())
 
         # настройка регистрации активности
         self.activity_registration_thread = ActivityRegistrationThread()
         self.activity_registration_thread.signal.connect(self.insert_activity_registration_value)
         self.ui.btn_activity_registration.clicked.connect(lambda: self.show_activity_registration_page())
         self.ui.btn_start_activity_registration.clicked.connect(self.start_activity_registration_thread)
+        self.ui.btn_end_activity_registration.clicked.connect(lambda: self.end_activity_registration_thread())
 
         # настройка порт сканер
         self.port_scanner_thread = PortScannerThread()
         self.port_scanner_thread.signal.connect(self.insert_value)
         self.ui.btn_start_port_scanner.clicked.connect(self.start_port_scanner_thread)
         self.ui.btn_port_scaner.clicked.connect(lambda: self.show_port_scanner())
-
-    def show_activity_registration_page(self):
-        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_registration_activity)
-
-    def insert_activity_registration_value(self, value):
-        self.ui.plainTextEdit_for_activity_registration.appendPlainText(value)
-
-    def start_activity_registration_thread(self):
-        self.activity_registration_thread.start()
 
     # перетаскивание окна
     def center(self):
@@ -124,7 +133,7 @@ class MyWindow(QtWidgets.QMainWindow):
         else:
             self.showMaximized()
 
-    # открыть страницу с информациоей о системе
+    # открыть страницу с информацией о системе
     def show_main_manual(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_about_system)
 
@@ -145,13 +154,33 @@ class MyWindow(QtWidgets.QMainWindow):
     def show_antivirus_manual(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_about_antivirus)
 
-    def show_activity_registration(self):
+    #########################################################
+    # НАСТРОЙКА МЕТОДОВ ДЛЯ РАБОТЫ С РЕГИСТРАЦИЕЙ АКТИВНОСТИ #
+    #########################################################
+    def show_activity_registration_page(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_registration_activity)
 
+    def insert_activity_registration_value(self, value):
+        self.ui.plainTextEdit_for_activity_registration.appendPlainText(value)
+
+    def start_activity_registration_thread(self):
+        self.activity_registration_thread.start()
+
+    def end_activity_registration_thread(self):
+        try:
+            if self.activity_registration_thread.isRunning():
+                self.activity_registration_thread.running = False
+        except RuntimeError:
+            ...
+
+    #########################################################
+    # НАСТРОЙКА МЕТОДОВ ДЛЯ РАБОТЫ С ПРОВЕРКОЙ ФАЙЛА         #
+    #########################################################
     def show_check_file(self):
         ...
 
     def show_information_about_system(self):
+        self.ui.listWidget_information_about_system.clear()
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_information_about_system)
         system_info = self.info.main()
         self.ui.listWidget_information_about_system.addItem(system_info)
@@ -159,10 +188,11 @@ class MyWindow(QtWidgets.QMainWindow):
     def show_check_usb(self):
         ...
 
-    ###############
-    # ПОРТ СКАНЕР #
-    ###############
+    #############################################
+    # НАСТРОЙКА МЕТОДОВ ДЛЯ РАБОТЫ ПОРТ СКАНЕРА #
+    #############################################
     def start_port_scanner_thread(self):
+        self.ui.plainTextEdit_port_scanner.appendPlainText("Запуск сканера портов")
         self.port_scanner_thread.start()
 
     def show_port_scanner(self):
@@ -170,13 +200,17 @@ class MyWindow(QtWidgets.QMainWindow):
 
     def insert_value(self, value):
         self.ui.plainTextEdit_port_scanner.appendPlainText(value)
+        self.ui.plainTextEdit_port_scanner.appendPlainText("....")
 
+    ##############################################
+    # НАСТРОЙКА МЕТОДОВ ДЛЯ РАБОТЫ БЛОКИРОВКИ IP #
+    ##############################################
     def IP_block(self):
         ...
+
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     my_window = MyWindow()
     my_window.show()
     sys.exit(app.exec_())
-

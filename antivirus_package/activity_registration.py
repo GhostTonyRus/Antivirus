@@ -1,6 +1,7 @@
 """"
 ОТСЛЕЖИВАЕМ ПРОЦЕССЫ
 """
+import time
 
 import wmi
 from threading import Thread
@@ -71,14 +72,16 @@ class Monitor(Thread):
         pythoncom.CoInitialize()
         process_monitor = ProcessMonitor(self._action)
         while True:
+            time.sleep(3)
             process_monitor.update()
-            print(
-                date_time_format(process_monitor.creation_date),
-                process_monitor.event_type,
-                process_monitor.caption,
-                process_monitor.process_id
-            )
-        pythoncom.CoUninitialize()
+            with open("c:\\PycharmProjects\\Antivirus\\antivirus_package\\activity_registratiom.txt", "a") as file:
+                data = (
+                    date_time_format(process_monitor.creation_date),
+                    process_monitor.event_type,
+                    process_monitor.caption,
+                    process_monitor.process_id
+                )
+                file.write(str(data)+"\n")
 
     def main(self):
         self.start()
