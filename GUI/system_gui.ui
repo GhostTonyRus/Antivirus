@@ -373,7 +373,7 @@
                     <string notr="true">color: rgb(255, 255, 255);</string>
                    </property>
                    <property name="currentIndex">
-                    <number>0</number>
+                    <number>1</number>
                    </property>
                    <widget class="QWidget" name="page_antivirus_menu">
                     <property name="geometry">
@@ -509,7 +509,7 @@
                      <property name="orientation">
                       <enum>Qt::Vertical</enum>
                      </property>
-                     <widget class="QPushButton" name="pushButton_13">
+                     <widget class="QPushButton" name="btn_start_server">
                       <property name="font">
                        <font>
                         <pointsize>12</pointsize>
@@ -521,7 +521,7 @@
                        <string>Запуск сервера</string>
                       </property>
                      </widget>
-                     <widget class="QPushButton" name="pushButton_14">
+                     <widget class="QPushButton" name="btn_stop_server">
                       <property name="font">
                        <font>
                         <pointsize>12</pointsize>
@@ -639,6 +639,9 @@
              <layout class="QVBoxLayout" name="verticalLayout_6">
               <item>
                <widget class="QStackedWidget" name="stackedWidget_main">
+                <property name="currentIndex">
+                 <number>6</number>
+                </property>
                 <widget class="QWidget" name="page_about_system">
                  <layout class="QVBoxLayout" name="verticalLayout_7">
                   <item alignment="Qt::AlignTop">
@@ -707,7 +710,95 @@ p, li { white-space: pre-wrap; }
                   </item>
                  </layout>
                 </widget>
-                <widget class="QWidget" name="page_usb_lock"/>
+                <widget class="QWidget" name="page_usb_lock">
+                 <layout class="QVBoxLayout" name="verticalLayout_21">
+                  <item>
+                   <widget class="QFrame" name="frame_19">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_22">
+                     <item>
+                      <widget class="QTextEdit" name="textEdit_usb_blocking">
+                       <property name="font">
+                        <font>
+                         <pointsize>12</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                       <property name="html">
+                        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;p align=&quot;right&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignBottom">
+                   <widget class="QFrame" name="frame_20">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_8">
+                     <item>
+                      <widget class="QPushButton" name="btn_start_usb_blocking">
+                       <property name="font">
+                        <font>
+                         <pointsize>12</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                       <property name="text">
+                        <string>Начать блокировку</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="btn_end_usb_blocking">
+                       <property name="font">
+                        <font>
+                         <pointsize>12</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                       <property name="text">
+                        <string>Закончить блокировку</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
                 <widget class="QWidget" name="page_registration_activity">
                  <layout class="QVBoxLayout" name="verticalLayout_13">
                   <item>
@@ -886,6 +977,103 @@ p, li { white-space: pre-wrap; }
                   </item>
                  </layout>
                 </widget>
+                <widget class="QWidget" name="page_port_scanner">
+                 <layout class="QVBoxLayout" name="verticalLayout_17">
+                  <item alignment="Qt::AlignTop">
+                   <widget class="QFrame" name="frame_16">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_19">
+                     <item>
+                      <widget class="QComboBox" name="comboBox_port_scanner">
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                       <item>
+                        <property name="text">
+                         <string>ПРОВЕРИТЬ ПОРТЫ В ДИАПАЗОНЕ ОТ 1 ДО 1024</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>ПРОВЕРИТЬ ПОРТЫ В ДИАПАЗОНЕ ОТ 1 ДО 49152</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>ПРОВЕРИТЬ ЗАРЕЗЕРВИРОВАННЫЕ СИСТЕМОЙ ПОРТЫ </string>
+                        </property>
+                       </item>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QFrame" name="frame_17">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_20">
+                     <item>
+                      <widget class="QPlainTextEdit" name="plainTextEdit_port_scanner">
+                       <property name="font">
+                        <font>
+                         <pointsize>12</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignBottom">
+                   <widget class="QFrame" name="frame_18">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_18">
+                     <item>
+                      <widget class="QPushButton" name="btn_start_port_scanner">
+                       <property name="font">
+                        <font>
+                         <pointsize>12</pointsize>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                       <property name="text">
+                        <string>Начать сканирование</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
                 <widget class="QWidget" name="page_information_about_system">
                  <layout class="QVBoxLayout" name="verticalLayout_15">
                   <item>
@@ -905,16 +1093,26 @@ p, li { white-space: pre-wrap; }
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_16">
                      <item>
-                      <widget class="QListWidget" name="listWidget_information_about_system">
+                      <widget class="QTextEdit" name="textEdit__information_about_system">
                        <property name="font">
                         <font>
-                         <pointsize>14</pointsize>
+                         <pointsize>12</pointsize>
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
                         <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                       <property name="readOnly">
+                        <bool>true</bool>
+                       </property>
+                       <property name="html">
+                        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8.25pt; font-weight:400;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                        </property>
                       </widget>
                      </item>
@@ -923,57 +1121,19 @@ p, li { white-space: pre-wrap; }
                   </item>
                  </layout>
                 </widget>
-                <widget class="QWidget" name="page_port_scaner">
-                 <layout class="QVBoxLayout" name="verticalLayout_17">
+                <widget class="QWidget" name="page_server_info">
+                 <layout class="QVBoxLayout" name="verticalLayout_23">
                   <item>
-                   <widget class="QFrame" name="frame_16">
+                   <widget class="QFrame" name="frame_21">
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
                     </property>
                     <property name="frameShadow">
                      <enum>QFrame::Raised</enum>
                     </property>
-                    <layout class="QVBoxLayout" name="verticalLayout_18">
+                    <layout class="QVBoxLayout" name="verticalLayout_24">
                      <item>
-                      <widget class="QPlainTextEdit" name="plainTextEdit_port_scanner">
-                       <property name="font">
-                        <font>
-                         <pointsize>12</pointsize>
-                        </font>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">color: rgb(255, 255, 255);</string>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                  <item alignment="Qt::AlignBottom">
-                   <widget class="QFrame" name="frame_17">
-                    <property name="frameShape">
-                     <enum>QFrame::StyledPanel</enum>
-                    </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Raised</enum>
-                    </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_8">
-                     <item>
-                      <widget class="QPushButton" name="btn_start_port_scanner">
-                       <property name="font">
-                        <font>
-                         <pointsize>12</pointsize>
-                         <weight>75</weight>
-                         <bold>true</bold>
-                        </font>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">color: rgb(255, 255, 255);</string>
-                       </property>
-                       <property name="text">
-                        <string>НАЧАТЬ СКАНИРОВАНИЕ</string>
-                       </property>
-                      </widget>
+                      <widget class="QPlainTextEdit" name="plainTextEdit_infromation_from_server"/>
                      </item>
                     </layout>
                    </widget>

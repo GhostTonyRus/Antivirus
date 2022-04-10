@@ -5,37 +5,58 @@ Eject the usb storage when the usb device plugin your PC!
 '''
 from time import sleep
 import subprocess
+from datetime import datetime
 
 class UsbLock:
+
+    def __init__(self):
+        self.__msg_datetime = datetime.now()
+        self.__custom_msg_datetime = self.__msg_datetime.strftime('%Y-%m-%d %H:%M:%S')
+
     @staticmethod
     def monitorUSBStorage():
         label = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S',
         'T','U','V','W','X','Y','Z']
         monitorDisk = []
+        existingDisk = []
         for i in label:
             try:
                 file = open(i+':/')
             except Exception as e:
                 '''
-                error = 2  =>not found
-                error = 13 =>permission denied (exist!)
+                error = 2  => не найдено
+                error = 13 => отказано в доступе (существует!)
                 '''
                 if(e.errno == 13):
-                    print(f"Диск : {i} существует!")
+                    res = f"Диск : {i} существует"
+                    existingDisk.append(res)
+
                 else:
                     monitorDisk.append(i)
 
+        return "\n".join(existingDisk), monitorDisk
+
+    def logging_locked_usb(self, value):
+        path = "C:\\PycharmProjects\\Antivirus\\antivirus_package\\locked_usb.txt"
+        try:
+            with open(path, "a", encoding="utf-8") as file:
+                file.write(f"{value} | {self.__custom_msg_datetime}\n")
+        except FileExistsError as err:
+            return err
+
+    def main(self):
+        existent_disks, non_existent_disks = self.monitorUSBStorage()
         print("Мониторинг.....")
+        print("Проверка...")
         while(True):
-            print("Проверка...")
             isININ = False
             disk = ''
-            for i in monitorDisk:
+            for i in non_existent_disks:
                 try:
                     file = open(i+':/')
                 except Exception as e:
                     if(e.errno == 13):
-                        print(f"Диск : {i} существует!")
+                        # print(f"Диск : {i} существует!")
                         isININ = True
                         disk = i
                         break
@@ -46,9 +67,15 @@ class UsbLock:
                 tmpFile.close()
                 process = subprocess.Popen(['powershell.exe', '-ExecutionPolicy','Unrestricted','./tmp.ps1'])
                 process.communicate()
-            #sleep for 2 seconds
-            sleep(2)
+                res = f"Устройство {disk} заблокировано"
+                self.logging_locked_usb(res)
+                break
+            continue
+
+            # задержка на 2 секунды
+            # sleep(2)
 
 if __name__ == '__main__':
-    UsbLock.monitorUSBStorage()
+    usb = UsbLock()
+    print(usb.main())
 

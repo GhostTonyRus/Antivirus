@@ -13,14 +13,16 @@ class ActivityRegistrationThread(QtCore.QThread):
 
     def __init__(self):
         super(ActivityRegistrationThread, self).__init__()
-        self.monitor = Monitor("creation")
+        self.monitor_creation = Monitor("creation")
+        self.monitor_deletion = Monitor("deletion")
 
     def run(self):
-        self.monitor.main()
+        self.monitor_creation.main()
+        self.monitor_deletion.main()
         while True:
             time.sleep(3)
             try:
-                with open("C:\\PycharmProjects\\Antivirus\\antivirus_package\\activity_registratiom.txt") as file:
+                with open("C:\\PycharmProjects\\Antivirus\\antivirus_package\\activity_registration.txt", "r") as file:
                     res = file.readlines()
                     for i in res:
                         self.signal.emit(str(i))
@@ -32,12 +34,13 @@ class PortScannerThread(QtCore.QThread):
 
     signal = QtCore.pyqtSignal(str)
 
-    def __init__(self):
+    def __init__(self, value):
         super(PortScannerThread, self).__init__()
         self.port_scanner = PortScanner()
+        self.value = value
 
     def run(self):
-        res = self.port_scanner.main()
+        res = self.port_scanner.main(self.value)
         self.signal.emit(res)
 
 
@@ -50,15 +53,26 @@ class CheckUsbThread(QtCore.QThread):
         self.check_usb = UsbLock()
 
     def run(self):
-        ...
+        self.check_usb.main()
+        while True:
+            try:
+                with open("C:\\PycharmProjects\\Antivirus\\antivirus_package\\locked_usb.txt", "r") as file:
+                    res = file.readlines()
+                    for i in res:
+                        self.signal.emit(str(i))
+            except FileExistsError as err:
+                self.signal.emit("НЕТ ДАННЫХ!")
 
 class MyWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(MyWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.info = InfoSystem()
-        self.port_scaner = PortScanner()
+        self.info = InfoSystem() # информация о системе
+        self.usb_blocking = UsbLock() # блокировка usb
+        self.port_scanner = PortScanner() # сканер портов
+
+        self.text = self.ui.comboBox_port_scanner.currentText()
 
         # захват размера окна для изменения размера окна
         # QSizeGrip(self.ui.size_grip)
@@ -102,13 +116,25 @@ class MyWindow(QtWidgets.QMainWindow):
         self.activity_registration_thread.signal.connect(self.insert_activity_registration_value)
         self.ui.btn_activity_registration.clicked.connect(lambda: self.show_activity_registration_page())
         self.ui.btn_start_activity_registration.clicked.connect(self.start_activity_registration_thread)
-        self.ui.btn_end_activity_registration.clicked.connect(lambda: self.end_activity_registration_thread())
+        # self.ui.btn_end_activity_registration.clicked.connect(lambda: self.end_activity_registration_thread())
+
+        # блокировка usb
+        self.usb_blocking_thread = CheckUsbThread()
+        self.usb_blocking_thread.signal.connect(self.insert_info_about_blocking_usb)
+        self.ui.btn_check_usb.clicked.connect(lambda: self.show_usb_block())
+        self.ui.btn_start_usb_blocking.clicked.connect(lambda: self.insert_information_about_usb())
 
         # настройка порт сканер
-        self.port_scanner_thread = PortScannerThread()
+        self.port_scanner_thread = PortScannerThread(self.ui.comboBox_port_scanner.currentText())
         self.port_scanner_thread.signal.connect(self.insert_value)
         self.ui.btn_start_port_scanner.clicked.connect(self.start_port_scanner_thread)
         self.ui.btn_port_scaner.clicked.connect(lambda: self.show_port_scanner())
+
+        ######################################
+        # настройка кнопок модуля сервер     #
+        ######################################
+        self.ui.btn_start_server.clicked.connect(lambda: self.show_server_page())
+
 
     # перетаскивание окна
     def center(self):
@@ -150,13 +176,12 @@ class MyWindow(QtWidgets.QMainWindow):
     ########################
     # РАБОТА С АНТИВИРУСОМ #
     ########################
-
     def show_antivirus_manual(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_about_antivirus)
 
-    #########################################################
+    ##########################################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ РАБОТЫ С РЕГИСТРАЦИЕЙ АКТИВНОСТИ #
-    #########################################################
+    ##########################################################
     def show_activity_registration_page(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_registration_activity)
 
@@ -166,27 +191,35 @@ class MyWindow(QtWidgets.QMainWindow):
     def start_activity_registration_thread(self):
         self.activity_registration_thread.start()
 
-    def end_activity_registration_thread(self):
-        try:
-            if self.activity_registration_thread.isRunning():
-                self.activity_registration_thread.running = False
-        except RuntimeError:
-            ...
-
     #########################################################
-    # НАСТРОЙКА МЕТОДОВ ДЛЯ РАБОТЫ С ПРОВЕРКОЙ ФАЙЛА         #
+    # НАСТРОЙКА МЕТОДОВ ДЛЯ РАБОТЫ С ПРОВЕРКОЙ ФАЙЛА        #
     #########################################################
     def show_check_file(self):
         ...
 
+
+    #########################################################
+    # НАСТРОЙКА МЕТОДОВ ДЛЯ ВЫВОДА ИНФОРМАЦИИ О СИСТЕМЕ     #
+    #########################################################
     def show_information_about_system(self):
-        self.ui.listWidget_information_about_system.clear()
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_information_about_system)
         system_info = self.info.main()
-        self.ui.listWidget_information_about_system.addItem(system_info)
+        self.ui.textEdit__information_about_system.setPlainText(system_info)
 
-    def show_check_usb(self):
-        ...
+
+    #########################################################
+    # НАСТРОЙКА МЕТОДОВ ДЛЯ БЛОКИРОВКИ USB                  #
+    #########################################################
+    def show_usb_block(self):
+        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_usb_lock)
+
+    def insert_information_about_usb(self):
+        existent_disks, non_existent_disks = self.usb_blocking.monitorUSBStorage()
+        self.ui.textEdit_usb_blocking.setPlainText(existent_disks)
+        self.usb_blocking_thread.start()
+
+    def insert_info_about_blocking_usb(self, value):
+        self.ui.textEdit_usb_blocking.setPlainText(value)
 
     #############################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ РАБОТЫ ПОРТ СКАНЕРА #
@@ -196,7 +229,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.port_scanner_thread.start()
 
     def show_port_scanner(self):
-        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_port_scaner)
+        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_port_scanner)
 
     def insert_value(self, value):
         self.ui.plainTextEdit_port_scanner.appendPlainText(value)
@@ -207,6 +240,17 @@ class MyWindow(QtWidgets.QMainWindow):
     ##############################################
     def IP_block(self):
         ...
+
+    ##############################################
+    # РАБОТА С СЕРВЕРОМ                          #
+    ##############################################
+    def show_server_page(self):
+        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_server_info)
+
+    ##############################################
+    # НАСТРОЙКА МЕТОДОВ ДЛЯ С СЕРВЕРОМ           #
+    ##############################################
+
 
 
 if __name__ == '__main__':

@@ -34,11 +34,20 @@ class PortScanner:
             return False
 
     def get_ports(self, mode):
-        if mode == 1:
+        variants = {
+            "ПРОВЕРИТЬ ПОРТЫ В ДИАПАЗОНЕ ОТ 1 ДО 1024": 1,
+            "ПРОВЕРИТЬ ПОРТЫ В ДИАПАЗОНЕ ОТ 1 ДО 49152": 2,
+            "ПРОВЕРИТЬ ЗАРЕЗЕРВИРОВАННЫЕ СИСТЕМОЙ ПОРТЫ": 3,
+        }
+        if variants.get("ПРОВЕРИТЬ ПОРТЫ В ДИАПАЗОНЕ ОТ 1 ДО 1024"):
             for port in range(1, 1024):
                 queue.put(port)
         elif mode == 2:
             for port in range(1, 49152):
+                queue.put(port)
+        elif mode == 3:
+            ports = [20, 21, 22, 23, 25, 53, 80, 110, 443]
+            for port in ports:
                 queue.put(port)
 
     def worker(self):
@@ -65,11 +74,11 @@ class PortScanner:
         for thread in thread_list:
             thread.join()
 
-    def main(self):
-        res = self.run_scanner(100, 1)
+    def main(self, value):
+        res = self.run_scanner(100, value)
         return f"Открытые порты: {', '.join(self.open_ports)}"
 
 if __name__ == '__main__':
     # p = PortScanner()
     # p.run_scanner(100, 2)
-    print(PortScanner().main())
+    print(PortScanner().main(1))

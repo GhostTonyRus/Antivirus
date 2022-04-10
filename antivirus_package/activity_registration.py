@@ -1,8 +1,13 @@
 """"
 ОТСЛЕЖИВАЕМ ПРОЦЕССЫ
 """
+
+# if os.path.exists(self.__path):
+    #     os.path.join(os.path.abspath(os.path.dirname(__file__)), "activity_registration.txt")
+    #     os.remove(self.__path)
 import time
 
+import os
 import wmi
 from threading import Thread
 import pythoncom
@@ -85,6 +90,7 @@ class Monitor(Thread):
 
     def main(self):
         self.start()
+
 
 if __name__ == '__main__':
     mon_creation = Monitor("creation")

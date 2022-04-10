@@ -1,26 +1,7 @@
 import json
+import time
+
 import requests
-
-
-class SaveDataJson:
-    """класс предназначенный для записи и получения информации о файле,
-    который был загружен для проверки"""
-
-    @staticmethod
-    def dump_json(data):
-        """запись в файл"""
-        with open("data.txt", "w") as file:
-            json.dump(data, file, indent=4)
-
-    @staticmethod
-    def load_json():
-        """вывод данных из файла"""
-        with open("data.txt", "r") as outfile:
-            data = json.load(outfile)
-            print(f"id - {data['scan_id']}")
-            print(f"дата и время - {data['scan_date']}")
-            print(f"всего проверок - {data['total']}")
-            print(f"обнаружено вирусов - {data['positives']}")
 
 class CheckFile:
     """Класс предназначенный для проверки файла.
@@ -35,27 +16,43 @@ class CheckFile:
 
     def upload_file(self):
         """загружаем файл"""
-        files = {"file": (self.path)}
-        response = requests.post(self.url, files=files, params=self.params)
-        res = response.json()
-        return res["scan_id"]
+        params = dict(apikey='e78d30c3bbbed09731a783a97b1a1e34f52008c8ccf61a0f161558cfe0da836b')
+        with open(self.path, 'rb') as file:
+            files = dict(file=(self.path, file))
+            response = requests.post(self.url, files=files, params=params)
+        if response.status_code == 200:
+            result = response.json()
+            # print(json.dumps(result, sort_keys=False, indent=4))
+            return result["resource"]
 
     def get_info_about_file(self):
         """получаем информацию о файле"""
         resource = self.upload_file()
-        self.params["resource"] = str(resource)
-        report_response = requests.get(self.report_url, params=self.params)
-        return report_response.json()
+        params = dict(apikey='e78d30c3bbbed09731a783a97b1a1e34f52008c8ccf61a0f161558cfe0da836b',
+                      resource=resource)
+        response = requests.get(self.report_url, params=params)
+        if response.status_code == 200:
+            result = response.json()
+            # print(json.dumps(result, sort_keys=False, indent=4))
+            json_res = json.dumps(result, sort_keys=False, indent=4)
+            # return json_res
+            report = f"""
+            id - {result['scan_id']}
+            дата и время - {result['scan_date']}
+            всего проверок - {result['total']}
+            обнаружено вирусов - {result['positives']}"""
+            return report
 
     def main(self):
         result = self.get_info_about_file()
         return result
 
 if __name__ == '__main__':
-    ...
-    test = CheckFile("C:\\PycharmProjects\\Antivirus\\README.md")
+    test = CheckFile("C:\\PycharmProjects\\Antivirus\\antivirus_package\\hosts.txt")
     data = test.main()
     print(data)
-    # test2 = SaveDataJson.dump_json(data)
-    # test2.load_json()
-    # test2 = SaveDataJson.load_json()
+
+
+
+
+
