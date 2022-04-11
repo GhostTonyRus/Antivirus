@@ -37,6 +37,15 @@ MANUAL = """
 +------------------------------------------------------+
 """
 
+def register_server_action(value):
+    path = "C:\\PycharmProjects\\Antivirus\\server_package\\register_server_action.txt"
+    while True:
+        try:
+            with open(path, "a", encoding="utf-8") as file:
+                file.write(value)
+        except FileExistsError as err:
+            return err
+
 class Server:
     def __init__(self, key_file=None, certificate_file=None):
         self.__action_log = Logging("server_package")
@@ -46,12 +55,13 @@ class Server:
         self.__server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         # временно
         # self.__key_file = key_file
-        self.__key_file = "certificates/privatKey.key"
-        self.__certificate_file = "certificates/certificate.crt"
+        self.__key_file = "C:\\PycharmProjects\\Antivirus\\server_package\\certificates/privatKey.key"
+        self.__certificate_file = "C:\\PycharmProjects\\Antivirus\\server_package\\certificates/certificate.crt"
         ########
         self.__clients = []
         self.__msg_datetime = datetime.now()
         self.__custom_msg_datetime = self.__msg_datetime.strftime('%Y-%m-%d %H:%M:%S')
+
         # __file = "customs_user.db"
         # try:
         #     self.__user_db = UsersDataBase(__file)
@@ -107,6 +117,7 @@ class Server:
                                  f"Ввведите номер комманды для взаимодействия с Базой Данной {MANUAL}".encode("utf-8"))
             self.__action_log.register_server_actions(
                 f"Пользователь {self.client_addr} подключился к серверу")
+
             # добавление пользователей в поток
             self.start_client_thread(func=self.get_users_connection_and_messages, connection=self.connection,
                                      client_address=self.client_addr)
@@ -199,12 +210,12 @@ class Server:
         finally:
             self.__server.close()
 
-    def main(self, server_address, number_of_clients):
+    def main(self, server_address=("127.0.0.1", 12345), number_of_clients=10):
         """главный метод, отвечающий за запуск и бинд сервера"""
         self.bind_server(server_address)
         self.start_server(number_of_clients)
-
+        # register_server_action("Сервер готов к работе")
 
 if __name__ == '__main__':
     server = Server()
-    server.main(SERVER_ADDRESS, 10)
+    server.main()

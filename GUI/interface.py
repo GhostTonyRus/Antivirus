@@ -1,10 +1,12 @@
 import sys
+import threading
 from PyQt5 import QtWidgets, QtGui, QtCore, Qt
-from PyQt5.QtCore import QPoint, QPropertyAnimation
+from PyQt5.QtCore import QPoint, QPropertyAnimation, QObject
 from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import QGraphicsDropShadowEffect, QSizeGrip, QDesktopWidget
 from system_gui import Ui_MainWindow
 from antivirus_package import InfoSystem, PortScanner, Monitor, UsbLock
+from server_package import Server
 import time
 
 
@@ -31,7 +33,6 @@ class ActivityRegistrationThread(QtCore.QThread):
 
 
 class PortScannerThread(QtCore.QThread):
-
     signal = QtCore.pyqtSignal(str)
 
     def __init__(self, value):
@@ -45,7 +46,6 @@ class PortScannerThread(QtCore.QThread):
 
 
 class CheckUsbThread(QtCore.QThread):
-
     signal = QtCore.pyqtSignal(str)
 
     def __init__(self):
@@ -54,14 +54,34 @@ class CheckUsbThread(QtCore.QThread):
 
     def run(self):
         self.check_usb.main()
-        while True:
-            try:
-                with open("C:\\PycharmProjects\\Antivirus\\antivirus_package\\locked_usb.txt", "r") as file:
-                    res = file.readlines()
-                    for i in res:
-                        self.signal.emit(str(i))
-            except FileExistsError as err:
-                self.signal.emit("НЕТ ДАННЫХ!")
+        # while True:
+        #     try:
+        #         with open("C:\\PycharmProjects\\Antivirus\\antivirus_package\\locked_usb.txt", "r", encoding="utf-8") as file:
+        #             res = file.readlines()
+        #             for i in res:
+        #                 self.signal.emit(str(i))
+        #     except FileExistsError as err:
+        #         self.signal.emit("НЕТ ДАННЫХ!")
+
+class ServerThread(QtCore.QThread):
+    signal = QtCore.pyqtSignal(str)
+
+    def __init__(self):
+        super(ServerThread, self).__init__()
+        self.server = Server()
+
+    def run(self):
+        self.server.main()
+        # while True:
+        #     time.sleep(3)
+        #     try:
+        #         with open("C:\\PycharmProjects\\Antivirus\\logging_package\\server_action.txt", "r") as file:
+        #             res = file.readlines()
+        #             for i in res:
+        #                 self.signal.emit(str(i))
+        #     except FileExistsError as err:
+        #         self.signal.emit("НЕТ ДАННЫХ!")
+
 
 class MyWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -71,6 +91,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.info = InfoSystem() # информация о системе
         self.usb_blocking = UsbLock() # блокировка usb
         self.port_scanner = PortScanner() # сканер портов
+        self.server = Server()
 
         self.text = self.ui.comboBox_port_scanner.currentText()
 
@@ -133,8 +154,25 @@ class MyWindow(QtWidgets.QMainWindow):
         ######################################
         # настройка кнопок модуля сервер     #
         ######################################
-        self.ui.btn_start_server.clicked.connect(lambda: self.show_server_page())
+        # self.server_thread = ServerThread()
+        # self.server_thread.signal.connect(self.insert_server_value)
+        # self.ui.btn_start_server.clicked.connect(self.start_server_thread)
+        self.ui.btn_show_server_page.clicked.connect(lambda: self.show_server_page())
 
+        self.ui.btn_start_server.clicked.connect(self.thread)
+
+    def thread(self):
+        t1 = threading.Thread(target=self.server.main)
+        t1.start()
+
+    def start_server_thread(self):
+        self.server_thread.start()
+
+    def show_server_page(self):
+        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_server_info)
+
+    def insert_server_value(self, value):
+        self.ui.plainTextEdit_infromation_from_server.appendPlainText(value)
 
     # перетаскивание окна
     def center(self):
@@ -244,8 +282,16 @@ class MyWindow(QtWidgets.QMainWindow):
     ##############################################
     # РАБОТА С СЕРВЕРОМ                          #
     ##############################################
-    def show_server_page(self):
-        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_server_info)
+    # def show_server_page(self):
+    #     self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_server_info)
+    #
+    # def start_server_thread(self):
+    #     time.sleep(2)
+    #     self.server_thread.start()
+    #
+    # def insert_server_value(self, value):
+    #     self.ui.plainTextEdit_infromation_from_server.appendPlainText(value)
+
 
     ##############################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ С СЕРВЕРОМ           #

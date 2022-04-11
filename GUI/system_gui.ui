@@ -533,6 +533,18 @@
                        <string>Остановка сервера</string>
                       </property>
                      </widget>
+                     <widget class="QPushButton" name="btn_show_server_page">
+                      <property name="font">
+                       <font>
+                        <pointsize>12</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Открыть страницу сервера</string>
+                      </property>
+                     </widget>
                     </widget>
                    </widget>
                    <widget class="QWidget" name="page_3">
@@ -1133,7 +1145,18 @@ p, li { white-space: pre-wrap; }
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_24">
                      <item>
-                      <widget class="QPlainTextEdit" name="plainTextEdit_infromation_from_server"/>
+                      <widget class="QPlainTextEdit" name="plainTextEdit_infromation_from_server">
+                       <property name="font">
+                        <font>
+                         <pointsize>12</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                      </widget>
                      </item>
                     </layout>
                    </widget>
