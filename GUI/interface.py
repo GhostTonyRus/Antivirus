@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import QGraphicsDropShadowEffect, QSizeGrip, QDesktopWidget
 from system_gui import Ui_MainWindow
 from antivirus_package import InfoSystem, PortScanner, Monitor, UsbLock
 from server_package import Server
+from logging_package import Logging
 import time
 
 
@@ -54,33 +55,34 @@ class CheckUsbThread(QtCore.QThread):
 
     def run(self):
         self.check_usb.main()
-        # while True:
-        #     try:
-        #         with open("C:\\PycharmProjects\\Antivirus\\antivirus_package\\locked_usb.txt", "r", encoding="utf-8") as file:
-        #             res = file.readlines()
-        #             for i in res:
-        #                 self.signal.emit(str(i))
-        #     except FileExistsError as err:
-        #         self.signal.emit("НЕТ ДАННЫХ!")
+        while True:
+            try:
+                with open("C:\\PycharmProjects\\Antivirus\\antivirus_package\\locked_usb.txt", "r", encoding="utf-8") as file:
+                    res = file.readlines()
+                    for i in res:
+                        self.signal.emit(str(i))
+            except FileExistsError as err:
+                self.signal.emit("НЕТ ДАННЫХ!")
 
 class ServerThread(QtCore.QThread):
     signal = QtCore.pyqtSignal(str)
 
     def __init__(self):
         super(ServerThread, self).__init__()
-        self.server = Server()
 
     def run(self):
-        self.server.main()
-        # while True:
-        #     time.sleep(3)
-        #     try:
-        #         with open("C:\\PycharmProjects\\Antivirus\\logging_package\\server_action.txt", "r") as file:
-        #             res = file.readlines()
-        #             for i in res:
-        #                 self.signal.emit(str(i))
-        #     except FileExistsError as err:
-        #         self.signal.emit("НЕТ ДАННЫХ!")
+        try:
+            with open("C:\\PycharmProjects\\Antivirus\\logging_package\\server_action.txt", "r", encoding="utf-8") as file:
+                while True:
+                    # считываем строку
+                    line = file.readline()
+                    # прерываем цикл, если строка пустая
+                    if not line:
+                        continue
+                    # выводим строку
+                    self.signal.emit(str(line))
+        except FileExistsError as err:
+            return
 
 
 class MyWindow(QtWidgets.QMainWindow):
@@ -137,7 +139,6 @@ class MyWindow(QtWidgets.QMainWindow):
         self.activity_registration_thread.signal.connect(self.insert_activity_registration_value)
         self.ui.btn_activity_registration.clicked.connect(lambda: self.show_activity_registration_page())
         self.ui.btn_start_activity_registration.clicked.connect(self.start_activity_registration_thread)
-        # self.ui.btn_end_activity_registration.clicked.connect(lambda: self.end_activity_registration_thread())
 
         # блокировка usb
         self.usb_blocking_thread = CheckUsbThread()
@@ -154,25 +155,12 @@ class MyWindow(QtWidgets.QMainWindow):
         ######################################
         # настройка кнопок модуля сервер     #
         ######################################
-        # self.server_thread = ServerThread()
-        # self.server_thread.signal.connect(self.insert_server_value)
-        # self.ui.btn_start_server.clicked.connect(self.start_server_thread)
+        self.server_thread = ServerThread()
+        self.server_thread.signal.connect(self.insert_server_value)
+        self.ui.btn_show_info_server.clicked.connect(self.start_show_info)
         self.ui.btn_show_server_page.clicked.connect(lambda: self.show_server_page())
 
-        self.ui.btn_start_server.clicked.connect(self.thread)
-
-    def thread(self):
-        t1 = threading.Thread(target=self.server.main)
-        t1.start()
-
-    def start_server_thread(self):
-        self.server_thread.start()
-
-    def show_server_page(self):
-        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_server_info)
-
-    def insert_server_value(self, value):
-        self.ui.plainTextEdit_infromation_from_server.appendPlainText(value)
+        self.ui.btn_start_server.clicked.connect(self.start_server_thread)
 
     # перетаскивание окна
     def center(self):
@@ -280,21 +268,24 @@ class MyWindow(QtWidgets.QMainWindow):
         ...
 
     ##############################################
-    # РАБОТА С СЕРВЕРОМ                          #
-    ##############################################
-    # def show_server_page(self):
-    #     self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_server_info)
-    #
-    # def start_server_thread(self):
-    #     time.sleep(2)
-    #     self.server_thread.start()
-    #
-    # def insert_server_value(self, value):
-    #     self.ui.plainTextEdit_infromation_from_server.appendPlainText(value)
-
-
-    ##############################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ С СЕРВЕРОМ           #
+    ##############################################
+    def start_server_thread(self):
+        server_thread = threading.Thread(target=self.server.main)
+        server_thread.start()
+
+    def start_show_info(self):
+        self.server_thread.start()
+
+    def show_server_page(self):
+        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_server_info)
+
+    def insert_server_value(self, value):
+        self.ui.plainTextEdit_infromation_from_server.appendPlainText(value)
+
+
+    ##############################################
+    # НАСТРОЙКА МЕТОДОВ ДЛЯ С БАЗОЙ ДАННЫХ       #
     ##############################################
 
 
@@ -304,3 +295,12 @@ if __name__ == '__main__':
     my_window = MyWindow()
     my_window.show()
     sys.exit(app.exec_())
+    # with open("C:\\PycharmProjects\\Antivirus\\logging_package\\server_action.txt", "r", encoding="utf-8") as file:
+    #     while True:
+    #         # считываем строку
+    #         line = file.readline()
+    #         # прерываем цикл, если строка пустая
+    #         if not line:
+    #             continue
+    #         # выводим строку
+    #         print(line.strip())

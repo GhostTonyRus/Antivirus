@@ -373,7 +373,7 @@
                     <string notr="true">color: rgb(255, 255, 255);</string>
                    </property>
                    <property name="currentIndex">
-                    <number>1</number>
+                    <number>2</number>
                    </property>
                    <widget class="QWidget" name="page_antivirus_menu">
                     <property name="geometry">
@@ -545,6 +545,18 @@
                        <string>Открыть страницу сервера</string>
                       </property>
                      </widget>
+                     <widget class="QPushButton" name="btn_show_info_server">
+                      <property name="font">
+                       <font>
+                        <pointsize>12</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Отображать информацию</string>
+                      </property>
+                     </widget>
                     </widget>
                    </widget>
                    <widget class="QWidget" name="page_3">
@@ -559,18 +571,30 @@
                     <attribute name="label">
                      <string>СУБД</string>
                     </attribute>
-                    <widget class="QPushButton" name="pushButton_15">
+                    <widget class="QSplitter" name="splitter_3">
                      <property name="geometry">
                       <rect>
-                       <x>30</x>
-                       <y>30</y>
-                       <width>191</width>
-                       <height>51</height>
+                       <x>10</x>
+                       <y>120</y>
+                       <width>231</width>
+                       <height>261</height>
                       </rect>
                      </property>
-                     <property name="text">
-                      <string>PushButton</string>
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
                      </property>
+                     <widget class="QPushButton" name="btn_show_databases">
+                      <property name="font">
+                       <font>
+                        <pointsize>12</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Запуск сервера</string>
+                      </property>
+                     </widget>
                     </widget>
                    </widget>
                    <widget class="QWidget" name="page_4">
@@ -652,7 +676,7 @@
               <item>
                <widget class="QStackedWidget" name="stackedWidget_main">
                 <property name="currentIndex">
-                 <number>6</number>
+                 <number>7</number>
                 </property>
                 <widget class="QWidget" name="page_about_system">
                  <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1156,6 +1180,9 @@ p, li { white-space: pre-wrap; }
                        <property name="styleSheet">
                         <string notr="true">color: rgb(255, 255, 255);</string>
                        </property>
+                       <property name="readOnly">
+                        <bool>true</bool>
+                       </property>
                       </widget>
                      </item>
                     </layout>
@@ -1163,6 +1190,7 @@ p, li { white-space: pre-wrap; }
                   </item>
                  </layout>
                 </widget>
+                <widget class="QWidget" name="page_show_databases"/>
                </widget>
               </item>
              </layout>

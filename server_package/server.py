@@ -100,7 +100,7 @@ class Server:
         self.__server.bind(server_address)
         print("Подлючение к ip {} port {}".format(*server_address))
         self.__action_log.register_server_actions(
-            "Сервер подключён по адресу ip {} port {} | {}\n".format(*server_address, self.__custom_msg_datetime))
+            "Сервер подключён по адресу ip {} port {}\n".format(*server_address))
 
     def start_server(self, num_of_users):
         """запуск сервера"""

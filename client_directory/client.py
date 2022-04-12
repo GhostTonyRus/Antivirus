@@ -96,7 +96,7 @@ class Client:
         thread_send_msg = threading.Thread(target=self.send_msg)
         thread_send_msg.start()
 
-# if __name__ == '__main__':
-client = Client(socket.AF_INET, socket.SOCK_STREAM,
-                    key_file="certificates/privatKey.key", certificate_file="certificates/certificate.crt")
-client.main(SERVER_ADDRESS)
+if __name__ == '__main__':
+    client = Client(socket.AF_INET, socket.SOCK_STREAM,
+                        key_file="certificates/privatKey.key", certificate_file="certificates/certificate.crt")
+    client.main(SERVER_ADDRESS)
