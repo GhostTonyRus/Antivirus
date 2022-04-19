@@ -447,6 +447,7 @@ def main():
     sys.exit(app.exec_())
 
 if __name__ == '__main__':
+    # точка входа в программу
     # app = QtWidgets.QApplication(sys.argv)
     # my_window = MyWindow()
     # my_window.show()
