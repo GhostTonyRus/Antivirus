@@ -159,3 +159,50 @@ class DataBaseClass:
             else:
                 print("Данная функция не поддерживается!!!")
                 break
+
+
+class CustomsofficersDataBase:
+    def __init__(self):
+        self.__db_name = "customs_officers.db"
+
+    @property
+    def db_name(self):
+        return self.__db_name
+
+    def create_db(self):
+        query = """
+        CREATE TABLE IF NOT EXISTS `customs_officers` (
+            user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            soname TEXT,
+            rank TEXT,
+            email TEXT,
+            login TEXT,
+            password TEXT,
+            access_level INTEGER);
+        """
+        return query
+
+    def insert_data_into_db(self):
+        query = """
+        INSERT INTO 
+            `customs_officers` (name, soname, rank, email, login, password, access_level) 
+        VALUES (
+            ?, ?, ?, ?, ?, ?, ?);
+        """
+        return query
+
+    def search_user_from_db(self, data):
+        query = "SELECT * FROM `customs_officers` WHERE name LIKE '%" + data + "%';"
+        return query
+
+    def refresh_data_in_db(self):
+        query = """SELECT * FROM `customs_officers`;"""
+        return query
+
+    def delete_user_from_db(self):
+        query = ""
+
+
+# db = CustomsofficerDataBase()
+# print(db.db_name)

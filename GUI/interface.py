@@ -1,12 +1,14 @@
 import sys
 import threading
 from PyQt5 import QtWidgets, QtGui, QtCore, Qt
-from PyQt5.QtCore import QPoint, QPropertyAnimation, QObject
+from PyQt5.QtCore import QPoint, QPropertyAnimation, QObject, QTimer
 from PyQt5.QtGui import QColor
-from PyQt5.QtWidgets import QGraphicsDropShadowEffect, QSizeGrip, QDesktopWidget
+from PyQt5.QtSql import QSqlDatabase, QSqlQuery, QSqlQueryModel, QSqlTableModel
+from PyQt5.QtWidgets import QGraphicsDropShadowEffect, QSizeGrip, QDesktopWidget, QTableView
 from system_gui import Ui_MainWindow
 from antivirus_package import InfoSystem, PortScanner, Monitor, UsbLock
 from server_package import Server
+from database_package import CustomsofficersDataBase
 from logging_package import Logging
 import time
 
@@ -94,7 +96,8 @@ class MyWindow(QtWidgets.QMainWindow):
         self.usb_blocking = UsbLock() # блокировка usb
         self.port_scanner = PortScanner() # сканер портов
         self.server = Server()
-
+        self.customs_officers_database = CustomsofficersDataBase()
+        self.dependencies_path = "C:\\PycharmProjects\\dependencies\\"
         self.text = self.ui.comboBox_port_scanner.currentText()
 
         # захват размера окна для изменения размера окна
@@ -112,7 +115,7 @@ class MyWindow(QtWidgets.QMainWindow):
         # устновка окна по умолчанию
         self.ui.stackedWidget.setCurrentWidget(self.ui.authorization_page)
 
-        # настрйока конпки входа
+        # настрйока кнопки входа
         self.ui.btn_login.clicked.connect(lambda: self.login_into_system())
 
         # сварачиваем окно
@@ -159,8 +162,45 @@ class MyWindow(QtWidgets.QMainWindow):
         self.server_thread.signal.connect(self.insert_server_value)
         self.ui.btn_show_info_server.clicked.connect(self.start_show_info)
         self.ui.btn_show_server_page.clicked.connect(lambda: self.show_server_page())
-
         self.ui.btn_start_server.clicked.connect(self.start_server_thread)
+
+        ######################################
+        # настройка кнопок модуля СУБД       #
+        ######################################
+        # обновление базы данных
+        self.refresh_timer = QTimer(self)
+        self.refresh_timer.setSingleShot(True)
+        self.refresh_timer.setInterval(1000)
+        self.refresh_timer.timeout.connect(self.onModificarTimer_timeout)
+
+        # открыть страницу связанную с БД
+        self.ui.btn_show_database.clicked.connect(lambda: self.show_dbms_page())
+        self.ui.btn_dbms_manual.clicked.connect(lambda: self.show_dbms_manual())
+
+        # добавление новых пользователей
+        self.ui.btn_add_new_user.clicked.connect(lambda: self.get_data_from_le())
+
+        # поиск записей в базе данных
+        self.searchModel = QSqlQueryModel(self)
+        self.searchModel.setQuery("""SELECT * FROM `customs_officers`;""")
+        self.ui.search_table_view.setModel(self.searchModel)
+        self.ui.le_search_data_in_db.textEdited.connect(self.search_user_in_db)
+
+        # зменение записей в базе данных
+        self.changeModel = QSqlTableModel(self)
+        self.changeModel.setTable("customs_officers")
+        self.changeModel.select()
+        self.ui.change_table_view.setModel(self.changeModel)
+        self.changeModel.beforeUpdate.connect(self.onmodificarModel_beforeUpdate)
+
+        # удаление запиесй из БД
+        self.deleteModel = QSqlTableModel(self)
+        self.deleteModel.setTable("customs_officers")
+        self.deleteModel.select()
+        self.ui.delete_table_view.setModel(self.deleteModel)
+        self.ui.delete_table_view.setEditTriggers(QTableView.NoEditTriggers)
+        self.ui.delete_table_view.setSelectionBehavior(QTableView.SelectRows)
+        self.ui.delete_table_view.clicked.connect(self.delete_user_from_db)
 
     # перетаскивание окна
     def center(self):
@@ -194,6 +234,7 @@ class MyWindow(QtWidgets.QMainWindow):
         __login = self.ui.le_login.text()
         __password = self.ui.le_password.text()
         self.ui.stackedWidget.setCurrentWidget(self.ui.main_container_page)
+        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_about_system)
 
     # регистрация в системе
     def registration(self):
@@ -270,15 +311,15 @@ class MyWindow(QtWidgets.QMainWindow):
     ##############################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ С СЕРВЕРОМ           #
     ##############################################
+    def show_server_page(self):
+        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_server_info)
+
     def start_server_thread(self):
         server_thread = threading.Thread(target=self.server.main)
         server_thread.start()
 
     def start_show_info(self):
         self.server_thread.start()
-
-    def show_server_page(self):
-        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_server_info)
 
     def insert_server_value(self, value):
         self.ui.plainTextEdit_infromation_from_server.appendPlainText(value)
@@ -287,20 +328,128 @@ class MyWindow(QtWidgets.QMainWindow):
     ##############################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ С БАЗОЙ ДАННЫХ       #
     ##############################################
+    # создание таблицы
+    # def prepareDatabase(self):
+    #     db_name = self.customs_officers_database.db_name
+    #     create_table_query = self.customs_officers_database.create_db()
+    #     db = QSqlDatabase().addDatabase("QSQLITE")
+    #     # db.setDatabaseName(self.dependencies_path+db_name)
+    #     db.setDatabaseName(db_name)
+    #     if db.open():
+    #         query = QSqlQuery()
+    #         if query.prepare(create_table_query):
+    #             if query.exec_():
+    #                 print("ТАБЛИЦА УСПЕШНО СОЗДАНА!")
+    #                 self.refreshTable()
 
+    # получаем данные и вставляем в таблицу
+    def get_data_from_le(self):
+        name = self.ui.le_name.text()
+        soname = self.ui.le_soname.text()
+        rank = self.ui.le_rank.text()
+        email = self.ui.le_email.text()
+        login = self.ui.le_login_2.text()
+        password = self.ui.le_password_2.text()
+        access_level = self.ui.le_access_level.text()
+        # print(name, soname, rank, email, login, password, access_level)
 
+        data = {}
+        data["name"] = name
+        data["soname"]  = soname
+        data["rank"] = rank
+        data["email"] = email
+        data["login"] = login
+        data["password"] = password
+        data["access_level"] = access_level
 
-if __name__ == '__main__':
+        for key in data:
+            if data.get(key) == "":
+                QtWidgets.QMessageBox.critical(self, "ERROR", "Поля ввода не должны быть пустыми!")
+                return
+
+        access_level = int(access_level)
+        query = QSqlQuery()
+        insert_query = self.customs_officers_database.insert_data_into_db()
+        if query.prepare(insert_query):
+            query.addBindValue(name)
+            query.addBindValue(soname)
+            query.addBindValue(rank)
+            query.addBindValue(email)
+            query.addBindValue(login)
+            query.addBindValue(password)
+            query.addBindValue(access_level)
+            if query.exec_():
+                QtWidgets.QMessageBox.information(self, "Уведомление", "Данные успешно давлены")
+                self.ui.le_name.clear()
+                self.ui.le_soname.clear()
+                self.ui.le_rank.clear()
+                self.ui.le_email.clear()
+                self.ui.le_login_2.clear()
+                self.ui.le_password_2.clear()
+                self.ui.le_access_level.clear()
+                self.refreshTable() # обновляем базу данных
+
+    # поиск пользователя в БД
+    def search_user_in_db(self, data):
+        query = self.customs_officers_database.search_user_from_db(data)
+        self.searchModel.setQuery(query)
+
+    # удаления пользователя из БД
+    def delete_user_from_db(self, idx):
+        if QtWidgets.QMessageBox.question(self, "Вопрос", "Вы точно уверены что хотите удалить?",
+                                          QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No) == QtWidgets.QMessageBox.Yes:
+            row = idx.row()
+            if self.deleteModel.removeRow(row):
+                self.refreshTable()
+
+    # обновление таблицы
+    def refreshTable(self):
+        self.searchModel.setQuery("""SELECT * FROM `customs_officers`;""")
+        self.changeModel.select()
+        self.deleteModel.select()
+
+    def onModificarTimer_timeout(self):
+        self.refreshTable()
+
+    def onmodificarModel_beforeUpdate(self, row, record):
+        self.refresh_timer.start()
+
+    def show_dbms_page(self):
+        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_show_dbms)
+
+    def show_dbms_manual(self):
+        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_dbms_manual)
+
+def prepareDatabase():
+    db = QSqlDatabase().addDatabase("QSQLITE")
+    # db.setDatabaseName(self.dependencies_path+db_name)
+    db.setDatabaseName("customs_officers.db")
+    if db.open():
+        query = QSqlQuery()
+        if query.prepare("""
+        CREATE TABLE IF NOT EXISTS `customs_officers` (
+            user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            soname TEXT,
+            rank TEXT,
+            email TEXT,
+            login TEXT,
+            password TEXT,
+            access_level INTEGER);"""):
+            if query.exec_():
+                print("ТАБЛИЦА УСПЕШНО СОЗДАНА!")
+
+def main():
     app = QtWidgets.QApplication(sys.argv)
     my_window = MyWindow()
     my_window.show()
+    # my_window.prepareDatabase()
     sys.exit(app.exec_())
-    # with open("C:\\PycharmProjects\\Antivirus\\logging_package\\server_action.txt", "r", encoding="utf-8") as file:
-    #     while True:
-    #         # считываем строку
-    #         line = file.readline()
-    #         # прерываем цикл, если строка пустая
-    #         if not line:
-    #             continue
-    #         # выводим строку
-    #         print(line.strip())
+
+if __name__ == '__main__':
+    # app = QtWidgets.QApplication(sys.argv)
+    # my_window = MyWindow()
+    # my_window.show()
+    # sys.exit(app.exec_())
+    prepareDatabase()
+    main()

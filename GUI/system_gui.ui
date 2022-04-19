@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1193</width>
+    <width>1223</width>
     <height>965</height>
    </rect>
   </property>
@@ -145,7 +145,10 @@
                <number>0</number>
               </property>
               <item>
-               <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0" columnstretch="0,0" rowminimumheight="0,0,0,0" columnminimumwidth="0,0">
+               <layout class="QVBoxLayout" name="verticalLayout_30" stretch="0,0,0,0,0,0">
+                <property name="spacing">
+                 <number>14</number>
+                </property>
                 <property name="sizeConstraint">
                  <enum>QLayout::SetFixedSize</enum>
                 </property>
@@ -153,88 +156,15 @@
                  <number>300</number>
                 </property>
                 <property name="topMargin">
-                 <number>300</number>
+                 <number>200</number>
                 </property>
                 <property name="rightMargin">
                  <number>300</number>
                 </property>
                 <property name="bottomMargin">
-                 <number>300</number>
+                 <number>200</number>
                 </property>
-                <property name="horizontalSpacing">
-                 <number>30</number>
-                </property>
-                <property name="verticalSpacing">
-                 <number>20</number>
-                </property>
-                <item row="2" column="1">
-                 <widget class="QPushButton" name="btn_login">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>400</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>14</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">color: rgb(255, 255, 255);</string>
-                  </property>
-                  <property name="text">
-                   <string>ВОЙТИ</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QLineEdit" name="le_login">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="1">
-                 <widget class="QLineEdit" name="le_password">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>50</height>
-                   </size>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="0">
+                <item>
                  <widget class="QLabel" name="label_2">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
@@ -269,7 +199,29 @@
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="0">
+                <item>
+                 <widget class="QLineEdit" name="le_login">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
                  <widget class="QLabel" name="label_3">
                   <property name="maximumSize">
                    <size>
@@ -292,7 +244,61 @@
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="1">
+                <item>
+                 <widget class="QLineEdit" name="le_password">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="btn_login">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>400</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 255);</string>
+                  </property>
+                  <property name="text">
+                   <string>Войти</string>
+                  </property>
+                  <property name="flat">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
                  <widget class="QPushButton" name="btn_registrarion">
                   <property name="minimumSize">
                    <size>
@@ -317,7 +323,7 @@
                    <string notr="true">color: rgb(255, 255, 255);</string>
                   </property>
                   <property name="text">
-                   <string>РЕГИСТРАЦИЯ</string>
+                   <string>Добавить нового пользователя</string>
                   </property>
                  </widget>
                 </item>
@@ -373,7 +379,7 @@
                     <string notr="true">color: rgb(255, 255, 255);</string>
                    </property>
                    <property name="currentIndex">
-                    <number>2</number>
+                    <number>3</number>
                    </property>
                    <widget class="QWidget" name="page_antivirus_menu">
                     <property name="geometry">
@@ -583,7 +589,7 @@
                      <property name="orientation">
                       <enum>Qt::Vertical</enum>
                      </property>
-                     <widget class="QPushButton" name="btn_show_databases">
+                     <widget class="QPushButton" name="btn_show_database">
                       <property name="font">
                        <font>
                         <pointsize>12</pointsize>
@@ -592,7 +598,19 @@
                        </font>
                       </property>
                       <property name="text">
-                       <string>Запуск сервера</string>
+                       <string>Открыть СУБД</string>
+                      </property>
+                     </widget>
+                     <widget class="QPushButton" name="btn_dbms_manual">
+                      <property name="font">
+                       <font>
+                        <pointsize>14</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Мануал</string>
                       </property>
                      </widget>
                     </widget>
@@ -676,7 +694,7 @@
               <item>
                <widget class="QStackedWidget" name="stackedWidget_main">
                 <property name="currentIndex">
-                 <number>7</number>
+                 <number>9</number>
                 </property>
                 <widget class="QWidget" name="page_about_system">
                  <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1190,7 +1208,490 @@ p, li { white-space: pre-wrap; }
                   </item>
                  </layout>
                 </widget>
-                <widget class="QWidget" name="page_show_databases"/>
+                <widget class="QWidget" name="page_dbms_manual">
+                 <layout class="QVBoxLayout" name="verticalLayout_26">
+                  <item>
+                   <widget class="QFrame" name="frame_22">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+                <widget class="QWidget" name="page_show_dbms">
+                 <layout class="QVBoxLayout" name="verticalLayout_25">
+                  <item>
+                   <widget class="QTabWidget" name="tabWidget">
+                    <property name="font">
+                     <font>
+                      <pointsize>14</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="currentIndex">
+                     <number>1</number>
+                    </property>
+                    <widget class="QWidget" name="tab_add_data">
+                     <property name="font">
+                      <font>
+                       <pointsize>14</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <attribute name="title">
+                      <string>Добавить</string>
+                     </attribute>
+                     <layout class="QVBoxLayout" name="verticalLayout_29">
+                      <item>
+                       <layout class="QFormLayout" name="formLayout">
+                        <property name="horizontalSpacing">
+                         <number>20</number>
+                        </property>
+                        <property name="verticalSpacing">
+                         <number>30</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>0</number>
+                        </property>
+                        <item row="0" column="0">
+                         <widget class="QLabel" name="label_6">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                          <property name="text">
+                           <string>Имя</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="1">
+                         <widget class="QLineEdit" name="le_name">
+                          <property name="maximumSize">
+                           <size>
+                            <width>1000</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="1" column="0">
+                         <widget class="QLabel" name="label_7">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                          <property name="text">
+                           <string>Фамилия</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="1" column="1">
+                         <widget class="QLineEdit" name="le_soname">
+                          <property name="maximumSize">
+                           <size>
+                            <width>1000</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="2" column="0">
+                         <widget class="QLabel" name="label_8">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                          <property name="text">
+                           <string>звание</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="2" column="1">
+                         <widget class="QLineEdit" name="le_rank">
+                          <property name="maximumSize">
+                           <size>
+                            <width>1000</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="3" column="0">
+                         <widget class="QLabel" name="label_9">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                          <property name="text">
+                           <string>email</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="3" column="1">
+                         <widget class="QLineEdit" name="le_email">
+                          <property name="maximumSize">
+                           <size>
+                            <width>1000</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="4" column="0">
+                         <widget class="QLabel" name="label_10">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                          <property name="text">
+                           <string>логин</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="4" column="1">
+                         <widget class="QLineEdit" name="le_login_2">
+                          <property name="maximumSize">
+                           <size>
+                            <width>1000</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="5" column="0">
+                         <widget class="QLabel" name="label_11">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                          <property name="text">
+                           <string>пароль</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="5" column="1">
+                         <widget class="QLineEdit" name="le_password_2">
+                          <property name="maximumSize">
+                           <size>
+                            <width>1000</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="6" column="0">
+                         <widget class="QLabel" name="label_12">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                          <property name="text">
+                           <string>уровень допуска</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
+                          </property>
+                          <property name="wordWrap">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="6" column="1">
+                         <widget class="QLineEdit" name="le_access_level">
+                          <property name="maximumSize">
+                           <size>
+                            <width>1000</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="7" column="1">
+                         <widget class="QPushButton" name="btn_add_new_user">
+                          <property name="maximumSize">
+                           <size>
+                            <width>1000</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                          <property name="text">
+                           <string>Добавить пользователя</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                     </layout>
+                    </widget>
+                    <widget class="QWidget" name="tab_search_page">
+                     <property name="font">
+                      <font>
+                       <pointsize>14</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <attribute name="title">
+                      <string>Найти</string>
+                     </attribute>
+                     <layout class="QVBoxLayout" name="verticalLayout_27">
+                      <item>
+                       <widget class="QLineEdit" name="le_search_data_in_db">
+                        <property name="font">
+                         <font>
+                          <pointsize>14</pointsize>
+                          <weight>50</weight>
+                          <bold>false</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">color: rgb(255, 255, 255);</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QTableView" name="search_table_view">
+                        <property name="font">
+                         <font>
+                          <pointsize>14</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">
+background-color: rgb(255, 255, 255);</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                    <widget class="QWidget" name="tab_change_page">
+                     <property name="font">
+                      <font>
+                       <pointsize>14</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <attribute name="title">
+                      <string>Изменить</string>
+                     </attribute>
+                     <layout class="QVBoxLayout" name="verticalLayout_28">
+                      <item>
+                       <widget class="QTableView" name="change_table_view">
+                        <property name="font">
+                         <font>
+                          <pointsize>14</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">background-color: rgb(255, 255, 255);</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                    <widget class="QWidget" name="tab_delete_page">
+                     <attribute name="title">
+                      <string>Удалить</string>
+                     </attribute>
+                     <layout class="QVBoxLayout" name="verticalLayout_31">
+                      <item>
+                       <widget class="QTableView" name="delete_table_view">
+                        <property name="font">
+                         <font>
+                          <pointsize>14</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">background-color: rgb(255, 255, 255);</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+                <widget class="QWidget" name="page_show_logging_journal">
+                 <layout class="QVBoxLayout" name="verticalLayout_32">
+                  <item>
+                   <widget class="QFrame" name="frame_23">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_33">
+                     <item>
+                      <widget class="QListWidget" name="lw_log_button">
+                       <property name="font">
+                        <font>
+                         <pointsize>14</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
                </widget>
               </item>
              </layout>

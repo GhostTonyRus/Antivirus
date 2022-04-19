@@ -89,6 +89,9 @@ class Logging:
                     print(err)
 
 if __name__ == '__main__':
-    log = Logging("loging")
-    log.get_action()
-
+    # log = Logging("loging")
+    # log.get_action()
+    files = os.listdir(os.getcwd())
+    for file in files:
+        if file.endswith("txt"):
+            print(file)
