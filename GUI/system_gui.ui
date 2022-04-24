@@ -379,7 +379,7 @@
                     <string notr="true">color: rgb(255, 255, 255);</string>
                    </property>
                    <property name="currentIndex">
-                    <number>3</number>
+                    <number>0</number>
                    </property>
                    <widget class="QWidget" name="page_antivirus_menu">
                     <property name="geometry">
@@ -486,12 +486,12 @@
                        </font>
                       </property>
                       <property name="text">
-                       <string>Блокировка IP</string>
+                       <string>Межсетевой экран</string>
                       </property>
                      </widget>
                     </widget>
                    </widget>
-                   <widget class="QWidget" name="page_2">
+                   <widget class="QWidget" name="page_server_menu">
                     <property name="geometry">
                      <rect>
                       <x>0</x>
@@ -565,7 +565,7 @@
                      </widget>
                     </widget>
                    </widget>
-                   <widget class="QWidget" name="page_3">
+                   <widget class="QWidget" name="page_dbms_menu">
                     <property name="geometry">
                      <rect>
                       <x>0</x>
@@ -615,7 +615,7 @@
                      </widget>
                     </widget>
                    </widget>
-                   <widget class="QWidget" name="page_4">
+                   <widget class="QWidget" name="page_action_log">
                     <property name="geometry">
                      <rect>
                       <x>0</x>
@@ -627,6 +627,43 @@
                     <attribute name="label">
                      <string>Журнал действий</string>
                     </attribute>
+                    <widget class="QSplitter" name="splitter_4">
+                     <property name="geometry">
+                      <rect>
+                       <x>10</x>
+                       <y>110</y>
+                       <width>231</width>
+                       <height>261</height>
+                      </rect>
+                     </property>
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <widget class="QPushButton" name="btn_open_action_log">
+                      <property name="font">
+                       <font>
+                        <pointsize>12</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Откртыь журналы</string>
+                      </property>
+                     </widget>
+                     <widget class="QPushButton" name="btn_action_log_manual">
+                      <property name="font">
+                       <font>
+                        <pointsize>14</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Мануал</string>
+                      </property>
+                     </widget>
+                    </widget>
                    </widget>
                   </widget>
                  </item>
@@ -1665,6 +1702,7 @@ background-color: rgb(255, 255, 255);</string>
                   </item>
                  </layout>
                 </widget>
+                <widget class="QWidget" name="page_show_action_log_manual"/>
                 <widget class="QWidget" name="page_show_logging_journal">
                  <layout class="QVBoxLayout" name="verticalLayout_32">
                   <item>
@@ -1676,14 +1714,31 @@ background-color: rgb(255, 255, 255);</string>
                      <enum>QFrame::Raised</enum>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_33">
+                     <item alignment="Qt::AlignTop">
+                      <widget class="QListWidget" name="lw_log_widget">
+                       <property name="font">
+                        <font>
+                         <pointsize>20</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                      </widget>
+                     </item>
                      <item>
-                      <widget class="QListWidget" name="lw_log_button">
+                      <widget class="QPlainTextEdit" name="pte_log_action">
                        <property name="font">
                         <font>
                          <pointsize>14</pointsize>
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
                        </property>
                       </widget>
                      </item>

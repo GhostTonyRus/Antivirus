@@ -1,3 +1,4 @@
+import os
 import sys
 import threading
 from PyQt5 import QtWidgets, QtGui, QtCore, Qt
@@ -201,6 +202,12 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.delete_table_view.setEditTriggers(QTableView.NoEditTriggers)
         self.ui.delete_table_view.setSelectionBehavior(QTableView.SelectRows)
         self.ui.delete_table_view.clicked.connect(self.delete_user_from_db)
+
+        ###############################################
+        # настройка кнопок модуля журнала лоигрвоания #
+        ###############################################
+        self.ui.btn_open_action_log.clicked.connect(self.show_logs_and_get_logs)
+        self.ui.btn_action_log_manual.clicked.connect(self.show_action_log_manual)
 
     # перетаскивание окна
     def center(self):
@@ -420,6 +427,34 @@ class MyWindow(QtWidgets.QMainWindow):
     def show_dbms_manual(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_dbms_manual)
 
+    ##############################################
+    # НАСТРОЙКА МЕТОДОВ ДЛЯ ЖУРНАЛА ЛОГИРОВАНИЯ  #
+    ##############################################
+    def show_action_log_manual(self):
+        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_show_action_log_manual)
+
+    def show_logs_and_get_logs(self):
+        self.ui.lw_log_widget.clear()
+        path = "C:\\PycharmProjects\\Antivirus\\logging_package"
+        dirs = os.listdir(path)
+        logs = [file for file in dirs if file.endswith("txt")]
+        if len(logs) > 0:
+            for log in logs:
+                self.ui.lw_log_widget.addItem(log)
+        else:
+            self.ui.lw_log_widget.addItem("ЖУРНАЛЫ ДЕЙСТВИЙ ОТСУТСТВУЮТ")
+        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_show_logging_journal)
+        self.ui.lw_log_widget.itemClicked.connect(self.onClicked)
+
+    def onClicked(self, item):
+        self.ui.pte_log_action.clear()
+        file = item.text()
+        path = f"C:\\PycharmProjects\\Antivirus\\logging_package\\{file}"
+        with open(path, "r", encoding="utf-8") as file:
+            res = file.readlines()
+            for i in res:
+                self.ui.pte_log_action.appendPlainText(i)
+
 def prepareDatabase():
     db = QSqlDatabase().addDatabase("QSQLITE")
     # db.setDatabaseName(self.dependencies_path+db_name)
@@ -446,6 +481,16 @@ def main():
     # my_window.prepareDatabase()
     sys.exit(app.exec_())
 
+def my_excepthook(type, value, tback):
+    QtWidgets.QMessageBox.critical(
+        window, "CRITICAL ERROR", str(value),
+        QtWidgets.QMessageBox.Cancel
+    )
+
+    sys.__excepthook__(type, value, tback)
+
+sys.excepthook = my_excepthook
+
 if __name__ == '__main__':
     # точка входа в программу
     # app = QtWidgets.QApplication(sys.argv)
@@ -454,3 +499,19 @@ if __name__ == '__main__':
     # sys.exit(app.exec_())
     prepareDatabase()
     main()
+
+    #
+    # class MainWindow(QMainWindow, Ui_MainWindow):
+    #     def __init__(self):
+    #         super().__init__()
+    #
+    #         self.setupUi(self)
+    #
+    #         self.myList = ['Item 1', 'Item 2', 'Item 3', 'Item 4', ]
+    #         self.listWidget.addItems(self.myList)
+    #
+    #         self.listWidget.itemClicked.connect(self.onClicked)
+    #
+    #     def onClicked(self, item):
+    #         print(f'\nitem: {item}')  #
+    #         print(f'item.text: {item.text()}')  #
