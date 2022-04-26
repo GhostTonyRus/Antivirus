@@ -24,6 +24,7 @@ class PortScanner:
 
     def __init__(self):
         self.open_ports = []
+        self.closed_ports = []
 
     def portscan(self, port):
         try:
@@ -57,6 +58,9 @@ class PortScanner:
                 print(f"Порт {port} открыт")
                 self.open_ports.append(str(port))
                 time.sleep(1)
+            else:
+                self.closed_ports.append(str(port))
+                time.sleep(1)
 
     def run_scanner(self, threads, mode):
         print("Запуск сканера порт")
@@ -75,10 +79,14 @@ class PortScanner:
             thread.join()
 
     def main(self, value):
-        res = self.run_scanner(100, value)
-        return f"Открытые порты: {', '.join(self.open_ports)}"
+        self.run_scanner(100, value)
+        info_about_ports = """\nОткрытыте порты:\n"""
+        for port in self.open_ports:
+            info_about_ports += f"""{port}\n"""
+        info_about_ports += "\nЗакрыты порты:\n"
+        for port in self.closed_ports:
+            info_about_ports += f"""{port}\n"""
+        return info_about_ports
 
 if __name__ == '__main__':
-    # p = PortScanner()
-    # p.run_scanner(100, 2)
     print(PortScanner().main(1))

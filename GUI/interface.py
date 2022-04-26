@@ -25,6 +25,7 @@ class ActivityRegistrationThread(QtCore.QThread):
     def run(self):
         self.monitor_creation.main()
         self.monitor_deletion.main()
+        time.sleep(5)
         while True:
             time.sleep(3)
             try:
@@ -57,8 +58,8 @@ class CheckUsbThread(QtCore.QThread):
         self.check_usb = UsbLock()
 
     def run(self):
-        self.check_usb.main()
         while True:
+            self.check_usb.main()
             try:
                 with open("C:\\PycharmProjects\\Antivirus\\antivirus_package\\locked_usb.txt", "r", encoding="utf-8") as file:
                     res = file.readlines()
@@ -66,6 +67,7 @@ class CheckUsbThread(QtCore.QThread):
                         self.signal.emit(str(i))
             except FileExistsError as err:
                 self.signal.emit("НЕТ ДАННЫХ!")
+
 
 class ServerThread(QtCore.QThread):
     signal = QtCore.pyqtSignal(str)
@@ -143,6 +145,9 @@ class MyWindow(QtWidgets.QMainWindow):
         self.activity_registration_thread.signal.connect(self.insert_activity_registration_value)
         self.ui.btn_activity_registration.clicked.connect(lambda: self.show_activity_registration_page())
         self.ui.btn_start_activity_registration.clicked.connect(self.start_activity_registration_thread)
+
+        # настройка проверки файла
+        self.ui.btn_check_file.clicked.connect(self.show_check_file)
 
         # блокировка usb
         self.usb_blocking_thread = CheckUsbThread()
@@ -269,7 +274,7 @@ class MyWindow(QtWidgets.QMainWindow):
     # НАСТРОЙКА МЕТОДОВ ДЛЯ РАБОТЫ С ПРОВЕРКОЙ ФАЙЛА        #
     #########################################################
     def show_check_file(self):
-        ...
+        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_check_file)
 
 
     #########################################################
@@ -293,7 +298,8 @@ class MyWindow(QtWidgets.QMainWindow):
         self.usb_blocking_thread.start()
 
     def insert_info_about_blocking_usb(self, value):
-        self.ui.textEdit_usb_blocking.setPlainText(value)
+        # self.ui.textEdit_usb_blocking.setPlainText(value)
+        self.ui.te_list_of_locked_usb.setPlainText(value)
 
     #############################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ РАБОТЫ ПОРТ СКАНЕРА #
@@ -480,6 +486,7 @@ def main():
     my_window.show()
     # my_window.prepareDatabase()
     sys.exit(app.exec_())
+
 
 def my_excepthook(type, value, tback):
     QtWidgets.QMessageBox.critical(

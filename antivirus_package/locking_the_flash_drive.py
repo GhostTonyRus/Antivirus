@@ -3,6 +3,8 @@ Usage: python3 usb_eject.py
 OS: Window7 and later
 Eject the usb storage when the usb device plugin your PC!
 '''
+import os
+import time
 from time import sleep
 import subprocess
 from datetime import datetime
@@ -12,6 +14,11 @@ class UsbLock:
     def __init__(self):
         self.__msg_datetime = datetime.now()
         self.__custom_msg_datetime = self.__msg_datetime.strftime('%Y-%m-%d %H:%M:%S')
+        try:
+            path = "C:\\PycharmProjects\\Antivirus\\antivirus_package\\locked_usb.txt"
+            os.remove(path)
+        except FileNotFoundError as err:
+            ...
 
     @staticmethod
     def monitorUSBStorage():
@@ -68,14 +75,16 @@ class UsbLock:
                 process = subprocess.Popen(['powershell.exe', '-ExecutionPolicy','Unrestricted','./tmp.ps1'])
                 process.communicate()
                 res = f"Устройство {disk} заблокировано"
+                # return res
                 self.logging_locked_usb(res)
-                break
-            continue
+                return True
+            #     break
 
             # задержка на 2 секунды
             # sleep(2)
 
 if __name__ == '__main__':
     usb = UsbLock()
-    print(usb.main())
+    while True:
+        print(usb.main())
 
