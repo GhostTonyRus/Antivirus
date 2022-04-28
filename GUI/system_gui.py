@@ -200,7 +200,7 @@ class Ui_MainWindow(object):
         self.toolBox.setStyleSheet("color: rgb(255, 255, 255);")
         self.toolBox.setObjectName("toolBox")
         self.page_antivirus_menu = QtWidgets.QWidget()
-        self.page_antivirus_menu.setGeometry(QtCore.QRect(0, 0, 252, 542))
+        self.page_antivirus_menu.setGeometry(QtCore.QRect(0, 0, 260, 618))
         self.page_antivirus_menu.setObjectName("page_antivirus_menu")
         self.splitter = QtWidgets.QSplitter(self.page_antivirus_menu)
         self.splitter.setGeometry(QtCore.QRect(10, 30, 231, 531))
@@ -257,7 +257,7 @@ class Ui_MainWindow(object):
         self.btn_IP_block.setObjectName("btn_IP_block")
         self.toolBox.addItem(self.page_antivirus_menu, "")
         self.page_server_menu = QtWidgets.QWidget()
-        self.page_server_menu.setGeometry(QtCore.QRect(0, 0, 100, 30))
+        self.page_server_menu.setGeometry(QtCore.QRect(0, 0, 260, 618))
         self.page_server_menu.setObjectName("page_server_menu")
         self.splitter_2 = QtWidgets.QSplitter(self.page_server_menu)
         self.splitter_2.setGeometry(QtCore.QRect(10, 120, 231, 261))
@@ -293,7 +293,7 @@ class Ui_MainWindow(object):
         self.btn_show_info_server.setObjectName("btn_show_info_server")
         self.toolBox.addItem(self.page_server_menu, "")
         self.page_dbms_menu = QtWidgets.QWidget()
-        self.page_dbms_menu.setGeometry(QtCore.QRect(0, 0, 100, 30))
+        self.page_dbms_menu.setGeometry(QtCore.QRect(0, 0, 260, 618))
         self.page_dbms_menu.setObjectName("page_dbms_menu")
         self.splitter_3 = QtWidgets.QSplitter(self.page_dbms_menu)
         self.splitter_3.setGeometry(QtCore.QRect(10, 120, 231, 261))
@@ -315,7 +315,7 @@ class Ui_MainWindow(object):
         self.btn_dbms_manual.setObjectName("btn_dbms_manual")
         self.toolBox.addItem(self.page_dbms_menu, "")
         self.page_action_log = QtWidgets.QWidget()
-        self.page_action_log.setGeometry(QtCore.QRect(0, 0, 100, 30))
+        self.page_action_log.setGeometry(QtCore.QRect(0, 0, 260, 618))
         self.page_action_log.setObjectName("page_action_log")
         self.splitter_4 = QtWidgets.QSplitter(self.page_action_log)
         self.splitter_4.setGeometry(QtCore.QRect(10, 110, 231, 261))
@@ -604,6 +604,7 @@ class Ui_MainWindow(object):
         self.progressBar.setFont(font)
         self.progressBar.setStyleSheet("color: rgb(255, 255, 255);")
         self.progressBar.setProperty("value", 0)
+        self.progressBar.setTextVisible(True)
         self.progressBar.setObjectName("progressBar")
         self.verticalLayout_41.addWidget(self.progressBar)
         self.verticalLayout_35.addWidget(self.frame_28)
@@ -1241,14 +1242,14 @@ class Ui_MainWindow(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600;\">При обнаружении заражённых директорий, файлов, папок, в процессе проверки, они будут удалены!</span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600;\"><br /></p></body></html>"))
         self.label_16.setText(_translate("MainWindow", "Быстрая проверка"))
-        self.label_17.setText(_translate("MainWindow", "Полная проекра"))
+        self.label_17.setText(_translate("MainWindow", "Полная проверка"))
         self.btn_start_file_checking.setText(_translate("MainWindow", "Запустить проверку"))
         self.btn_start_activity_registration.setText(_translate("MainWindow", "Начать отслеживать исполняемые процессы операционной системы"))
         self.label_5.setText(_translate("MainWindow", "Мануал"))
         self.textEdit_2.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:600; font-style:normal;\">\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:600; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\">Антивирус. В данном пакете находятся модули, для обеспечения следующего функционала:</span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\">Идентификация и аутентификация. Данный модуль предоставляет функционал для входа в Систему. Модуль содержит: аутентификацию. Должностное лицо, должно войти в систему при по-мощи логина и пароля. идентификацию. Систему сверяется с введёнными данными. Если введённые данные верны, то пользователю должностное лицо подтвердить вход по e-mail адресу. После успешной идентификации приходит письмо с кодом для входа в Систему. В дальнейшем планируется возможность получения кода по номеру телефона.</span></p>\n"

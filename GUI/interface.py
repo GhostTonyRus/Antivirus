@@ -89,6 +89,29 @@ class ServerThread(QtCore.QThread):
         except FileExistsError as err:
             return
 
+# прогрес бар
+
+TIME_LIMIT = 100
+
+
+class ThreadProgressBar(QtCore.QThread):
+    """
+    Runs a counter thread.
+    """
+    countChanged = QtCore.pyqtSignal(int)
+
+    def get_dirs(self):
+        dirs = []
+        # for dirpath, dirnames, filenames in os.walk("C:\\PycharmProjects\\Antivirus"):
+        for dirpath, dirnames, filenames in os.walk("C:\\PycharmProjects\\Antivirus"):
+            dirs.append(dirnames)
+        return dirs
+
+    def run(self):
+        dirs = self.get_dirs()
+        for i in range(1, 101):
+            time.sleep(0.1)
+            self.countChanged.emit(i)
 
 class MyWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -147,8 +170,10 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.btn_start_activity_registration.clicked.connect(self.start_activity_registration_thread)
 
         # настройка проверки файла
+        self.ui.progressBar.hide()
         self.ui.btn_check_file.clicked.connect(self.show_check_file)
-        self.ui.btn_start_file_checking.clicked.connect(self.test_file_check)
+        # self.ui.btn_start_file_checking.clicked.connect(self.test_file_check)
+        self.ui.btn_start_file_checking.clicked.connect(self.selectBooks)
 
         # блокировка usb
         self.usb_blocking_thread = CheckUsbThread()
@@ -280,6 +305,24 @@ class MyWindow(QtWidgets.QMainWindow):
     #########################################################
     def show_check_file(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_check_file)
+
+    def start_progress_var(self):
+        self.calc = ThreadProgressBar()
+        self.calc.countChanged.connect(self.onCountChanged)
+        self.calc.start()
+
+    def onCountChanged(self, value):
+        self.ui.progressBar.setValue(value)
+        if value == 100:
+            time.sleep(2)
+            self.ui.progressBar.hide()
+
+    def selectBooks(self):
+        if self.ui.cb_fast_check.isChecked():
+            self.ui.progressBar.show()
+            self.start_progress_var()
+        else:
+            print(False)
 
 
     #########################################################
