@@ -148,6 +148,7 @@ class MyWindow(QtWidgets.QMainWindow):
 
         # настройка проверки файла
         self.ui.btn_check_file.clicked.connect(self.show_check_file)
+        self.ui.btn_start_file_checking.clicked.connect(self.test_file_check)
 
         # блокировка usb
         self.usb_blocking_thread = CheckUsbThread()
@@ -199,7 +200,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.change_table_view.setModel(self.changeModel)
         self.changeModel.beforeUpdate.connect(self.onmodificarModel_beforeUpdate)
 
-        # удаление запиесй из БД
+        # удаление записей из БД
         self.deleteModel = QSqlTableModel(self)
         self.deleteModel.setTable("customs_officers")
         self.deleteModel.select()
@@ -257,6 +258,10 @@ class MyWindow(QtWidgets.QMainWindow):
     ########################
     def show_antivirus_manual(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_about_antivirus)
+
+    def test_file_check(self):
+        res = self.ui.cb_fast_check.text()
+        print(res)
 
     ##########################################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ РАБОТЫ С РЕГИСТРАЦИЕЙ АКТИВНОСТИ #
