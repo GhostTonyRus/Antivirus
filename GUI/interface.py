@@ -7,7 +7,7 @@ from PyQt5.QtGui import QColor
 from PyQt5.QtSql import QSqlDatabase, QSqlQuery, QSqlQueryModel, QSqlTableModel
 from PyQt5.QtWidgets import QGraphicsDropShadowEffect, QSizeGrip, QDesktopWidget, QTableView
 from system_gui import Ui_MainWindow
-from antivirus_package import InfoSystem, PortScanner, Monitor, UsbLock
+from antivirus_package import InfoSystem, PortScanner, Monitor, UsbLock, CheckFile, AntivirusEngine
 from server_package import Server
 from database_package import CustomsofficersDataBase
 from logging_package import Logging
@@ -29,7 +29,7 @@ class ActivityRegistrationThread(QtCore.QThread):
         while True:
             time.sleep(3)
             try:
-                with open("C:\\PycharmProjects\\Antivirus\\antivirus_package\\activity_registration.txt", "r") as file:
+                with open("C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\activity_registration.txt", "r") as file:
                     res = file.readlines()
                     for i in res:
                         self.signal.emit(str(i))
@@ -61,12 +61,26 @@ class CheckUsbThread(QtCore.QThread):
         while True:
             self.check_usb.main()
             try:
-                with open("C:\\PycharmProjects\\Antivirus\\antivirus_package\\locked_usb.txt", "r", encoding="utf-8") as file:
+                with open("C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\locked_usb.txt", "r",
+                          encoding="utf-8") as file:
                     res = file.readlines()
                     for i in res:
                         self.signal.emit(str(i))
             except FileExistsError as err:
                 self.signal.emit("НЕТ ДАННЫХ!")
+
+
+class CheckFileThread(QtCore.QThread):
+    signal = QtCore.pyqtSignal(str)
+
+    def __init__(self):
+        super(CheckFileThread, self).__init__()
+        self.check_file = CheckFile(
+            "C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\signatures\\MD5 Virus Hashes.txt")
+
+    def run(self):
+        res = self.check_file.main()
+        self.signal.emit(res)
 
 
 class ServerThread(QtCore.QThread):
@@ -77,7 +91,8 @@ class ServerThread(QtCore.QThread):
 
     def run(self):
         try:
-            with open("C:\\PycharmProjects\\Antivirus\\logging_package\\server_action.txt", "r", encoding="utf-8") as file:
+            with open("C:\\PycharmProjects\\Antivirus\\server_package\\temporary_actions.txt", "r",
+                      encoding="utf-8") as file:
                 while True:
                     # считываем строку
                     line = file.readline()
@@ -89,8 +104,8 @@ class ServerThread(QtCore.QThread):
         except FileExistsError as err:
             return
 
-# прогрес бар
 
+# прогрес бар
 TIME_LIMIT = 100
 
 
@@ -110,17 +125,21 @@ class ThreadProgressBar(QtCore.QThread):
     def run(self):
         dirs = self.get_dirs()
         for i in range(1, 101):
-            time.sleep(0.1)
+            time.sleep(1)
             self.countChanged.emit(i)
+
 
 class MyWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(MyWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.info = InfoSystem() # информация о системе
-        self.usb_blocking = UsbLock() # блокировка usb
-        self.port_scanner = PortScanner() # сканер портов
+        self.antivirus_ = CheckFile(
+            "C:\\PycharmProjects\\Antivirus\\antivirus_package\\signatures\\MD5 Virus Hashes.txt")
+        self.antivirus = AntivirusEngine()
+        self.info = InfoSystem()  # информация о системе
+        self.usb_blocking = UsbLock()  # блокировка usb
+        self.port_scanner = PortScanner()  # сканер портов
         self.server = Server()
         self.customs_officers_database = CustomsofficersDataBase()
         self.dependencies_path = "C:\\PycharmProjects\\dependencies\\"
@@ -171,9 +190,10 @@ class MyWindow(QtWidgets.QMainWindow):
 
         # настройка проверки файла
         self.ui.progressBar.hide()
+        self.check_file_thread = CheckFileThread()
+        self.check_file_thread.signal.connect(self.insert_check_file_value)
         self.ui.btn_check_file.clicked.connect(self.show_check_file)
-        # self.ui.btn_start_file_checking.clicked.connect(self.test_file_check)
-        self.ui.btn_start_file_checking.clicked.connect(self.selectBooks)
+        self.ui.btn_start_file_checking.clicked.connect(lambda: self.select_and_start_check_thread())
 
         # блокировка usb
         self.usb_blocking_thread = CheckUsbThread()
@@ -186,6 +206,10 @@ class MyWindow(QtWidgets.QMainWindow):
         self.port_scanner_thread.signal.connect(self.insert_value)
         self.ui.btn_start_port_scanner.clicked.connect(self.start_port_scanner_thread)
         self.ui.btn_port_scaner.clicked.connect(lambda: self.show_port_scanner())
+
+        # настройка межсетевого экрана
+        self.ui.btn_firewall.clicked.connect(lambda: self.show_firewall_page())
+        self.ui.btn_update_info_about_connections.clicked.connect(lambda: self.update_info_about_connections())
 
         ######################################
         # настройка кнопок модуля сервер     #
@@ -235,7 +259,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.delete_table_view.clicked.connect(self.delete_user_from_db)
 
         ###############################################
-        # настройка кнопок модуля журнала лоигрвоания #
+        # настройка кнопок модуля журнала логирвоания #
         ###############################################
         self.ui.btn_open_action_log.clicked.connect(self.show_logs_and_get_logs)
         self.ui.btn_action_log_manual.clicked.connect(self.show_action_log_manual)
@@ -262,6 +286,9 @@ class MyWindow(QtWidgets.QMainWindow):
             self.showNormal()
         else:
             self.showMaximized()
+
+    def close_app(self):
+        sys.exit(0)
 
     # открыть страницу с информацией о системе
     def show_main_manual(self):
@@ -306,7 +333,7 @@ class MyWindow(QtWidgets.QMainWindow):
     def show_check_file(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_check_file)
 
-    def start_progress_var(self):
+    def start_progress_bar(self):
         self.calc = ThreadProgressBar()
         self.calc.countChanged.connect(self.onCountChanged)
         self.calc.start()
@@ -317,13 +344,42 @@ class MyWindow(QtWidgets.QMainWindow):
             time.sleep(2)
             self.ui.progressBar.hide()
 
-    def selectBooks(self):
-        if self.ui.cb_fast_check.isChecked():
-            self.ui.progressBar.show()
-            self.start_progress_var()
-        else:
-            print(False)
+    def start_fast_check_file(self):
+        self.ui.te_res_of_fast_check.clear()
+        self.ui.btn_start_file_checking.setEnabled(False)
+        self.ui.progressBar.show()
+        self.start_progress_bar()
+        self.ui.te_res_of_fast_check.append("Запуск проверки файлов")
+        res_md5 = self.antivirus.md5_hash_checker()
+        res_sha256 = self.antivirus.sha256_hash_checker()
+        res_sha1 = self.antivirus.sha1_hash_checker()
+        self.ui.te_res_of_fast_check.append(res_md5)
+        time.sleep(1)
+        self.ui.te_res_of_fast_check.append(res_sha256)
+        time.sleep(1)
+        self.ui.te_res_of_fast_check.append(res_sha1)
 
+    def start_full_check_file(self):
+        self.ui.te_res_of_fast_check.clear()
+        self.ui.btn_start_file_checking.setEnabled(False)
+        self.ui.progressBar.show()
+        self.start_progress_bar()
+        self.ui.te_res_of_fast_check.append("Запуск проверки файлов")
+        self.check_file_thread.start()
+
+    def select_and_start_check_thread(self):
+        if self.ui.cb_fast_check.isChecked():
+            self.start_fast_check_file()
+            self.ui.btn_start_file_checking.setEnabled(True)
+        elif self.ui.cb_full_check.isChecked():
+            self.start_full_check_file()
+            self.ui.btn_start_file_checking.setEnabled(True)
+        else:
+            QtWidgets.QMessageBox.information(self, "Уведомление", "Нужно выбрать один из вариантов проверки")
+
+    def insert_check_file_value(self, value):
+        self.ui.te_res_of_fast_check.append(value)
+        self.ui.btn_start_file_checking.setEnabled(True)
 
     #########################################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ ВЫВОДА ИНФОРМАЦИИ О СИСТЕМЕ     #
@@ -332,7 +388,6 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_information_about_system)
         system_info = self.info.main()
         self.ui.textEdit__information_about_system.setPlainText(system_info)
-
 
     #########################################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ БЛОКИРОВКИ USB                  #
@@ -346,7 +401,6 @@ class MyWindow(QtWidgets.QMainWindow):
         self.usb_blocking_thread.start()
 
     def insert_info_about_blocking_usb(self, value):
-        # self.ui.textEdit_usb_blocking.setPlainText(value)
         self.ui.te_list_of_locked_usb.setPlainText(value)
 
     #############################################
@@ -361,13 +415,65 @@ class MyWindow(QtWidgets.QMainWindow):
 
     def insert_value(self, value):
         self.ui.plainTextEdit_port_scanner.appendPlainText(value)
-        self.ui.plainTextEdit_port_scanner.appendPlainText("....")
 
     ##############################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ РАБОТЫ БЛОКИРОВКИ IP #
     ##############################################
-    def IP_block(self):
-        ...
+    def show_firewall_page(self):
+        self.ui.lw_incoming_connections.clear()
+        self.show_locked_connections()
+        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_firewall)
+
+    def save_locked_connection(self, value):
+        path = "C:\\PycharmProjects\\Antivirus\\antivirus_package\\locked_connections.txt"
+        with open(path, "a") as file:
+            file.write(value)
+
+    def show_locked_connections(self):
+        path = "C:\\PycharmProjects\\Antivirus\\antivirus_package\\locked_connections.txt"
+        with open(path, "r") as file:
+            res = file.readlines()
+            if len(res) > 0:
+                for i in res:
+                    self.ui.lw_locked_connections.addItem(str(i))
+            else:
+                pass
+
+    def on_connection_item_clicked(self, item):
+        self.ui.lw_locked_connections.clear()
+        connection = item.text()
+        if QtWidgets.QMessageBox.question(self, "Уведомление", "Вы уверены, что хотите заблокировать соединение",
+                                       QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No) == QtWidgets.QMessageBox.Yes:
+            path = "C:\\PycharmProjects\\Antivirus\\antivirus_package\\locked_connections.txt"
+            with open(path, "r") as file:
+                res = file.readlines()
+                if connection in res:
+                    QtWidgets.QMessageBox.information(self, "Уведомление",
+                                                   "Соединение уже заблокировано!")
+                else:
+                    self.ui.lw_locked_connections.addItem(connection)
+
+    def update_info_about_connections(self):
+        self.ui.lw_incoming_connections.clear()
+        self.ui.lw_locked_connections.clear()
+        path = "C:\\PycharmProjects\\Antivirus\\antivirus_package\\locked_connections.txt"
+        with open(path, "r") as file:
+            res = file.readlines()
+            if len(res) > 0:
+                for item in res:
+                    self.ui.lw_locked_connections.addItem(str(item))
+            else:
+                pass
+        res_about_connections = self.server.return_info_about_connections()
+        if len(res_about_connections) > 0:
+            for item in res_about_connections:
+                self.ui.lw_incoming_connections.addItem(str(item) + "\n")
+                self.save_locked_connection(str(item) + "\n")
+        else:
+            pass
+        self.ui.lw_incoming_connections.itemClicked.connect(self.on_connection_item_clicked)
+
+
 
     ##############################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ С СЕРВЕРОМ           #
@@ -384,7 +490,6 @@ class MyWindow(QtWidgets.QMainWindow):
 
     def insert_server_value(self, value):
         self.ui.plainTextEdit_infromation_from_server.appendPlainText(value)
-
 
     ##############################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ С БАЗОЙ ДАННЫХ       #
@@ -416,7 +521,7 @@ class MyWindow(QtWidgets.QMainWindow):
 
         data = {}
         data["name"] = name
-        data["soname"]  = soname
+        data["soname"] = soname
         data["rank"] = rank
         data["email"] = email
         data["login"] = login
@@ -448,7 +553,7 @@ class MyWindow(QtWidgets.QMainWindow):
                 self.ui.le_login_2.clear()
                 self.ui.le_password_2.clear()
                 self.ui.le_access_level.clear()
-                self.refreshTable() # обновляем базу данных
+                self.refreshTable()  # обновляем базу данных
 
     # поиск пользователя в БД
     def search_user_in_db(self, data):
@@ -509,6 +614,7 @@ class MyWindow(QtWidgets.QMainWindow):
             for i in res:
                 self.ui.pte_log_action.appendPlainText(i)
 
+
 def prepareDatabase():
     db = QSqlDatabase().addDatabase("QSQLITE")
     # db.setDatabaseName(self.dependencies_path+db_name)
@@ -528,6 +634,7 @@ def prepareDatabase():
             if query.exec_():
                 print("ТАБЛИЦА УСПЕШНО СОЗДАНА!")
 
+
 def main():
     app = QtWidgets.QApplication(sys.argv)
     my_window = MyWindow()
@@ -543,6 +650,7 @@ def my_excepthook(type, value, tback):
     )
 
     sys.__excepthook__(type, value, tback)
+
 
 sys.excepthook = my_excepthook
 

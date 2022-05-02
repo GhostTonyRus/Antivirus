@@ -4,4 +4,5 @@ from .information_about_the_system import InfoSystem
 from .port_scanner import PortScanner
 from .locking_the_flash_drive import UsbLock
 from .new_antivirus_engine import AntivirusEngine
-from .main import Antivirus
+from .checking_the_file import CheckFile
+# from .main import Antivirus

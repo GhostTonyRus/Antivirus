@@ -15,7 +15,7 @@ class UsbLock:
         self.__msg_datetime = datetime.now()
         self.__custom_msg_datetime = self.__msg_datetime.strftime('%Y-%m-%d %H:%M:%S')
         try:
-            path = "C:\\PycharmProjects\\Antivirus\\antivirus_package\\locked_usb.txt"
+            path = "C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\locked_usb.txt"
             os.remove(path)
         except FileNotFoundError as err:
             ...
@@ -44,7 +44,7 @@ class UsbLock:
         return "\n".join(existingDisk), monitorDisk
 
     def logging_locked_usb(self, value):
-        path = "C:\\PycharmProjects\\Antivirus\\antivirus_package\\locked_usb.txt"
+        path = "C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\locked_usb.txt"
         try:
             with open(path, "a", encoding="utf-8") as file:
                 file.write(f"{value} | {self.__custom_msg_datetime}\n")

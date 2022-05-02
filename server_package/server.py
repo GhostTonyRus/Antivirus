@@ -74,6 +74,18 @@ class Server:
             "4" :"изменить данные в таблице"
         }
 
+        if os.path.exists("C:\\PycharmProjects\\Antivirus\\server_package\\temporary_actions.txt"):
+            os.remove("C:\\PycharmProjects\\Antivirus\\server_package\\temporary_actions.txt")
+            print("файл удалён")
+
+    def temporary_actions(self, value):
+        path = "C:\\PycharmProjects\\Antivirus\\server_package\\temporary_actions.txt"
+        try:
+            with open(path, "a", encoding="utf-8") as file:
+                file.write(f"{value} | {self.__custom_msg_datetime}\n")
+        except FileExistsError as err:
+            return err
+
     def thread_db_connection(self, func, table_name):
         thread = threading.Thread(target=func, args=(table_name,))
         thread.start()
@@ -82,7 +94,7 @@ class Server:
     def start_client_thread(self, func, connection, client_address):
         """присоединение пользователей к серверу и
         добавляем каждого пользователя в отдельный поток"""
-        notification = f"Пользователь {client_address} присоединился к серверу"
+        notification = f"Пользователь {client_address} присоединился к серверу\n"
         print(notification)
         thread = threading.Thread(target=func, args=(connection, client_address,))
         thread.start()
@@ -100,7 +112,8 @@ class Server:
         self.__server.bind(server_address)
         print("Подлючение к ip {} port {}".format(*server_address))
         self.__action_log.register_server_actions(
-            "Сервер подключён по адресу ip {} port {}\n".format(*server_address))
+            "Сервер подключён по адресу ip {} port {}".format(*server_address))
+        self.temporary_actions("Сервер подключён по адресу ip {} port {}".format(*server_address))
 
     def start_server(self, num_of_users):
         """запуск сервера"""
@@ -108,6 +121,7 @@ class Server:
         self.__server.setblocking(False)
         print("Ожидание подлкючения пользователей: ")
         self.__action_log.register_server_actions(f"Ожидание подключение пользователей")
+        self.temporary_actions(f"Ожидание подключение пользователей")
         while True:
             # принимаем подключение и адрес подключившихся пользователей
             self.__server.setblocking(True)
@@ -117,7 +131,7 @@ class Server:
                                  f"Ввведите номер комманды для взаимодействия с Базой Данной {MANUAL}".encode("utf-8"))
             self.__action_log.register_server_actions(
                 f"Пользователь {self.client_addr} подключился к серверу")
-
+            self.temporary_actions(f"Пользователь {self.client_addr} подключился к серверу")
             # добавление пользователей в поток
             self.start_client_thread(func=self.get_users_connection_and_messages, connection=self.connection,
                                      client_address=self.client_addr)
@@ -136,6 +150,7 @@ class Server:
                     print(f"Пользователь {client_address} отключился от сервера")
                     self.__action_log.register_server_actions(
                         f"Пользователь {client_address} отключился от сервера")
+                    self.temporary_actions(f"Пользователь {client_address} отключился от сервера")
                     self.close_connection(connection)
                     break
                 try:
@@ -144,18 +159,21 @@ class Server:
                 except IndexError:
                     self.__action_log.register_server_actions(
                         f"Сообщение от пользователя: {client_address}: 'exit'")
+                    self.temporary_actions(f"Сообщение от пользователя: {client_address}: 'exit'")
                     self.close_connection(connection)
                 # если нет данных
                 if not data:
                     print(f"Сообщение от пользователя отсутствуют: {client_address}")
                     self.__action_log.register_server_actions(
                         f"Сообщение от пользователя отсутствуют: {client_address}")
+                    self.temporary_actions(f"Сообщение от пользователя отсутствуют: {client_address}")
                     self.close_connection(connection)
                     break
                 if data[0] in self.server_commands.keys():
                     print(f"Сообщение от пользователя {client_address}: {data}")
                     self.__action_log.register_server_actions(
                         f"Сообщение от пользователя {client_address}: {data}")
+                    self.temporary_actions(f"Сообщение от пользователя {client_address}: {data}")
                     if self.number_command == "1":
                         data = user_db.get_tables_from_database()
                         self.send_message(connection, data)
@@ -184,7 +202,6 @@ class Server:
                             self.close_connection(connection)
                         log = "Данные успешно обновлены!"
                         self.send_message(connection, log)
-
             except socket.error as error:
                 self.close_connection(connection)
                 break
@@ -192,6 +209,12 @@ class Server:
     def send_message(self, connection, data):
         """отправляем полученное сообщение обратно клиенту"""
         connection.sendall(data.encode("utf-8"))
+
+    def return_info_about_connections(self):
+        return self.__clients
+
+    def block_connections(self):
+        ...
 
     def close_connection(self, client_connection):
         """закрываем соединение с клиентом"""
@@ -201,6 +224,7 @@ class Server:
         print(f"Пользователь {client_connection} отключился")
         self.__action_log.register_server_actions(
             f"Пользователь {client_connection} отключился")
+        self.temporary_actions(f"Пользователь {client_connection} отключился")
 
     def stop_server(self):
         try:
