@@ -1,41 +1,23 @@
-import hashlib
+import sqlite3
 
-def md5_hash(filename):
-    with open(filename, "rb") as file:
-        bytes = file.read()
-        md5_hash = hashlib.md5(bytes).hexdigest()
+with sqlite3.connect("../dependencies/database_dir/customs_users.db") as conn:
+    cur = conn.cursor()
+    # cur.execute("""
+    #     CREATE TABLE IF NOT EXISTS `customs_users` (
+    #         user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    #         Имя TEXT,
+    #         Фамилия TEXT,
+    #         Отчество TEXT,
+    #         email TEXT,
+    #         пароль TEXT);""")
 
-    return md5_hash
-
-# print(md5_hash("hosts.txt"))
-
-def malware_checker(pathOfFile):
-    hash_malware_check = md5_hash(pathOfFile)
-    malware_hashes = open("virus.txt", "r")
-    malware_hashes_read = malware_hashes.read().splitlines()
-    malware_hashes.close()
-
-    for check in malware_hashes_read:
-        if check == hash_malware_check:
-            return "red"
-        else:
-            return "green"
-
-
-print(md5_hash("hosts.txt"))
-# print(malware_checker("hosts.txt"))
-def test(file_hash):
-    with open("virus_hash.txt", "r") as file:
-        hashes = file.readlines()
-        for hash in hashes:
-            hash_split = hash.split()
-            for item in hash_split:
-                if file_hash == item:
-                    return True
-                else:
-                    return False
-
-h = md5_hash("hosts.txt")
-print(test(h))
-
-
+    # cur.execute("""
+    #     INSERT INTO
+    #         `customs_users` (user_id, Имя, Фамилия, Отчество, email, пароль)
+    #     VALUES (NULL, "Антон", "Макеев", "Николаевич", "antonmakeev18@gmail.com", "12345");
+    # """)
+    res = cur.execute("""
+    SELECT * FROM `customs_users`
+    """).fetchall()
+    print(res)
+    conn.commit()

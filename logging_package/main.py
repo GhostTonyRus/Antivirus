@@ -4,13 +4,13 @@ from datetime import datetime
 
 class Logging:
 
-    def __init__(self, name_of_the_system):
+    def __init__(self, name_of_the_system=""):
         self.name_of_the_system = name_of_the_system
         self.name_of_the_system_logger = name_of_the_system + "_log" + ".txt"
         self.log_directory = os.getcwd()
-        self.__msg_datetime = datetime.now()
-        self.__custom_msg_datetime = self.__msg_datetime.strftime('%Y-%m-%d %H:%M:%S')
-        self.log_path = "C:\\PycharmProjects\\Antivirus\\logging_package\\"
+        self.__msg_datetime = datetime.today()
+        self.__custom_msg_datetime = self.__msg_datetime.strftime('%m-%d-%Y %H:%M:%S')
+        self.log_path = "C:\\PycharmProjects\\Antivirus\\dependencies\\log_dir\\"
         print(f"Журнал {self.name_of_the_system_logger} инициализирован для директории {self.name_of_the_system}\n")
 
         self.MANUAL = """
@@ -46,7 +46,7 @@ class Logging:
         """ЖУРНАЛ ЛОГИРВОАНИЯ ДЛЯ БАЗЫ ДАННЫХ"""
         try:
             with open(f"{self.log_path}database_action.txt", "a", encoding="utf-8") as file:
-                file.write(f"{database_action} | {self.__custom_msg_datetime}\n")
+                file.write(f"{database_action} | {datetime.now().strftime('%H:%M:%S %m-%d-%Y')}\n")
         except FileExistsError:
             raise FileExistsError("Файла не существует")
 
@@ -54,7 +54,7 @@ class Logging:
         """ЖУРНАЛ ЛОГИРВОАНИЯ ДЛЯ СЕРВЕРА"""
         try:
             with open(f"{self.log_path}server_action.txt", "a", encoding="utf-8") as file:
-                file.write(f"{server_action} | {self.__custom_msg_datetime}\n")
+                file.write(f"{server_action} | {datetime.now().strftime('%H:%M:%S %m-%d-%Y')}\n")
         except FileExistsError as err:
             return err
 
@@ -62,7 +62,7 @@ class Logging:
         """ЖУРНАЛ ЛОГИРВОАНИЯ ДЛЯ ДЕЙСТВИЙ ПОЛЬЗОВАТЕЛЯ"""
         try:
             with open(f"{self.log_path}client_action.txt", "a", encoding="utf-8") as file:
-                file.write(f"{user_action} | {self.__custom_msg_datetime}\n")
+                file.write(f"{user_action} | {datetime.now().strftime('%H:%M:%S %m-%d-%Y')}\n")
         except FileExistsError as err:
             return err
 

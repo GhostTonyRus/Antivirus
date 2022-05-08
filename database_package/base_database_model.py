@@ -179,7 +179,7 @@ class CustomsofficersDataBase:
             email TEXT,
             login TEXT,
             password TEXT,
-            access_level INTEGER);
+            access_level TEXT);
         """
         return query
 

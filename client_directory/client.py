@@ -9,6 +9,7 @@
 ####################
 # Modules
 ####################
+import json
 import socket
 import ssl
 import sys
@@ -22,14 +23,13 @@ IP = "127.0.0.1"
 PORT = 12345
 SERVER_ADDRESS = (IP, PORT)
 
-
 class Client:
-    def __init__(self, family, connect_type, key_file, certificate_file):
-        self.__family = family
-        self.__connect_type = connect_type
+    def __init__(self):
+        self.__family = socket.AF_INET
+        self.__connect_type = socket.SOCK_STREAM
         self.__client = socket.socket(self.__family, self.__connect_type)
-        self.__key_file = key_file
-        self.__certificate_file = certificate_file
+        self.__key_file = "C:\\PycharmProjects\\Antivirus\\client_directory\\certificates\\privatKey.key"
+        self.__certificate_file = "C:\\PycharmProjects\\Antivirus\\client_directory\\certificates\\certificate.crt"
         self.__datetime = datetime.now()
         self.__custom_datetime = self.__datetime.strftime("%Y-%m-%d %H:%M:%S")
 
@@ -46,7 +46,8 @@ class Client:
             print("Выполнено подлюкчение к серверу")
         except socket.error as ex:
             print(f"Ошибка подключения: {ex}")
-            sys.exit()
+            # sys.exit()
+            return False
 
     def receive_msg(self):
         """получаем сообщение от сервера"""
@@ -62,19 +63,22 @@ class Client:
                 self.disconnect_from_server()
                 break
 
-    def send_msg(self):
+    def send_msg(self, *args):
         """получаем данные от пользователя и отправляем их"""
+        obj = {
+            "data": [*args]
+        }
         while True:
             time.sleep(1)
-            msg = input("Введите текст сообщение:\n")
-            if msg == "exit":
+            if args == "exit":
                 self.disconnect_from_server()
                 break
-            elif len(msg) == 0:
+            elif len(args) == 0:
                 print("Сообщение не должно быть пустым")
                 continue
-            elif msg:
+            elif args:
                 # отправляем данные
+                msg = json.dumps(obj)
                 self.__client.sendall(msg.encode())
 
     def disconnect_from_server(self):
@@ -97,6 +101,6 @@ class Client:
         thread_send_msg.start()
 
 if __name__ == '__main__':
-    client = Client(socket.AF_INET, socket.SOCK_STREAM,
-                        key_file="certificates/privatKey.key", certificate_file="certificates/certificate.crt")
-    client.main(SERVER_ADDRESS)
+    client = Client()
+    client.connect_to_server(SERVER_ADDRESS)
+    client.send_msg("tony")

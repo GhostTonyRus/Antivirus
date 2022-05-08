@@ -74,7 +74,17 @@
              <string notr="true">color: rgb(255, 255, 255);</string>
             </property>
             <property name="text">
-             <string>-</string>
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="icons.qrc">
+              <normaloff>:/icons/icons/minus.svg</normaloff>:/icons/icons/minus.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>25</width>
+              <height>25</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -84,7 +94,17 @@
              <string notr="true">color: rgb(255, 255, 255);</string>
             </property>
             <property name="text">
-             <string>=</string>
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="icons.qrc">
+              <normaloff>:/icons/icons/maximize.svg</normaloff>:/icons/icons/maximize.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>25</width>
+              <height>25</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -94,7 +114,17 @@
              <string notr="true">color: rgb(255, 255, 255);</string>
             </property>
             <property name="text">
-             <string>X</string>
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="icons.qrc">
+              <normaloff>:/icons/icons/x-square.svg</normaloff>:/icons/icons/x-square.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>25</width>
+              <height>25</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -387,9 +417,13 @@
                       <x>0</x>
                       <y>0</y>
                       <width>260</width>
-                      <height>618</height>
+                      <height>608</height>
                      </rect>
                     </property>
+                    <attribute name="icon">
+                     <iconset resource="icons.qrc">
+                      <normaloff>:/icons/icons/airplay.svg</normaloff>:/icons/icons/airplay.svg</iconset>
+                    </attribute>
                     <attribute name="label">
                      <string>Антивирус</string>
                     </attribute>
@@ -497,9 +531,13 @@
                       <x>0</x>
                       <y>0</y>
                       <width>260</width>
-                      <height>618</height>
+                      <height>608</height>
                      </rect>
                     </property>
+                    <attribute name="icon">
+                     <iconset resource="icons.qrc">
+                      <normaloff>:/icons/icons/server.svg</normaloff>:/icons/icons/server.svg</iconset>
+                    </attribute>
                     <attribute name="label">
                      <string>Сервер</string>
                     </attribute>
@@ -574,9 +612,13 @@
                       <x>0</x>
                       <y>0</y>
                       <width>260</width>
-                      <height>618</height>
+                      <height>608</height>
                      </rect>
                     </property>
+                    <attribute name="icon">
+                     <iconset resource="icons.qrc">
+                      <normaloff>:/icons/icons/archive.svg</normaloff>:/icons/icons/archive.svg</iconset>
+                    </attribute>
                     <attribute name="label">
                      <string>СУБД</string>
                     </attribute>
@@ -624,9 +666,13 @@
                       <x>0</x>
                       <y>0</y>
                       <width>260</width>
-                      <height>618</height>
+                      <height>608</height>
                      </rect>
                     </property>
+                    <attribute name="icon">
+                     <iconset resource="icons.qrc">
+                      <normaloff>:/icons/icons/folder-minus.svg</normaloff>:/icons/icons/folder-minus.svg</iconset>
+                    </attribute>
                     <attribute name="label">
                      <string>Журнал действий</string>
                     </attribute>
@@ -697,6 +743,10 @@
                    <property name="text">
                     <string>Главная страница</string>
                    </property>
+                   <property name="icon">
+                    <iconset resource="icons.qrc">
+                     <normaloff>:/icons/icons/home.svg</normaloff>:/icons/icons/home.svg</iconset>
+                   </property>
                   </widget>
                  </item>
                  <item>
@@ -734,7 +784,7 @@
               <item>
                <widget class="QStackedWidget" name="stackedWidget_main">
                 <property name="currentIndex">
-                 <number>7</number>
+                 <number>1</number>
                 </property>
                 <widget class="QWidget" name="page_about_system">
                  <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -3870,6 +3920,27 @@ p, li { white-space: pre-wrap; }
                          </widget>
                         </item>
                        </layout>
+                      </item>
+                     </layout>
+                    </widget>
+                    <widget class="QWidget" name="tab_data">
+                     <attribute name="title">
+                      <string>Данные</string>
+                     </attribute>
+                     <layout class="QVBoxLayout" name="verticalLayout_42">
+                      <item>
+                       <widget class="QTableView" name="data_table_view">
+                        <property name="font">
+                         <font>
+                          <pointsize>14</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">background-color: rgb(255, 255, 255);</string>
+                        </property>
+                       </widget>
                       </item>
                      </layout>
                     </widget>

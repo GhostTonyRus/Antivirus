@@ -55,122 +55,35 @@ declaration_database = """
 Графа 54. Место и дата
 графа B «Подробности подсчета»
 """
-class OfficerDatabase(DataBaseClass):
-    """База данных, содержащаяся в себя информацию о дложностных лицах"""
-
-    __logger = Logging("database_package")
-
-    def __init__(self, database_name):
-        super(OfficerDatabase, self).__init__(database_name)
-        self.access_levels = {
-            0: "SuperUser",
-            1:
-                ["младший лейтенант таможенной службы",
-                 "лейтенант таможенной службы",
-                 "старший лейтенант таможенной службы",
-                 "капитан таможенной службы"],
-            2: ["майор таможенной службы",
-                "подполковник таможенной службы",
-                "полковник таможенной службы"],
-            3: ["генерал-майор таможенной службы",
-                "генерал-лейтенант таможенной службы",
-                "генерал-полковник таможенной службы"]
-        }
-
-    def create_table(self, table_name):
-        try:
-            with self.connection:
-                self.cursor.execute(
-                f"""CREATE TABLE IF NOT EXISTS {table_name} (
-                    user_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    name TEXT,
-                    soname TEXT,
-                    rank TEXT,
-                    email TEXT,
-                    login TEXT,
-                    password TEXT,
-                    access_level INTEGER NULL)
-                """
-                )
-            self.connection.commit()
-            if not f"{table_name}" in self.get_tables_from_database():
-                self.__logger.register_database_actions(f"создана таблица {table_name}")
-        except sqlite3.Error as err:
-            return err
-
-    def insert_data_to_table(self, table_name: str, *args):
-        values = args
-        rank = args[2]
-        self.access_level = None  # переменная, со значением ранга доступа
-        for idx in range(1, 4):
-            level = self.access_levels.get(idx)
-            if rank in level:
-                self.access_level = idx
-        try:
-            with self.connection:
-                self.cursor.execute("""
-                INSERT INTO `{table_name}`
-                    (user_id, name, soname, rank, email, login, password, access_level)
-                VALUES
-                    (NULL, "{}", "{}", "{}", "{}", "{}", "{}", "{}")
-                """.format(table_name=table_name, *values))
-                self.connection.commit()
-                self.__logger.register_database_actions(
-                    f"добавление данных в таблицу {table_name}"
-                )
-        except sqlite3.Error as err:
-            return err
-
-    def get_data_from_table(self, table_name: str):
-        """метод для получения данных из таблицы"""
-        data_from_db = {}
-        try:
-            with self.connection:
-                self.cursor.execute(f"""
-                   SELECT * FROM `{table_name}`""")
-                data = self.cursor.fetchall()
-                self.connection.commit()
-                # print("id - Имя - Фамилия - Отчетсво - email - Пароль - Подтвердите пароль")
-                for d in data:
-                    if d:
-                        res = f"{d[0]} - {d[1]} - {d[2]} - {d[3]} - {d[4]} - {d[5]} - {d[6]} - {d[7]}"
-                        data_from_db[d[0]] = res
-                    else:
-                        print("Данные отсутствуют")
-                self.__logger.register_database_actions(
-                    f"получаем данные из таблицы {table_name}"
-                )
-                return "\n" + "\n".join(data_from_db.values())
-        except Error as err:
-            return err
-
 
 class CustomsDeclarationsDataBase:
     pass
 
 
-class UsersDataBase(DataBaseClass):
+class UsersDataBase:
     __logger = Logging("database_package")  # журнал логирования
 
-    def __init__(self, database_name):
-        super(UsersDataBase, self).__init__(database_name)
+    def __init__(self, database_name=None):
+        self.__datetime = datetime.now()
+        self.__custom_datetime = self.__datetime.strftime('%Y-%m-%d %H:%M:%S')
+        self.database_name = database_name
+        self.__path = f"../dependencies/database_dir/customs_users.db"
+        self.connection = sqlite3.connect(self.__path, check_same_thread=False)
+        self.cursor = self.connection.cursor()
 
-    def create_table(self, table_name):
+    def create_table(self, table_name=None):
         """метод для создания таблицы в базде данных"""
         try:
             with self.connection:
-                self.cursor.execute(f"""
-                CREATE TABLE IF NOT EXISTS `{table_name}`(
-                user_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                soname TEXT,
-                name TEXT,
-                patronymic TEXT,
-                email TEXT,
-                password TEXT)
-                """)
+                self.cursor.execute("""
+                 CREATE TABLE IF NOT EXISTS `customs_users` (
+                     user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                     Имя TEXT,
+                     Фамилия TEXT,
+                     Отчество TEXT,
+                     email TEXT,
+                     пароль TEXT);""")
             self.connection.commit()
-            if not "users" in self.get_tables_from_database():
-                self.__logger.register_database_actions(f"создана таблица {table_name}")
         except Error as err:
             print(err)
             # logger.error(err)
@@ -194,32 +107,31 @@ class UsersDataBase(DataBaseClass):
             print(err)
             # logger.error(err)
 
-    def get_data_from_table(self, table_name: str):
+    def get_data_from_table(self, data):
+
         """метод для получения данных из таблицы"""
         data_from_db = {}
         try:
             with self.connection:
                 self.cursor.execute(f"""
-                SELECT * FROM `{table_name}`""")
-                data = self.cursor.fetchall()
-                # logger.info("Данные успешно получены из базы данных")
+                SELECT * FROM `customs_users`""")
+                data_form_db = self.cursor.fetchall()
                 self.connection.commit()
-                # print("id - Имя - Фамилия - Отчетсво - email - Пароль - Подтвердите пароль")
-                for d in data:
-                    if d:
-                        res = f"{d[0]} - {d[1]} - {d[2]} - {d[3]} - {d[4]} - {d[5]}"
-                        # print(res)
-                        data_from_db[d[0]] = res
-                    else:
-                        print("Данные отсутствуют")
-                self.__logger.register_database_actions(
-                    f"получаем данные из таблицы {table_name}"
-                )
-                return "\n" + "\n".join(data_from_db.values())
-                # print("\n" + "\n".join(data_from_db.values()))
+                for item in data_form_db:
+                    data_from_db[item[-2]] = item[-1]
+                # return "\n" + "\n".join(data_from_db.values())
         except Error as err:
-            ...
+           ...
+        for email, password in data.items():
+            for email_from_db, password_from_db in data_from_db.items():
+                if email_from_db == email and password_from_db == password:
+                    return True
+                else:
+                    return False
             # logger.error(err)
+        # self.__logger.register_database_actions(
+        #     "получаем данные из таблицы customs_users"
+        # )
 
     def update_data_in_table(self, table_name: str, id: int, row: str, value: str):
         """метод для обновления данных в таблице"""
@@ -278,59 +190,16 @@ class UsersDataBase(DataBaseClass):
             ...
             # logger.debug(err)
 
-class DataBaseMain():
-    def __init__(self):
-        pass
 
-    def main(self):
-        manual = f"""
-        Список доступных баз данных:
-        1. customs_officers.db - база данных, содержащая информацию о должностных лицах,
-        2. customs_user.db - база данных, содержащая информацию, о пользоватлях
-        Для доступа к нужной базе данных введите её название на английском языке или номер из списка.
-        Для выхода из модуля введите exit или 0.\n
-        >>> """
-        while True:
-            response = str(input(manual))
-            if response == "customs_officers" or response == "1":
-                db_name = "customs_officers"
-                customs_officers_db = OfficerDatabase(db_name)
-                print(customs_officers_db.MANUAL)
-                print(customs_officers_db.main())
-            elif response == "customs_user" or response == "2":
-                db_name = "customs_user"
-                customs_users_db = UsersDataBase(db_name)
-                print(customs_users_db.MANUAL)
-                print(customs_users_db.main())
-            elif response == "exit" or response == "0":
-                print("выход из модуля базы данных")
-                break
-            else:
-                print("Такой баз данных нет!")
 
 
 if __name__ == '__main__':
-    ...
-    db = DataBaseMain()
-    db.main()
-    # users_db = UsersDataBase("customs_user.db")
-    # users_db.create_table("users")
-    # print(users_db.get_tables_from_database())
-    # users_db.get_data_from_table("users")
-    # users_db.insert_data_to_table("users", "Anthony", "Tony", "Николаевич", "tonystark18@gmail.com", "Rocestear200", "Rocestear200")
-    # # users_db.delete_date_from_table(1)
-    # users_db.delete_database("customs_user.db")
-    # users_db.get_data_from_table("users")
-    # officers_db = OfficerDatabase("customs_officers")
-    # officers_db.create_table("customs_officers_users")
-    # print(officers_db.get_tables_from_database())
-    # officers_db.insert_data_to_table("customs_officers_users",
-    #     "admin",
-    #     "admin",
-    #     "administrator",
-    #     "admin@gmail.com",
-    #     "Admin",
-    #     "Admin",
-    #     0
-    # )
-    # print(officers_db.get_data_from_table("customs_officers_users"))
+    # users = UsersDataBase()
+    # print(users.get_data_from_table("antonmakeev18@gmail.com", "12345"))
+    d = {
+        "antonmakeev18@gmail.com": "12345"
+    }
+
+    for key, value in d.items():
+        print(key, value)
+

@@ -1,9 +1,56 @@
 import sys
 from PyQt5 import QtWidgets, QtGui, QtCore, Qt
-from PyQt5.QtCore import QPoint, QPropertyAnimation
+from PyQt5.QtCore import QPoint, QPropertyAnimation, pyqtProperty
 from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import QGraphicsDropShadowEffect, QSizeGrip, QDesktopWidget
 from GUI.test_ui import Ui_MainWindow
+
+
+class PushButton(QtWidgets.QPushButton):
+    hover = QtCore.pyqtSignal(str)
+
+    def __init__(self, parent=None):
+        super(PushButton, self).__init__(parent)
+        pass
+
+    def enterEvent(self, event):
+        self.hover.emit("enterEvent")
+
+    def leaveEvent(self, event):
+        self.hover.emit("leaveEvent")
+
+
+class AnimationShadowEffect(QGraphicsDropShadowEffect):
+
+    def __init__(self, color, *args, **kwargs):
+        super(AnimationShadowEffect, self).__init__(*args, **kwargs)
+        self.setColor(color)
+        self.setOffset(0, 0)
+        self.setBlurRadius(0)
+        self._radius = 0
+        self.animation = QPropertyAnimation(self)
+        self.animation.setTargetObject(self)
+        self.animation.setDuration(1500)            # Время одного цикла
+        self.animation.setLoopCount(-1)             # Постоянный цикл
+        self.animation.setPropertyName(b'radius')
+        self.animation.setKeyValueAt(0.5, 15)
+
+    def start(self):
+        self.animation.start()
+
+    def stop(self, r=0):
+        # Остановить анимацию и изменить значение радиуса
+        self.animation.stop()
+        self.radius = r
+
+    @pyqtProperty(int)
+    def radius(self):
+        return self._radius
+
+    @radius.setter
+    def radius(self, r):
+        self._radius = r
+        self.setBlurRadius(r)
 
 
 class MyWindow(QtWidgets.QMainWindow):
@@ -51,6 +98,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.open_close_side_bar_btn.clicked.connect(lambda: self.slideLeftMenu())
 
         self.show()
+
 
     def slideLeftMenu(self):
         # left_menu_cont_frame

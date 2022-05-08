@@ -47,7 +47,7 @@ class UsbLock:
         path = "C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\locked_usb.txt"
         try:
             with open(path, "a", encoding="utf-8") as file:
-                file.write(f"{value} | {self.__custom_msg_datetime}\n")
+                file.write(f"{value} | {datetime.now().strftime('%H:%M:%S %m-%d-%Y')}\n")
         except FileExistsError as err:
             return err
 
@@ -78,10 +78,11 @@ class UsbLock:
                 # return res
                 self.logging_locked_usb(res)
                 return True
+            continue
             #     break
 
             # задержка на 2 секунды
-            # sleep(2)
+            # time.sleep(2)
 
 if __name__ == '__main__':
     usb = UsbLock()

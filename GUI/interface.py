@@ -4,10 +4,13 @@ import threading
 from PyQt5 import QtWidgets, QtGui, QtCore, Qt
 from PyQt5.QtCore import QPoint, QPropertyAnimation, QObject, QTimer
 from PyQt5.QtGui import QColor
-from PyQt5.QtSql import QSqlDatabase, QSqlQuery, QSqlQueryModel, QSqlTableModel
-from PyQt5.QtWidgets import QGraphicsDropShadowEffect, QSizeGrip, QDesktopWidget, QTableView
-from system_gui import Ui_MainWindow
-from antivirus_package import InfoSystem, PortScanner, Monitor, UsbLock, CheckFile, AntivirusEngine
+from PyQt5.QtSql import QSqlDatabase, QSqlQuery, QSqlQueryModel, QSqlTableModel, QSqlRecord
+from PyQt5.QtWidgets import QGraphicsDropShadowEffect, QSizeGrip, QDesktopWidget, QTableView, QLineEdit
+from system_gui_for_test_2 import Ui_MainWindow
+from database_dialog_view import Ui_Dialog
+# from system_gui import Ui_MainWindow
+from antivirus_package import Two_factor_authentication, InfoSystem, PortScanner, Monitor, UsbLock, CheckFile, \
+    AntivirusEngine
 from server_package import Server
 from database_package import CustomsofficersDataBase
 from logging_package import Logging
@@ -25,11 +28,12 @@ class ActivityRegistrationThread(QtCore.QThread):
     def run(self):
         self.monitor_creation.main()
         self.monitor_deletion.main()
-        time.sleep(5)
+        time.sleep(10)
         while True:
             time.sleep(3)
             try:
-                with open("C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\activity_registration.txt", "r") as file:
+                with open("C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\activity_registration.txt", "r",
+                          encoding="utf-8") as file:
                     res = file.readlines()
                     for i in res:
                         self.signal.emit(str(i))
@@ -90,8 +94,9 @@ class ServerThread(QtCore.QThread):
         super(ServerThread, self).__init__()
 
     def run(self):
+        time.sleep(5)
         try:
-            with open("C:\\PycharmProjects\\Antivirus\\server_package\\temporary_actions.txt", "r",
+            with open("C:\\PycharmProjects\\Antivirus\\dependencies\\server_dir\\temporary_actions.txt", "r",
                       encoding="utf-8") as file:
                 while True:
                     # считываем строку
@@ -103,10 +108,6 @@ class ServerThread(QtCore.QThread):
                     self.signal.emit(str(line))
         except FileExistsError as err:
             return
-
-
-# прогрес бар
-TIME_LIMIT = 100
 
 
 class ThreadProgressBar(QtCore.QThread):
@@ -128,7 +129,6 @@ class ThreadProgressBar(QtCore.QThread):
             time.sleep(1)
             self.countChanged.emit(i)
 
-
 class MyWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(MyWindow, self).__init__()
@@ -137,11 +137,13 @@ class MyWindow(QtWidgets.QMainWindow):
         self.antivirus_ = CheckFile(
             "C:\\PycharmProjects\\Antivirus\\antivirus_package\\signatures\\MD5 Virus Hashes.txt")
         self.antivirus = AntivirusEngine()
+        self.two_factor_authentication = Two_factor_authentication()
         self.info = InfoSystem()  # информация о системе
         self.usb_blocking = UsbLock()  # блокировка usb
         self.port_scanner = PortScanner()  # сканер портов
         self.server = Server()
         self.customs_officers_database = CustomsofficersDataBase()
+        self.register_actions = Logging()
         self.dependencies_path = "C:\\PycharmProjects\\dependencies\\"
         self.text = self.ui.comboBox_port_scanner.currentText()
 
@@ -161,7 +163,11 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.stackedWidget.setCurrentWidget(self.ui.authorization_page)
 
         # настрйока кнопки входа
-        self.ui.btn_login.clicked.connect(lambda: self.login_into_system())
+        self.ui.btn_login.clicked.connect(lambda: self.check_data())
+        self.ui.btn_accept_code.clicked.connect(lambda: self.login_into_system())
+        self.ui.btn_registrarion.clicked.connect(lambda: self.show_registration_page())
+        self.ui.btn_add_new_user_into_system.clicked.connect(lambda: self.add_new_user_into_system())
+        self.ui.btn_return_to_login_page.clicked.connect(lambda: self.show_login_page())
 
         # сварачиваем окно
         self.ui.btn_minimize_window.clicked.connect(lambda: self.showMinimized())
@@ -173,8 +179,16 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.btn_exit.clicked.connect(self.close)
         self.ui.btn_close_window.clicked.connect(self.close)
 
+        # настройка кнопок авторизации
+        self.ui.btn_open_authorization_page.clicked.connect(lambda: self.show_login_page())
+        self.ui.btn_open_authorization_page_2.clicked.connect(lambda: self.show_login_page())
+
         # кнопка главной страницы
         self.ui.btn_main_page_manual.clicked.connect(lambda: self.show_main_manual())
+
+        # настройка ввода пароля
+        self.ui.le_password.setEchoMode(QLineEdit.Password)
+        self.ui.le_email_code.setEchoMode(QLineEdit.Password)
 
         ######################################
         # настройка кнопок модуля антивируса #
@@ -208,7 +222,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.btn_port_scaner.clicked.connect(lambda: self.show_port_scanner())
 
         # настройка межсетевого экрана
-        self.ui.btn_firewall.clicked.connect(lambda: self.show_firewall_page())
+        self.ui.btn_firewall.clicked.connect(self.show_firewall_page)
         self.ui.btn_update_info_about_connections.clicked.connect(lambda: self.update_info_about_connections())
 
         ######################################
@@ -217,6 +231,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.server_thread = ServerThread()
         self.server_thread.signal.connect(self.insert_server_value)
         self.ui.btn_show_info_server.clicked.connect(self.start_show_info)
+        self.ui.btn_server_manual.clicked.connect(self.show_server_manual_page)
         self.ui.btn_show_server_page.clicked.connect(lambda: self.show_server_page())
         self.ui.btn_start_server.clicked.connect(self.start_server_thread)
 
@@ -235,6 +250,15 @@ class MyWindow(QtWidgets.QMainWindow):
 
         # добавление новых пользователей
         self.ui.btn_add_new_user.clicked.connect(lambda: self.get_data_from_le())
+
+        # отобразить данные из бд
+        self.dataModel = QSqlTableModel()
+        self.dataModel.setTable("customs_officers")
+        self.dataModel.select()
+        self.ui.data_table_view.setModel(self.dataModel)
+        # растягиваем таблицу по всей ширине
+        header = self.ui.data_table_view.horizontalHeader()
+        header.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
 
         # поиск записей в базе данных
         self.searchModel = QSqlQueryModel(self)
@@ -258,8 +282,17 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.delete_table_view.setSelectionBehavior(QTableView.SelectRows)
         self.ui.delete_table_view.clicked.connect(self.delete_user_from_db)
 
+        # открыть список доступных баз данных
+        self.ui.btn_open_list_of_db.clicked.connect(lambda: self.open_page_list_of_db())
+
+        # растягиваем таблицу по всей ширине
+        db_header = [self.ui.data_table_view, self.ui.search_table_view, self.ui.change_table_view, self.ui.delete_table_view]
+        for header in db_header:
+            item = header.horizontalHeader()
+            item.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+
         ###############################################
-        # настройка кнопок модуля журнала логирвоания #
+        # настройка кнопок модуля журнала логирования #
         ###############################################
         self.ui.btn_open_action_log.clicked.connect(self.show_logs_and_get_logs)
         self.ui.btn_action_log_manual.clicked.connect(self.show_action_log_manual)
@@ -290,20 +323,121 @@ class MyWindow(QtWidgets.QMainWindow):
     def close_app(self):
         sys.exit(0)
 
-    # открыть страницу с информацией о системе
-    def show_main_manual(self):
-        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_about_system)
+    def show_login_page(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.authorization_page)
+
+    def get_data(self):
+        __login = self.ui.le_login.text()
+        __password = self.ui.le_password.text()
+        if len(__login) == 0 or len(__password) == 0:
+            QtWidgets.QMessageBox.information(self, "Уведомление", "Поля ввода не должны быть пустыми!")
+            return False
+        else:
+            return __login, __password
+
+    def generate_code(self):
+        code = self.two_factor_authentication.generate_code()
+        return code
+
+    # проверка данных
+    def check_data(self):
+        global code_from_email
+        code_from_email = self.two_factor_authentication.generate_code()
+        login_from_form, password_from_form = self.get_data()
+        db_users = {}
+
+        model = QSqlQueryModel()
+        data = login_from_form
+        model.setQuery("SELECT * FROM `customs_officers` WHERE name LIKE '%" + data + "%';") # делаем запрос с логином из поля ввода
+        for i in range(5): # при помощи получаем его данные
+            user_id = model.record(i).value("user_id")
+            login = model.record(i).value("login")
+            password = model.record(i).value("password")
+            email = model.record(i).value("email")
+            if user_id != None and login != None and password != None and email != None:
+                db_users[user_id] = [login, password, email] # создаём словарь из его данных
+        if len(db_users) > 0:
+            for key, value in db_users.items(): # проходим циклом по этому словарю
+                login_from_db = value[0]
+                password_from_db = value[1]
+                email_from_db = value[2]
+                if login_from_form == login_from_db and password_from_form == password_from_db: # сравниваем данные из словаря и из полей ввода
+                    self.two_factor_authentication.send_email(email=email_from_db, msg=code_from_email) # отправляем письмо на почту
+                    self.ui.stackedWidget.setCurrentWidget(self.ui.two_factor_authentication_page) # открываем окно с подтверждением кода
+        else:
+            QtWidgets.QMessageBox.information(self, "Уведомление", "Неверный логин или пароль!")
+
+    # двухфакторная аутентификация
+    def start_two_factor_authentication(self):
+        code_from_le = self.ui.le_email_code.text()
+        if code_from_le == code_from_email:
+            return True
+        else:
+            QtWidgets.QMessageBox.information(self, "Уведомление", "Неверный код!")
+            # code_from_le.setEchoMode(QLineEdit.Password)
 
     # вход в систему
     def login_into_system(self):
-        __login = self.ui.le_login.text()
-        __password = self.ui.le_password.text()
-        self.ui.stackedWidget.setCurrentWidget(self.ui.main_container_page)
-        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_about_system)
+        res = self.start_two_factor_authentication()
+        if res:
+            self.ui.stackedWidget.setCurrentWidget(self.ui.main_container_page)
+            self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_about_system)
 
     # регистрация в системе
-    def registration(self):
-        pass
+    def show_registration_page(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.add_new_user_page)
+
+    # добавляем новых пользователей в систему
+    def add_new_user_into_system(self):
+        name = self.ui.le_name_new_user.text()
+        soname = self.ui.le_soname_new_user.text()
+        rank = self.ui.le_rank_new_user.text()
+        email = self.ui.le_email_new_user.text()
+        login = self.ui.le_login_new_user.text()
+        password = self.ui.le_password_new_user.text()
+        access_level = self.ui.cb_role_new_user.currentText()
+        print(name, soname, rank, email, login, password, access_level)
+
+        data = {}
+        data["name"] = name
+        data["soname"] = soname
+        data["rank"] = rank
+        data["email"] = email
+        data["login"] = login
+        data["password"] = password
+        data["access_level"] = access_level
+
+        for key in data:
+            if data.get(key) == "":
+                QtWidgets.QMessageBox.critical(self, "ERROR", "Поля ввода не должны быть пустыми!")
+                return
+
+        # access_level = int(access_level)
+        query = QSqlQuery()
+        insert_query = self.customs_officers_database.insert_data_into_db()
+        if query.prepare(insert_query):
+            query.addBindValue(name)
+            query.addBindValue(soname)
+            query.addBindValue(rank)
+            query.addBindValue(email)
+            query.addBindValue(login)
+            query.addBindValue(password)
+            query.addBindValue(access_level)
+            if query.exec_():
+                QtWidgets.QMessageBox.information(self, "Уведомление", "Данные успешно давлены")
+                self.register_actions.register_database_actions("Добавление данных")
+                self.ui.le_name.clear()
+                self.ui.le_soname.clear()
+                self.ui.le_rank.clear()
+                self.ui.le_email.clear()
+                self.ui.le_login_2.clear()
+                self.ui.le_password_2.clear()
+                self.ui.cb_user_role.clear()
+                self.refreshTable()  # обновляем базу данных
+
+    # открыть страницу с информацией о системе
+    def show_main_manual(self):
+        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_about_system)
 
     ########################
     # РАБОТА С АНТИВИРУСОМ #
@@ -401,7 +535,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.usb_blocking_thread.start()
 
     def insert_info_about_blocking_usb(self, value):
-        self.ui.te_list_of_locked_usb.setPlainText(value)
+        self.ui.lw_of_locked_usb.addItem(value)
 
     #############################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ РАБОТЫ ПОРТ СКАНЕРА #
@@ -424,13 +558,15 @@ class MyWindow(QtWidgets.QMainWindow):
         self.show_locked_connections()
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_firewall)
 
+    # сохраняем заблокированные входящие соединения
     def save_locked_connection(self, value):
-        path = "C:\\PycharmProjects\\Antivirus\\antivirus_package\\locked_connections.txt"
+        path = "C:\\PycharmProjects\\Antivirus\\dependencies\\server_dir\\locked_connections.txt"
         with open(path, "a") as file:
             file.write(value)
 
+    # показываем заблокированные входящие соединения
     def show_locked_connections(self):
-        path = "C:\\PycharmProjects\\Antivirus\\antivirus_package\\locked_connections.txt"
+        path = "C:\\PycharmProjects\\Antivirus\\dependencies\\server_dir\\locked_connections.txt"
         with open(path, "r") as file:
             res = file.readlines()
             if len(res) > 0:
@@ -439,24 +575,26 @@ class MyWindow(QtWidgets.QMainWindow):
             else:
                 pass
 
+    # блокируем
     def on_connection_item_clicked(self, item):
         self.ui.lw_locked_connections.clear()
         connection = item.text()
         if QtWidgets.QMessageBox.question(self, "Уведомление", "Вы уверены, что хотите заблокировать соединение",
-                                       QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No) == QtWidgets.QMessageBox.Yes:
-            path = "C:\\PycharmProjects\\Antivirus\\antivirus_package\\locked_connections.txt"
+                                          QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No) == QtWidgets.QMessageBox.Yes:
+            path = "C:\\PycharmProjects\\Antivirus\\dependencies\\server_dir\\locked_connections.txt"
             with open(path, "r") as file:
                 res = file.readlines()
                 if connection in res:
                     QtWidgets.QMessageBox.information(self, "Уведомление",
-                                                   "Соединение уже заблокировано!")
+                                                      "Соединение уже заблокировано!")
                 else:
                     self.ui.lw_locked_connections.addItem(connection)
 
+    # обновляем информцию о заблокированных соединениях
     def update_info_about_connections(self):
         self.ui.lw_incoming_connections.clear()
         self.ui.lw_locked_connections.clear()
-        path = "C:\\PycharmProjects\\Antivirus\\antivirus_package\\locked_connections.txt"
+        path = "C:\\PycharmProjects\\Antivirus\\dependencies\\server_dir\\locked_connections.txt"
         with open(path, "r") as file:
             res = file.readlines()
             if len(res) > 0:
@@ -473,13 +611,14 @@ class MyWindow(QtWidgets.QMainWindow):
             pass
         self.ui.lw_incoming_connections.itemClicked.connect(self.on_connection_item_clicked)
 
-
-
     ##############################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ С СЕРВЕРОМ           #
     ##############################################
     def show_server_page(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_server_info)
+
+    def show_server_manual_page(self):
+        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_server_manual)
 
     def start_server_thread(self):
         server_thread = threading.Thread(target=self.server.main)
@@ -516,7 +655,7 @@ class MyWindow(QtWidgets.QMainWindow):
         email = self.ui.le_email.text()
         login = self.ui.le_login_2.text()
         password = self.ui.le_password_2.text()
-        access_level = self.ui.le_access_level.text()
+        access_level = self.ui.cb_user_role.text()
         # print(name, soname, rank, email, login, password, access_level)
 
         data = {}
@@ -546,19 +685,21 @@ class MyWindow(QtWidgets.QMainWindow):
             query.addBindValue(access_level)
             if query.exec_():
                 QtWidgets.QMessageBox.information(self, "Уведомление", "Данные успешно давлены")
+                self.register_actions.register_database_actions("Добавление данных")
                 self.ui.le_name.clear()
                 self.ui.le_soname.clear()
                 self.ui.le_rank.clear()
                 self.ui.le_email.clear()
                 self.ui.le_login_2.clear()
                 self.ui.le_password_2.clear()
-                self.ui.le_access_level.clear()
+                self.ui.cb_user_role.clear()
                 self.refreshTable()  # обновляем базу данных
 
     # поиск пользователя в БД
     def search_user_in_db(self, data):
         query = self.customs_officers_database.search_user_from_db(data)
         self.searchModel.setQuery(query)
+        self.register_actions.register_database_actions("Поиск данных")
 
     # удаления пользователя из БД
     def delete_user_from_db(self, idx):
@@ -567,12 +708,15 @@ class MyWindow(QtWidgets.QMainWindow):
             row = idx.row()
             if self.deleteModel.removeRow(row):
                 self.refreshTable()
+                self.register_actions.register_database_actions("Удаление данных")
 
     # обновление таблицы
     def refreshTable(self):
         self.searchModel.setQuery("""SELECT * FROM `customs_officers`;""")
+        self.dataModel.select()
         self.changeModel.select()
         self.deleteModel.select()
+        self.register_actions.register_database_actions("Обновление данных")
 
     def onModificarTimer_timeout(self):
         self.refreshTable()
@@ -586,15 +730,66 @@ class MyWindow(QtWidgets.QMainWindow):
     def show_dbms_manual(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_dbms_manual)
 
+    # страница с доступынми базами данных
+    def open_page_list_of_db(self):
+        self.ui.lw_db_widget.clear()
+        path = "C:\\PycharmProjects\\Antivirus\\dependencies\\database_dir"
+        dirs = os.listdir(path)
+        dbs = [file for file in dirs]
+        if len(dbs) > 0:
+            for db in dbs:
+                self.ui.lw_db_widget.addItem(db)
+        else:
+            self.ui.lw_db_widget.addItem("БАЗЫ ДАННЫХ ОТСУТСТВУЮТ")
+        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_list_of_db)
+        self.ui.lw_db_widget.itemClicked.connect(self.onDBClicked)
+        self.ui.tv_for_db_view.setDisabled(True) # не даёт взаимодействовать с таблицей
+
+    # открывает базу данных
+    def onDBClicked(self, item):
+        self.ui.lw_table_widget.clear()
+        file = item.text()
+        path = f"C:\\PycharmProjects\\Antivirus\\dependencies\\database_dir\\{file}"
+
+        # открываем базу данных по путю
+        self.db = QSqlDatabase.addDatabase('QSQLITE')
+        self.db.setDatabaseName(path)
+        self.db.open()
+
+        # поиск таблиц в базе данных
+        model = QSqlQueryModel()
+        model.setQuery(
+            """SELECT name FROM sqlite_master WHERE type='table';""")  # делаем запрос с логином из поля ввода
+        for i in range(5):  # при помощи получаем его данные
+            res = model.record(i).value("name")
+            self.ui.lw_table_widget.addItem(res)
+        self.ui.lw_table_widget.itemClicked.connect(self.onTableClicked)
+
+    # отображаем таблицу
+    def onTableClicked(self, item):
+        table = item.text()
+
+        # отображаем базу данных в таблице
+        self.model = QSqlTableModel(self)
+        self.model.setTable(table)
+        self.model.select()
+
+        # растягиваем таблицу по всей ширине
+        header = self.ui.tv_for_db_view.horizontalHeader()
+        header.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.ui.tv_for_db_view.setModel(self.model)
+
     ##############################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ ЖУРНАЛА ЛОГИРОВАНИЯ  #
     ##############################################
+    # страница с мануалом по использованию журнала логирования
     def show_action_log_manual(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_show_action_log_manual)
 
+    # страница с доступными журналами
     def show_logs_and_get_logs(self):
         self.ui.lw_log_widget.clear()
-        path = "C:\\PycharmProjects\\Antivirus\\logging_package"
+        path = "C:\\PycharmProjects\\Antivirus\\dependencies\\log_dir"
         dirs = os.listdir(path)
         logs = [file for file in dirs if file.endswith("txt")]
         if len(logs) > 0:
@@ -603,12 +798,13 @@ class MyWindow(QtWidgets.QMainWindow):
         else:
             self.ui.lw_log_widget.addItem("ЖУРНАЛЫ ДЕЙСТВИЙ ОТСУТСТВУЮТ")
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_show_logging_journal)
-        self.ui.lw_log_widget.itemClicked.connect(self.onClicked)
+        self.ui.lw_log_widget.itemClicked.connect(self.onLogClicked)
 
-    def onClicked(self, item):
+    # открывает журнал логирования
+    def onLogClicked(self, item):
         self.ui.pte_log_action.clear()
         file = item.text()
-        path = f"C:\\PycharmProjects\\Antivirus\\logging_package\\{file}"
+        path = f"C:\\PycharmProjects\\Antivirus\\dependencies\\log_dir\\{file}"
         with open(path, "r", encoding="utf-8") as file:
             res = file.readlines()
             for i in res:
@@ -639,7 +835,6 @@ def main():
     app = QtWidgets.QApplication(sys.argv)
     my_window = MyWindow()
     my_window.show()
-    # my_window.prepareDatabase()
     sys.exit(app.exec_())
 
 
@@ -662,19 +857,3 @@ if __name__ == '__main__':
     # sys.exit(app.exec_())
     prepareDatabase()
     main()
-
-    #
-    # class MainWindow(QMainWindow, Ui_MainWindow):
-    #     def __init__(self):
-    #         super().__init__()
-    #
-    #         self.setupUi(self)
-    #
-    #         self.myList = ['Item 1', 'Item 2', 'Item 3', 'Item 4', ]
-    #         self.listWidget.addItems(self.myList)
-    #
-    #         self.listWidget.itemClicked.connect(self.onClicked)
-    #
-    #     def onClicked(self, item):
-    #         print(f'\nitem: {item}')  #
-    #         print(f'item.text: {item.text()}')  #

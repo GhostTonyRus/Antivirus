@@ -6,43 +6,44 @@ from email import encoders
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
-from database_package import OfficerDatabase
+
 ###
 
 
 class Two_factor_authentication:
     def __init__(self):
-        self.data_base = OfficerDatabase("customs_officers")
+        # self.data_base = OfficerDatabase("customs_officers")
+        ...
 
     def login_to_the_system(self, login, password):
         count = 0
         message, code = self.message
         user_login = login
         user_password = str(password)
-        if self.data_base.check_data("customs_officers_users", user_login, user_password):
-            print("Аутентификация пройдена!")
-            try:
-                self.send_email(email="antonmakeev18@gmail.com", msg=message)
-                print("Письмо успешно отправлено!")
-                while count < 5:
-                    response = input("Введите код для продолжения:\n>>>")
-                    if response == code:
-                        print("Добро пожаловать!")
-                        return True
-                        # break
-                    else:
-                        print("Неверный код! Попробуйте снова!")
-                        count += 1
-                        if count < 5:
-                            continue
-                        else:
-                            print(f"Превышен лимит входа! Было использовано {count} попыток!")
-                            break
-            except Exception as err:
-                print(err)
-                print("Не удалось отправить письмо!")
-        else:
-            print("Введеные неверные данные!")
+        # if self.data_base.check_data("customs_officers_users", user_login, user_password):
+        #     print("Аутентификация пройдена!")
+        #     try:
+        #         self.send_email(email="antonmakeev18@gmail.com", msg=message)
+        #         print("Письмо успешно отправлено!")
+        #         while count < 5:
+        #             response = input("Введите код для продолжения:\n>>>")
+        #             if response == code:
+        #                 print("Добро пожаловать!")
+        #                 return True
+        #                 # break
+        #             else:
+        #                 print("Неверный код! Попробуйте снова!")
+        #                 count += 1
+        #                 if count < 5:
+        #                     continue
+        #                 else:
+        #                     print(f"Превышен лимит входа! Было использовано {count} попыток!")
+        #                     break
+        #     except Exception as err:
+        #         print(err)
+        #         print("Не удалось отправить письмо!")
+        # else:
+        #     print("Введеные неверные данные!")
 
     @property
     def message(self):
