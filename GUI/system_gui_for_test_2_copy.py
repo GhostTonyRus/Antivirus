@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'GUI/system_gui_for_test_2.ui'
+# Form implementation generated from reading ui file 'GUI/system_gui_for_test_2_copy.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -19,14 +19,15 @@ class Ui_MainWindow(object):
         self.centralwidget.setStyleSheet("background-color: rgb(45, 45, 45);\n"
 "background-color: rgb(0, 0, 0);\n"
 "background-color: rgb(24, 24, 36);\n"
-"")
+"background-color: #1f232a;")
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.frame = QtWidgets.QFrame(self.centralwidget)
-        self.frame.setStyleSheet("background-color: rgb(9, 5, 13)")
+        self.frame.setStyleSheet("background-color: #16191d;\n"
+"")
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
@@ -545,7 +546,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.menu_container = QtWidgets.QFrame(self.main_container_page)
         self.menu_container.setMaximumSize(QtCore.QSize(300, 16777215))
-        self.menu_container.setStyleSheet("background-color: rgb(0, 0, 0);")
+        self.menu_container.setStyleSheet("background-color: rgb(0, 0, 0);\n"
+"background-color: #16191d;")
         self.menu_container.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.menu_container.setFrameShadow(QtWidgets.QFrame.Raised)
         self.menu_container.setObjectName("menu_container")
@@ -571,7 +573,8 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.toolBox.setFont(font)
-        self.toolBox.setStyleSheet("color: rgb(255, 255, 255);")
+        self.toolBox.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: #2c313c;")
         self.toolBox.setObjectName("toolBox")
         self.page_antivirus_menu = QtWidgets.QWidget()
         self.page_antivirus_menu.setGeometry(QtCore.QRect(0, 0, 258, 634))
@@ -595,10 +598,11 @@ class Ui_MainWindow(object):
 "    border: 5px groove rgb(30, 30, 30);\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
+"    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: rgb(24, 24, 36);\n"
+"    background-color: #1f232a;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
@@ -614,10 +618,11 @@ class Ui_MainWindow(object):
 "    border: 5px groove rgb(30, 30, 30);\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
+"    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: rgb(24, 24, 36);\n"
+"    background-color: #1f232a;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
@@ -633,10 +638,11 @@ class Ui_MainWindow(object):
 "    border: 5px groove rgb(30, 30, 30);\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
+"    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: rgb(24, 24, 36);\n"
+"    background-color: #1f232a;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
@@ -652,10 +658,11 @@ class Ui_MainWindow(object):
 "    border: 5px groove rgb(30, 30, 30);\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
+"    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: rgb(24, 24, 36);\n"
+"    background-color: #1f232a;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
@@ -671,10 +678,11 @@ class Ui_MainWindow(object):
 "    border: 5px groove rgb(30, 30, 30);\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
+"    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: rgb(24, 24, 36);\n"
+"    background-color: #1f232a;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
@@ -690,10 +698,11 @@ class Ui_MainWindow(object):
 "    border: 5px groove rgb(30, 30, 30);\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
+"    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: rgb(24, 24, 36);\n"
+"    background-color: #1f232a;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
@@ -709,10 +718,11 @@ class Ui_MainWindow(object):
 "    border: 5px groove rgb(30, 30, 30);\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
+"    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: rgb(24, 24, 36);\n"
+"    background-color: #1f232a;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
@@ -722,7 +732,7 @@ class Ui_MainWindow(object):
         icon3.addPixmap(QtGui.QPixmap(":/icons/icons/airplay.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.toolBox.addItem(self.page_antivirus_menu, icon3, "")
         self.page_server_menu = QtWidgets.QWidget()
-        self.page_server_menu.setGeometry(QtCore.QRect(0, 0, 100, 30))
+        self.page_server_menu.setGeometry(QtCore.QRect(0, 0, 258, 634))
         self.page_server_menu.setObjectName("page_server_menu")
         self.splitter_2 = QtWidgets.QSplitter(self.page_server_menu)
         self.splitter_2.setGeometry(QtCore.QRect(10, 120, 231, 261))
@@ -808,7 +818,7 @@ class Ui_MainWindow(object):
         icon4.addPixmap(QtGui.QPixmap(":/icons/icons/server.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.toolBox.addItem(self.page_server_menu, icon4, "")
         self.page_dbms_menu = QtWidgets.QWidget()
-        self.page_dbms_menu.setGeometry(QtCore.QRect(0, 0, 100, 30))
+        self.page_dbms_menu.setGeometry(QtCore.QRect(0, 0, 258, 634))
         self.page_dbms_menu.setObjectName("page_dbms_menu")
         self.splitter_3 = QtWidgets.QSplitter(self.page_dbms_menu)
         self.splitter_3.setGeometry(QtCore.QRect(10, 120, 231, 261))
@@ -875,7 +885,7 @@ class Ui_MainWindow(object):
         icon5.addPixmap(QtGui.QPixmap(":/icons/icons/archive.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.toolBox.addItem(self.page_dbms_menu, icon5, "")
         self.page_action_log = QtWidgets.QWidget()
-        self.page_action_log.setGeometry(QtCore.QRect(0, 0, 100, 30))
+        self.page_action_log.setGeometry(QtCore.QRect(0, 0, 258, 634))
         self.page_action_log.setObjectName("page_action_log")
         self.splitter_4 = QtWidgets.QSplitter(self.page_action_log)
         self.splitter_4.setGeometry(QtCore.QRect(10, 110, 231, 261))

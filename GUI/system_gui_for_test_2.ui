@@ -87,7 +87,7 @@ background-color: rgb(45, 45, 45);
 background-color: rgb(9, 5, 13)</string>
             </property>
             <property name="text">
-             <string>СИСИТЕМА ОБЕСПЕЧЕНИЯ ИНФОРМАЦИОННОЙ БЕЗОПАНСОСТИ БАЗ ДАННЫХ</string>
+             <string>СИСТЕМА ОБЕСПЕЧЕНИЯ ИНФОРМАЦИОННОЙ БЕЗОПАСНОСТИ БАЗ ДАННЫХ</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -222,7 +222,7 @@ background-color: rgb(9, 5, 13)</string>
        <item>
         <widget class="QStackedWidget" name="stackedWidget">
          <property name="currentIndex">
-          <number>0</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="authorization_page">
           <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -615,7 +615,7 @@ QPushButton:pressed {
                 <property name="topMargin">
                  <number>0</number>
                 </property>
-                <item row="0" column="0">
+                <item row="1" column="0">
                  <widget class="QLabel" name="label_22">
                   <property name="font">
                    <font>
@@ -635,7 +635,7 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="1">
+                <item row="1" column="1">
                  <widget class="QLineEdit" name="le_name_new_user">
                   <property name="maximumSize">
                    <size>
@@ -655,7 +655,7 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="0">
+                <item row="2" column="0">
                  <widget class="QLabel" name="label_23">
                   <property name="font">
                    <font>
@@ -675,7 +675,7 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="1">
+                <item row="2" column="1">
                  <widget class="QLineEdit" name="le_soname_new_user">
                   <property name="maximumSize">
                    <size>
@@ -695,7 +695,7 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="0">
+                <item row="3" column="0">
                  <widget class="QLabel" name="label_24">
                   <property name="font">
                    <font>
@@ -715,7 +715,7 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="1">
+                <item row="3" column="1">
                  <widget class="QLineEdit" name="le_rank_new_user">
                   <property name="maximumSize">
                    <size>
@@ -735,7 +735,7 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="0">
+                <item row="4" column="0">
                  <widget class="QLabel" name="label_25">
                   <property name="font">
                    <font>
@@ -755,7 +755,7 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="1">
+                <item row="4" column="1">
                  <widget class="QLineEdit" name="le_email_new_user">
                   <property name="maximumSize">
                    <size>
@@ -775,7 +775,7 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="0">
+                <item row="5" column="0">
                  <widget class="QLabel" name="label_26">
                   <property name="font">
                    <font>
@@ -795,7 +795,7 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="1">
+                <item row="5" column="1">
                  <widget class="QLineEdit" name="le_login_new_user">
                   <property name="maximumSize">
                    <size>
@@ -815,7 +815,7 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
-                <item row="5" column="0">
+                <item row="6" column="0">
                  <widget class="QLabel" name="label_27">
                   <property name="font">
                    <font>
@@ -835,7 +835,7 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
-                <item row="5" column="1">
+                <item row="6" column="1">
                  <widget class="QLineEdit" name="le_password_new_user">
                   <property name="maximumSize">
                    <size>
@@ -855,7 +855,7 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
-                <item row="6" column="0">
+                <item row="7" column="0">
                  <widget class="QLabel" name="label_28">
                   <property name="font">
                    <font>
@@ -868,7 +868,7 @@ QPushButton:pressed {
                    <string notr="true">color: rgb(255, 255, 255);</string>
                   </property>
                   <property name="text">
-                   <string>уровень допуска</string>
+                   <string>роль</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -878,7 +878,7 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
-                <item row="7" column="1">
+                <item row="8" column="1">
                  <widget class="QPushButton" name="btn_add_new_user_into_system">
                   <property name="maximumSize">
                    <size>
@@ -912,7 +912,7 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
-                <item row="6" column="1">
+                <item row="7" column="1">
                  <widget class="QComboBox" name="cb_role_new_user">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -954,7 +954,7 @@ QPushButton:pressed {
                   </item>
                  </widget>
                 </item>
-                <item row="8" column="1">
+                <item row="9" column="1">
                  <widget class="QPushButton" name="btn_return_to_login_page">
                   <property name="maximumSize">
                    <size>
@@ -985,6 +985,26 @@ QPushButton:pressed {
                   </property>
                   <property name="text">
                    <string>Вернуть на страницу авторизации</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLabel" name="label_31">
+                  <property name="font">
+                   <font>
+                    <pointsize>15</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 255);</string>
+                  </property>
+                  <property name="text">
+                   <string>Добавление нового пользователя</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -1076,7 +1096,7 @@ QPushButton:pressed {
                     <string notr="true">color: rgb(255, 255, 255);</string>
                    </property>
                    <property name="currentIndex">
-                    <number>2</number>
+                    <number>0</number>
                    </property>
                    <widget class="QWidget" name="page_antivirus_menu">
                     <property name="geometry">
@@ -1092,7 +1112,7 @@ QPushButton:pressed {
                       <normaloff>:/icons/icons/airplay.svg</normaloff>:/icons/icons/airplay.svg</iconset>
                     </attribute>
                     <attribute name="label">
-                     <string>Антивирус</string>
+                     <string>Защита системы</string>
                     </attribute>
                     <widget class="QSplitter" name="splitter">
                      <property name="geometry">
@@ -1240,7 +1260,7 @@ QPushButton:pressed {
 </string>
                       </property>
                       <property name="text">
-                       <string>Проверка USB</string>
+                       <string>Защита от USB</string>
                       </property>
                      </widget>
                      <widget class="QPushButton" name="btn_port_scaner">
@@ -1302,8 +1322,8 @@ QPushButton:pressed {
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>258</width>
-                      <height>634</height>
+                      <width>100</width>
+                      <height>30</height>
                      </rect>
                     </property>
                     <attribute name="icon">
@@ -1400,7 +1420,7 @@ QPushButton:pressed {
 </string>
                       </property>
                       <property name="text">
-                       <string>Старница сервера</string>
+                       <string>Страница сервера</string>
                       </property>
                      </widget>
                      <widget class="QPushButton" name="btn_start_server">
@@ -1436,8 +1456,8 @@ QPushButton:pressed {
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>258</width>
-                      <height>634</height>
+                      <width>100</width>
+                      <height>30</height>
                      </rect>
                     </property>
                     <attribute name="icon">
@@ -1544,8 +1564,8 @@ QPushButton:pressed {
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>258</width>
-                      <height>634</height>
+                      <width>100</width>
+                      <height>30</height>
                      </rect>
                     </property>
                     <attribute name="icon">
@@ -1749,7 +1769,7 @@ QPushButton:pressed {
               <item>
                <widget class="QStackedWidget" name="stackedWidget_main">
                 <property name="currentIndex">
-                 <number>13</number>
+                 <number>0</number>
                 </property>
                 <widget class="QWidget" name="page_about_system">
                  <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1781,7 +1801,7 @@ QPushButton:pressed {
                       <widget class="QLabel" name="label_4">
                        <property name="font">
                         <font>
-                         <pointsize>12</pointsize>
+                         <pointsize>15</pointsize>
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
@@ -1833,61 +1853,60 @@ QPushButton:pressed {
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Программное обеспечение (далее ПО) – это комплекс из отдельных программ, которые объединены друг с другом для достижения общего результата. Современное ПО делится на модули, которые объединены в единую систему и дополняют друг друга. Модули взаимодействую друг с другом через запрограммированный алгоритм. ПО принято разделять на три группы: &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Системное; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Прикладное; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;3.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Инструментальное. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;ПО, которое разрабатывается для защиты баз данных относится к системному. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Цель проекта. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Цель проекта - разработать систему обеспечения информационной безопасности баз данных (далее Система). В Системе должна быть предусмотрена защита базы данных от НСД. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Описание системы. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Система состоит из модулей, которые делятся на: &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Защита системы; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Система управления базами данных; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;3.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Сервер; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;4.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Журнал действий. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Первый модуль – защита системы. В данном модуле предоставляет следующие компоненты: &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Идентификация и аутентификация. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Данный компонент предоставляет функционал для входа в Систему. Компонент содержит: &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;― аутентификацию. Должностное лицо, должно пройти авторизацию при помощи ввода логина и пароля; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;― идентификацию. Система сверяется с введёнными данными. Если введённые данные верны, то должностное лицо должно подтвердить вход по e-mail адресу. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Сканер портов. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Данный компонент предоставляет функционал для поиска открытых портов IP-адреса, на котором располагается сервер. Сканирование портов может помочь определить потенциальные цели атаки. Также позволяет выявить открытые и закрытые порты, порты, используемые операционной системой. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;3.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Отслеживание процессов. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Данный модуль позволяет отслеживать активные процессы операционной системы. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;4.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Сканирование системы. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Позволяет проверить файлы каталога на наличие вредоносного файла или программного обеспечения. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;5.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Блокировка внешних usb-носителей. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Данный модуль блокирует использование внешних usb-носителей. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;6.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Информация о системе. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Данный модуль позволяет получить более точную информацию об операционной системе, на которой установлена Система. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Второй модуль – Система управления базой данных. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Данный модуль предоставляет компоненты для управления базой данных. При помощи компонентов данного модуля данные в базе данных можно: &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Добавлять; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Изменять; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;3.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Обновлять &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;4.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Удалять. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Третий модуль – Сервер. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Данный модуль предоставляет функционал при помощи которого пользователи могут безопасно подключиться по SSL-протоколу и получить свои данные, а также взаимодействовать с ними. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Четвёртый модуль – Журнал действий. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Данный модуль создаёт файлы для каждого модуля. В файлы записываются все действия пользователя совершённые им в Системе. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Отдельный модуль – Клиент. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Программное обеспечение, которое необходимо клиенту для получения своих данных из базы данных. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Система предусматривает три типа пользователей: &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Администратор – должностное лицо, которые выполняет функции администрирования базы данных и операционной системы сервера; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt; Пользователь –  пользователь, которому необходимо подключиться и получить свои персональные данные. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Доступ в Систему. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;При запуске Системы администратору необходимо пройти аутентификацию и идентификацию. При первом запуске необходимо пройти процедуру добавления нового пользователя. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Для добавления нового пользователя, Системе необходимо ввести следующие данные: &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;имя; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;фамилия; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;3.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;адрес электронной почты (e-mail); &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;4.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;логин; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;5.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;пароль; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;6.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;роль (0 – администратор). &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;В дальнейшем адрес электронной почты будет использоваться для прохождения двухфакторной аутентификации. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Аутентификация в Системе осуществляется при помощи логина, пароля и специального кода, Если логин и пароль прошли проверку, то откроется страница для ввода кода. который приходит на адрес электронной почты. &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Программное обеспечение (далее ПО) – это комплекс из отдельных про­грамм, которые объединены друг с другом для достижения общего результата. Современное ПО делится на модули, которые объединены в единую систему и дополняют друг друга. Модули взаимодействую друг с другом через запро­граммированный алгоритм. ПО принято разделять на три группы: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Системное; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Прикладное; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;3.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Инструментальное. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;ПО, которое предназначено для защиты баз данных относится к систем­ному. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Цель проекта. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Цель проекта - разработать систему обеспечения информационной без­опасности баз данных (далее Система). В Системе должна быть предусмотрена защита базы данных от НСД. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Описание системы. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Система состоит из модулей, которые делятся на: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Защита системы; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Система управления базами данных; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;3.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Сервер; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;4.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Журнал действий. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Первый модуль – защита системы. В данном модуле предоставляет сле­дующие компоненты: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Идентификация и аутентификация. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Данный компонент предоставляет функционал для входа в Систему. Компонент содержит: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;― аутентификацию. Должностное лицо, должно пройти авторизацию при помощи ввода логина и пароля; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;― идентификацию. Система сверяется с введёнными данными. Если вве­дённые данные верны, то должностное лицо должно подтвердить вход по e-mail адресу. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Сканер портов. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Данный компонент предоставляет функционал для поиска открытых пор­тов IP-адреса, на котором располагается сервер. Сканирование портов может помочь определить потенциальные цели атаки. Также позволяет выявить от­крытые и закрытые порты, порты, используемые операционной системой. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;3.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Отслеживание процессов. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Данный модуль позволяет отслеживать активные процессы операционной системы. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;4.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Сканирование системы. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Позволяет проверить файлы каталога на наличие вредоносного файла или программного обеспечения. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;5.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Блокировка внешних usb-носителей. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Данный модуль блокирует использование внешних usb-носителей. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;6.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Информация о системе. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Данный модуль позволяет получить более точную информацию об опе­рационной системе, на которой установлена Система. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Второй модуль – система управления базой данных. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Данный модуль предоставляет компоненты для управления базой данных. При помощи компонентов данного модуля данные в базе данных можно: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Добавлять; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Изменять; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;3.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Обновлять &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;4.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Удалять. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Третий модуль – сервер. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Данный модуль предоставляет функционал, при помощи которого пользо­ватели могут безопасно подключиться по SSL-протоколу и получить свои дан­ные, а также взаимодействовать с ними. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Четвёртый модуль – журнал действий. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Данный модуль создаёт файлы для каждого модуля. В файлы записыва­ются все действия пользователя совершённые им в Системе. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Отдельный модуль – клиент. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Программное обеспечение, которое необходимо клиенту для получения своих данных из базы данных. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Система предусматривает два типа пользователей: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Администратор – должностное лицо, которые выполняет функции адми­нистрирования базы данных и операционной системы сервера; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt; Пользователь –  пользователь, которому необходимо подключиться и по­лучить свои персональные данные. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Доступ в Систему. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;При запуске Системы администратору необходимо пройти аутентифика­цию и идентификацию. При первом запуске необходимо пройти процедуру до­бавления нового пользователя. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Для добавления нового пользователя, Системе необходимо ввести следу­ющие данные: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;имя; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;фамилия; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;3.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;адрес электронной почты (e-mail); &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;4.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;логин; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;5.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;пароль; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;6.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;роль (администратор или пользователь). &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;В дальнейшем адрес электронной почты будет использоваться для про­хождения двухфакторной аутентификации. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Аутентификация в Системе осуществляется при помощи логина, пароля и специального кода, Если пользователь прошёл авторизацию, то откроется стра­ница двухфакторной аутентификации для ввода кода. который приходит на указанный пользователем адрес электронной почты. &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                        </property>
                       </widget>
                      </item>
@@ -1929,10 +1948,30 @@ p, li { white-space: pre-wrap; }
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_22">
                      <item>
+                      <widget class="QLabel" name="label_32">
+                       <property name="font">
+                        <font>
+                         <pointsize>15</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                       <property name="text">
+                        <string>Защита от USB</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
                       <widget class="QLabel" name="label_13">
                        <property name="font">
                         <font>
-                         <pointsize>20</pointsize>
+                         <pointsize>15</pointsize>
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
@@ -1973,7 +2012,7 @@ p, li { white-space: pre-wrap; }
                       <widget class="QLabel" name="label_14">
                        <property name="font">
                         <font>
-                         <pointsize>20</pointsize>
+                         <pointsize>15</pointsize>
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
@@ -2011,46 +2050,7 @@ p, li { white-space: pre-wrap; }
                     <property name="frameShadow">
                      <enum>QFrame::Raised</enum>
                     </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_8">
-                     <item>
-                      <widget class="QPushButton" name="btn_start_usb_blocking">
-                       <property name="font">
-                        <font>
-                         <pointsize>15</pointsize>
-                         <weight>75</weight>
-                         <bold>true</bold>
-                        </font>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">color: rgb(255, 255, 255);
-border: 5px solid;
-border-bottom-color: rgb(255, 255, 255);</string>
-                       </property>
-                       <property name="text">
-                        <string>Начать блокировку</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="btn_end_usb_blocking">
-                       <property name="font">
-                        <font>
-                         <pointsize>15</pointsize>
-                         <weight>75</weight>
-                         <bold>true</bold>
-                        </font>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">color: rgb(255, 255, 255);
-border: 5px solid;
-border-bottom-color: rgb(255, 255, 255);</string>
-                       </property>
-                       <property name="text">
-                        <string>Закончить блокировку</string>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
+                    <layout class="QHBoxLayout" name="horizontalLayout_8"/>
                    </widget>
                   </item>
                  </layout>
@@ -2090,35 +2090,6 @@ border-bottom-color: rgb(255, 255, 255);</string>
                         <enum>QFrame::Raised</enum>
                        </property>
                        <layout class="QVBoxLayout" name="verticalLayout_35">
-                        <item alignment="Qt::AlignLeft|Qt::AlignTop">
-                         <widget class="QFrame" name="frame_27">
-                          <property name="frameShape">
-                           <enum>QFrame::StyledPanel</enum>
-                          </property>
-                          <property name="frameShadow">
-                           <enum>QFrame::Raised</enum>
-                          </property>
-                          <layout class="QVBoxLayout" name="verticalLayout_36">
-                           <item>
-                            <widget class="QLabel" name="label_15">
-                             <property name="font">
-                              <font>
-                               <pointsize>14</pointsize>
-                               <weight>75</weight>
-                               <bold>true</bold>
-                              </font>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">color: rgb(255, 255, 255);</string>
-                             </property>
-                             <property name="text">
-                              <string>Проверка</string>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
-                         </widget>
-                        </item>
                         <item>
                          <widget class="QFrame" name="frame_28">
                           <property name="sizePolicy">
@@ -2134,6 +2105,26 @@ border-bottom-color: rgb(255, 255, 255);</string>
                            <enum>QFrame::Raised</enum>
                           </property>
                           <layout class="QVBoxLayout" name="verticalLayout_41">
+                           <item>
+                            <widget class="QLabel" name="label_33">
+                             <property name="font">
+                              <font>
+                               <pointsize>15</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(255, 255, 255);</string>
+                             </property>
+                             <property name="text">
+                              <string>Проверка файла</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignCenter</set>
+                             </property>
+                            </widget>
+                           </item>
                            <item>
                             <widget class="QTextEdit" name="textEdit_3">
                              <property name="font">
@@ -2268,7 +2259,15 @@ p, li { white-space: pre-wrap; }
                               </font>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">color: rgb(255, 255, 255);</string>
+                              <string notr="true">QProgressBar{
+	color: rgb(255, 255, 255);
+	text-align: center;
+}
+
+QProgressBar::chunk{
+	background-color:  rgb(255, 0, 0);
+}
+</string>
                              </property>
                              <property name="value">
                               <number>0</number>
@@ -2353,6 +2352,26 @@ border-bottom-color: rgb(255, 255, 255);</string>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_14">
                      <item>
+                      <widget class="QLabel" name="label_15">
+                       <property name="font">
+                        <font>
+                         <pointsize>15</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                       <property name="text">
+                        <string>Отслеживание процессов</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
                       <widget class="QPlainTextEdit" name="plainTextEdit_for_activity_registration">
                        <property name="font">
                         <font>
@@ -2378,27 +2397,7 @@ border-bottom-color: rgb(255, 255, 255);</string>
                     <property name="frameShadow">
                      <enum>QFrame::Raised</enum>
                     </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_7">
-                     <item>
-                      <widget class="QPushButton" name="btn_start_activity_registration">
-                       <property name="font">
-                        <font>
-                         <pointsize>15</pointsize>
-                         <weight>75</weight>
-                         <bold>true</bold>
-                        </font>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">color: rgb(255, 255, 255);
-border: 5px solid;
-border-bottom-color: rgb(255, 255, 255);</string>
-                       </property>
-                       <property name="text">
-                        <string>Начать отслеживать исполняемые процессы операционной системы</string>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
+                    <layout class="QHBoxLayout" name="horizontalLayout_7"/>
                    </widget>
                   </item>
                  </layout>
@@ -2433,7 +2432,7 @@ border-bottom-color: rgb(255, 255, 255);</string>
                       <widget class="QLabel" name="label_5">
                        <property name="font">
                         <font>
-                         <pointsize>12</pointsize>
+                         <pointsize>15</pointsize>
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
@@ -2483,22 +2482,21 @@ border-bottom-color: rgb(255, 255, 255);</string>
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;Антивирус. В данном пакете находятся модули, для обеспечения следующего функционала:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;	Защита системы. В данном модуле находятся компоненты, для обеспечения следующего функционала:&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;Идентификация и аутентификация. Данный модуль предоставляет функционал для входа в Систему. Модуль содержит: аутентификацию. Должностное лицо, должно войти в систему при по-мощи логина и пароля. идентификацию. Систему сверяется с введёнными данными. Если введённые данные верны, то пользователю должностное лицо подтвердить вход по e-mail адресу. После успешной идентификации приходит письмо с кодом для входа в Систему. В дальнейшем планируется возможность получения кода по номеру телефона.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;	1. Идентификация и аутентификация. Данный модуль предоставляет функционал для входа в Систему. Компонент содержит: аутентификацию и двузфакторную аутентификацию. Должностное лицо, должно войти в систему при помощи логина и пароля. идентификацию. Систему сверяется с введёнными данными. Если введённые данные верны, то пользователю должностное лицо подтвердить вход по e-mail адресу. После успешной идентификации приходит письмо с кодом для входа в Систему. &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;Отслеживание процессов. Данный модуль позволяет отслеживать процессы, для выявления вирус-ной активности и следить за системными ресурсами.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;	2. Отслеживание процессов. Данный компонент позволяет отслеживать процессы, для выявления вирус-ной активности и следить за системными ресурсами.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;Проверка файла. В данный модуль можно загрузить файл и получить всю информацию о нём, а также узнать содержит ли этот файл вредоносный код. Во время разработки возможно добавление нового функционала или от-каз от ненужного.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;	3. Проверка файла.  Данный компонент проверяет файл на наличие вредоносного кода.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;	4. Сбор информации о системе. Данный модуль позволяет узнать более точную информацию об операционной системе на которой установлена Система.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;Сбор информации о системе. Данный модуль позволяет узнать более точную информацию об операционной системе на которой установлена Система.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;	5. Защита от USB. Блокирует USB-накопители.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;Проверка USB.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;	6. Сканер портов. Данный модуль предоставляет функционал для поиска открытых портов IP-адреса, на котором располагается сервер. Сканирование портов может по-мочь определить потенциальные цели атаки, а также выяснить какие порты открыты, закрыты и используются операционной системой.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;Сканер портов. Данный модуль предоставляет функционал для поиска открытых портов IP-адреса, на котором располагается сервер. Сканирование портов может по-мочь определить потенциальные цели атаки, а также выяснить какие порты открыты, закрыты и используются операционной системой.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;Блокирвока IP-адресов&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;	7. Межсетевой экран. Работает вместе с серверным модулем. Позволяет заблокирвоать входящее соединение.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
@@ -2539,6 +2537,26 @@ p, li { white-space: pre-wrap; }
                      <enum>QFrame::Raised</enum>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_19">
+                     <item>
+                      <widget class="QLabel" name="label_34">
+                       <property name="font">
+                        <font>
+                         <pointsize>15</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                       <property name="text">
+                        <string>Сканер портов</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
                      <item>
                       <widget class="QComboBox" name="comboBox_port_scanner">
                        <property name="font">
@@ -4423,6 +4441,26 @@ border-bottom-color: rgb(255, 255, 255);</string>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_16">
                      <item>
+                      <widget class="QLabel" name="label_35">
+                       <property name="font">
+                        <font>
+                         <pointsize>15</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                       <property name="text">
+                        <string>Информация о системе</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
                       <widget class="QTextEdit" name="textEdit__information_about_system">
                        <property name="font">
                         <font>
@@ -4482,6 +4520,9 @@ p, li { white-space: pre-wrap; }
                     </property>
                     <property name="text">
                      <string>Межсетевой экран</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
                     </property>
                    </widget>
                   </item>
@@ -4635,6 +4676,26 @@ border-bottom-color: rgb(255, 255, 255);</string>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_49">
                      <item>
+                      <widget class="QLabel" name="label_40">
+                       <property name="font">
+                        <font>
+                         <pointsize>15</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                       <property name="text">
+                        <string>Мануал для сервера</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
                       <widget class="QTextEdit" name="textEdit_5">
                        <property name="html">
                         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -4680,6 +4741,26 @@ p, li { white-space: pre-wrap; }
                      <enum>QFrame::Raised</enum>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_24">
+                     <item>
+                      <widget class="QLabel" name="label_42">
+                       <property name="font">
+                        <font>
+                         <pointsize>15</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                       <property name="text">
+                        <string>Страница сервера </string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
                      <item>
                       <widget class="QPlainTextEdit" name="plainTextEdit_infromation_from_server">
                        <property name="font">
@@ -4728,6 +4809,26 @@ p, li { white-space: pre-wrap; }
                      <enum>QFrame::Raised</enum>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_47">
+                     <item>
+                      <widget class="QLabel" name="label_41">
+                       <property name="font">
+                        <font>
+                         <pointsize>15</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                       <property name="text">
+                        <string>Мануал для системы управления базой данных</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
                      <item>
                       <widget class="QTextEdit" name="textEdit_4">
                        <property name="font">
@@ -4795,369 +4896,413 @@ p, li { white-space: pre-wrap; }
                    <number>0</number>
                   </property>
                   <item>
-                   <widget class="QTabWidget" name="tabWidget">
-                    <property name="font">
-                     <font>
-                      <pointsize>14</pointsize>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
+                   <widget class="QFrame" name="frame_27">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
                     </property>
-                    <property name="currentIndex">
-                     <number>4</number>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
                     </property>
-                    <widget class="QWidget" name="tab_add_data">
-                     <property name="font">
-                      <font>
-                       <pointsize>14</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <attribute name="title">
-                      <string>Добавить</string>
-                     </attribute>
-                     <layout class="QVBoxLayout" name="verticalLayout_29">
-                      <item>
-                       <layout class="QFormLayout" name="formLayout">
-                        <property name="horizontalSpacing">
-                         <number>20</number>
+                    <layout class="QVBoxLayout" name="verticalLayout_36">
+                     <item>
+                      <widget class="QLabel" name="label_39">
+                       <property name="font">
+                        <font>
+                         <pointsize>15</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                       <property name="text">
+                        <string>Система управления базой данных</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QTabWidget" name="tabWidget">
+                       <property name="font">
+                        <font>
+                         <pointsize>14</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="currentIndex">
+                        <number>0</number>
+                       </property>
+                       <widget class="QWidget" name="tab_add_data">
+                        <property name="font">
+                         <font>
+                          <pointsize>14</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
                         </property>
-                        <property name="verticalSpacing">
-                         <number>30</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>0</number>
-                        </property>
-                        <item row="0" column="0">
-                         <widget class="QLabel" name="label_6">
-                          <property name="font">
-                           <font>
-                            <pointsize>14</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">color: rgb(255, 255, 255);</string>
-                          </property>
-                          <property name="text">
-                           <string>имя</string>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignCenter</set>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="0" column="1">
-                         <widget class="QLineEdit" name="le_name">
-                          <property name="maximumSize">
-                           <size>
-                            <width>1000</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>14</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">color: rgb(255, 255, 255);</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="1" column="0">
-                         <widget class="QLabel" name="label_7">
-                          <property name="font">
-                           <font>
-                            <pointsize>14</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">color: rgb(255, 255, 255);</string>
-                          </property>
-                          <property name="text">
-                           <string>фамилия</string>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignCenter</set>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="1" column="1">
-                         <widget class="QLineEdit" name="le_soname">
-                          <property name="maximumSize">
-                           <size>
-                            <width>1000</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>14</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">color: rgb(255, 255, 255);</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="2" column="0">
-                         <widget class="QLabel" name="label_8">
-                          <property name="font">
-                           <font>
-                            <pointsize>14</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">color: rgb(255, 255, 255);</string>
-                          </property>
-                          <property name="text">
-                           <string>звание</string>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignCenter</set>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="2" column="1">
-                         <widget class="QLineEdit" name="le_rank">
-                          <property name="maximumSize">
-                           <size>
-                            <width>1000</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>14</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">color: rgb(255, 255, 255);</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="3" column="0">
-                         <widget class="QLabel" name="label_9">
-                          <property name="font">
-                           <font>
-                            <pointsize>14</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">color: rgb(255, 255, 255);</string>
-                          </property>
-                          <property name="text">
-                           <string>email</string>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignCenter</set>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="3" column="1">
-                         <widget class="QLineEdit" name="le_email">
-                          <property name="maximumSize">
-                           <size>
-                            <width>1000</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>14</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">color: rgb(255, 255, 255);</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="4" column="0">
-                         <widget class="QLabel" name="label_10">
-                          <property name="font">
-                           <font>
-                            <pointsize>14</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">color: rgb(255, 255, 255);</string>
-                          </property>
-                          <property name="text">
-                           <string>логин</string>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignCenter</set>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="4" column="1">
-                         <widget class="QLineEdit" name="le_login_2">
-                          <property name="maximumSize">
-                           <size>
-                            <width>1000</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>14</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">color: rgb(255, 255, 255);</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="5" column="0">
-                         <widget class="QLabel" name="label_11">
-                          <property name="font">
-                           <font>
-                            <pointsize>14</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">color: rgb(255, 255, 255);</string>
-                          </property>
-                          <property name="text">
-                           <string>пароль</string>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignCenter</set>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="5" column="1">
-                         <widget class="QLineEdit" name="le_password_2">
-                          <property name="maximumSize">
-                           <size>
-                            <width>1000</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>14</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">color: rgb(255, 255, 255);</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="6" column="0">
-                         <widget class="QLabel" name="label_12">
-                          <property name="font">
-                           <font>
-                            <pointsize>14</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">color: rgb(255, 255, 255);</string>
-                          </property>
-                          <property name="text">
-                           <string>уровень допуска</string>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignCenter</set>
-                          </property>
-                          <property name="wordWrap">
-                           <bool>true</bool>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="7" column="1">
-                         <widget class="QPushButton" name="btn_add_new_user">
-                          <property name="maximumSize">
-                           <size>
-                            <width>1000</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>15</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">color: rgb(255, 255, 255);
+                        <attribute name="title">
+                         <string>Добавить</string>
+                        </attribute>
+                        <layout class="QVBoxLayout" name="verticalLayout_29">
+                         <item>
+                          <layout class="QFormLayout" name="formLayout">
+                           <property name="horizontalSpacing">
+                            <number>20</number>
+                           </property>
+                           <property name="verticalSpacing">
+                            <number>30</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>0</number>
+                           </property>
+                           <item row="0" column="0">
+                            <widget class="QLabel" name="label_6">
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(255, 255, 255);</string>
+                             </property>
+                             <property name="text">
+                              <string>имя</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignCenter</set>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="0" column="1">
+                            <widget class="QLineEdit" name="le_name">
+                             <property name="maximumSize">
+                              <size>
+                               <width>1000</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(255, 255, 255);</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="1" column="0">
+                            <widget class="QLabel" name="label_7">
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(255, 255, 255);</string>
+                             </property>
+                             <property name="text">
+                              <string>фамилия</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignCenter</set>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="1" column="1">
+                            <widget class="QLineEdit" name="le_soname">
+                             <property name="maximumSize">
+                              <size>
+                               <width>1000</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(255, 255, 255);</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="2" column="0">
+                            <widget class="QLabel" name="label_8">
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(255, 255, 255);</string>
+                             </property>
+                             <property name="text">
+                              <string>звание</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignCenter</set>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="2" column="1">
+                            <widget class="QLineEdit" name="le_rank">
+                             <property name="maximumSize">
+                              <size>
+                               <width>1000</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(255, 255, 255);</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="3" column="0">
+                            <widget class="QLabel" name="label_9">
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(255, 255, 255);</string>
+                             </property>
+                             <property name="text">
+                              <string>email</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignCenter</set>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="3" column="1">
+                            <widget class="QLineEdit" name="le_email">
+                             <property name="maximumSize">
+                              <size>
+                               <width>1000</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(255, 255, 255);</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="4" column="0">
+                            <widget class="QLabel" name="label_10">
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(255, 255, 255);</string>
+                             </property>
+                             <property name="text">
+                              <string>логин</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignCenter</set>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="4" column="1">
+                            <widget class="QLineEdit" name="le_login_2">
+                             <property name="maximumSize">
+                              <size>
+                               <width>1000</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(255, 255, 255);</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="5" column="0">
+                            <widget class="QLabel" name="label_11">
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(255, 255, 255);</string>
+                             </property>
+                             <property name="text">
+                              <string>пароль</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignCenter</set>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="5" column="1">
+                            <widget class="QLineEdit" name="le_password_2">
+                             <property name="maximumSize">
+                              <size>
+                               <width>1000</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(255, 255, 255);</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="6" column="0">
+                            <widget class="QLabel" name="label_12">
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(255, 255, 255);</string>
+                             </property>
+                             <property name="text">
+                              <string>уровень допуска</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignCenter</set>
+                             </property>
+                             <property name="wordWrap">
+                              <bool>true</bool>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="6" column="1">
+                            <widget class="QComboBox" name="cb_user_role">
+                             <property name="maximumSize">
+                              <size>
+                               <width>1000</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>15</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(255, 255, 255);</string>
+                             </property>
+                             <item>
+                              <property name="text">
+                               <string>Пользователь</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>Администратор</string>
+                              </property>
+                             </item>
+                            </widget>
+                           </item>
+                           <item row="7" column="1">
+                            <widget class="QPushButton" name="btn_add_new_user">
+                             <property name="maximumSize">
+                              <size>
+                               <width>1000</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>15</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(255, 255, 255);
 border: 5px solid;
 border-bottom-color: rgb(255, 255, 255);</string>
-                          </property>
-                          <property name="text">
-                           <string>Добавить пользователя</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="6" column="1">
-                         <widget class="QComboBox" name="cb_user_role">
-                          <property name="maximumSize">
-                           <size>
-                            <width>1000</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>15</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">color: rgb(255, 255, 255);</string>
-                          </property>
-                          <item>
-                           <property name="text">
-                            <string>Пользователь</string>
+                             </property>
+                             <property name="text">
+                              <string>Добавить пользователя</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                        </layout>
+                       </widget>
+                       <widget class="QWidget" name="tab_data">
+                        <attribute name="title">
+                         <string>Данные</string>
+                        </attribute>
+                        <layout class="QVBoxLayout" name="verticalLayout_42">
+                         <item>
+                          <widget class="QTableView" name="data_table_view">
+                           <property name="font">
+                            <font>
+                             <pointsize>14</pointsize>
+                             <weight>75</weight>
+                             <bold>true</bold>
+                            </font>
                            </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>Администратор</string>
+                           <property name="styleSheet">
+                            <string notr="true">background-color: rgb(255, 255, 255);</string>
                            </property>
-                          </item>
-                         </widget>
-                        </item>
-                       </layout>
-                      </item>
-                     </layout>
-                    </widget>
-                    <widget class="QWidget" name="tab_data">
-                     <attribute name="title">
-                      <string>Данные</string>
-                     </attribute>
-                     <layout class="QVBoxLayout" name="verticalLayout_42">
-                      <item>
-                       <widget class="QTableView" name="data_table_view">
+                          </widget>
+                         </item>
+                        </layout>
+                       </widget>
+                       <widget class="QWidget" name="tab_search_page">
                         <property name="font">
                          <font>
                           <pointsize>14</pointsize>
@@ -5165,70 +5310,42 @@ border-bottom-color: rgb(255, 255, 255);</string>
                           <bold>true</bold>
                          </font>
                         </property>
-                        <property name="styleSheet">
-                         <string notr="true">background-color: rgb(255, 255, 255);</string>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
-                    </widget>
-                    <widget class="QWidget" name="tab_search_page">
-                     <property name="font">
-                      <font>
-                       <pointsize>14</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <attribute name="title">
-                      <string>Найти</string>
-                     </attribute>
-                     <layout class="QVBoxLayout" name="verticalLayout_27">
-                      <item>
-                       <widget class="QLineEdit" name="le_search_data_in_db">
-                        <property name="font">
-                         <font>
-                          <pointsize>14</pointsize>
-                          <weight>50</weight>
-                          <bold>false</bold>
-                         </font>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">color: rgb(255, 255, 255);</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QTableView" name="search_table_view">
-                        <property name="font">
-                         <font>
-                          <pointsize>14</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">
+                        <attribute name="title">
+                         <string>Найти</string>
+                        </attribute>
+                        <layout class="QVBoxLayout" name="verticalLayout_27">
+                         <item>
+                          <widget class="QLineEdit" name="le_search_data_in_db">
+                           <property name="font">
+                            <font>
+                             <pointsize>14</pointsize>
+                             <weight>50</weight>
+                             <bold>false</bold>
+                            </font>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">color: rgb(255, 255, 255);</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QTableView" name="search_table_view">
+                           <property name="font">
+                            <font>
+                             <pointsize>14</pointsize>
+                             <weight>75</weight>
+                             <bold>true</bold>
+                            </font>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">
 background-color: rgb(255, 255, 255);</string>
-                        </property>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
                        </widget>
-                      </item>
-                     </layout>
-                    </widget>
-                    <widget class="QWidget" name="tab_change_page">
-                     <property name="font">
-                      <font>
-                       <pointsize>14</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <attribute name="title">
-                      <string>Изменить</string>
-                     </attribute>
-                     <layout class="QVBoxLayout" name="verticalLayout_28">
-                      <item>
-                       <widget class="QTableView" name="change_table_view">
+                       <widget class="QWidget" name="tab_change_page">
                         <property name="font">
                          <font>
                           <pointsize>14</pointsize>
@@ -5236,40 +5353,76 @@ background-color: rgb(255, 255, 255);</string>
                           <bold>true</bold>
                          </font>
                         </property>
-                        <property name="styleSheet">
-                         <string notr="true">background-color: rgb(255, 255, 255);</string>
-                        </property>
+                        <attribute name="title">
+                         <string>Изменить</string>
+                        </attribute>
+                        <layout class="QVBoxLayout" name="verticalLayout_28">
+                         <item>
+                          <widget class="QTableView" name="change_table_view">
+                           <property name="font">
+                            <font>
+                             <pointsize>14</pointsize>
+                             <weight>75</weight>
+                             <bold>true</bold>
+                            </font>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">background-color: rgb(255, 255, 255);</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
                        </widget>
-                      </item>
-                     </layout>
-                    </widget>
-                    <widget class="QWidget" name="tab_delete_page">
-                     <attribute name="title">
-                      <string>Удалить</string>
-                     </attribute>
-                     <layout class="QVBoxLayout" name="verticalLayout_31">
-                      <item>
-                       <widget class="QTableView" name="delete_table_view">
-                        <property name="font">
-                         <font>
-                          <pointsize>14</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">background-color: rgb(255, 255, 255);</string>
-                        </property>
+                       <widget class="QWidget" name="tab_delete_page">
+                        <attribute name="title">
+                         <string>Удалить</string>
+                        </attribute>
+                        <layout class="QVBoxLayout" name="verticalLayout_31">
+                         <item>
+                          <widget class="QTableView" name="delete_table_view">
+                           <property name="font">
+                            <font>
+                             <pointsize>14</pointsize>
+                             <weight>75</weight>
+                             <bold>true</bold>
+                            </font>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">background-color: rgb(255, 255, 255);</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
                        </widget>
-                      </item>
-                     </layout>
-                    </widget>
+                      </widget>
+                     </item>
+                    </layout>
                    </widget>
                   </item>
                  </layout>
                 </widget>
                 <widget class="QWidget" name="page_list_of_db">
                  <layout class="QVBoxLayout" name="verticalLayout_52">
+                  <item>
+                   <widget class="QLabel" name="label_38">
+                    <property name="font">
+                     <font>
+                      <pointsize>15</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">color: rgb(255, 255, 255);</string>
+                    </property>
+                    <property name="text">
+                     <string>Список баз данных</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
                   <item>
                    <widget class="QFrame" name="frame_37">
                     <property name="sizePolicy">
@@ -5462,6 +5615,26 @@ background-color: rgb(255, 255, 255);</string>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_51">
                      <item>
+                      <widget class="QLabel" name="label_36">
+                       <property name="font">
+                        <font>
+                         <pointsize>15</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                       <property name="text">
+                        <string>Мануал для журнала логирования</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
                       <widget class="QTextEdit" name="textEdit_6">
                        <property name="readOnly">
                         <bool>true</bool>
@@ -5471,7 +5644,7 @@ background-color: rgb(255, 255, 255);</string>
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Журнал логирования предназанчен для  последовательной записи всех событий, происходящих в Системе. Система сохраняет днйсвтяи пользваоетля при работе с СУБД и сервером.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Журнал логирования предназанчен для последовательной записи всех событий, происходящих в Системе. Система сохраняет днйсвтяи пользваоетля при работе с СУБД и сервером.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Журналы сервера — специальные файлы, в которых протоколируются определённые действия пользователя или программы на сервере. Например, в журналы сервера записывается информация, откуда пришёл тот либо иной посетитель, когда и сколько времени он провел, что смотрел и какой IP-адрес у его компьютера. Каждая запись в лог-файле соответствует определённому дейсвтию пользователя.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
@@ -5516,6 +5689,26 @@ p, li { white-space: pre-wrap; }
                      <enum>QFrame::Raised</enum>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_33">
+                     <item>
+                      <widget class="QLabel" name="label_37">
+                       <property name="font">
+                        <font>
+                         <pointsize>15</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                       <property name="text">
+                        <string>Журналы логирования</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
                      <item alignment="Qt::AlignTop">
                       <widget class="QListWidget" name="lw_log_widget">
                        <property name="font">

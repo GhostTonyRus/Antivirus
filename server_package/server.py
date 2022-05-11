@@ -71,10 +71,9 @@ class Server:
             "3" :"добавить данные в таблицу",
             "4" :"изменить данные в таблице"
         }
-
-        if os.path.exists("C:\\PycharmProjects\\Antivirus\\dependencies\\server_dir\\temporary_actions.txt"):
-            os.remove("C:\\PycharmProjects\\Antivirus\\dependencies\\server_dir\\temporary_actions.txt")
-            print("файл удалён")
+        temporary_path = "C:\\PycharmProjects\\Antivirus\\dependencies\\server_dir\\temporary_actions.txt"
+        with open(temporary_path, 'w'):
+            pass
 
     def temporary_actions(self, value, time):
         path = "C:\\PycharmProjects\\Antivirus\\dependencies\\server_dir\\temporary_actions.txt"
@@ -126,7 +125,6 @@ class Server:
             self.__server.setblocking(True)
             self.connection, self.client_addr = self.__server.accept()
             self.__clients.append(self.connection)
-            self.connection.send(f"Вы присоединились к серверу.\n".encode("utf-8"))
             self.__action_log.register_server_actions(
                 f"Пользователь {self.client_addr} подключился к серверу")
             self.temporary_actions(f"Пользователь {self.client_addr} подключился к серверу",
@@ -170,11 +168,11 @@ class Server:
                                            datetime.now().strftime("%H:%M:%S %m-%d-%Y"))
                     all_data += data
                     obj = json.loads(all_data)
-                    res = self.__user_db.get_data_from_table(obj)
+                    res = self.__user_db.get_data_from_table(obj) # получаем данные из базы данных
                     if res:
                         self.send_message(connection, "True")
                     elif res == False:
-                        print("ОШИБКА", 177)
+                        self.send_message(connection, "False")
             except socket.error as error:
                 self.close_connection(connection)
                 break

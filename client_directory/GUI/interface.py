@@ -11,7 +11,7 @@ from client_directory.test_client import Client
 # from client_directory.client import Client
 import icons_rc
 from client_gui_for_test_2 import Ui_MainWindow
-import pickle
+
 
 IP = "127.0.0.1"
 PORT = 12345
@@ -74,29 +74,28 @@ class MyWindow(QtWidgets.QMainWindow):
 
         # запуск сингала для принятия сообщений
         self.my_thread = MyThread()
-        self.my_thread.my_signal.connect(self.receive_msg)
+        self.my_thread.my_signal.connect(client.receive_msg)
         self.my_thread.start()
 
-        self.message = []
-
-    # получаем сообщения от сервера
-    def receive_msg(self, value):
-        self.message.append(value)
-        # print(self.message)
-        # return answer # отображаем входящие сообщения
-
+    # вход в систему
     def login(self):
+        path = "C:\\PycharmProjects\\Antivirus\\client_directory\\history.txt"
         login = self.ui.le_login.text()
         password = self.ui.le_password.text()
         try:
             client.connect_to_server(SERVER_ADDRESS)
-            time.sleep(3)
             client.send_user_data(login, password)
         except socket.error as err:
-            print(err)
-        #     self.ui.stackedWidget.setCurrentWidget(self.ui.two_factor_authentication_page)
-        # elif res == False:
-        #     QtWidgets.QMessageBox.critical(self, "Ошбика", "Ошибка подключения к серверу")
+            ...
+        time.sleep(10)
+        with open(path, "r") as file:
+            res = file.readline()
+            if res == "True":
+                print(True)
+                self.ui.stackedWidget.setCurrentWidget(self.ui.two_factor_authentication_page)
+            else:
+                QtWidgets.QMessageBox.information(self, "Ошбика", "Неверный адрес электронной почты или пароль")
+
 
     def show_main_page(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.main_container_page)

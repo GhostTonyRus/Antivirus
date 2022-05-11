@@ -32,11 +32,10 @@ class ProcessMonitor:
         """
         при инициализации класса создаётся писок свойств процесса в виде слвоаря и определяется объект наблюдателя
         """
-        try:
-            path = "C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\activity_registration.txt"
-            os.remove(path)
-        except FileNotFoundError as err:
+        path = "C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\activity_registration.txt"
+        with open(path, "w") as file:
             ...
+
         self._process_property = {
             "Caption": None,
             "CreationDate": None,

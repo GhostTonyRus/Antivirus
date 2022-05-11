@@ -196,10 +196,5 @@ class UsersDataBase:
 if __name__ == '__main__':
     # users = UsersDataBase()
     # print(users.get_data_from_table("antonmakeev18@gmail.com", "12345"))
-    d = {
-        "antonmakeev18@gmail.com": "12345"
-    }
-
-    for key, value in d.items():
-        print(key, value)
+    path = "C:\\PycharmProjects\\Antivirus\\client_directory\\history.txt"
 

@@ -1,4 +1,5 @@
 import json
+import os
 import socket
 import ssl
 import sys
@@ -23,6 +24,10 @@ class Client:
         self.__certificate_file = "C:\\PycharmProjects\\Antivirus\\client_directory\\certificates\\certificate.crt"
         self.__datetime = datetime.now()
         self.__custom_datetime = self.__datetime.strftime("%Y-%m-%d %H:%M:%S")
+        history_path = "C:\\PycharmProjects\\Antivirus\\client_directory\\history.txt"
+
+        with open(history_path, 'w'):
+            pass
 
     def ssl_wrap_connection(self, client):
         """подключаем ssl соединение"""
@@ -59,11 +64,14 @@ class Client:
     # получаем сообщение от сервера
     def receive_msg(self):
         time.sleep(3)
+        path = "C:\\PycharmProjects\\Antivirus\\client_directory\\history.txt"
         while True:
             try:
-                data = self.__client.recv(4096)
+                data = self.__client.recv(4096).decode("utf-8")
                 if data:
-                    return data.decode("utf-8")
+                    print(data, "from client")
+                    with open(path, "w", encoding="utf-8") as file:
+                        file.write(f"{data}\n")
                 elif len(data) == 0:
                     self.disconnect_from_server()
                     break
@@ -91,5 +99,5 @@ class Client:
         thread_receive = threading.Thread(target=self.receive_msg)
         thread_receive.start()
         # запуск отправки сообщения
-        thread_send_msg = threading.Thread(target=self.send_msg)
+        thread_send_msg = threading.Thread(target=self.send_user_data)
         thread_send_msg.start()

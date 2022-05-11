@@ -206,3 +206,7 @@ class CustomsofficersDataBase:
 
 # db = CustomsofficerDataBase()
 # print(db.db_name)
+history_path = "C:\\PycharmProjects\\Antivirus\\client_directory\\history.txt"
+
+with open(history_path, 'w'):
+    pass

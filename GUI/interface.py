@@ -1,12 +1,14 @@
 import os
+import subprocess
 import sys
 import threading
 from PyQt5 import QtWidgets, QtGui, QtCore, Qt
 from PyQt5.QtCore import QPoint, QPropertyAnimation, QObject, QTimer
-from PyQt5.QtGui import QColor
+from PyQt5.QtGui import QColor, QCloseEvent
 from PyQt5.QtSql import QSqlDatabase, QSqlQuery, QSqlQueryModel, QSqlTableModel, QSqlRecord
 from PyQt5.QtWidgets import QGraphicsDropShadowEffect, QSizeGrip, QDesktopWidget, QTableView, QLineEdit
-from system_gui_for_test_2 import Ui_MainWindow
+# from system_gui_for_test_2 import Ui_MainWindow
+from system_gui_for_test_2_copy import Ui_MainWindow
 from database_dialog_view import Ui_Dialog
 # from system_gui import Ui_MainWindow
 from antivirus_package import Two_factor_authentication, InfoSystem, PortScanner, Monitor, UsbLock, CheckFile, \
@@ -200,7 +202,6 @@ class MyWindow(QtWidgets.QMainWindow):
         self.activity_registration_thread = ActivityRegistrationThread()
         self.activity_registration_thread.signal.connect(self.insert_activity_registration_value)
         self.ui.btn_activity_registration.clicked.connect(lambda: self.show_activity_registration_page())
-        self.ui.btn_start_activity_registration.clicked.connect(self.start_activity_registration_thread)
 
         # настройка проверки файла
         self.ui.progressBar.hide()
@@ -213,7 +214,6 @@ class MyWindow(QtWidgets.QMainWindow):
         self.usb_blocking_thread = CheckUsbThread()
         self.usb_blocking_thread.signal.connect(self.insert_info_about_blocking_usb)
         self.ui.btn_check_usb.clicked.connect(lambda: self.show_usb_block())
-        self.ui.btn_start_usb_blocking.clicked.connect(lambda: self.insert_information_about_usb())
 
         # настройка порт сканер
         self.port_scanner_thread = PortScannerThread(self.ui.comboBox_port_scanner.currentText())
@@ -256,6 +256,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.dataModel.setTable("customs_officers")
         self.dataModel.select()
         self.ui.data_table_view.setModel(self.dataModel)
+
         # растягиваем таблицу по всей ширине
         header = self.ui.data_table_view.horizontalHeader()
         header.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
@@ -297,6 +298,12 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.btn_open_action_log.clicked.connect(self.show_logs_and_get_logs)
         self.ui.btn_action_log_manual.clicked.connect(self.show_action_log_manual)
 
+        ###############################################
+        # запуск компонентов при старте программы     #
+        ###############################################
+        self.start_activity_registration_thread() # запуск отслеживания процессов
+        self.insert_information_about_usb() # запуск блокировки флешки
+
     # перетаскивание окна
     def center(self):
         qr = self.frameGeometry()
@@ -320,12 +327,11 @@ class MyWindow(QtWidgets.QMainWindow):
         else:
             self.showMaximized()
 
-    def close_app(self):
-        sys.exit(0)
-
+        # открыть страницу авторизации
     def show_login_page(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.authorization_page)
 
+    # получаем данных
     def get_data(self):
         __login = self.ui.le_login.text()
         __password = self.ui.le_password.text()
@@ -335,6 +341,7 @@ class MyWindow(QtWidgets.QMainWindow):
         else:
             return __login, __password
 
+    # генерируем код для отправки
     def generate_code(self):
         code = self.two_factor_authentication.generate_code()
         return code
