@@ -1279,9 +1279,20 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.btn_start_file_checking.setFont(font)
-        self.btn_start_file_checking.setStyleSheet("color: rgb(255, 255, 255);\n"
-"border: 5px solid;\n"
-"border-bottom-color: rgb(255, 255, 255);")
+        self.btn_start_file_checking.setStyleSheet("QPushButton {\n"
+"color: rgb(255, 255, 255);\n"
+"    border: 5px groove #2c313c;\n"
+"    border-bottom-color: rgb(255, 255, 255);\n"
+"    border-radius: 20px;\n"
+"    background-color: #16191d;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #2c313c;\n"
+"    border: 5px solid  rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"")
         self.btn_start_file_checking.setObjectName("btn_start_file_checking")
         self.verticalLayout_37.addWidget(self.btn_start_file_checking)
         self.verticalLayout_35.addWidget(self.frame_29, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignBottom)
@@ -2186,8 +2197,8 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stackedWidget.setCurrentIndex(3)
-        self.toolBox.setCurrentIndex(3)
-        self.stackedWidget_main.setCurrentIndex(1)
+        self.toolBox.setCurrentIndex(1)
+        self.stackedWidget_main.setCurrentIndex(2)
         self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 

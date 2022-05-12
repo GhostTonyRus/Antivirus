@@ -1105,7 +1105,7 @@ background-color: #16191d;</string>
 background-color: #16191d;</string>
                    </property>
                    <property name="currentIndex">
-                    <number>3</number>
+                    <number>1</number>
                    </property>
                    <widget class="QWidget" name="page_antivirus_menu">
                     <property name="geometry">
@@ -1798,7 +1798,7 @@ background-color: #1f232a;</string>
               <item>
                <widget class="QStackedWidget" name="stackedWidget_main">
                 <property name="currentIndex">
-                 <number>1</number>
+                 <number>2</number>
                 </property>
                 <widget class="QWidget" name="page_about_system">
                  <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -2328,9 +2328,20 @@ QProgressBar::chunk{
                               </font>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">color: rgb(255, 255, 255);
-border: 5px solid;
-border-bottom-color: rgb(255, 255, 255);</string>
+                              <string notr="true">QPushButton {
+color: rgb(255, 255, 255);
+	border: 5px groove #2c313c;
+	border-bottom-color: rgb(255, 255, 255);
+	border-radius: 20px;
+	background-color: #16191d;
+}
+
+QPushButton:pressed {
+    background-color: #2c313c;
+	border: 5px solid  rgb(255, 255, 255);
+}
+
+</string>
                              </property>
                              <property name="text">
                               <string>Запустить проверку</string>
