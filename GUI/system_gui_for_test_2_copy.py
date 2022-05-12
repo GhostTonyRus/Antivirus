@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1223, 1025)
+        MainWindow.resize(1293, 1026)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("background-color: rgb(45, 45, 45);\n"
 "background-color: rgb(0, 0, 0);\n"
@@ -62,44 +62,38 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.btn_minimize_window = QtWidgets.QPushButton(self.frame_4)
         self.btn_minimize_window.setStyleSheet("QPushButton:pressed {\n"
-"    background-color: rgb(24, 24, 36);\n"
-"    border: 5px solid  rgb(255, 255, 255);\n"
+"    background-color: #2c313c;\n"
 "}\n"
 "\n"
 "")
         self.btn_minimize_window.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/icons/icons/minus.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/newPrefix/icons_2/minus.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btn_minimize_window.setIcon(icon)
         self.btn_minimize_window.setIconSize(QtCore.QSize(25, 25))
         self.btn_minimize_window.setObjectName("btn_minimize_window")
         self.horizontalLayout_2.addWidget(self.btn_minimize_window)
         self.btn_restore_window = QtWidgets.QPushButton(self.frame_4)
         self.btn_restore_window.setStyleSheet("QPushButton:pressed {\n"
-"    background-color: rgb(24, 24, 36);\n"
-"    border: 5px solid  rgb(255, 255, 255);\n"
+"    background-color: #2c313c;\n"
 "}\n"
 "\n"
 "")
         self.btn_restore_window.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/icons/icons/maximize.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(":/newPrefix/icons_2/maximize.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btn_restore_window.setIcon(icon1)
         self.btn_restore_window.setIconSize(QtCore.QSize(25, 25))
         self.btn_restore_window.setObjectName("btn_restore_window")
         self.horizontalLayout_2.addWidget(self.btn_restore_window)
         self.btn_close_window = QtWidgets.QPushButton(self.frame_4)
         self.btn_close_window.setStyleSheet("QPushButton:pressed {\n"
-"    background-color: rgb(24, 24, 36);\n"
-"    border: 5px solid  rgb(255, 255, 255);\n"
+"    background-color: #2c313c;\n"
 "}\n"
-"\n"
-"\n"
-"\n"
 "")
         self.btn_close_window.setText("")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/icons/icons/x-square.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(":/newPrefix/icons_2/x-square.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btn_close_window.setIcon(icon2)
         self.btn_close_window.setIconSize(QtCore.QSize(25, 25))
         self.btn_close_window.setObjectName("btn_close_window")
@@ -122,6 +116,8 @@ class Ui_MainWindow(object):
         self.stackedWidget = QtWidgets.QStackedWidget(self.frame_2)
         self.stackedWidget.setObjectName("stackedWidget")
         self.authorization_page = QtWidgets.QWidget()
+        self.authorization_page.setStyleSheet("background-color: #16191d;\n"
+"")
         self.authorization_page.setObjectName("authorization_page")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.authorization_page)
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -247,6 +243,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addWidget(self.frame_5, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
         self.stackedWidget.addWidget(self.authorization_page)
         self.two_factor_authentication_page = QtWidgets.QWidget()
+        self.two_factor_authentication_page.setStyleSheet("background-color: #16191d;\n"
+"")
         self.two_factor_authentication_page.setObjectName("two_factor_authentication_page")
         self.verticalLayout_43 = QtWidgets.QVBoxLayout(self.two_factor_authentication_page)
         self.verticalLayout_43.setObjectName("verticalLayout_43")
@@ -320,6 +318,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_43.addWidget(self.frame_33, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
         self.stackedWidget.addWidget(self.two_factor_authentication_page)
         self.add_new_user_page = QtWidgets.QWidget()
+        self.add_new_user_page.setStyleSheet("background-color: #16191d;\n"
+"")
         self.add_new_user_page.setObjectName("add_new_user_page")
         self.verticalLayout_45 = QtWidgets.QVBoxLayout(self.add_new_user_page)
         self.verticalLayout_45.setObjectName("verticalLayout_45")
@@ -574,10 +574,10 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.toolBox.setFont(font)
         self.toolBox.setStyleSheet("color: rgb(255, 255, 255);\n"
-"background-color: #2c313c;")
+"background-color: #16191d;")
         self.toolBox.setObjectName("toolBox")
         self.page_antivirus_menu = QtWidgets.QWidget()
-        self.page_antivirus_menu.setGeometry(QtCore.QRect(0, 0, 258, 634))
+        self.page_antivirus_menu.setGeometry(QtCore.QRect(0, 0, 258, 635))
         self.page_antivirus_menu.setObjectName("page_antivirus_menu")
         self.splitter = QtWidgets.QSplitter(self.page_antivirus_menu)
         self.splitter.setGeometry(QtCore.QRect(10, 30, 231, 531))
@@ -595,14 +595,14 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.btn_antivirus_manual.setFont(font)
         self.btn_antivirus_manual.setStyleSheet("QPushButton {\n"
-"    border: 5px groove rgb(30, 30, 30);\n"
+"    border: 5px groove #2c313c;\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
 "    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: #1f232a;\n"
+"    background-color: #2c313c;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
@@ -615,14 +615,14 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.btn_activity_registration.setFont(font)
         self.btn_activity_registration.setStyleSheet("QPushButton {\n"
-"    border: 5px groove rgb(30, 30, 30);\n"
+"    border: 5px groove #2c313c;\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
 "    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: #1f232a;\n"
+"    background-color: #2c313c;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
@@ -635,14 +635,14 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.btn_check_file.setFont(font)
         self.btn_check_file.setStyleSheet("QPushButton {\n"
-"    border: 5px groove rgb(30, 30, 30);\n"
+"    border: 5px groove #2c313c;\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
 "    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: #1f232a;\n"
+"    background-color: #2c313c;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
@@ -655,14 +655,14 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.btn_information_about_system.setFont(font)
         self.btn_information_about_system.setStyleSheet("QPushButton {\n"
-"    border: 5px groove rgb(30, 30, 30);\n"
+"    border: 5px groove #2c313c;\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
 "    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: #1f232a;\n"
+"    background-color: #2c313c;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
@@ -675,14 +675,14 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.btn_check_usb.setFont(font)
         self.btn_check_usb.setStyleSheet("QPushButton {\n"
-"    border: 5px groove rgb(30, 30, 30);\n"
+"    border: 5px groove #2c313c;\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
 "    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: #1f232a;\n"
+"    background-color: #2c313c;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
@@ -695,14 +695,14 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.btn_port_scaner.setFont(font)
         self.btn_port_scaner.setStyleSheet("QPushButton {\n"
-"    border: 5px groove rgb(30, 30, 30);\n"
+"    border: 5px groove #2c313c;\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
 "    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: #1f232a;\n"
+"    background-color: #2c313c;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
@@ -715,24 +715,24 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.btn_firewall.setFont(font)
         self.btn_firewall.setStyleSheet("QPushButton {\n"
-"    border: 5px groove rgb(30, 30, 30);\n"
+"    border: 5px groove #2c313c;\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
 "    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: #1f232a;\n"
+"    background-color: #2c313c;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
 "")
         self.btn_firewall.setObjectName("btn_firewall")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(":/icons/icons/airplay.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap(":/newPrefix/icons_2/airplay.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.toolBox.addItem(self.page_antivirus_menu, icon3, "")
         self.page_server_menu = QtWidgets.QWidget()
-        self.page_server_menu.setGeometry(QtCore.QRect(0, 0, 258, 634))
+        self.page_server_menu.setGeometry(QtCore.QRect(0, 0, 258, 635))
         self.page_server_menu.setObjectName("page_server_menu")
         self.splitter_2 = QtWidgets.QSplitter(self.page_server_menu)
         self.splitter_2.setGeometry(QtCore.QRect(10, 120, 231, 261))
@@ -745,13 +745,14 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.btn_show_info_server.setFont(font)
         self.btn_show_info_server.setStyleSheet("QPushButton {\n"
-"    border: 5px groove rgb(30, 30, 30);\n"
+"    border: 5px groove #2c313c;\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
+"    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: rgb(24, 24, 36);\n"
+"    background-color: #2c313c;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
@@ -764,13 +765,14 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.btn_server_manual.setFont(font)
         self.btn_server_manual.setStyleSheet("QPushButton {\n"
-"    border: 5px groove rgb(30, 30, 30);\n"
+"    border: 5px groove #2c313c;\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
+"    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: rgb(24, 24, 36);\n"
+"    background-color: #2c313c;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
@@ -783,13 +785,14 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.btn_show_server_page.setFont(font)
         self.btn_show_server_page.setStyleSheet("QPushButton {\n"
-"    border: 5px groove rgb(30, 30, 30);\n"
+"    border: 5px groove #2c313c;\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
+"    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: rgb(24, 24, 36);\n"
+"    background-color: #2c313c;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
@@ -802,23 +805,24 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.btn_start_server.setFont(font)
         self.btn_start_server.setStyleSheet("QPushButton {\n"
-"    border: 5px groove rgb(30, 30, 30);\n"
+"    border: 5px groove #2c313c;\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
+"    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: rgb(24, 24, 36);\n"
+"    background-color: #2c313c;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
 "")
         self.btn_start_server.setObjectName("btn_start_server")
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(":/icons/icons/server.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon4.addPixmap(QtGui.QPixmap(":/newPrefix/icons_2/server.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.toolBox.addItem(self.page_server_menu, icon4, "")
         self.page_dbms_menu = QtWidgets.QWidget()
-        self.page_dbms_menu.setGeometry(QtCore.QRect(0, 0, 258, 634))
+        self.page_dbms_menu.setGeometry(QtCore.QRect(0, 0, 258, 635))
         self.page_dbms_menu.setObjectName("page_dbms_menu")
         self.splitter_3 = QtWidgets.QSplitter(self.page_dbms_menu)
         self.splitter_3.setGeometry(QtCore.QRect(10, 120, 231, 261))
@@ -831,13 +835,14 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.btn_show_database.setFont(font)
         self.btn_show_database.setStyleSheet("QPushButton {\n"
-"    border: 5px groove rgb(30, 30, 30);\n"
+"    border: 5px groove #2c313c;\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
+"    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: rgb(24, 24, 36);\n"
+"    background-color: #2c313c;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
@@ -850,13 +855,14 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.btn_dbms_manual.setFont(font)
         self.btn_dbms_manual.setStyleSheet("QPushButton {\n"
-"    border: 5px groove rgb(30, 30, 30);\n"
+"    border: 5px groove #2c313c;\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
+"    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: rgb(24, 24, 36);\n"
+"    background-color: #2c313c;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
@@ -869,23 +875,24 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.btn_open_list_of_db.setFont(font)
         self.btn_open_list_of_db.setStyleSheet("QPushButton {\n"
-"    border: 5px groove rgb(30, 30, 30);\n"
+"    border: 5px groove #2c313c;\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
+"    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: rgb(24, 24, 36);\n"
+"    background-color: #2c313c;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
 "")
         self.btn_open_list_of_db.setObjectName("btn_open_list_of_db")
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(":/icons/icons/archive.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon5.addPixmap(QtGui.QPixmap(":/newPrefix/icons_2/database.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.toolBox.addItem(self.page_dbms_menu, icon5, "")
         self.page_action_log = QtWidgets.QWidget()
-        self.page_action_log.setGeometry(QtCore.QRect(0, 0, 258, 634))
+        self.page_action_log.setGeometry(QtCore.QRect(0, 0, 258, 635))
         self.page_action_log.setObjectName("page_action_log")
         self.splitter_4 = QtWidgets.QSplitter(self.page_action_log)
         self.splitter_4.setGeometry(QtCore.QRect(10, 110, 231, 261))
@@ -898,13 +905,14 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.btn_open_action_log.setFont(font)
         self.btn_open_action_log.setStyleSheet("QPushButton {\n"
-"    border: 5px groove rgb(30, 30, 30);\n"
+"    border: 5px groove #2c313c;\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
+"    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: rgb(24, 24, 36);\n"
+"    background-color: #2c313c;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
@@ -917,20 +925,21 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.btn_action_log_manual.setFont(font)
         self.btn_action_log_manual.setStyleSheet("QPushButton {\n"
-"    border: 5px groove rgb(30, 30, 30);\n"
+"    border: 5px groove #2c313c;\n"
 "    border-left-color: rgb(255, 255, 255);\n"
 "    border-radius: 20px;\n"
+"    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: rgb(24, 24, 36);\n"
+"    background-color: #2c313c;\n"
 "    border: 5px solid  rgb(255, 255, 255);\n"
 "}\n"
 "\n"
 "")
         self.btn_action_log_manual.setObjectName("btn_action_log_manual")
         icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap(":/icons/icons/folder-minus.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon6.addPixmap(QtGui.QPixmap(":/newPrefix/icons_2/folder-minus.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.toolBox.addItem(self.page_action_log, icon6, "")
         self.horizontalLayout_6.addWidget(self.toolBox)
         self.verticalLayout_4.addWidget(self.frame_8)
@@ -959,7 +968,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap(":/icons/icons/home.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon7.addPixmap(QtGui.QPixmap(":/newPrefix/icons_2/home.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btn_main_page_manual.setIcon(icon7)
         self.btn_main_page_manual.setObjectName("btn_main_page_manual")
         self.verticalLayout_5.addWidget(self.btn_main_page_manual)
@@ -982,7 +991,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap(":/icons/icons/log-in.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon8.addPixmap(QtGui.QPixmap(":/newPrefix/icons_2/log-out.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btn_open_authorization_page_2.setIcon(icon8)
         self.btn_open_authorization_page_2.setObjectName("btn_open_authorization_page_2")
         self.verticalLayout_5.addWidget(self.btn_open_authorization_page_2)
@@ -1010,6 +1019,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addWidget(self.frame_9, 0, QtCore.Qt.AlignBottom)
         self.horizontalLayout_5.addWidget(self.menu_container)
         self.frame_7 = QtWidgets.QFrame(self.main_container_page)
+        self.frame_7.setStyleSheet("background-color: #2c313c;\n"
+"background-color: #1f232a;")
         self.frame_7.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_7.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_7.setObjectName("frame_7")
@@ -1445,7 +1456,8 @@ class Ui_MainWindow(object):
         self.btn_start_port_scanner.setFont(font)
         self.btn_start_port_scanner.setStyleSheet("color: rgb(255, 255, 255);\n"
 "border: 5px solid;\n"
-"border-bottom-color: rgb(255, 255, 255);")
+"border-bottom-color: rgb(255, 255, 255);\n"
+"background-color: #2c313c;")
         self.btn_start_port_scanner.setObjectName("btn_start_port_scanner")
         self.verticalLayout_18.addWidget(self.btn_start_port_scanner)
         self.verticalLayout_17.addWidget(self.frame_18, 0, QtCore.Qt.AlignBottom)
@@ -1581,7 +1593,7 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.btn_update_info_about_connections.setFont(font)
         self.btn_update_info_about_connections.setStyleSheet("color: rgb(255, 255, 255);\n"
-"border: 5px solid;\n"
+"border: 5px solid #1f232a;;\n"
 "border-bottom-color: rgb(255, 255, 255);")
         self.btn_update_info_about_connections.setObjectName("btn_update_info_about_connections")
         self.verticalLayout_38.addWidget(self.btn_update_info_about_connections)
@@ -1889,7 +1901,8 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.data_table_view.setFont(font)
-        self.data_table_view.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.data_table_view.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"")
         self.data_table_view.setObjectName("data_table_view")
         self.verticalLayout_42.addWidget(self.data_table_view)
         self.tabWidget.addTab(self.tab_data, "")
@@ -2143,6 +2156,28 @@ class Ui_MainWindow(object):
         self.verticalLayout_32.addWidget(self.frame_23)
         self.stackedWidget_main.addWidget(self.page_show_logging_journal)
         self.verticalLayout_6.addWidget(self.stackedWidget_main)
+        self.size_grip = QtWidgets.QFrame(self.frame_7)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.size_grip.sizePolicy().hasHeightForWidth())
+        self.size_grip.setSizePolicy(sizePolicy)
+        self.size_grip.setMaximumSize(QtCore.QSize(10, 10))
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        font.setBold(True)
+        font.setWeight(75)
+        self.size_grip.setFont(font)
+        self.size_grip.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.size_grip.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.size_grip.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.size_grip.setObjectName("size_grip")
+        self.verticalLayout_57 = QtWidgets.QVBoxLayout(self.size_grip)
+        self.verticalLayout_57.setObjectName("verticalLayout_57")
+        self.pushButton = QtWidgets.QPushButton(self.size_grip)
+        self.pushButton.setObjectName("pushButton")
+        self.verticalLayout_57.addWidget(self.pushButton, 0, QtCore.Qt.AlignRight|QtCore.Qt.AlignBottom)
+        self.verticalLayout_6.addWidget(self.size_grip, 0, QtCore.Qt.AlignRight|QtCore.Qt.AlignBottom)
         self.horizontalLayout_5.addWidget(self.frame_7)
         self.stackedWidget.addWidget(self.main_container_page)
         self.horizontalLayout_3.addWidget(self.stackedWidget)
@@ -2151,8 +2186,8 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stackedWidget.setCurrentIndex(3)
-        self.toolBox.setCurrentIndex(0)
-        self.stackedWidget_main.setCurrentIndex(0)
+        self.toolBox.setCurrentIndex(3)
+        self.stackedWidget_main.setCurrentIndex(1)
         self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -2181,7 +2216,7 @@ class Ui_MainWindow(object):
         self.label_31.setText(_translate("MainWindow", "Добавление нового пользователя"))
         self.btn_antivirus_manual.setText(_translate("MainWindow", "Мануал"))
         self.btn_activity_registration.setText(_translate("MainWindow", "Отслеживание процессов"))
-        self.btn_check_file.setText(_translate("MainWindow", "Проверка файла"))
+        self.btn_check_file.setText(_translate("MainWindow", "Сканер уязвимостей"))
         self.btn_information_about_system.setText(_translate("MainWindow", "Информация о системе"))
         self.btn_check_usb.setText(_translate("MainWindow", "Защита от USB"))
         self.btn_port_scaner.setText(_translate("MainWindow", "Сканер портов"))
@@ -4134,4 +4169,6 @@ class Ui_MainWindow(object):
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;\"><br /></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;\"><br /></p></body></html>"))
         self.label_37.setText(_translate("MainWindow", "Журналы логирования"))
+        self.pushButton.setText(_translate("MainWindow", "PushButton"))
+import icons_2_rc
 import icons_rc

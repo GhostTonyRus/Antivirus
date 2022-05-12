@@ -304,19 +304,21 @@ class MyWindow(QtWidgets.QMainWindow):
         self.start_activity_registration_thread() # запуск отслеживания процессов
         self.insert_information_about_usb() # запуск блокировки флешки
 
+        # растяжение окна
+        QSizeGrip(self.ui.size_grip)
+
+        # перетаскиваем окно за шапку
+        self.ui.frame.mouseMoveEvent = self.moveWindow
+
     # перетаскивание окна
-    def center(self):
-        qr = self.frameGeometry()
-        cp = QDesktopWidget().availableGeometry().center()
-        qr.moveCenter(cp)
-        self.move(qr.topLeft())
+    def moveWindow(self, event):
+        if self.isMaximized() == False:
+            if event.buttons() == QtCore.Qt.LeftButton:
+                self.move(self.pos() + event.globalPos() - self.oldPos)
+                self.oldPos = event.globalPos()
+                event.accept()
 
     def mousePressEvent(self, event):
-        self.oldPos = event.globalPos()
-
-    def mouseMoveEvent(self, event):
-        delta = QPoint(event.globalPos() - self.oldPos)
-        self.move(self.x() + delta.x(), self.y() + delta.y())
         self.oldPos = event.globalPos()
 
     # изменение размера окна
@@ -371,6 +373,8 @@ class MyWindow(QtWidgets.QMainWindow):
                 if login_from_form == login_from_db and password_from_form == password_from_db: # сравниваем данные из словаря и из полей ввода
                     self.two_factor_authentication.send_email(email=email_from_db, msg=code_from_email) # отправляем письмо на почту
                     self.ui.stackedWidget.setCurrentWidget(self.ui.two_factor_authentication_page) # открываем окно с подтверждением кода
+                    self.ui.le_login.clear()
+                    self.ui.le_password.clear()
         else:
             QtWidgets.QMessageBox.information(self, "Уведомление", "Неверный логин или пароль!")
 
@@ -389,6 +393,7 @@ class MyWindow(QtWidgets.QMainWindow):
         if res:
             self.ui.stackedWidget.setCurrentWidget(self.ui.main_container_page)
             self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_about_system)
+            self.ui.le_email_code.clear()
 
     # регистрация в системе
     def show_registration_page(self):
