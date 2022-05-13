@@ -27,6 +27,7 @@ class ActivityRegistrationThread(QtCore.QThread):
         self.monitor_creation = Monitor("creation")
         self.monitor_deletion = Monitor("deletion")
 
+
     def run(self):
         self.monitor_creation.main()
         self.monitor_deletion.main()

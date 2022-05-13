@@ -1,10 +1,6 @@
 """"
 ОТСЛЕЖИВАЕМ ПРОЦЕССЫ
 """
-
-# if os.path.exists(self.__path):
-    #     os.path.join(os.path.abspath(os.path.dirname(__file__)), "activity_registration.txt")
-    #     os.remove(self.__path)
 import time
 
 import os
@@ -45,7 +41,7 @@ class ProcessMonitor:
         self._process_watcher = wmi.WMI().Win32_Process.watch_for(notify_filter)
 
     def update(self):
-        """обновляет поляЮ когда происходит событие, определённое значением notify_filter,
+        """обновляет поля, когда происходит событие, определённое значением notify_filter,
         """
         process = self._process_watcher()
         self._process_property["EventType"] = process.event_type
@@ -54,7 +50,6 @@ class ProcessMonitor:
         self._process_property["ProcessID"] = process.ProcessID
 
     # методы возвращают значения соответствующих полей списка свойств процесса
-
     @property
     def event_type(self):
         return self._process_property["EventType"]
@@ -70,7 +65,6 @@ class ProcessMonitor:
     @property
     def process_id(self):
         return self._process_property["ProcessID"]
-
 
 class Monitor(Thread):
     def __init__(self, action):
@@ -102,3 +96,9 @@ if __name__ == '__main__':
 
     mon_deletion = Monitor("deletion")
     mon_deletion.start()
+
+    mon_modification = Monitor("modification")
+    mon_modification.start()
+
+    mon_operation = Monitor("operation")
+    mon_operation.start()

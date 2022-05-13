@@ -18,6 +18,7 @@ import os
 from datetime import datetime
 from database_package import UsersDataBase
 from logging_package import Logging
+from antivirus_package import Two_factor_authentication
 ####################
 # Constants
 ####################
@@ -47,6 +48,8 @@ def register_server_action(value):
                 file.write(value)
         except FileExistsError as err:
             return err
+
+two_factor_authentication = Two_factor_authentication()
 
 class Server:
     def __init__(self, key_file=None, certificate_file=None):
@@ -134,6 +137,17 @@ class Server:
                                      client_address=self.client_addr)
             continue
 
+    # генерируем код для отправки
+    def generate_code(self):
+        code = two_factor_authentication.generate_code()
+        return code
+
+    # отправляем письмо с кодом
+    def send_email_code(self, email, code):
+        two_factor_authentication.send_email(email=email, msg=code)
+        print("сообщение отправлено")
+
+    # получаем соединения от пользователя и сообщения
     def get_users_connection_and_messages(self, connection, client_address):
         user_db = UsersDataBase("customs_user")
         """ожидаем подключения от пользователей"""
@@ -171,6 +185,7 @@ class Server:
                     res = self.__user_db.get_data_from_table(obj) # получаем данные из базы данных
                     if res:
                         self.send_message(connection, "True")
+                        self.send_email_code(email="antonmakeev18@gmail.com", code=self.generate_code())
                     elif res == False:
                         self.send_message(connection, "False")
             except socket.error as error:
@@ -180,7 +195,6 @@ class Server:
     def send_message(self, connection, data):
         """отправляем полученное сообщение обратно клиенту"""
         connection.sendall(data.encode("utf-8"))
-        print(data)
 
     def return_info_about_connections(self):
         return self.__clients
@@ -197,7 +211,7 @@ class Server:
         self.__clients.remove(client_connection)
         client_connection.shutdown(socket.SHUT_RDWR)
         client_connection.close()
-        print(f"Пользователь {client_connection} отключился строка 188")
+        print(f"Пользователь {client_connection} отключился строка")
         self.__action_log.register_server_actions(
             f"Пользователь {client_connection} отключился")
         self.temporary_actions(f"Пользователь {client_connection} отключился",

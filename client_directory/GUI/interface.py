@@ -90,8 +90,7 @@ class MyWindow(QtWidgets.QMainWindow):
         time.sleep(10)
         with open(path, "r") as file:
             res = file.readline()
-            if res == "True":
-                print(True)
+            if res.strip() == "True":
                 self.ui.stackedWidget.setCurrentWidget(self.ui.two_factor_authentication_page)
             else:
                 QtWidgets.QMessageBox.information(self, "Ошбика", "Неверный адрес электронной почты или пароль")

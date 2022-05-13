@@ -74,7 +74,7 @@ class Client:
                 self.disconnect_from_server()
                 break
             elif len(args) == 0:
-                print("Сообщение не должно быть пустым")
+                print("Сообщение не дол  жно быть пустым")
                 continue
             elif args:
                 # отправляем данные
@@ -101,6 +101,6 @@ class Client:
         thread_send_msg.start()
 
 if __name__ == '__main__':
-    client = Client()
+    lient = Client()
     client.connect_to_server(SERVER_ADDRESS)
     client.send_msg("tony")
