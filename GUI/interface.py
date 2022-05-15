@@ -26,11 +26,14 @@ class ActivityRegistrationThread(QtCore.QThread):
         super(ActivityRegistrationThread, self).__init__()
         self.monitor_creation = Monitor("creation")
         self.monitor_deletion = Monitor("deletion")
-
+        self.monitor_modification = Monitor("modification")
+        self.monitor_option = Monitor("operation")
 
     def run(self):
         self.monitor_creation.main()
         self.monitor_deletion.main()
+        self.monitor_modification.main()
+        self.monitor_option.main()
         time.sleep(10)
         while True:
             time.sleep(3)
@@ -150,9 +153,6 @@ class MyWindow(QtWidgets.QMainWindow):
         self.dependencies_path = "C:\\PycharmProjects\\dependencies\\"
         self.text = self.ui.comboBox_port_scanner.currentText()
 
-        # захват размера окна для изменения размера окна
-        # QSizeGrip(self.ui.size_grip)
-
         # удаляем заголовок
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
 
@@ -188,6 +188,9 @@ class MyWindow(QtWidgets.QMainWindow):
 
         # кнопка главной страницы
         self.ui.btn_main_page_manual.clicked.connect(lambda: self.show_main_manual())
+
+        # настройка кнопки лицензия
+        self.ui.btn_open_license.clicked.connect(lambda: self.show_license())
 
         # настройка ввода пароля
         self.ui.le_password.setEchoMode(QLineEdit.Password)
@@ -451,6 +454,10 @@ class MyWindow(QtWidgets.QMainWindow):
     # открыть страницу с информацией о системе
     def show_main_manual(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_about_system)
+
+    # открыть страницу с лицензией
+    def show_license(self):
+        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_license)
 
     ########################
     # РАБОТА С АНТИВИРУСОМ #

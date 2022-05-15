@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1293, 1026)
+        MainWindow.resize(1293, 995)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("background-color: rgb(45, 45, 45);\n"
 "background-color: rgb(0, 0, 0);\n"
@@ -61,7 +61,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.frame_4)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.btn_minimize_window = QtWidgets.QPushButton(self.frame_4)
-        self.btn_minimize_window.setStyleSheet("QPushButton:pressed {\n"
+        self.btn_minimize_window.setStyleSheet("QPushButton {\n"
+"     background-color: #16191d;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
 "    background-color: #2c313c;\n"
 "}\n"
 "\n"
@@ -74,7 +78,11 @@ class Ui_MainWindow(object):
         self.btn_minimize_window.setObjectName("btn_minimize_window")
         self.horizontalLayout_2.addWidget(self.btn_minimize_window)
         self.btn_restore_window = QtWidgets.QPushButton(self.frame_4)
-        self.btn_restore_window.setStyleSheet("QPushButton:pressed {\n"
+        self.btn_restore_window.setStyleSheet("QPushButton {\n"
+"     background-color: #16191d;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
 "    background-color: #2c313c;\n"
 "}\n"
 "\n"
@@ -87,9 +95,14 @@ class Ui_MainWindow(object):
         self.btn_restore_window.setObjectName("btn_restore_window")
         self.horizontalLayout_2.addWidget(self.btn_restore_window)
         self.btn_close_window = QtWidgets.QPushButton(self.frame_4)
-        self.btn_close_window.setStyleSheet("QPushButton:pressed {\n"
+        self.btn_close_window.setStyleSheet("QPushButton {\n"
+"     background-color: #16191d;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
 "    background-color: #2c313c;\n"
 "}\n"
+"\n"
 "")
         self.btn_close_window.setText("")
         icon2 = QtGui.QIcon()
@@ -545,7 +558,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.setSpacing(0)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.menu_container = QtWidgets.QFrame(self.main_container_page)
-        self.menu_container.setMaximumSize(QtCore.QSize(300, 16777215))
+        self.menu_container.setMaximumSize(QtCore.QSize(320, 16777215))
         self.menu_container.setStyleSheet("background-color: rgb(0, 0, 0);\n"
 "background-color: #16191d;")
         self.menu_container.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -577,10 +590,11 @@ class Ui_MainWindow(object):
 "background-color: #16191d;")
         self.toolBox.setObjectName("toolBox")
         self.page_antivirus_menu = QtWidgets.QWidget()
-        self.page_antivirus_menu.setGeometry(QtCore.QRect(0, 0, 258, 635))
+        self.page_antivirus_menu.setGeometry(QtCore.QRect(0, 0, 268, 564))
         self.page_antivirus_menu.setObjectName("page_antivirus_menu")
+        self.verticalLayout_62 = QtWidgets.QVBoxLayout(self.page_antivirus_menu)
+        self.verticalLayout_62.setObjectName("verticalLayout_62")
         self.splitter = QtWidgets.QSplitter(self.page_antivirus_menu)
-        self.splitter.setGeometry(QtCore.QRect(10, 30, 231, 531))
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(True)
@@ -609,6 +623,7 @@ class Ui_MainWindow(object):
 "")
         self.btn_antivirus_manual.setObjectName("btn_antivirus_manual")
         self.btn_activity_registration = QtWidgets.QPushButton(self.splitter)
+        self.btn_activity_registration.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(True)
@@ -728,36 +743,17 @@ class Ui_MainWindow(object):
 "\n"
 "")
         self.btn_firewall.setObjectName("btn_firewall")
+        self.verticalLayout_62.addWidget(self.splitter)
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap(":/newPrefix/icons_2/airplay.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.toolBox.addItem(self.page_antivirus_menu, icon3, "")
         self.page_server_menu = QtWidgets.QWidget()
-        self.page_server_menu.setGeometry(QtCore.QRect(0, 0, 258, 635))
+        self.page_server_menu.setGeometry(QtCore.QRect(0, 0, 268, 564))
         self.page_server_menu.setObjectName("page_server_menu")
         self.splitter_2 = QtWidgets.QSplitter(self.page_server_menu)
-        self.splitter_2.setGeometry(QtCore.QRect(10, 120, 231, 261))
+        self.splitter_2.setGeometry(QtCore.QRect(10, 50, 251, 461))
         self.splitter_2.setOrientation(QtCore.Qt.Vertical)
         self.splitter_2.setObjectName("splitter_2")
-        self.btn_show_info_server = QtWidgets.QPushButton(self.splitter_2)
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        self.btn_show_info_server.setFont(font)
-        self.btn_show_info_server.setStyleSheet("QPushButton {\n"
-"    border: 5px groove #2c313c;\n"
-"    border-left-color: rgb(255, 255, 255);\n"
-"    border-radius: 20px;\n"
-"    background-color: #16191d;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #2c313c;\n"
-"    border: 5px solid  rgb(255, 255, 255);\n"
-"}\n"
-"\n"
-"")
-        self.btn_show_info_server.setObjectName("btn_show_info_server")
         self.btn_server_manual = QtWidgets.QPushButton(self.splitter_2)
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -798,6 +794,26 @@ class Ui_MainWindow(object):
 "\n"
 "")
         self.btn_show_server_page.setObjectName("btn_show_server_page")
+        self.btn_show_info_server = QtWidgets.QPushButton(self.splitter_2)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setWeight(75)
+        self.btn_show_info_server.setFont(font)
+        self.btn_show_info_server.setStyleSheet("QPushButton {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-left-color: rgb(255, 255, 255);\n"
+"    border-radius: 20px;\n"
+"    background-color: #16191d;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #2c313c;\n"
+"    border: 5px solid  rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"")
+        self.btn_show_info_server.setObjectName("btn_show_info_server")
         self.btn_start_server = QtWidgets.QPushButton(self.splitter_2)
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -822,32 +838,12 @@ class Ui_MainWindow(object):
         icon4.addPixmap(QtGui.QPixmap(":/newPrefix/icons_2/server.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.toolBox.addItem(self.page_server_menu, icon4, "")
         self.page_dbms_menu = QtWidgets.QWidget()
-        self.page_dbms_menu.setGeometry(QtCore.QRect(0, 0, 258, 635))
+        self.page_dbms_menu.setGeometry(QtCore.QRect(0, 0, 268, 564))
         self.page_dbms_menu.setObjectName("page_dbms_menu")
         self.splitter_3 = QtWidgets.QSplitter(self.page_dbms_menu)
-        self.splitter_3.setGeometry(QtCore.QRect(10, 120, 231, 261))
+        self.splitter_3.setGeometry(QtCore.QRect(10, 130, 251, 271))
         self.splitter_3.setOrientation(QtCore.Qt.Vertical)
         self.splitter_3.setObjectName("splitter_3")
-        self.btn_show_database = QtWidgets.QPushButton(self.splitter_3)
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        self.btn_show_database.setFont(font)
-        self.btn_show_database.setStyleSheet("QPushButton {\n"
-"    border: 5px groove #2c313c;\n"
-"    border-left-color: rgb(255, 255, 255);\n"
-"    border-radius: 20px;\n"
-"    background-color: #16191d;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #2c313c;\n"
-"    border: 5px solid  rgb(255, 255, 255);\n"
-"}\n"
-"\n"
-"")
-        self.btn_show_database.setObjectName("btn_show_database")
         self.btn_dbms_manual = QtWidgets.QPushButton(self.splitter_3)
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -868,6 +864,26 @@ class Ui_MainWindow(object):
 "\n"
 "")
         self.btn_dbms_manual.setObjectName("btn_dbms_manual")
+        self.btn_show_database = QtWidgets.QPushButton(self.splitter_3)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.btn_show_database.setFont(font)
+        self.btn_show_database.setStyleSheet("QPushButton {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-left-color: rgb(255, 255, 255);\n"
+"    border-radius: 20px;\n"
+"    background-color: #16191d;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #2c313c;\n"
+"    border: 5px solid  rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"")
+        self.btn_show_database.setObjectName("btn_show_database")
         self.btn_open_list_of_db = QtWidgets.QPushButton(self.splitter_3)
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -892,32 +908,12 @@ class Ui_MainWindow(object):
         icon5.addPixmap(QtGui.QPixmap(":/newPrefix/icons_2/database.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.toolBox.addItem(self.page_dbms_menu, icon5, "")
         self.page_action_log = QtWidgets.QWidget()
-        self.page_action_log.setGeometry(QtCore.QRect(0, 0, 258, 635))
+        self.page_action_log.setGeometry(QtCore.QRect(0, 0, 268, 564))
         self.page_action_log.setObjectName("page_action_log")
         self.splitter_4 = QtWidgets.QSplitter(self.page_action_log)
-        self.splitter_4.setGeometry(QtCore.QRect(10, 110, 231, 261))
+        self.splitter_4.setGeometry(QtCore.QRect(10, 170, 251, 201))
         self.splitter_4.setOrientation(QtCore.Qt.Vertical)
         self.splitter_4.setObjectName("splitter_4")
-        self.btn_open_action_log = QtWidgets.QPushButton(self.splitter_4)
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        self.btn_open_action_log.setFont(font)
-        self.btn_open_action_log.setStyleSheet("QPushButton {\n"
-"    border: 5px groove #2c313c;\n"
-"    border-left-color: rgb(255, 255, 255);\n"
-"    border-radius: 20px;\n"
-"    background-color: #16191d;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #2c313c;\n"
-"    border: 5px solid  rgb(255, 255, 255);\n"
-"}\n"
-"\n"
-"")
-        self.btn_open_action_log.setObjectName("btn_open_action_log")
         self.btn_action_log_manual = QtWidgets.QPushButton(self.splitter_4)
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -938,6 +934,26 @@ class Ui_MainWindow(object):
 "\n"
 "")
         self.btn_action_log_manual.setObjectName("btn_action_log_manual")
+        self.btn_open_action_log = QtWidgets.QPushButton(self.splitter_4)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.btn_open_action_log.setFont(font)
+        self.btn_open_action_log.setStyleSheet("QPushButton {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-left-color: rgb(255, 255, 255);\n"
+"    border-radius: 20px;\n"
+"    background-color: #16191d;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #2c313c;\n"
+"    border: 5px solid  rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"")
+        self.btn_open_action_log.setObjectName("btn_open_action_log")
         icon6 = QtGui.QIcon()
         icon6.addPixmap(QtGui.QPixmap(":/newPrefix/icons_2/folder-minus.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.toolBox.addItem(self.page_action_log, icon6, "")
@@ -972,6 +988,29 @@ class Ui_MainWindow(object):
         self.btn_main_page_manual.setIcon(icon7)
         self.btn_main_page_manual.setObjectName("btn_main_page_manual")
         self.verticalLayout_5.addWidget(self.btn_main_page_manual)
+        self.btn_open_license = QtWidgets.QPushButton(self.frame_9)
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        font.setBold(True)
+        font.setWeight(75)
+        self.btn_open_license.setFont(font)
+        self.btn_open_license.setStyleSheet("QPushButton {\n"
+"    color: rgb(255, 255, 255);\n"
+"    border: 5px solid rgb(24, 24, 36);\n"
+"    border-bottom-color: rgb(255, 255, 255);\n"
+"    border-radius: 20px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(24, 24, 36);\n"
+"    border: 5px solid rgb(255, 255, 255);\n"
+"}\n"
+"")
+        icon8 = QtGui.QIcon()
+        icon8.addPixmap(QtGui.QPixmap(":/newPrefix/icons_2/layers.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btn_open_license.setIcon(icon8)
+        self.btn_open_license.setObjectName("btn_open_license")
+        self.verticalLayout_5.addWidget(self.btn_open_license)
         self.btn_open_authorization_page_2 = QtWidgets.QPushButton(self.frame_9)
         font = QtGui.QFont()
         font.setPointSize(15)
@@ -990,9 +1029,9 @@ class Ui_MainWindow(object):
 "    border: 5px solid rgb(255, 255, 255);\n"
 "}\n"
 "")
-        icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap(":/newPrefix/icons_2/log-out.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btn_open_authorization_page_2.setIcon(icon8)
+        icon9 = QtGui.QIcon()
+        icon9.addPixmap(QtGui.QPixmap(":/newPrefix/icons_2/log-out.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btn_open_authorization_page_2.setIcon(icon9)
         self.btn_open_authorization_page_2.setObjectName("btn_open_authorization_page_2")
         self.verticalLayout_5.addWidget(self.btn_open_authorization_page_2)
         self.btn_exit = QtWidgets.QPushButton(self.frame_9)
@@ -1072,6 +1111,51 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.addWidget(self.textEdit)
         self.verticalLayout_7.addWidget(self.frame_10)
         self.stackedWidget_main.addWidget(self.page_about_system)
+        self.page_license = QtWidgets.QWidget()
+        self.page_license.setObjectName("page_license")
+        self.verticalLayout_58 = QtWidgets.QVBoxLayout(self.page_license)
+        self.verticalLayout_58.setObjectName("verticalLayout_58")
+        self.frame_42 = QtWidgets.QFrame(self.page_license)
+        self.frame_42.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_42.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_42.setObjectName("frame_42")
+        self.verticalLayout_59 = QtWidgets.QVBoxLayout(self.frame_42)
+        self.verticalLayout_59.setObjectName("verticalLayout_59")
+        self.frame_43 = QtWidgets.QFrame(self.frame_42)
+        self.frame_43.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_43.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_43.setObjectName("frame_43")
+        self.verticalLayout_60 = QtWidgets.QVBoxLayout(self.frame_43)
+        self.verticalLayout_60.setObjectName("verticalLayout_60")
+        self.label_43 = QtWidgets.QLabel(self.frame_43)
+        self.label_43.setMaximumSize(QtCore.QSize(16777215, 16777207))
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_43.setFont(font)
+        self.label_43.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_43.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_43.setObjectName("label_43")
+        self.verticalLayout_60.addWidget(self.label_43, 0, QtCore.Qt.AlignTop)
+        self.verticalLayout_59.addWidget(self.frame_43, 0, QtCore.Qt.AlignTop)
+        self.frame_44 = QtWidgets.QFrame(self.frame_42)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.MinimumExpanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame_44.sizePolicy().hasHeightForWidth())
+        self.frame_44.setSizePolicy(sizePolicy)
+        self.frame_44.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_44.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_44.setObjectName("frame_44")
+        self.verticalLayout_61 = QtWidgets.QVBoxLayout(self.frame_44)
+        self.verticalLayout_61.setObjectName("verticalLayout_61")
+        self.textEdit_7 = QtWidgets.QTextEdit(self.frame_44)
+        self.textEdit_7.setObjectName("textEdit_7")
+        self.verticalLayout_61.addWidget(self.textEdit_7)
+        self.verticalLayout_59.addWidget(self.frame_44)
+        self.verticalLayout_58.addWidget(self.frame_42)
+        self.stackedWidget_main.addWidget(self.page_license)
         self.page_usb_lock = QtWidgets.QWidget()
         self.page_usb_lock.setObjectName("page_usb_lock")
         self.verticalLayout_21 = QtWidgets.QVBoxLayout(self.page_usb_lock)
@@ -1279,9 +1363,20 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.btn_start_file_checking.setFont(font)
-        self.btn_start_file_checking.setStyleSheet("color: rgb(255, 255, 255);\n"
-"border: 5px solid;\n"
-"border-bottom-color: rgb(255, 255, 255);")
+        self.btn_start_file_checking.setStyleSheet("QPushButton {\n"
+"color: rgb(255, 255, 255);\n"
+"    border: 5px groove #2c313c;\n"
+"    border-bottom-color: rgb(255, 255, 255);\n"
+"    border-radius: 20px;\n"
+"    background-color: #16191d;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #2c313c;\n"
+"    border: 5px solid  rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"")
         self.btn_start_file_checking.setObjectName("btn_start_file_checking")
         self.verticalLayout_37.addWidget(self.btn_start_file_checking)
         self.verticalLayout_35.addWidget(self.frame_29, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignBottom)
@@ -1315,6 +1410,15 @@ class Ui_MainWindow(object):
         self.label_15.setAlignment(QtCore.Qt.AlignCenter)
         self.label_15.setObjectName("label_15")
         self.verticalLayout_14.addWidget(self.label_15)
+        self.label_44 = QtWidgets.QLabel(self.frame_13)
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_44.setFont(font)
+        self.label_44.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_44.setObjectName("label_44")
+        self.verticalLayout_14.addWidget(self.label_44)
         self.plainTextEdit_for_activity_registration = QtWidgets.QPlainTextEdit(self.frame_13)
         font = QtGui.QFont()
         font.setPointSize(12)
@@ -2186,8 +2290,8 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stackedWidget.setCurrentIndex(3)
-        self.toolBox.setCurrentIndex(3)
-        self.stackedWidget_main.setCurrentIndex(1)
+        self.toolBox.setCurrentIndex(1)
+        self.stackedWidget_main.setCurrentIndex(4)
         self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -2215,26 +2319,28 @@ class Ui_MainWindow(object):
         self.btn_return_to_login_page.setText(_translate("MainWindow", "Вернуть на страницу авторизации"))
         self.label_31.setText(_translate("MainWindow", "Добавление нового пользователя"))
         self.btn_antivirus_manual.setText(_translate("MainWindow", "Мануал"))
-        self.btn_activity_registration.setText(_translate("MainWindow", "Отслеживание процессов"))
+        self.btn_activity_registration.setText(_translate("MainWindow", "Мониторинг\n"
+"активности программ"))
         self.btn_check_file.setText(_translate("MainWindow", "Сканер уязвимостей"))
         self.btn_information_about_system.setText(_translate("MainWindow", "Информация о системе"))
         self.btn_check_usb.setText(_translate("MainWindow", "Защита от USB"))
         self.btn_port_scaner.setText(_translate("MainWindow", "Сканер портов"))
-        self.btn_firewall.setText(_translate("MainWindow", "Межсетевой экран"))
+        self.btn_firewall.setText(_translate("MainWindow", "Пакетный фильтр"))
         self.toolBox.setItemText(self.toolBox.indexOf(self.page_antivirus_menu), _translate("MainWindow", "Защита системы"))
-        self.btn_show_info_server.setText(_translate("MainWindow", "Отображать информацию"))
         self.btn_server_manual.setText(_translate("MainWindow", "Мануал"))
         self.btn_show_server_page.setText(_translate("MainWindow", "Страница сервера"))
+        self.btn_show_info_server.setText(_translate("MainWindow", "Отображать информацию"))
         self.btn_start_server.setText(_translate("MainWindow", "Запустить сервер"))
         self.toolBox.setItemText(self.toolBox.indexOf(self.page_server_menu), _translate("MainWindow", "Сервер"))
-        self.btn_show_database.setText(_translate("MainWindow", "Открыть СУБД"))
         self.btn_dbms_manual.setText(_translate("MainWindow", "Мануал"))
+        self.btn_show_database.setText(_translate("MainWindow", "Открыть СУБД"))
         self.btn_open_list_of_db.setText(_translate("MainWindow", "Список баз данных"))
         self.toolBox.setItemText(self.toolBox.indexOf(self.page_dbms_menu), _translate("MainWindow", "СУБД"))
-        self.btn_open_action_log.setText(_translate("MainWindow", "Открыть журналы"))
         self.btn_action_log_manual.setText(_translate("MainWindow", "Мануал"))
+        self.btn_open_action_log.setText(_translate("MainWindow", "Открыть журналы"))
         self.toolBox.setItemText(self.toolBox.indexOf(self.page_action_log), _translate("MainWindow", "Журнал действий"))
         self.btn_main_page_manual.setText(_translate("MainWindow", "Главная страница"))
+        self.btn_open_license.setText(_translate("MainWindow", "Лицензия"))
         self.btn_open_authorization_page_2.setText(_translate("MainWindow", "Страница авторизации"))
         self.btn_exit.setText(_translate("MainWindow", "Выход"))
         self.label_4.setText(_translate("MainWindow", "Информация о системе"))
@@ -2296,6 +2402,19 @@ class Ui_MainWindow(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600; color:#ffffff;\">6.</span><span style=\" font-family:\'Times New Roman\'; font-size:7pt; font-weight:600; color:#ffffff;\">  </span><span style=\" font-weight:600; color:#ffffff;\">роль (администратор или пользователь). </span></p>\n"
 "<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600; color:#ffffff;\">В дальнейшем адрес электронной почты будет использоваться для про­хождения двухфакторной аутентификации. </span></p>\n"
 "<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600; color:#ffffff;\">Аутентификация в Системе осуществляется при помощи логина, пароля и специального кода, Если пользователь прошёл авторизацию, то откроется стра­ница двухфакторной аутентификации для ввода кода. который приходит на указанный пользователем адрес электронной почты. </span></p></body></html>"))
+        self.label_43.setText(_translate("MainWindow", "Лицензия"))
+        self.textEdit_7.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Действующая лицензия - MIT License </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Срок действия - бессрочная </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:115%;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Авторское право (c) 2022 GhostTonyRus </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:115%;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">  </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:115%;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Настоящим предоставляется бесплатное разрешение любому лицу, получающему копию </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:115%;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">этого программного обеспечения и связанных с ним файлов документации (&quot;Программное обеспечение&quot;), на использование Программного обеспечения без ограничений, включая, помимо прочего, права на использование, копирование, изменение, объединение, публикацию, распространение, сублицензирование и/или продавать копии Программного обеспечения и разрешать лицам, которым предоставляется Программное обеспечение, делать это при соблюдении следующих условий: </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:115%;\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">Вышеупомянутое уведомление об авторских правах и это уведомление о разрешении должны быть включены во все копии или существенные части Программного обеспечения. </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:115%;\"><span style=\" font-family:\'Times New Roman,serif\'; font-size:14pt; font-weight:600; color:#ffffff;\">ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ ПРЕДОСТАВЛЯЕТСЯ &quot;КАК ЕСТЬ&quot;, БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ, ЯВНЫХ ИЛИ ПОДРАЗУМЕВАЕМЫХ, ВКЛЮЧАЯ, НО НЕ ОГРАНИЧИВАЯСЬ ГАРАНТИЯМИ ТОВАРНОЙ ПРИГОДНОСТИ, ПРИГОДНОСТИ ДЛЯ ОПРЕДЕЛЕННОЙ ЦЕЛИ И НЕНАРУШЕНИЯ. НИ В КОЕМ СЛУЧАЕ АВТОРЫ ИЛИ ПРАВООБЛАДАТЕЛИ НЕ НЕСУТ ОТВЕТСТВЕННОСТИ ЗА КАКИЕ-ЛИБО ПРЕТЕНЗИИ, УБЫТКИ ИЛИ ДРУГИЕ ОТВЕТСТВЕННОСТЬ, БУДЬ ТО В РЕЗУЛЬТАТЕ ДЕЙСТВИЯ ДОГОВОРА, ДЕЛИКТА ИЛИ ИНЫМ ОБРАЗОМ, ВОЗНИКАЮЩАЯ В РЕЗУЛЬТАТЕ ИЛИ В СВЯЗИ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ ИЛИ ИСПОЛЬЗОВАНИЕМ ИЛИ ДРУГИМИ ОПЕРАЦИЯМИ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ.</span></p></body></html>"))
         self.label_32.setText(_translate("MainWindow", "Защита от USB"))
         self.label_13.setText(_translate("MainWindow", "Жёсткие диски "))
         self.textEdit_usb_blocking.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -2320,7 +2439,8 @@ class Ui_MainWindow(object):
         self.label_16.setText(_translate("MainWindow", "Быстрая проверка"))
         self.label_17.setText(_translate("MainWindow", "Полная проверка"))
         self.btn_start_file_checking.setText(_translate("MainWindow", "Запустить проверку"))
-        self.label_15.setText(_translate("MainWindow", "Отслеживание процессов"))
+        self.label_15.setText(_translate("MainWindow", "Активность программ"))
+        self.label_44.setText(_translate("MainWindow", "Дата создания | Действие |  Программа | ID процесса |  Память | Количество операций "))
         self.label_5.setText(_translate("MainWindow", "Мануал"))
         self.textEdit_2.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"

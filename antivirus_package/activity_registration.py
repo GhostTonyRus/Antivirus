@@ -35,7 +35,10 @@ class ProcessMonitor:
         self._process_property = {
             "Caption": None,
             "CreationDate": None,
-            "ProcessID": None
+            "ProcessID": None,
+            "MaximumWorkingSetSize": None,
+            "Description": None,
+            "OtherOperationCount": None,
         }
 
         self._process_watcher = wmi.WMI().Win32_Process.watch_for(notify_filter)
@@ -43,11 +46,16 @@ class ProcessMonitor:
     def update(self):
         """обновляет поля, когда происходит событие, определённое значением notify_filter,
         """
-        process = self._process_watcher()
-        self._process_property["EventType"] = process.event_type
-        self._process_property["Caption"] = process.Caption
-        self._process_property["CreationDate"] = process.CreationDate
-        self._process_property["ProcessID"] = process.ProcessID
+        try:
+            process = self._process_watcher()
+            self._process_property["EventType"] = process.event_type
+            self._process_property["Caption"] = process.Caption
+            self._process_property["CreationDate"] = process.CreationDate
+            self._process_property["ProcessID"] = process.ProcessID
+            self._process_property["MaximumWorkingSetSize"] = process.MaximumWorkingSetSize
+            self._process_property["OtherOperationCount"] = process.OtherOperationCount
+        except Exception:
+            ...
 
     # методы возвращают значения соответствующих полей списка свойств процесса
     @property
@@ -66,6 +74,14 @@ class ProcessMonitor:
     def process_id(self):
         return self._process_property["ProcessID"]
 
+    @property
+    def maximumWorkingSetSize(self):
+        return self._process_property["MaximumWorkingSetSize"]
+
+    @property
+    def otherOperationCount(self):
+        return self._process_property["OtherOperationCount"]
+
 class Monitor(Thread):
     def __init__(self, action):
         self._action = action
@@ -77,14 +93,17 @@ class Monitor(Thread):
         while True:
             time.sleep(3)
             process_monitor.update()
-            with open("C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\activity_registration.txt", "a") as file:
+            with open("C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\activity_registration.txt",
+                      "a", encoding="utf-8") as file:
                 data = (
-                    date_time_format(process_monitor.creation_date),
-                    process_monitor.event_type,
-                    process_monitor.caption,
-                    process_monitor.process_id
+                    date_time_format(process_monitor.creation_date) + "\t",
+                    str(process_monitor.event_type) + "\t",
+                    str(process_monitor.caption) + "\t",
+                    str(process_monitor.process_id) + "\t",
+                    str(process_monitor.maximumWorkingSetSize) + "МБ\t\t",
+                    str(process_monitor.otherOperationCount) + "%",
                 )
-                file.write(str(data)+"\n")
+                file.write(str(" ".join(data))+"\n")
 
     def main(self):
         self.start()
