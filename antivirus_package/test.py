@@ -21,3 +21,5 @@ with sqlite3.connect("../dependencies/database_dir/customs_users.db") as conn:
     """).fetchall()
     print(res)
     conn.commit()
+
+

@@ -218,6 +218,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.usb_blocking_thread = CheckUsbThread()
         self.usb_blocking_thread.signal.connect(self.insert_info_about_blocking_usb)
         self.ui.btn_check_usb.clicked.connect(lambda: self.show_usb_block())
+        self.ui.btn_allow_usb.clicked.connect(lambda: self.get_allowed_usb())
 
         # настройка порт сканер
         self.port_scanner_thread = PortScannerThread(self.ui.comboBox_port_scanner.currentText())
@@ -556,6 +557,11 @@ class MyWindow(QtWidgets.QMainWindow):
 
     def insert_info_about_blocking_usb(self, value):
         self.ui.lw_of_locked_usb.addItem(value)
+
+    def get_allowed_usb(self):
+        self.ui.le_get_usb.clear()
+        usb_name = self.ui.le_get_usb.text()
+        self.ui.lw_allowed_usb.addItem(usb_name)
 
     #############################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ РАБОТЫ ПОРТ СКАНЕРА #
