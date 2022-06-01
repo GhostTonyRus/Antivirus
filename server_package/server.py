@@ -144,7 +144,7 @@ class Server:
 
     # отправляем письмо с кодом
     def send_email_code(self, email, code):
-        two_factor_authentication.send_email(email=email, msg=code)
+        two_factor_authentication.send_email(email=email, code=code)
         print("сообщение отправлено")
 
     # получаем соединения от пользователя и сообщения

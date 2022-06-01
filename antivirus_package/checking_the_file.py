@@ -1,7 +1,11 @@
 import json
+import os
+import threading
 import time
-
+import queue
 import requests
+import asyncio
+from datetime import datetime
 
 
 class CheckFile:
@@ -10,48 +14,107 @@ class CheckFile:
     Файл загружается при попомощи post запроса.
     Для того, чтобы получить информацию о файле используется метод get"""
 
-    def __init__(self, path):
-        self.path = path
+    def __init__(self):
         self.url = "https://www.virustotal.com/vtapi/v2/file/scan"  # url для загрузки файла
         self.params = {"apikey": "e78d30c3bbbed09731a783a97b1a1e34f52008c8ccf61a0f161558cfe0da836b"}
         self.report_url = "https://www.virustotal.com/vtapi/v2/file/report"  # url для получения информации
+        self.antivirus_path = "C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\"
+        self.server_path = "C:\\PycharmProjects\\Antivirus\\dependencies\\server_dir\\"
+        self.database_path = "C:\\PycharmProjects\\Antivirus\\dependencies\\database_dir\\"
+        self.log_path = "C:\\PycharmProjects\\Antivirus\\dependencies\\log_dir\\"
+        self.report_dir = "C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\report.txt"
+        self.files_queue = queue.Queue()
+        self.res_pf_scan = []
 
-    def upload_file(self):
+        with open(self.report_dir, "w") as file:
+            ...
+
+    def get_files_from_dirs(self):
+        for dirpath, dirnames, filenames in os.walk(self.antivirus_path):
+            for file in filenames:
+                self.files_queue.put(self.antivirus_path+file)
+
+        for dirpath, dirnames, filenames in os.walk(self.server_path):
+            for file in filenames:
+                self.files_queue.put(self.server_path+file)
+
+        for dirpath, dirnames, filenames in os.walk(self.database_path):
+            for file in filenames:
+                self.files_queue.put(self.database_path+file)
+
+        for dirpath, dirnames, filenames in os.walk(self.log_path):
+            for file in filenames:
+                self.files_queue.put(self.log_path+file)
+
+    def upload_file(self, file_from_queue):
         """загружаем файл"""
         params = dict(apikey='e78d30c3bbbed09731a783a97b1a1e34f52008c8ccf61a0f161558cfe0da836b')
-        with open(self.path, 'rb') as file:
-            files = dict(file=(self.path, file))
+        # self.get_files_from_dirs()
+
+        # for _ in range(self.files_queue.qsize()):
+        with open(file_from_queue, 'rb') as file:
+            files = dict(file=(file_from_queue, file))
             response = requests.post(self.url, files=files, params=params)
+            print("файл отправлен")
+            time.sleep(158)
         if response.status_code == 200:
             result = response.json()
             # print(json.dumps(result, sort_keys=False, indent=4))
             return result["resource"]
 
-    def get_info_about_file(self):
+    def get_info_about_file(self, file_path):
         """получаем информацию о файле"""
-        resource = self.upload_file()
+        resource = self.upload_file(file_path)
         params = dict(apikey='e78d30c3bbbed09731a783a97b1a1e34f52008c8ccf61a0f161558cfe0da836b',
                       resource=resource)
         response = requests.get(self.report_url, params=params)
+        time.sleep(150)
         if response.status_code == 200:
             result = response.json()
             # print(json.dumps(result, sort_keys=False, indent=4))
             json_res = json.dumps(result, sort_keys=False, indent=4)
+            # res_d[file_path] = json_res
+            print("результат готов")
+            # return res_d
             # return json_res
             report = f"""
             Результат проверки:
             id - {result['scan_id']}
-            дата и время - {result['scan_date']}
+            время и дата - {datetime.now().strftime('%H:%M:%S %m-%d-%Y')}
             всего проверок - {result['total']}
-            обнаружено вирусов - {result['positives']}"""
-            return report
+            обнаружено вирусов - {result['positives']}""".replace("\t", "")
+            # return report
+            # print(report)
+            with open(self.report_dir, "a", encoding="utf-8") as file:
+                file.write(report)
+            self.res_pf_scan.append(report)
+
+    def run(self):
+        files = [
+            "C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\activity_registration.txt",
+            # "C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\hosts.txt",
+            # "C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\locked_connections.txt",
+            # "C:\\PycharmProjects\\Antivirus\\dependencies\\log_dir\\database_action.txt",
+            # "C:\\PycharmProjects\\Antivirus\\dependencies\\log_dir\\server_action.txt",
+            # "C:\\PycharmProjects\\Antivirus\\dependencies\\server_dir\\locked_connections.txt",
+            # "C:\\PycharmProjects\\Antivirus\\dependencies\\server_dir\\temporary_actions.txt",
+        ]
+        # self.get_files_from_dirs()
+        for file in files:
+            thread = threading.Thread(target=self.get_info_about_file, args=(file,), daemon=True)
+            thread.start()
+            thread.join()
+            # return "".join(self.res_pf_scan)
 
     def main(self):
-        result = self.get_info_about_file()
-        return result
+        thread = threading.Thread(target=self.run)
+        thread.start()
+        return "res".join(self.res_pf_scan)
 
 
 if __name__ == '__main__':
-    test = CheckFile("C:\\PycharmProjects\\Antivirus\\antivirus_package\\signatures\\MD5 Virus Hashes.txt")
-    data = test.main()
-    print(data)
+    test = CheckFile()
+    print(test.main())
+
+
+

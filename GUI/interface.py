@@ -11,8 +11,7 @@ from PyQt5.QtWidgets import QGraphicsDropShadowEffect, QSizeGrip, QDesktopWidget
 from system_gui_for_test_2_copy import Ui_MainWindow
 from database_dialog_view import Ui_Dialog
 # from system_gui import Ui_MainWindow
-from antivirus_package import Two_factor_authentication, InfoSystem, PortScanner, Monitor, UsbLock, CheckFile, \
-    AntivirusEngine
+from antivirus_package import Monitor, Two_factor_authentication, InfoSystem, PortScanner, GetProgramActivity, GetNetworkConnections, GetNetworkStatistics, UsbLock, CheckFile, AntivirusEngine
 from server_package import Server
 from database_package import CustomsofficersDataBase
 from logging_package import Logging
@@ -21,31 +20,23 @@ import time
 
 class ActivityRegistrationThread(QtCore.QThread):
     signal = QtCore.pyqtSignal(str)
-
     def __init__(self):
         super(ActivityRegistrationThread, self).__init__()
-        self.monitor_creation = Monitor("creation")
-        self.monitor_deletion = Monitor("deletion")
-        self.monitor_modification = Monitor("modification")
-        self.monitor_option = Monitor("operation")
+        self.monitor = GetProgramActivity()
 
     def run(self):
-        self.monitor_creation.main()
-        self.monitor_deletion.main()
-        self.monitor_modification.main()
-        self.monitor_option.main()
+        self.monitor.main()
         time.sleep(10)
         while True:
             time.sleep(3)
             try:
-                with open("C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\activity_registration.txt", "r",
+                with open("C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\program_activity.txt", "r",
                           encoding="utf-8") as file:
                     res = file.readlines()
                     for i in res:
                         self.signal.emit(str(i))
             except FileExistsError as err:
                 self.signal.emit("НЕТ ДАННЫХ!")
-
 
 class PortScannerThread(QtCore.QThread):
     signal = QtCore.pyqtSignal(str)
@@ -85,12 +76,40 @@ class CheckFileThread(QtCore.QThread):
 
     def __init__(self):
         super(CheckFileThread, self).__init__()
-        self.check_file = CheckFile(
-            "C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\signatures\\MD5 Virus Hashes.txt")
+        self.check_file = CheckFile()
 
     def run(self):
         res = self.check_file.main()
+        print("Результат готов!")
+        print(res)
         self.signal.emit(res)
+        # time.sleep(60)
+        # try:
+        #     with open("C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\report.txt", "r",
+        #               encoding="utf-8") as file:
+        #         res = file.readlines()
+        #         for i in res:
+        #             self.signal.emit(str(i))
+        # except FileExistsError as err:
+        #     self.signal.emit("НЕТ ДАННЫХ!")
+
+class ActivityThread(QtCore.QThread):
+    signal = QtCore.pyqtSignal(str)
+
+    def __init__(self):
+        super(ActivityThread, self).__init__()
+        self.activity = GetProgramActivity()
+
+    def run(self):
+        self.activity.main()
+        time.sleep(10)
+        while True:
+            time.sleep(3)
+            with open("C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\program_activity.txt", "r",
+                      encoding="utf-8") as file:
+                res = file.readlines()
+                for i in res:
+                    self.signal.emit(str(i))
 
 
 class ServerThread(QtCore.QThread):
@@ -122,17 +141,9 @@ class ThreadProgressBar(QtCore.QThread):
     """
     countChanged = QtCore.pyqtSignal(int)
 
-    def get_dirs(self):
-        dirs = []
-        # for dirpath, dirnames, filenames in os.walk("C:\\PycharmProjects\\Antivirus"):
-        for dirpath, dirnames, filenames in os.walk("C:\\PycharmProjects\\Antivirus"):
-            dirs.append(dirnames)
-        return dirs
-
     def run(self):
-        dirs = self.get_dirs()
         for i in range(1, 101):
-            time.sleep(1)
+            time.sleep(60)
             self.countChanged.emit(i)
 
 class MyWindow(QtWidgets.QMainWindow):
@@ -140,8 +151,7 @@ class MyWindow(QtWidgets.QMainWindow):
         super(MyWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.antivirus_ = CheckFile(
-            "C:\\PycharmProjects\\Antivirus\\antivirus_package\\signatures\\MD5 Virus Hashes.txt")
+        self.antivirus_ = CheckFile()
         self.antivirus = AntivirusEngine()
         self.two_factor_authentication = Two_factor_authentication()
         self.info = InfoSystem()  # информация о системе
@@ -376,7 +386,7 @@ class MyWindow(QtWidgets.QMainWindow):
                 password_from_db = value[1]
                 email_from_db = value[2]
                 if login_from_form == login_from_db and password_from_form == password_from_db: # сравниваем данные из словаря и из полей ввода
-                    self.two_factor_authentication.send_email(email=email_from_db, msg=code_from_email) # отправляем письмо на почту
+                    self.two_factor_authentication.send_email(email=email_from_db, code=code_from_email) # отправляем письмо на почту
                     self.ui.stackedWidget.setCurrentWidget(self.ui.two_factor_authentication_page) # открываем окно с подтверждением кода
                     self.ui.le_login.clear()
                     self.ui.le_password.clear()
@@ -475,6 +485,7 @@ class MyWindow(QtWidgets.QMainWindow):
     ##########################################################
     def show_activity_registration_page(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_registration_activity)
+        # self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_test_registration_activity)
 
     def insert_activity_registration_value(self, value):
         self.ui.plainTextEdit_for_activity_registration.appendPlainText(value)
@@ -496,7 +507,7 @@ class MyWindow(QtWidgets.QMainWindow):
     def onCountChanged(self, value):
         self.ui.progressBar.setValue(value)
         if value == 100:
-            time.sleep(2)
+            time.sleep(1)
             self.ui.progressBar.hide()
 
     def start_fast_check_file(self):
@@ -533,8 +544,9 @@ class MyWindow(QtWidgets.QMainWindow):
             QtWidgets.QMessageBox.information(self, "Уведомление", "Нужно выбрать один из вариантов проверки")
 
     def insert_check_file_value(self, value):
-        self.ui.te_res_of_fast_check.append(value)
-        self.ui.btn_start_file_checking.setEnabled(True)
+        # self.ui.te_res_of_full_check.clear()
+        self.ui.te_res_of_full_check.append(value)
+        self.ui.btn_start_file_checking.setEnabled(False)
 
     #########################################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ ВЫВОДА ИНФОРМАЦИИ О СИСТЕМЕ     #

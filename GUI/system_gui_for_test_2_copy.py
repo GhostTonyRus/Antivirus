@@ -220,7 +220,7 @@ class Ui_MainWindow(object):
 "    color: rgb(255, 255, 255);\n"
 "    border: 5px solid rgb(24, 24, 36);\n"
 "    border-bottom-color: rgb(255, 255, 255);\n"
-"    border-radius: 20px;\n"
+"\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
@@ -243,7 +243,6 @@ class Ui_MainWindow(object):
 "    color: rgb(255, 255, 255);\n"
 "    border: 5px solid rgb(24, 24, 36);\n"
 "    border-bottom-color: rgb(255, 255, 255);\n"
-"    border-radius: 20px;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
@@ -1105,7 +1104,11 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(14)
         self.textEdit.setFont(font)
-        self.textEdit.setStyleSheet("color: rgb(255, 255, 255);")
+        self.textEdit.setStyleSheet("QTextEdit {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"}\n"
+"")
         self.textEdit.setReadOnly(True)
         self.textEdit.setObjectName("textEdit")
         self.verticalLayout_9.addWidget(self.textEdit)
@@ -1151,6 +1154,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_61 = QtWidgets.QVBoxLayout(self.frame_44)
         self.verticalLayout_61.setObjectName("verticalLayout_61")
         self.textEdit_7 = QtWidgets.QTextEdit(self.frame_44)
+        self.textEdit_7.setStyleSheet("QTextEdit {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"}\n"
+"")
         self.textEdit_7.setObjectName("textEdit_7")
         self.verticalLayout_61.addWidget(self.textEdit_7)
         self.verticalLayout_59.addWidget(self.frame_44)
@@ -1214,7 +1222,11 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.textEdit_usb_blocking.setFont(font)
-        self.textEdit_usb_blocking.setStyleSheet("color: rgb(255, 255, 255);")
+        self.textEdit_usb_blocking.setStyleSheet("QTextEdit {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
         self.textEdit_usb_blocking.setReadOnly(True)
         self.textEdit_usb_blocking.setObjectName("textEdit_usb_blocking")
         self.verticalLayout_64.addWidget(self.textEdit_usb_blocking)
@@ -1242,7 +1254,13 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.le_get_usb.setFont(font)
-        self.le_get_usb.setStyleSheet("color: rgb(255, 255, 255);")
+        self.le_get_usb.setStyleSheet("QLineEdit {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"    color: rgb(255, 255, 255);\n"
+"}\n"
+"")
+        self.le_get_usb.setText("")
         self.le_get_usb.setObjectName("le_get_usb")
         self.verticalLayout_63.addWidget(self.le_get_usb)
         self.btn_allow_usb = QtWidgets.QPushButton(self.frame_48)
@@ -1253,9 +1271,8 @@ class Ui_MainWindow(object):
         self.btn_allow_usb.setFont(font)
         self.btn_allow_usb.setStyleSheet("QPushButton {\n"
 "    color: rgb(255, 255, 255);\n"
-"    border: 5px solid rgb(24, 24, 36);\n"
+"    border: 5px solid #1f232a;;\n"
 "    border-bottom-color: rgb(255, 255, 255);\n"
-"    border-radius: 20px;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
@@ -1279,7 +1296,12 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.lw_allowed_usb.setFont(font)
-        self.lw_allowed_usb.setStyleSheet("color: rgb(255, 255, 255);")
+        self.lw_allowed_usb.setStyleSheet("QListWidget {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"    color: rgb(255, 255, 255);\n"
+"}\n"
+"")
         self.lw_allowed_usb.setObjectName("lw_allowed_usb")
         self.verticalLayout_63.addWidget(self.lw_allowed_usb)
         self.horizontalLayout_4.addWidget(self.frame_48)
@@ -1299,7 +1321,12 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.lw_of_locked_usb.setFont(font)
-        self.lw_of_locked_usb.setStyleSheet("color: rgb(255, 255, 255);")
+        self.lw_of_locked_usb.setStyleSheet("QListWidget {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"    color: rgb(255, 255, 255);\n"
+"}\n"
+"")
         self.lw_of_locked_usb.setObjectName("lw_of_locked_usb")
         self.verticalLayout_22.addWidget(self.lw_of_locked_usb)
         self.verticalLayout_21.addWidget(self.frame_19)
@@ -1353,13 +1380,16 @@ class Ui_MainWindow(object):
         self.textEdit_3 = QtWidgets.QTextEdit(self.frame_28)
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(8)
+        font.setPointSize(14)
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
         self.textEdit_3.setFont(font)
-        self.textEdit_3.setStyleSheet("color: rgb(255, 255, 255);\n"
-"font: 8pt \"MS Shell Dlg 2\";")
+        self.textEdit_3.setStyleSheet("QTextEdit {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
         self.textEdit_3.setReadOnly(True)
         self.textEdit_3.setObjectName("textEdit_3")
         self.verticalLayout_41.addWidget(self.textEdit_3)
@@ -1369,6 +1399,43 @@ class Ui_MainWindow(object):
         self.frame_26.setObjectName("frame_26")
         self.gridLayout = QtWidgets.QGridLayout(self.frame_26)
         self.gridLayout.setObjectName("gridLayout")
+        self.te_res_of_fast_check = QtWidgets.QTextEdit(self.frame_26)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.te_res_of_fast_check.setFont(font)
+        self.te_res_of_fast_check.setStyleSheet("QTextEdit {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
+        self.te_res_of_fast_check.setReadOnly(True)
+        self.te_res_of_fast_check.setObjectName("te_res_of_fast_check")
+        self.gridLayout.addWidget(self.te_res_of_fast_check, 2, 0, 1, 1)
+        self.label_17 = QtWidgets.QLabel(self.frame_26)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_17.setFont(font)
+        self.label_17.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_17.setObjectName("label_17")
+        self.gridLayout.addWidget(self.label_17, 0, 2, 1, 1)
+        self.te_res_of_full_check = QtWidgets.QTextEdit(self.frame_26)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.te_res_of_full_check.setFont(font)
+        self.te_res_of_full_check.setStyleSheet("QTextEdit {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
+        self.te_res_of_full_check.setReadOnly(True)
+        self.te_res_of_full_check.setObjectName("te_res_of_full_check")
+        self.gridLayout.addWidget(self.te_res_of_full_check, 2, 2, 1, 1)
         self.label_16 = QtWidgets.QLabel(self.frame_26)
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -1379,39 +1446,20 @@ class Ui_MainWindow(object):
         self.label_16.setObjectName("label_16")
         self.gridLayout.addWidget(self.label_16, 0, 0, 1, 1)
         self.cb_fast_check = QtWidgets.QCheckBox(self.frame_26)
+        self.cb_fast_check.setMinimumSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
         font.setPointSize(20)
         self.cb_fast_check.setFont(font)
-        self.cb_fast_check.setText("")
         self.cb_fast_check.setObjectName("cb_fast_check")
-        self.gridLayout.addWidget(self.cb_fast_check, 0, 1, 1, 1)
-        self.label_17 = QtWidgets.QLabel(self.frame_26)
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_17.setFont(font)
-        self.label_17.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_17.setObjectName("label_17")
-        self.gridLayout.addWidget(self.label_17, 1, 0, 1, 1)
+        self.gridLayout.addWidget(self.cb_fast_check, 1, 0, 1, 1)
         self.cb_full_check = QtWidgets.QCheckBox(self.frame_26)
         font = QtGui.QFont()
         font.setPointSize(20)
         self.cb_full_check.setFont(font)
         self.cb_full_check.setText("")
         self.cb_full_check.setObjectName("cb_full_check")
-        self.gridLayout.addWidget(self.cb_full_check, 1, 1, 1, 1)
+        self.gridLayout.addWidget(self.cb_full_check, 1, 2, 1, 1)
         self.verticalLayout_41.addWidget(self.frame_26)
-        self.te_res_of_fast_check = QtWidgets.QTextEdit(self.frame_28)
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        font.setBold(True)
-        font.setWeight(75)
-        self.te_res_of_fast_check.setFont(font)
-        self.te_res_of_fast_check.setStyleSheet("color: rgb(255, 255, 255);")
-        self.te_res_of_fast_check.setReadOnly(True)
-        self.te_res_of_fast_check.setObjectName("te_res_of_fast_check")
-        self.verticalLayout_41.addWidget(self.te_res_of_fast_check)
         self.progressBar = QtWidgets.QProgressBar(self.frame_28)
         self.progressBar.setEnabled(False)
         font = QtGui.QFont()
@@ -1425,7 +1473,7 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QProgressBar::chunk{\n"
-"    background-color:  rgb(255, 0, 0);\n"
+"    background-color: #2c313c;\n"
 "}\n"
 "")
         self.progressBar.setProperty("value", 0)
@@ -1446,18 +1494,15 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.btn_start_file_checking.setFont(font)
         self.btn_start_file_checking.setStyleSheet("QPushButton {\n"
-"color: rgb(255, 255, 255);\n"
-"    border: 5px groove #2c313c;\n"
+"    color: rgb(255, 255, 255);\n"
+"    border: 5px solid #1f232a;;\n"
 "    border-bottom-color: rgb(255, 255, 255);\n"
-"    border-radius: 20px;\n"
-"    background-color: #16191d;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: #2c313c;\n"
-"    border: 5px solid  rgb(255, 255, 255);\n"
+"    background-color: rgb(24, 24, 36);\n"
+"    border: 5px solid rgb(255, 255, 255);\n"
 "}\n"
-"\n"
 "")
         self.btn_start_file_checking.setObjectName("btn_start_file_checking")
         self.verticalLayout_37.addWidget(self.btn_start_file_checking)
@@ -1505,7 +1550,12 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.plainTextEdit_for_activity_registration.setFont(font)
-        self.plainTextEdit_for_activity_registration.setStyleSheet("color: rgb(255, 255, 255);")
+        self.plainTextEdit_for_activity_registration.setStyleSheet("QPlainTextEdit {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"    color: rgb(255, 255, 255);\n"
+"}\n"
+"")
         self.plainTextEdit_for_activity_registration.setReadOnly(True)
         self.plainTextEdit_for_activity_registration.setObjectName("plainTextEdit_for_activity_registration")
         self.verticalLayout_14.addWidget(self.plainTextEdit_for_activity_registration)
@@ -1518,6 +1568,60 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
         self.verticalLayout_13.addWidget(self.frame_14, 0, QtCore.Qt.AlignBottom)
         self.stackedWidget_main.addWidget(self.page_registration_activity)
+        self.page_test_registration_activity = QtWidgets.QWidget()
+        self.page_test_registration_activity.setObjectName("page_test_registration_activity")
+        self.verticalLayout_65 = QtWidgets.QVBoxLayout(self.page_test_registration_activity)
+        self.verticalLayout_65.setObjectName("verticalLayout_65")
+        self.frame_47 = QtWidgets.QFrame(self.page_test_registration_activity)
+        self.frame_47.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_47.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_47.setObjectName("frame_47")
+        self.verticalLayout_66 = QtWidgets.QVBoxLayout(self.frame_47)
+        self.verticalLayout_66.setObjectName("verticalLayout_66")
+        self.tabWidget_2 = QtWidgets.QTabWidget(self.frame_47)
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        font.setBold(True)
+        font.setWeight(75)
+        self.tabWidget_2.setFont(font)
+        self.tabWidget_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.tabWidget_2.setObjectName("tabWidget_2")
+        self.tab_1 = QtWidgets.QWidget()
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.tab_1.setFont(font)
+        self.tab_1.setObjectName("tab_1")
+        self.verticalLayout_67 = QtWidgets.QVBoxLayout(self.tab_1)
+        self.verticalLayout_67.setObjectName("verticalLayout_67")
+        self.tableWidget = QtWidgets.QTableWidget(self.tab_1)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.tableWidget.setFont(font)
+        self.tableWidget.setObjectName("tableWidget")
+        self.tableWidget.setColumnCount(0)
+        self.tableWidget.setRowCount(0)
+        self.verticalLayout_67.addWidget(self.tableWidget)
+        self.tabWidget_2.addTab(self.tab_1, "")
+        self.tab_2 = QtWidgets.QWidget()
+        self.tab_2.setObjectName("tab_2")
+        self.tabWidget_2.addTab(self.tab_2, "")
+        self.tab = QtWidgets.QWidget()
+        self.tab.setObjectName("tab")
+        self.verticalLayout_68 = QtWidgets.QVBoxLayout(self.tab)
+        self.verticalLayout_68.setObjectName("verticalLayout_68")
+        self.plainTextEdit_for_activity = QtWidgets.QPlainTextEdit(self.tab)
+        self.plainTextEdit_for_activity.setStyleSheet("color: rgb(255, 0, 0);")
+        self.plainTextEdit_for_activity.setPlainText("")
+        self.plainTextEdit_for_activity.setObjectName("plainTextEdit_for_activity")
+        self.verticalLayout_68.addWidget(self.plainTextEdit_for_activity)
+        self.tabWidget_2.addTab(self.tab, "")
+        self.verticalLayout_66.addWidget(self.tabWidget_2)
+        self.verticalLayout_65.addWidget(self.frame_47)
+        self.stackedWidget_main.addWidget(self.page_test_registration_activity)
         self.page_about_antivirus = QtWidgets.QWidget()
         self.page_about_antivirus.setObjectName("page_about_antivirus")
         self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.page_about_antivirus)
@@ -1557,6 +1661,11 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.textEdit_2.setFont(font)
+        self.textEdit_2.setStyleSheet("QTextEdit {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
         self.textEdit_2.setReadOnly(True)
         self.textEdit_2.setObjectName("textEdit_2")
         self.verticalLayout_12.addWidget(self.textEdit_2)
@@ -1614,7 +1723,11 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.plainTextEdit_port_scanner.setFont(font)
-        self.plainTextEdit_port_scanner.setStyleSheet("color: rgb(255, 255, 255);")
+        self.plainTextEdit_port_scanner.setStyleSheet("QPlainTextEdit {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
         self.plainTextEdit_port_scanner.setObjectName("plainTextEdit_port_scanner")
         self.horizontalLayout_9.addWidget(self.plainTextEdit_port_scanner, 0, QtCore.Qt.AlignHCenter)
         self.pte_system_ports = QtWidgets.QTextEdit(self.frame_17)
@@ -1623,7 +1736,11 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.pte_system_ports.setFont(font)
-        self.pte_system_ports.setStyleSheet("")
+        self.pte_system_ports.setStyleSheet("QTextEdit {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
         self.pte_system_ports.setReadOnly(True)
         self.pte_system_ports.setObjectName("pte_system_ports")
         self.horizontalLayout_9.addWidget(self.pte_system_ports)
@@ -1640,10 +1757,17 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.btn_start_port_scanner.setFont(font)
-        self.btn_start_port_scanner.setStyleSheet("color: rgb(255, 255, 255);\n"
-"border: 5px solid;\n"
-"border-bottom-color: rgb(255, 255, 255);\n"
-"background-color: #2c313c;")
+        self.btn_start_port_scanner.setStyleSheet("QPushButton {\n"
+"    color: rgb(255, 255, 255);\n"
+"    border: 5px solid #1f232a;;\n"
+"    border-bottom-color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(24, 24, 36);\n"
+"    border: 5px solid rgb(255, 255, 255);\n"
+"}\n"
+"")
         self.btn_start_port_scanner.setObjectName("btn_start_port_scanner")
         self.verticalLayout_18.addWidget(self.btn_start_port_scanner)
         self.verticalLayout_17.addWidget(self.frame_18, 0, QtCore.Qt.AlignBottom)
@@ -1681,7 +1805,11 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.textEdit__information_about_system.setFont(font)
-        self.textEdit__information_about_system.setStyleSheet("color: rgb(255, 255, 255);")
+        self.textEdit__information_about_system.setStyleSheet("QTextEdit {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
         self.textEdit__information_about_system.setReadOnly(True)
         self.textEdit__information_about_system.setObjectName("textEdit__information_about_system")
         self.verticalLayout_16.addWidget(self.textEdit__information_about_system)
@@ -1740,7 +1868,11 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.lw_incoming_connections.setFont(font)
-        self.lw_incoming_connections.setStyleSheet("color: rgb(255, 255, 255);")
+        self.lw_incoming_connections.setStyleSheet("QListWidget {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"}\n"
+"")
         self.lw_incoming_connections.setWordWrap(True)
         self.lw_incoming_connections.setObjectName("lw_incoming_connections")
         self.verticalLayout_39.addWidget(self.lw_incoming_connections)
@@ -1766,7 +1898,12 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.lw_locked_connections.setFont(font)
-        self.lw_locked_connections.setStyleSheet("color: rgb(255, 255, 255);")
+        self.lw_locked_connections.setStyleSheet("QListWidget {\n"
+"    color: rgb(255, 255, 255);\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"}\n"
+"")
         self.lw_locked_connections.setWordWrap(True)
         self.lw_locked_connections.setObjectName("lw_locked_connections")
         self.verticalLayout_40.addWidget(self.lw_locked_connections)
@@ -1805,6 +1942,11 @@ class Ui_MainWindow(object):
         self.label_40.setObjectName("label_40")
         self.verticalLayout_49.addWidget(self.label_40)
         self.textEdit_5 = QtWidgets.QTextEdit(self.frame_35)
+        self.textEdit_5.setStyleSheet("QTextEdit {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
         self.textEdit_5.setObjectName("textEdit_5")
         self.verticalLayout_49.addWidget(self.textEdit_5)
         self.verticalLayout_48.addWidget(self.frame_35)
@@ -1837,7 +1979,12 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.plainTextEdit_infromation_from_server.setFont(font)
-        self.plainTextEdit_infromation_from_server.setStyleSheet("color: rgb(255, 255, 255);")
+        self.plainTextEdit_infromation_from_server.setStyleSheet("QPlainTextEdit {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"    color: rgb(255, 255, 255);\n"
+"}\n"
+"")
         self.plainTextEdit_infromation_from_server.setReadOnly(True)
         self.plainTextEdit_infromation_from_server.setObjectName("plainTextEdit_infromation_from_server")
         self.verticalLayout_24.addWidget(self.plainTextEdit_infromation_from_server)
@@ -1871,7 +2018,11 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.textEdit_4.setFont(font)
-        self.textEdit_4.setStyleSheet("")
+        self.textEdit_4.setStyleSheet("QTextEdit {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
         self.textEdit_4.setReadOnly(True)
         self.textEdit_4.setObjectName("textEdit_4")
         self.verticalLayout_47.addWidget(self.textEdit_4)
@@ -2070,9 +2221,17 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.btn_add_new_user.setFont(font)
-        self.btn_add_new_user.setStyleSheet("color: rgb(255, 255, 255);\n"
-"border: 5px solid;\n"
-"border-bottom-color: rgb(255, 255, 255);")
+        self.btn_add_new_user.setStyleSheet("QPushButton {\n"
+"    color: rgb(255, 255, 255);\n"
+"    border: 5px solid #1f232a;;\n"
+"    border-bottom-color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(24, 24, 36);\n"
+"    border: 5px solid rgb(255, 255, 255);\n"
+"}\n"
+"")
         self.btn_add_new_user.setObjectName("btn_add_new_user")
         self.formLayout.setWidget(7, QtWidgets.QFormLayout.FieldRole, self.btn_add_new_user)
         self.verticalLayout_29.addLayout(self.formLayout)
@@ -2218,7 +2377,11 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.lw_db_widget.setFont(font)
-        self.lw_db_widget.setStyleSheet("color: rgb(255, 255, 255);")
+        self.lw_db_widget.setStyleSheet("QListWidget {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
         self.lw_db_widget.setObjectName("lw_db_widget")
         self.verticalLayout_56.addWidget(self.lw_db_widget)
         self.horizontalLayout_11.addWidget(self.frame_40)
@@ -2244,7 +2407,11 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.lw_table_widget.setFont(font)
-        self.lw_table_widget.setStyleSheet("color: rgb(255, 255, 255);")
+        self.lw_table_widget.setStyleSheet("QListWidget {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
         self.lw_table_widget.setObjectName("lw_table_widget")
         self.verticalLayout_55.addWidget(self.lw_table_widget)
         self.horizontalLayout_11.addWidget(self.frame_41)
@@ -2289,6 +2456,11 @@ class Ui_MainWindow(object):
         self.label_36.setObjectName("label_36")
         self.verticalLayout_51.addWidget(self.label_36)
         self.textEdit_6 = QtWidgets.QTextEdit(self.frame_36)
+        self.textEdit_6.setStyleSheet("QTextEdit {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
         self.textEdit_6.setReadOnly(True)
         self.textEdit_6.setObjectName("textEdit_6")
         self.verticalLayout_51.addWidget(self.textEdit_6)
@@ -2324,9 +2496,11 @@ class Ui_MainWindow(object):
         font.setItalic(False)
         font.setWeight(75)
         self.lw_log_widget.setFont(font)
-        self.lw_log_widget.setStyleSheet("color: rgb(255, 255, 255);\n"
-"font: 14pt \"MS Shell Dlg 2\";\n"
-"font-weight: bold;")
+        self.lw_log_widget.setStyleSheet("QListWidget {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
         self.lw_log_widget.setObjectName("lw_log_widget")
         self.verticalLayout_33.addWidget(self.lw_log_widget, 0, QtCore.Qt.AlignTop)
         self.pte_log_action = QtWidgets.QPlainTextEdit(self.frame_23)
@@ -2335,7 +2509,11 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.pte_log_action.setFont(font)
-        self.pte_log_action.setStyleSheet("color: rgb(255, 255, 255);")
+        self.pte_log_action.setStyleSheet("QPlainTextEdit {\n"
+"    border: 5px groove #2c313c;\n"
+"    border-radius: 20px;\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
         self.pte_log_action.setReadOnly(True)
         self.pte_log_action.setObjectName("pte_log_action")
         self.verticalLayout_33.addWidget(self.pte_log_action)
@@ -2372,8 +2550,9 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stackedWidget.setCurrentIndex(3)
-        self.toolBox.setCurrentIndex(1)
-        self.stackedWidget_main.setCurrentIndex(2)
+        self.toolBox.setCurrentIndex(0)
+        self.stackedWidget_main.setCurrentIndex(3)
+        self.tabWidget_2.setCurrentIndex(2)
         self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -2505,47 +2684,50 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:600; font-style:normal;\">\n"
 "<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.label_13.setText(_translate("MainWindow", "Разрешённые USB носители"))
-        self.le_get_usb.setPlaceholderText(_translate("MainWindow", "вписать название USB"))
+        self.le_get_usb.setPlaceholderText(_translate("MainWindow", "вписать VIP и PID USB устройства"))
         self.btn_allow_usb.setText(_translate("MainWindow", "Добавить устройство"))
         self.label_14.setText(_translate("MainWindow", "Заблокированные устройства"))
-        self.label_33.setText(_translate("MainWindow", "Проверка файла"))
+        self.label_33.setText(_translate("MainWindow", "Сканирование файлов"))
         self.textEdit_3.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600;\">Быстрая проверка</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600;\">Проверка директории с файлами зависимостями. </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600;\">При обнаружении заражённых файлов, папок, в процессе проверки. будет предложено удалить их.</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600;\">Полная проверка</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600;\">Проверка жёсткого диска, разделов жёсткого диска, директорий папок и файлов. </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600;\">При обнаружении заражённых файлов, папок, в процессе проверки. будет предложено удалить их.</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600;\"><br /></p></body></html>"))
-        self.label_16.setText(_translate("MainWindow", "Быстрая проверка"))
-        self.label_17.setText(_translate("MainWindow", "Полная проверка"))
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Быстрое сканирование</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Проверка директории с файлами зависимостями. </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">При обнаружении заражённых файлов, папок, в процессе проверки. будет предложено удалить их.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Полное сканирование</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Проверка жёсткого диска, разделов жёсткого диска, директорий папок и файлов. </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">При обнаружении заражённых файлов, папок, в процессе проверки. будет предложено удалить их.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;\"><br /></p></body></html>"))
+        self.label_17.setText(_translate("MainWindow", "Полное сканирование"))
+        self.label_16.setText(_translate("MainWindow", "Быстрое скинирование"))
+        self.cb_fast_check.setText(_translate("MainWindow", "`"))
         self.btn_start_file_checking.setText(_translate("MainWindow", "Запустить проверку"))
         self.label_15.setText(_translate("MainWindow", "Активность программ"))
         self.label_44.setText(_translate("MainWindow", "Дата создания | Действие |  Программа | ID процесса |  Память | Количество операций "))
+        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_1), _translate("MainWindow", "Активность программ"))
+        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_2), _translate("MainWindow", "Tab 2"))
+        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab), _translate("MainWindow", "Page"))
         self.label_5.setText(_translate("MainWindow", "Мануал"))
         self.textEdit_2.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:600; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\">    Защита системы. В данном модуле находятся компоненты, для обеспечения следующего функционала:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\">Защита системы. В данном модуле находятся компоненты, для обеспечения следующего функционала:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\">1. Идентификация и аутентификация. Данный модуль предоставляет функционал для входа в Систему. Компонент содержит: аутентификацию и двузфакторную аутентификацию. Должностное лицо, должно войти в систему при помощи логина и пароля. идентификацию. Систему сверяется с введёнными данными. Если введённые данные верны, то пользователю должностное лицо подтвердить вход по e-mail адресу. После успешной идентификации приходит письмо с кодом для входа в Систему. </span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\">    1. Идентификация и аутентификация. Данный модуль предоставляет функционал для входа в Систему. Компонент содержит: аутентификацию и двузфакторную аутентификацию. Должностное лицо, должно войти в систему при помощи логина и пароля. идентификацию. Систему сверяется с введёнными данными. Если введённые данные верны, то пользователю должностное лицо подтвердить вход по e-mail адресу. После успешной идентификации приходит письмо с кодом для входа в Систему. </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\">2. Отслеживание процессов. Данный компонент позволяет отслеживать процессы, для выявления вирус-ной активности и следить за системными ресурсами.</span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\">    2. Отслеживание процессов. Данный компонент позволяет отслеживать процессы, для выявления вирус-ной активности и следить за системными ресурсами.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\">3. Проверка файла.  Данный компонент проверяет файл на наличие вредоносного кода.</span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\">    3. Проверка файла.  Данный компонент проверяет файл на наличие вредоносного кода.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\">4. Сбор информации о системе. Данный модуль позволяет узнать более точную информацию об операционной системе на которой установлена Система.</span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\">    4. Сбор информации о системе. Данный модуль позволяет узнать более точную информацию об операционной системе на которой установлена Система.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\">5. Защита от USB. Блокирует USB-накопители.</span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\">    5. Защита от USB. Блокирует USB-накопители.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\">6. Сканер портов. Данный модуль предоставляет функционал для поиска открытых портов IP-адреса, на котором располагается сервер. Сканирование портов может по-мочь определить потенциальные цели атаки, а также выяснить какие порты открыты, закрыты и используются операционной системой.</span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\">    6. Сканер портов. Данный модуль предоставляет функционал для поиска открытых портов IP-адреса, на котором располагается сервер. Сканирование портов может по-мочь определить потенциальные цели атаки, а также выяснить какие порты открыты, закрыты и используются операционной системой.</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\">    7. Межсетевой экран. Работает вместе с серверным модулем. Позволяет заблокирвоать входящее соединение.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\">7. Межсетевой экран. Работает вместе с серверным модулем. Позволяет заблокирвоать входящее соединение.</span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\"><br /></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\"><br /></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji\'; font-size:14pt; color:#ffffff;\"><br /></p>\n"
@@ -4297,7 +4479,7 @@ class Ui_MainWindow(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:600; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8.25pt; font-weight:400;\"><br /></p></body></html>"))
-        self.label_18.setText(_translate("MainWindow", "Межсетевой экран"))
+        self.label_18.setText(_translate("MainWindow", "Пакетный фильтр"))
         self.label_19.setText(_translate("MainWindow", "Входящие соединения"))
         self.label_20.setText(_translate("MainWindow", "Заблокированные соединения"))
         self.btn_update_info_about_connections.setText(_translate("MainWindow", "Обновить"))

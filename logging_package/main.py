@@ -46,7 +46,7 @@ class Logging:
         """ЖУРНАЛ ЛОГИРВОАНИЯ ДЛЯ БАЗЫ ДАННЫХ"""
         try:
             with open(f"{self.log_path}database_action.txt", "a", encoding="utf-8") as file:
-                file.write(f"{database_action} | {datetime.now().strftime('%H:%M:%S %m-%d-%Y')}\n")
+                file.write(f"{database_action} | {datetime.now().strftime('%H:%M:%S %d-%m-%Y')}\n")
         except FileExistsError:
             raise FileExistsError("Файла не существует")
 
@@ -54,7 +54,7 @@ class Logging:
         """ЖУРНАЛ ЛОГИРВОАНИЯ ДЛЯ СЕРВЕРА"""
         try:
             with open(f"{self.log_path}server_action.txt", "a", encoding="utf-8") as file:
-                file.write(f"{server_action} | {datetime.now().strftime('%H:%M:%S %m-%d-%Y')}\n")
+                file.write(f"{server_action} | {datetime.now().strftime('%H:%M:%S %d-%m-%Y')}\n")
         except FileExistsError as err:
             return err
 
@@ -62,7 +62,7 @@ class Logging:
         """ЖУРНАЛ ЛОГИРВОАНИЯ ДЛЯ ДЕЙСТВИЙ ПОЛЬЗОВАТЕЛЯ"""
         try:
             with open(f"{self.log_path}client_action.txt", "a", encoding="utf-8") as file:
-                file.write(f"{user_action} | {datetime.now().strftime('%H:%M:%S %m-%d-%Y')}\n")
+                file.write(f"{user_action} | {datetime.now().strftime('%H:%M:%S %d-%m-%Y')}\n")
         except FileExistsError as err:
             return err
 

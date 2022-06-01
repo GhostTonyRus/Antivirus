@@ -53,7 +53,7 @@ class InfoSystem:
         for i in range(len(periphery)):
             info_about_periphery += f"""
             название устройства: {periphery[i].Description}
-            ID устройства: {periphery[i].DeviceID}\n"""
+            ID устройства: {periphery[i].DeviceID}"""
 
         # раздел с сетью
         disk = wmi.WMI().Win32_LogicalDisk()
@@ -80,7 +80,6 @@ class InfoSystem:
         network_description = network.Description # описание сети
         network_macaddress = get_mac() # mac-адрес
         network_servicename = network.ServiceName # служебное имя сети
-
 
         zone = psutil.boot_time() # время, заданное на компьютере
         time = datetime.fromtimestamp(zone) # переводим данные в читабельный вид
@@ -126,13 +125,12 @@ class InfoSystem:
         
         ПЕРЕФЕРИЯ
             {info_about_periphery}
-            
+     
         ВРЕМЯ
-        
+    
             системное время: {str(time)[:19]}
-        """
+        """.replace("\t", "")
         return info
-
 
     def get_download_and_upload_internet_speed(self):
         download = float(str(self.__speedtest.download())[0:2] + "."

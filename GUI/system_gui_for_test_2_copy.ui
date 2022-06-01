@@ -425,7 +425,7 @@ QPushButton:pressed {
 	color: rgb(255, 255, 255);
 	border: 5px solid rgb(24, 24, 36);
 	border-bottom-color: rgb(255, 255, 255);
-	border-radius: 20px;
+
 }
 
 QPushButton:pressed {
@@ -468,7 +468,6 @@ QPushButton:pressed {
 	color: rgb(255, 255, 255);
 	border: 5px solid rgb(24, 24, 36);
 	border-bottom-color: rgb(255, 255, 255);
-	border-radius: 20px;
 }
 
 QPushButton:pressed {
@@ -1846,7 +1845,7 @@ background-color: #1f232a;</string>
               <item>
                <widget class="QStackedWidget" name="stackedWidget_main">
                 <property name="currentIndex">
-                 <number>8</number>
+                 <number>3</number>
                 </property>
                 <widget class="QWidget" name="page_about_system">
                  <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1920,7 +1919,11 @@ background-color: #1f232a;</string>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color: rgb(255, 255, 255);</string>
+                        <string notr="true">QTextEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+}
+</string>
                        </property>
                        <property name="readOnly">
                         <bool>true</bool>
@@ -2058,6 +2061,13 @@ p, li { white-space: pre-wrap; }
                        <layout class="QVBoxLayout" name="verticalLayout_61">
                         <item>
                          <widget class="QTextEdit" name="textEdit_7">
+                          <property name="styleSheet">
+                           <string notr="true">QTextEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+}
+</string>
+                          </property>
                           <property name="html">
                            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -2209,7 +2219,11 @@ p, li { white-space: pre-wrap; }
                               </font>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">color: rgb(255, 255, 255);</string>
+                              <string notr="true">QTextEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}</string>
                              </property>
                              <property name="readOnly">
                               <bool>true</bool>
@@ -2277,10 +2291,18 @@ p, li { white-space: pre-wrap; }
                               </font>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">color: rgb(255, 255, 255);</string>
+                              <string notr="true">QLineEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}
+</string>
+                             </property>
+                             <property name="text">
+                              <string/>
                              </property>
                              <property name="placeholderText">
-                              <string>вписать название USB</string>
+                              <string>вписать VIP и PID USB устройства</string>
                              </property>
                             </widget>
                            </item>
@@ -2296,9 +2318,8 @@ p, li { white-space: pre-wrap; }
                              <property name="styleSheet">
                               <string notr="true">QPushButton {
 	color: rgb(255, 255, 255);
-	border: 5px solid rgb(24, 24, 36);
+	border: 5px solid #1f232a;;
 	border-bottom-color: rgb(255, 255, 255);
-	border-radius: 20px;
 }
 
 QPushButton:pressed {
@@ -2335,7 +2356,12 @@ QPushButton:pressed {
                               </font>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">color: rgb(255, 255, 255);</string>
+                              <string notr="true">QListWidget {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}
+</string>
                              </property>
                             </widget>
                            </item>
@@ -2372,7 +2398,12 @@ QPushButton:pressed {
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color: rgb(255, 255, 255);</string>
+                        <string notr="true">QListWidget {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}
+</string>
                        </property>
                       </widget>
                      </item>
@@ -2455,7 +2486,7 @@ QPushButton:pressed {
                               <string notr="true">color: rgb(255, 255, 255);</string>
                              </property>
                              <property name="text">
-                              <string>Проверка файла</string>
+                              <string>Сканирование файлов</string>
                              </property>
                              <property name="alignment">
                               <set>Qt::AlignCenter</set>
@@ -2467,15 +2498,18 @@ QPushButton:pressed {
                              <property name="font">
                               <font>
                                <family>MS Shell Dlg 2</family>
-                               <pointsize>8</pointsize>
+                               <pointsize>14</pointsize>
                                <weight>50</weight>
                                <italic>false</italic>
                                <bold>false</bold>
                               </font>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">color: rgb(255, 255, 255);
-font: 8pt &quot;MS Shell Dlg 2&quot;;</string>
+                              <string notr="true">QTextEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}</string>
                              </property>
                              <property name="readOnly">
                               <bool>true</bool>
@@ -2484,15 +2518,15 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;</string>
                               <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Быстрая проверка&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Проверка директории с файлами зависимостями. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;При обнаружении заражённых файлов, папок, в процессе проверки. будет предложено удалить их.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Полная проверка&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Проверка жёсткого диска, разделов жёсткого диска, директорий папок и файлов. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;При обнаружении заражённых файлов, папок, в процессе проверки. будет предложено удалить их.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Быстрое сканирование&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Проверка директории с файлами зависимостями. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;При обнаружении заражённых файлов, папок, в процессе проверки. будет предложено удалить их.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Полное сканирование&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Проверка жёсткого диска, разделов жёсткого диска, директорий папок и файлов. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;При обнаружении заражённых файлов, папок, в процессе проверки. будет предложено удалить их.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                              </property>
                             </widget>
                            </item>
@@ -2505,6 +2539,65 @@ p, li { white-space: pre-wrap; }
                               <enum>QFrame::Raised</enum>
                              </property>
                              <layout class="QGridLayout" name="gridLayout">
+                              <item row="2" column="0">
+                               <widget class="QTextEdit" name="te_res_of_fast_check">
+                                <property name="font">
+                                 <font>
+                                  <pointsize>14</pointsize>
+                                  <weight>75</weight>
+                                  <bold>true</bold>
+                                 </font>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">QTextEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}</string>
+                                </property>
+                                <property name="readOnly">
+                                 <bool>true</bool>
+                                </property>
+                               </widget>
+                              </item>
+                              <item row="0" column="2">
+                               <widget class="QLabel" name="label_17">
+                                <property name="font">
+                                 <font>
+                                  <pointsize>14</pointsize>
+                                  <weight>75</weight>
+                                  <bold>true</bold>
+                                 </font>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">color: rgb(255, 255, 255);</string>
+                                </property>
+                                <property name="text">
+                                 <string>Полное сканирование</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item row="2" column="2">
+                               <widget class="QTextEdit" name="te_res_of_full_check">
+                                <property name="font">
+                                 <font>
+                                  <pointsize>14</pointsize>
+                                  <weight>75</weight>
+                                  <bold>true</bold>
+                                 </font>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">QTextEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}</string>
+                                </property>
+                                <property name="readOnly">
+                                 <bool>true</bool>
+                                </property>
+                               </widget>
+                              </item>
                               <item row="0" column="0">
                                <widget class="QLabel" name="label_16">
                                 <property name="font">
@@ -2518,40 +2611,29 @@ p, li { white-space: pre-wrap; }
                                  <string notr="true">color: rgb(255, 255, 255);</string>
                                 </property>
                                 <property name="text">
-                                 <string>Быстрая проверка</string>
+                                 <string>Быстрое скинирование</string>
                                 </property>
                                </widget>
                               </item>
-                              <item row="0" column="1">
+                              <item row="1" column="0">
                                <widget class="QCheckBox" name="cb_fast_check">
+                                <property name="minimumSize">
+                                 <size>
+                                  <width>0</width>
+                                  <height>0</height>
+                                 </size>
+                                </property>
                                 <property name="font">
                                  <font>
                                   <pointsize>20</pointsize>
                                  </font>
                                 </property>
                                 <property name="text">
-                                 <string/>
+                                 <string>`</string>
                                 </property>
                                </widget>
                               </item>
-                              <item row="1" column="0">
-                               <widget class="QLabel" name="label_17">
-                                <property name="font">
-                                 <font>
-                                  <pointsize>14</pointsize>
-                                  <weight>75</weight>
-                                  <bold>true</bold>
-                                 </font>
-                                </property>
-                                <property name="styleSheet">
-                                 <string notr="true">color: rgb(255, 255, 255);</string>
-                                </property>
-                                <property name="text">
-                                 <string>Полная проверка</string>
-                                </property>
-                               </widget>
-                              </item>
-                              <item row="1" column="1">
+                              <item row="1" column="2">
                                <widget class="QCheckBox" name="cb_full_check">
                                 <property name="font">
                                  <font>
@@ -2564,23 +2646,6 @@ p, li { white-space: pre-wrap; }
                                </widget>
                               </item>
                              </layout>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QTextEdit" name="te_res_of_fast_check">
-                             <property name="font">
-                              <font>
-                               <pointsize>14</pointsize>
-                               <weight>75</weight>
-                               <bold>true</bold>
-                              </font>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">color: rgb(255, 255, 255);</string>
-                             </property>
-                             <property name="readOnly">
-                              <bool>true</bool>
-                             </property>
                             </widget>
                            </item>
                            <item>
@@ -2602,7 +2667,7 @@ p, li { white-space: pre-wrap; }
 }
 
 QProgressBar::chunk{
-	background-color:  rgb(255, 0, 0);
+	background-color: #2c313c;
 }
 </string>
                              </property>
@@ -2637,18 +2702,15 @@ QProgressBar::chunk{
                              </property>
                              <property name="styleSheet">
                               <string notr="true">QPushButton {
-color: rgb(255, 255, 255);
-	border: 5px groove #2c313c;
+	color: rgb(255, 255, 255);
+	border: 5px solid #1f232a;;
 	border-bottom-color: rgb(255, 255, 255);
-	border-radius: 20px;
-	background-color: #16191d;
 }
 
 QPushButton:pressed {
-    background-color: #2c313c;
-	border: 5px solid  rgb(255, 255, 255);
+    background-color: rgb(24, 24, 36);
+	border: 5px solid rgb(255, 255, 255);
 }
-
 </string>
                              </property>
                              <property name="text">
@@ -2744,7 +2806,12 @@ QPushButton:pressed {
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color: rgb(255, 255, 255);</string>
+                        <string notr="true">QPlainTextEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}
+</string>
                        </property>
                        <property name="readOnly">
                         <bool>true</bool>
@@ -2763,6 +2830,86 @@ QPushButton:pressed {
                      <enum>QFrame::Raised</enum>
                     </property>
                     <layout class="QHBoxLayout" name="horizontalLayout_7"/>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+                <widget class="QWidget" name="page_test_registration_activity">
+                 <layout class="QVBoxLayout" name="verticalLayout_65">
+                  <item>
+                   <widget class="QFrame" name="frame_47">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_66">
+                     <item>
+                      <widget class="QTabWidget" name="tabWidget_2">
+                       <property name="font">
+                        <font>
+                         <pointsize>15</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color: rgb(255, 255, 255);</string>
+                       </property>
+                       <property name="currentIndex">
+                        <number>2</number>
+                       </property>
+                       <widget class="QWidget" name="tab_1">
+                        <property name="font">
+                         <font>
+                          <pointsize>14</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <attribute name="title">
+                         <string>Активность программ</string>
+                        </attribute>
+                        <layout class="QVBoxLayout" name="verticalLayout_67">
+                         <item>
+                          <widget class="QTableWidget" name="tableWidget">
+                           <property name="font">
+                            <font>
+                             <pointsize>14</pointsize>
+                             <weight>75</weight>
+                             <bold>true</bold>
+                            </font>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </widget>
+                       <widget class="QWidget" name="tab_2">
+                        <attribute name="title">
+                         <string>Tab 2</string>
+                        </attribute>
+                       </widget>
+                       <widget class="QWidget" name="tab">
+                        <attribute name="title">
+                         <string>Page</string>
+                        </attribute>
+                        <layout class="QVBoxLayout" name="verticalLayout_68">
+                         <item>
+                          <widget class="QPlainTextEdit" name="plainTextEdit_for_activity">
+                           <property name="styleSheet">
+                            <string notr="true">color: rgb(255, 0, 0);</string>
+                           </property>
+                           <property name="plainText">
+                            <string/>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </widget>
+                      </widget>
+                     </item>
+                    </layout>
                    </widget>
                   </item>
                  </layout>
@@ -2839,6 +2986,13 @@ QPushButton:pressed {
                          <bold>true</bold>
                         </font>
                        </property>
+                       <property name="styleSheet">
+                        <string notr="true">QTextEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}</string>
+                       </property>
                        <property name="readOnly">
                         <bool>true</bool>
                        </property>
@@ -2847,21 +3001,20 @@ QPushButton:pressed {
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;	Защита системы. В данном модуле находятся компоненты, для обеспечения следующего функционала:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;Защита системы. В данном модуле находятся компоненты, для обеспечения следующего функционала:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;1. Идентификация и аутентификация. Данный модуль предоставляет функционал для входа в Систему. Компонент содержит: аутентификацию и двузфакторную аутентификацию. Должностное лицо, должно войти в систему при помощи логина и пароля. идентификацию. Систему сверяется с введёнными данными. Если введённые данные верны, то пользователю должностное лицо подтвердить вход по e-mail адресу. После успешной идентификации приходит письмо с кодом для входа в Систему. &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;	1. Идентификация и аутентификация. Данный модуль предоставляет функционал для входа в Систему. Компонент содержит: аутентификацию и двузфакторную аутентификацию. Должностное лицо, должно войти в систему при помощи логина и пароля. идентификацию. Систему сверяется с введёнными данными. Если введённые данные верны, то пользователю должностное лицо подтвердить вход по e-mail адресу. После успешной идентификации приходит письмо с кодом для входа в Систему. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;2. Отслеживание процессов. Данный компонент позволяет отслеживать процессы, для выявления вирус-ной активности и следить за системными ресурсами.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;	2. Отслеживание процессов. Данный компонент позволяет отслеживать процессы, для выявления вирус-ной активности и следить за системными ресурсами.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;3. Проверка файла.  Данный компонент проверяет файл на наличие вредоносного кода.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;	3. Проверка файла.  Данный компонент проверяет файл на наличие вредоносного кода.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;4. Сбор информации о системе. Данный модуль позволяет узнать более точную информацию об операционной системе на которой установлена Система.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;	4. Сбор информации о системе. Данный модуль позволяет узнать более точную информацию об операционной системе на которой установлена Система.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;5. Защита от USB. Блокирует USB-накопители.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;	5. Защита от USB. Блокирует USB-накопители.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;6. Сканер портов. Данный модуль предоставляет функционал для поиска открытых портов IP-адреса, на котором располагается сервер. Сканирование портов может по-мочь определить потенциальные цели атаки, а также выяснить какие порты открыты, закрыты и используются операционной системой.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;	6. Сканер портов. Данный модуль предоставляет функционал для поиска открытых портов IP-адреса, на котором располагается сервер. Сканирование портов может по-мочь определить потенциальные цели атаки, а также выяснить какие порты открыты, закрыты и используются операционной системой.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;	7. Межсетевой экран. Работает вместе с серверным модулем. Позволяет заблокирвоать входящее соединение.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;7. Межсетевой экран. Работает вместе с серверным модулем. Позволяет заблокирвоать входящее соединение.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
@@ -2979,7 +3132,11 @@ p, li { white-space: pre-wrap; }
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color: rgb(255, 255, 255);</string>
+                        <string notr="true">QPlainTextEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}</string>
                        </property>
                       </widget>
                      </item>
@@ -2993,7 +3150,11 @@ p, li { white-space: pre-wrap; }
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true"/>
+                        <string notr="true">QTextEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}</string>
                        </property>
                        <property name="readOnly">
                         <bool>true</bool>
@@ -4758,10 +4919,17 @@ p, li { white-space: pre-wrap; }
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color: rgb(255, 255, 255);
-border: 5px solid;
-border-bottom-color: rgb(255, 255, 255);
-background-color: #2c313c;</string>
+                        <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border: 5px solid #1f232a;;
+	border-bottom-color: rgb(255, 255, 255);
+}
+
+QPushButton:pressed {
+    background-color: rgb(24, 24, 36);
+	border: 5px solid rgb(255, 255, 255);
+}
+</string>
                        </property>
                        <property name="text">
                         <string>Начать сканирование</string>
@@ -4836,7 +5004,11 @@ background-color: #2c313c;</string>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color: rgb(255, 255, 255);</string>
+                        <string notr="true">QTextEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}</string>
                        </property>
                        <property name="readOnly">
                         <bool>true</bool>
@@ -4950,7 +5122,11 @@ p, li { white-space: pre-wrap; }
                            </font>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">color: rgb(255, 255, 255);</string>
+                           <string notr="true">QListWidget {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+}
+</string>
                           </property>
                           <property name="wordWrap">
                            <bool>true</bool>
@@ -4996,7 +5172,12 @@ p, li { white-space: pre-wrap; }
                            </font>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">color: rgb(255, 255, 255);</string>
+                           <string notr="true">QListWidget {
+	color: rgb(255, 255, 255);
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+}
+</string>
                           </property>
                           <property name="wordWrap">
                            <bool>true</bool>
@@ -5063,6 +5244,13 @@ border-bottom-color: rgb(255, 255, 255);</string>
                      </item>
                      <item>
                       <widget class="QTextEdit" name="textEdit_5">
+                       <property name="styleSheet">
+                        <string notr="true">QTextEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}</string>
+                       </property>
                        <property name="html">
                         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -5137,7 +5325,12 @@ p, li { white-space: pre-wrap; }
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color: rgb(255, 255, 255);</string>
+                        <string notr="true">QPlainTextEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}
+</string>
                        </property>
                        <property name="readOnly">
                         <bool>true</bool>
@@ -5205,7 +5398,11 @@ p, li { white-space: pre-wrap; }
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true"/>
+                        <string notr="true">QTextEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}</string>
                        </property>
                        <property name="readOnly">
                         <bool>true</bool>
@@ -5634,9 +5831,17 @@ p, li { white-space: pre-wrap; }
                               </font>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">color: rgb(255, 255, 255);
-border: 5px solid;
-border-bottom-color: rgb(255, 255, 255);</string>
+                              <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border: 5px solid #1f232a;;
+	border-bottom-color: rgb(255, 255, 255);
+}
+
+QPushButton:pressed {
+    background-color: rgb(24, 24, 36);
+	border: 5px solid rgb(255, 255, 255);
+}
+</string>
                              </property>
                              <property name="text">
                               <string>Добавить пользователя</string>
@@ -5884,7 +6089,11 @@ background-color: rgb(255, 255, 255);</string>
                               </font>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">color: rgb(255, 255, 255);</string>
+                              <string notr="true">QListWidget {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}</string>
                              </property>
                             </widget>
                            </item>
@@ -5928,7 +6137,11 @@ background-color: rgb(255, 255, 255);</string>
                               </font>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">color: rgb(255, 255, 255);</string>
+                              <string notr="true">QListWidget {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}</string>
                              </property>
                             </widget>
                            </item>
@@ -6003,6 +6216,13 @@ background-color: rgb(255, 255, 255);</string>
                      </item>
                      <item>
                       <widget class="QTextEdit" name="textEdit_6">
+                       <property name="styleSheet">
+                        <string notr="true">QTextEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}</string>
+                       </property>
                        <property name="readOnly">
                         <bool>true</bool>
                        </property>
@@ -6088,9 +6308,11 @@ p, li { white-space: pre-wrap; }
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color: rgb(255, 255, 255);
-font: 14pt &quot;MS Shell Dlg 2&quot;;
-font-weight: bold;</string>
+                        <string notr="true">QListWidget {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}</string>
                        </property>
                       </widget>
                      </item>
@@ -6104,7 +6326,11 @@ font-weight: bold;</string>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color: rgb(255, 255, 255);</string>
+                        <string notr="true">QPlainTextEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}</string>
                        </property>
                        <property name="readOnly">
                         <bool>true</bool>
