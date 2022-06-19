@@ -24,7 +24,7 @@ class CheckFile:
         self.log_path = "C:\\PycharmProjects\\Antivirus\\dependencies\\log_dir\\"
         self.report_dir = "C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\report.txt"
         self.files_queue = queue.Queue()
-        self.res_pf_scan = []
+        self.res_of_scan = []
 
         with open(self.report_dir, "w") as file:
             ...
@@ -49,17 +49,13 @@ class CheckFile:
     def upload_file(self, file_from_queue):
         """загружаем файл"""
         params = dict(apikey='e78d30c3bbbed09731a783a97b1a1e34f52008c8ccf61a0f161558cfe0da836b')
-        # self.get_files_from_dirs()
 
-        # for _ in range(self.files_queue.qsize()):
         with open(file_from_queue, 'rb') as file:
             files = dict(file=(file_from_queue, file))
             response = requests.post(self.url, files=files, params=params)
-            print("файл отправлен")
             time.sleep(158)
         if response.status_code == 200:
             result = response.json()
-            # print(json.dumps(result, sort_keys=False, indent=4))
             return result["resource"]
 
     def get_info_about_file(self, file_path):
@@ -71,46 +67,40 @@ class CheckFile:
         time.sleep(150)
         if response.status_code == 200:
             result = response.json()
-            # print(json.dumps(result, sort_keys=False, indent=4))
             json_res = json.dumps(result, sort_keys=False, indent=4)
-            # res_d[file_path] = json_res
-            print("результат готов")
-            # return res_d
-            # return json_res
             report = f"""
             Результат проверки:
             id - {result['scan_id']}
             время и дата - {datetime.now().strftime('%H:%M:%S %m-%d-%Y')}
             всего проверок - {result['total']}
-            обнаружено вирусов - {result['positives']}""".replace("\t", "")
-            # return report
-            # print(report)
-            with open(self.report_dir, "a", encoding="utf-8") as file:
-                file.write(report)
-            self.res_pf_scan.append(report)
+            обнаружено вирусов - {result['positives']}\n""".replace("\t", "")
+            self.res_of_scan.append(report)
 
     def run(self):
         files = [
             "C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\activity_registration.txt",
-            # "C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\hosts.txt",
-            # "C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\locked_connections.txt",
-            # "C:\\PycharmProjects\\Antivirus\\dependencies\\log_dir\\database_action.txt",
-            # "C:\\PycharmProjects\\Antivirus\\dependencies\\log_dir\\server_action.txt",
-            # "C:\\PycharmProjects\\Antivirus\\dependencies\\server_dir\\locked_connections.txt",
-            # "C:\\PycharmProjects\\Antivirus\\dependencies\\server_dir\\temporary_actions.txt",
+            "C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\hosts.txt",
+            "C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\locked_connections.txt",
+            "C:\\PycharmProjects\\Antivirus\\dependencies\\log_dir\\логирование баз данных.txt",
+            "C:\\PycharmProjects\\Antivirus\\dependencies\\log_dir\\логирование сервера.txt",
+            "C:\\PycharmProjects\\Antivirus\\dependencies\\server_dir\\locked_connections.txt",
+            "C:\\PycharmProjects\\Antivirus\\dependencies\\server_dir\\temporary_actions.txt",
         ]
-        # self.get_files_from_dirs()
+
         for file in files:
-            thread = threading.Thread(target=self.get_info_about_file, args=(file,), daemon=True)
+            thread = threading.Thread(target=self.get_info_about_file, args=(file,))
             thread.start()
             thread.join()
-            # return "".join(self.res_pf_scan)
 
-    def main(self):
+
+    def start(self):
         thread = threading.Thread(target=self.run)
         thread.start()
-        return "res".join(self.res_pf_scan)
+        thread.join()
 
+    def main(self):
+        self.start()
+        return "res".join(self.res_of_scan)
 
 if __name__ == '__main__':
     test = CheckFile()

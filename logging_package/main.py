@@ -45,7 +45,7 @@ class Logging:
     def register_database_actions(self, database_action):
         """ЖУРНАЛ ЛОГИРВОАНИЯ ДЛЯ БАЗЫ ДАННЫХ"""
         try:
-            with open(f"{self.log_path}database_action.txt", "a", encoding="utf-8") as file:
+            with open(f"{self.log_path}логирование баз данных.txt", "a", encoding="utf-8") as file:
                 file.write(f"{database_action} | {datetime.now().strftime('%H:%M:%S %d-%m-%Y')}\n")
         except FileExistsError:
             raise FileExistsError("Файла не существует")
@@ -53,8 +53,15 @@ class Logging:
     def register_server_actions(self, server_action):
         """ЖУРНАЛ ЛОГИРВОАНИЯ ДЛЯ СЕРВЕРА"""
         try:
-            with open(f"{self.log_path}server_action.txt", "a", encoding="utf-8") as file:
+            with open(f"{self.log_path}логирование сервера.txt", "a", encoding="utf-8") as file:
                 file.write(f"{server_action} | {datetime.now().strftime('%H:%M:%S %d-%m-%Y')}\n")
+        except FileExistsError as err:
+            return err
+
+    def register_os_system_action(self, os_action, src):
+        try:
+            with open(f"{self.log_path}логирование операционной системы.txt", "a", encoding="utf-8") as file:
+                file.write(f"{os_action} {src} | {datetime.now().strftime('%H:%M:%S %d-%m-%Y')}\n")
         except FileExistsError as err:
             return err
 

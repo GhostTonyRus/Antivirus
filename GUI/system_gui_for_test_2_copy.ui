@@ -634,6 +634,26 @@ QPushButton:pressed {
                 <property name="topMargin">
                  <number>0</number>
                 </property>
+                <item row="0" column="1">
+                 <widget class="QLabel" name="label_31">
+                  <property name="font">
+                   <font>
+                    <pointsize>15</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 255);</string>
+                  </property>
+                  <property name="text">
+                   <string>Добавление нового пользователя</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
                 <item row="1" column="0">
                  <widget class="QLabel" name="label_22">
                   <property name="font">
@@ -696,46 +716,6 @@ QPushButton:pressed {
                 </item>
                 <item row="2" column="1">
                  <widget class="QLineEdit" name="le_soname_new_user">
-                  <property name="maximumSize">
-                   <size>
-                    <width>1000</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>14</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">color: rgb(255, 255, 255);</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="0">
-                 <widget class="QLabel" name="label_24">
-                  <property name="font">
-                   <font>
-                    <pointsize>14</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">color: rgb(255, 255, 255);</string>
-                  </property>
-                  <property name="text">
-                   <string>звание</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignCenter</set>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="1">
-                 <widget class="QLineEdit" name="le_rank_new_user">
                   <property name="maximumSize">
                    <size>
                     <width>1000</width>
@@ -897,40 +877,6 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
-                <item row="8" column="1">
-                 <widget class="QPushButton" name="btn_add_new_user_into_system">
-                  <property name="maximumSize">
-                   <size>
-                    <width>1000</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>15</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton {
-	color: rgb(255, 255, 255);
-	border: 5px solid rgb(24, 24, 36);
-	border-bottom-color: rgb(255, 255, 255);
-	border-radius: 20px;
-}
-
-QPushButton:pressed {
-    background-color: rgb(24, 24, 36);
-	border: 5px solid rgb(255, 255, 255);
-}
-</string>
-                  </property>
-                  <property name="text">
-                   <string>Добавить пользователя</string>
-                  </property>
-                 </widget>
-                </item>
                 <item row="7" column="1">
                  <widget class="QComboBox" name="cb_role_new_user">
                   <property name="sizePolicy">
@@ -973,6 +919,40 @@ QPushButton:pressed {
                   </item>
                  </widget>
                 </item>
+                <item row="8" column="1">
+                 <widget class="QPushButton" name="btn_add_new_user_into_system">
+                  <property name="maximumSize">
+                   <size>
+                    <width>1000</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>15</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border: 5px solid rgb(24, 24, 36);
+	border-bottom-color: rgb(255, 255, 255);
+	border-radius: 20px;
+}
+
+QPushButton:pressed {
+    background-color: rgb(24, 24, 36);
+	border: 5px solid rgb(255, 255, 255);
+}
+</string>
+                  </property>
+                  <property name="text">
+                   <string>Добавить пользователя</string>
+                  </property>
+                 </widget>
+                </item>
                 <item row="9" column="1">
                  <widget class="QPushButton" name="btn_return_to_login_page">
                   <property name="maximumSize">
@@ -1007,11 +987,11 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="1">
-                 <widget class="QLabel" name="label_31">
+                <item row="3" column="0">
+                 <widget class="QLabel" name="label_24">
                   <property name="font">
                    <font>
-                    <pointsize>15</pointsize>
+                    <pointsize>14</pointsize>
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
@@ -1020,10 +1000,30 @@ QPushButton:pressed {
                    <string notr="true">color: rgb(255, 255, 255);</string>
                   </property>
                   <property name="text">
-                   <string>Добавление нового пользователя</string>
+                   <string>должность</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QLineEdit" name="le_position_new_user">
+                  <property name="maximumSize">
+                   <size>
+                    <width>1000</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 255);</string>
                   </property>
                  </widget>
                 </item>
@@ -1124,7 +1124,7 @@ background-color: #16191d;</string>
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>268</width>
+                      <width>278</width>
                       <height>564</height>
                      </rect>
                     </property>
@@ -1172,7 +1172,7 @@ QPushButton:pressed {
 </string>
                         </property>
                         <property name="text">
-                         <string>Мануал</string>
+                         <string>Рководство пользователя</string>
                         </property>
                        </widget>
                        <widget class="QPushButton" name="btn_activity_registration">
@@ -1353,7 +1353,7 @@ QPushButton:pressed {
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>268</width>
+                      <width>278</width>
                       <height>564</height>
                      </rect>
                     </property>
@@ -1400,7 +1400,8 @@ QPushButton:pressed {
 </string>
                       </property>
                       <property name="text">
-                       <string>Мануал</string>
+                       <string>Руководство
+пользовтаеля</string>
                       </property>
                      </widget>
                      <widget class="QPushButton" name="btn_show_server_page">
@@ -1491,7 +1492,7 @@ QPushButton:pressed {
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>268</width>
+                      <width>278</width>
                       <height>564</height>
                      </rect>
                     </property>
@@ -1538,7 +1539,8 @@ QPushButton:pressed {
 </string>
                       </property>
                       <property name="text">
-                       <string>Мануал</string>
+                       <string>Руководство
+пользователя</string>
                       </property>
                      </widget>
                      <widget class="QPushButton" name="btn_show_database">
@@ -1602,7 +1604,7 @@ QPushButton:pressed {
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>268</width>
+                      <width>278</width>
                       <height>564</height>
                      </rect>
                     </property>
@@ -1649,7 +1651,8 @@ QPushButton:pressed {
 </string>
                       </property>
                       <property name="text">
-                       <string>Мануал</string>
+                       <string>Руководство
+пользователя</string>
                       </property>
                      </widget>
                      <widget class="QPushButton" name="btn_open_action_log">
@@ -1845,7 +1848,7 @@ background-color: #1f232a;</string>
               <item>
                <widget class="QStackedWidget" name="stackedWidget_main">
                 <property name="currentIndex">
-                 <number>3</number>
+                 <number>4</number>
                 </property>
                 <widget class="QWidget" name="page_about_system">
                  <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1886,7 +1889,7 @@ background-color: #1f232a;</string>
                         <string notr="true">color: rgb(255, 255, 255);</string>
                        </property>
                        <property name="text">
-                        <string>Информация о системе</string>
+                        <string>Информация о Сиситеме обеспечения информационной безопасности баз данных</string>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignCenter</set>
@@ -1933,60 +1936,51 @@ background-color: #1f232a;</string>
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Программное обеспечение (далее ПО) – это комплекс из отдельных про­грамм, которые объединены друг с другом для достижения общего результата. Современное ПО делится на модули, которые объединены в единую систему и дополняют друг друга. Модули взаимодействую друг с другом через запро­граммированный алгоритм. ПО принято разделять на три группы: &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Системное; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Прикладное; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;3.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Инструментальное. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;ПО, которое предназначено для защиты баз данных относится к систем­ному. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Цель проекта. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Цель проекта - разработать систему обеспечения информационной без­опасности баз данных (далее Система). В Системе должна быть предусмотрена защита базы данных от НСД. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Описание системы. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Система состоит из модулей, которые делятся на: &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Защита системы; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Система управления базами данных; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;3.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Сервер; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;4.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Журнал действий. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Первый модуль – защита системы. В данном модуле предоставляет сле­дующие компоненты: &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Идентификация и аутентификация. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Данный компонент предоставляет функционал для входа в Систему. Компонент содержит: &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;― аутентификацию. Должностное лицо, должно пройти авторизацию при помощи ввода логина и пароля; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;― идентификацию. Система сверяется с введёнными данными. Если вве­дённые данные верны, то должностное лицо должно подтвердить вход по e-mail адресу. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Сканер портов. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Данный компонент предоставляет функционал для поиска открытых пор­тов IP-адреса, на котором располагается сервер. Сканирование портов может помочь определить потенциальные цели атаки. Также позволяет выявить от­крытые и закрытые порты, порты, используемые операционной системой. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;3.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Отслеживание процессов. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Данный модуль позволяет отслеживать активные процессы операционной системы. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;4.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Сканирование системы. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Позволяет проверить файлы каталога на наличие вредоносного файла или программного обеспечения. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;5.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Блокировка внешних usb-носителей. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Данный модуль блокирует использование внешних usb-носителей. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;6.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Информация о системе. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Данный модуль позволяет получить более точную информацию об опе­рационной системе, на которой установлена Система. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Второй модуль – система управления базой данных. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Данный модуль предоставляет компоненты для управления базой данных. При помощи компонентов данного модуля данные в базе данных можно: &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Добавлять; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Изменять; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;3.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Обновлять &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;4.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Удалять. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Третий модуль – сервер. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Данный модуль предоставляет функционал, при помощи которого пользо­ватели могут безопасно подключиться по SSL-протоколу и получить свои дан­ные, а также взаимодействовать с ними. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Четвёртый модуль – журнал действий. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Данный модуль создаёт файлы для каждого модуля. В файлы записыва­ются все действия пользователя совершённые им в Системе. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Отдельный модуль – клиент. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Программное обеспечение, которое необходимо клиенту для получения своих данных из базы данных. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Система предусматривает два типа пользователей: &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Администратор – должностное лицо, которые выполняет функции адми­нистрирования базы данных и операционной системы сервера; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt; Пользователь –  пользователь, которому необходимо подключиться и по­лучить свои персональные данные. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Доступ в Систему. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;При запуске Системы администратору необходимо пройти аутентифика­цию и идентификацию. При первом запуске необходимо пройти процедуру до­бавления нового пользователя. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Для добавления нового пользователя, Системе необходимо ввести следу­ющие данные: &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;имя; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;фамилия; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;3.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;адрес электронной почты (e-mail); &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;4.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;логин; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;5.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;пароль; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;6.&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:7pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;роль (администратор или пользователь). &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;В дальнейшем адрес электронной почты будет использоваться для про­хождения двухфакторной аутентификации. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Аутентификация в Системе осуществляется при помощи логина, пароля и специального кода, Если пользователь прошёл авторизацию, то откроется стра­ница двухфакторной аутентификации для ввода кода. который приходит на указанный пользователем адрес электронной почты. &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Цель СОИБД БД. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Цель СИБД БД - обеспечение защиты баз данных от НСД. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Описание СОИБ БД. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;СОИБ БД состоит из модулей, которые состоят из: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;1. Защита системы; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;2. Система управления базами данных;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;3. Сервер; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;4. Журнал действий. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Первый модуль – защита системы. В данном модуле предоставляет следующие компоненты: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;1. Авторизация. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Авторизация в СОИБ БД представлена в виде двухфакторной аутентификации. Компонент идентифицирует пользователя при помощи запроса аутентификационных данных двух разных типов, что обеспечивает двухслойную, а значит, более эффективную защиту аккаунта от несанкционированного проникновения. Первый рубеж — это логин и пароль, второй — специальный 20-значный код, приходящий по электронной почте. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;2. Сканер портов. Данный компонент предоставляет функционал для поиска открытых портов IP-адреса, на котором располагается сервер. Сканирование портов может помочь определить потенциальные цели атаки. Также позволяет выявить открытые и закрытые порты, порты, используемые операционной системой. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;3. Мониторинг активности программ. Данный модуль позволяет отслеживать активные процессы операционной системы. Также можно отслеживать активность сети. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;4. Сканирование системы. Позволяет проверить файлы каталога на наличие вредоносного файла или программного обеспечения.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;5. Блокировка USB-носителей. Данный компонент блокирует подключение USB-устройства — флешки.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;6. Информация о системе. Данный компонент позволяет получить более точную информацию об операционной системе, на которой установлена СОИБ БД. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;7. Пакетный фильтр. Данный компонент является элемент межсетевого экрана. Он позволяет управлять прохождением трафика по указанным протоколам, разрешая или запрещая передачу пакетов и входящих соединений. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Второй модуль – система управления базой данных. Данный модуль предоставляет компоненты для управления базой данных. При помощи компонентов данного модуля данные в базе данных можно: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;1. Добавлять; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;2. Изменять;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;3. Обновлять;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;4. Удалять. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Третий модуль – сервер. Данный модуль предоставляет функционал, при помощи которого пользователи могут безопасно подключиться по SSL-протоколу, используя технологии TCP/IP клиент-сервер. Сервер получить свои данные, а также взаимодействовать с ними.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Четвёртый модуль – журнал действий. Данный модуль создаёт файлы, в которые записываются действия пользователя при работе с СОИБ БД.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Отдельный модуль – клиент. Программное обеспечение, которое необходимо клиенту для получения своих данных из базы данных.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;СОИБ БД предусматривает два типа пользователей:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;1. Администратор – администратор баз данных, которое выполняет функции администрирования базы данных и операционной системы сервера; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;2. Пользователь – пользователь, которому необходимо подключиться и получить свои данные.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Доступ в СОИБ БД. При запуске СОИБ БД администратору необходимо пройти двухфакторную аутентификацию. При первом запуске администратор должен пройти процедуру добавления нового пользователя. Для добавления нового пользователя необходимо ввести следующие данные: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;1. Имя;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;2. Фамилия; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;3. Адрес электронной почты (e-mail); &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;4. Логин; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;5. Пароль; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;6. Роль (администратор или пользователь). &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Авторизация в СОИБ БД осуществляется при помощи логина, пароля и специального кода. Если пользователь верно ввёл логин и пароль, то откроется страница на которой необходимо ввести 20-значный код подтверждения. Сообщение с кодом придёт на указанный пользователем адрес электронной почты.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                        </property>
                       </widget>
                      </item>
@@ -2073,14 +2067,78 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Действующая лицензия - MIT License &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Срок действия - бессрочная &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:115%;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Авторское право (c) 2022 GhostTonyRus &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:115%;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;  &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:115%;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Настоящим предоставляется бесплатное разрешение любому лицу, получающему копию &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:115%;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;этого программного обеспечения и связанных с ним файлов документации (&amp;quot;Программное обеспечение&amp;quot;), на использование Программного обеспечения без ограничений, включая, помимо прочего, права на использование, копирование, изменение, объединение, публикацию, распространение, сублицензирование и/или продавать копии Программного обеспечения и разрешать лицам, которым предоставляется Программное обеспечение, делать это при соблюдении следующих условий: &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:115%;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Вышеупомянутое уведомление об авторских правах и это уведомление о разрешении должны быть включены во все копии или существенные части Программного обеспечения. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:115%;&quot;&gt;&lt;span style=&quot; font-family:'Times New Roman,serif'; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ ПРЕДОСТАВЛЯЕТСЯ &amp;quot;КАК ЕСТЬ&amp;quot;, БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ, ЯВНЫХ ИЛИ ПОДРАЗУМЕВАЕМЫХ, ВКЛЮЧАЯ, НО НЕ ОГРАНИЧИВАЯСЬ ГАРАНТИЯМИ ТОВАРНОЙ ПРИГОДНОСТИ, ПРИГОДНОСТИ ДЛЯ ОПРЕДЕЛЕННОЙ ЦЕЛИ И НЕНАРУШЕНИЯ. НИ В КОЕМ СЛУЧАЕ АВТОРЫ ИЛИ ПРАВООБЛАДАТЕЛИ НЕ НЕСУТ ОТВЕТСТВЕННОСТИ ЗА КАКИЕ-ЛИБО ПРЕТЕНЗИИ, УБЫТКИ ИЛИ ДРУГИЕ ОТВЕТСТВЕННОСТЬ, БУДЬ ТО В РЕЗУЛЬТАТЕ ДЕЙСТВИЯ ДОГОВОРА, ДЕЛИКТА ИЛИ ИНЫМ ОБРАЗОМ, ВОЗНИКАЮЩАЯ В РЕЗУЛЬТАТЕ ИЛИ В СВЯЗИ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ ИЛИ ИСПОЛЬЗОВАНИЕМ ИЛИ ДРУГИМИ ОПЕРАЦИЯМИ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Действующая лицензия - Apache License 2.0&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Срок действия - бессрочная &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Авторское право (c) 2022 Макеев Антон Николаевич&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;ПРАВИЛА И УСЛОВИЯ ИСПОЛЬЗОВАНИЯ, ВОСПРОИЗВЕДЕНИЯ И РАСПРОСТРАНЕНИЯ&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Определения.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&amp;quot;Лицензия&amp;quot; означает условия использования, воспроизведения и распространения, определенные разделами 1-9 настоящего документа.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&amp;quot;Лицензиар&amp;quot; означает владельца авторских прав или юридическое лицо, уполномоченное владельцем авторских прав, которое предоставляет Лицензию.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&amp;quot;Юридическое лицо&amp;quot; означает объединение действующего юридического лица и всех других юридических лиц, которые контролируют, контролируются или находятся под общим контролем с этим юридическим лицом. Для целей настоящего определения &amp;quot;контроль&amp;quot; означает (i) право, прямое или косвенное, осуществлять руководство или управление такой организацией, будь то по контракту или иным образом, или (ii) владение пятьюдесятью процентами (50%) или более размещенных акций, или (iii) бенефициарное владение такой организацией.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&amp;quot;Вы&amp;quot; (или &amp;quot;Ваш&amp;quot;) означает физическое или юридическое лицо, осуществляющее разрешения, предоставленные настоящей Лицензией.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&amp;quot;Исходная&amp;quot; форма означает предпочтительную форму для внесения изменений, включая, но не ограничиваясь, исходный код программного обеспечения, исходный код документации и файлы конфигурации.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&amp;quot;Объектная&amp;quot; форма означает любую форму, полученную в результате механического преобразования или перевода Исходной формы, включая, но не ограничиваясь этим, скомпилированный объектный код, сгенерированную документацию и преобразования в другие типы носителей.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&amp;quot;Произведение&amp;quot; означает авторское произведение, будь то в форме Источника или Объекта, доступное по Лицензии, как указано в уведомлении об авторских правах, которое включено в произведение или прилагается к нему (пример приведен в Приложении ниже).&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&amp;quot;Производные работы&amp;quot; означают любую работу, будь то в форме Источника или Объекта, которая основана на (или получена из) Работы и для которой редакторские правки, аннотации, уточнения или другие модификации представляют в целом оригинальное авторское произведение. Для целей настоящей Лицензии Производные произведения не должны включать произведения, которые остаются отделимыми от Произведения и Производных от него Произведений или просто ссылаются (или привязываются по названию) на интерфейсы Произведения и Производных от него Произведений.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&amp;quot;Вклад&amp;quot; означает любое авторское произведение, включая оригинальную версию Произведения и любые изменения или дополнения к этому Произведению или Производные от него Произведения, которые намеренно представлены Лицензиару для включения в Произведение владельцем авторских прав или физическим или юридическим лицом, уполномоченным представлять от имени владельца авторских прав владелец. Для целей этого определения &amp;quot;отправлено&amp;quot; означает любую форму электронного, устного или письменного сообщения, отправленного Лицензиару или его представителям, включая, но не ограничиваясь этим, сообщения в электронных списках рассылки, системах контроля исходного кода и системах отслеживания проблем, которые управляются Лицензиаром или от его имени. Лицензиару с целью обсуждения и улучшения Работы, но исключая сообщение, которое явно помечено или иным образом обозначено в письменной форме владельцем авторских прав как &amp;quot;Не является вкладом&amp;quot;.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&amp;quot;Вкладчик&amp;quot; означает Лицензиара и любое физическое или Юридическое лицо, от имени которого Лицензиар получил Вклад и впоследствии включил его в Произведение.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Предоставление лицензии на авторское право. В соответствии с условиями и положениями настоящей Лицензии, каждый Участник настоящим предоставляет Вам бессрочную, всемирную, неисключительную, бесплатную, безвозмездную, безотзывную лицензию на авторское право на воспроизведение, подготовку Производных Работ, публичную демонстрацию, публичное исполнение, сублицензирование и распространение Работы и таких Производных Работ в форме источника или объекта.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Выдача патентной лицензии. В соответствии с условиями и положениями настоящей Лицензии, каждый Участник настоящим предоставляет Вам бессрочную, всемирную, неисключительную, бесплатную, безвозмездную, безотзывную (за исключением случаев, указанных в этом разделе) патентную лицензию на создание, использование, предложение о продаже, продажу, импорт, и иным образом передавать Работу, если такая лицензия применяется только к тем патентным заявкам, лицензируемым таким Автором, которые обязательно нарушаются их Вкладом (вкладами) отдельно или в сочетании их Вклада (ов) с Работой, на которую был представлен такой Вклад (ы). Если Вы подаете патентный иск против какой-либо организации (включая перекрестный иск или встречный иск в судебном процессе), утверждая, что Работа или Вклад, включенный в Работу, представляют собой прямое или косвенное нарушение патентных прав, то любые патентные лицензии, предоставленные Вам в соответствии с этой Лицензией на эту Работу, прекращаются с даты начала такого судебного разбирательства. подшито.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Перераспределение. Вы можете воспроизводить и распространять копии Произведения или Производных от него Произведений на любом носителе, с изменениями или без изменений, а также в Исходной или Объектной форме, при условии, что Вы выполняете следующие условия:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;(а) Вы должны предоставить любым другим получателям Произведения или Производных произведений копию этой Лицензии; и&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;(b) Вы должны сделать так, чтобы на любых измененных файлах были заметные уведомления о том, что Вы изменили файлы; и&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;(c) Вы должны сохранять в Исходной форме любых Производных Работ, которые Вы распространяете, все уведомления об авторских правах, патентах, товарных знаках и атрибуции из Исходной формы Работы, за исключением тех уведомлений, которые не относятся к какой-либо части Производных Работ; и&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;(d) Если Произведение включает текстовый файл &amp;quot;УВЕДОМЛЕНИЕ&amp;quot; как часть его распространения, то любые Производные работы, которые Вы распространяете, должны включать читаемую копию уведомлений об атрибуции, содержащихся в таком файле УВЕДОМЛЕНИЙ, за исключением тех уведомлений, которые не относятся к какой-либо части Производных работ, по крайней мере, в одном из следующих мест: в текстовом файле УВЕДОМЛЕНИЯ, распространяемом как часть Производных работ; в исходной форме или документации, если они предоставляются вместе с Производными работами; или в пределах отображения, созданного Производными работами, если и где обычно появляются такие уведомления третьих лиц. Содержимое файла УВЕДОМЛЕНИЯ предназначено исключительно для информационных целей и не изменяет Лицензию. Вы можете добавлять Свои собственные уведомления об атрибуции в Производные Произведения, которые Вы распространяете, вместе с текстом УВЕДОМЛЕНИЯ из Произведения или в качестве дополнения к нему, при условии, что такие дополнительные уведомления об атрибуции не могут быть истолкованы как изменение Лицензии.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Вы можете добавить свое собственное заявление об авторских правах к Своим модификациям и можете предоставить дополнительные или другие лицензионные условия и положения для использования, воспроизведения или распространения Ваших модификаций или для любых таких Производных работ в целом, при условии, что Ваше использование, воспроизведение и распространение Работы иным образом соответствуют условиям, изложенным в этом Лицензия.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Представление взносов. Если Вы явно не укажете иное, любой Вклад, намеренно представленный Вами Лицензиару для включения в Произведение, подпадает под условия настоящей Лицензии, без каких-либо дополнительных условий или положений. Несмотря на вышесказанное, ничто в настоящем документе не заменяет или не изменяет условия любого отдельного лицензионного соглашения, которое вы, возможно, заключили с Лицензиаром в отношении таких Взносов.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Торговые марки. Настоящая Лицензия не дает разрешения на использование торговых наименований, товарных знаков, знаков обслуживания или названий продуктов Лицензиара, за исключением случаев, когда это требуется для разумного и обычного использования при описании происхождения Произведения и воспроизведении содержимого файла УВЕДОМЛЕНИЯ.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Отказ от гарантии. Если это не требуется применимым законодательством или не согласовано в письменной форме, Лицензиар предоставляет Работу (и каждый Участник предоставляет свои Материалы) на УСЛОВИЯХ &amp;quot;КАК ЕСТЬ&amp;quot;, БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ ИЛИ УСЛОВИЙ, явных или подразумеваемых, включая, помимо прочего, любые гарантии или условия ПРАВА СОБСТВЕННОСТИ, НЕНАРУШЕНИЯ ПРАВ, ПРИГОДНОСТЬ ДЛЯ ПРОДАЖИ или ПРИГОДНОСТЬ ДЛЯ ОПРЕДЕЛЕННОЙ ЦЕЛИ. Вы несете единоличную ответственность за определение целесообразности использования или распространения Работы и принимаете на себя любые риски, связанные с использованием Вами разрешений в соответствии с настоящей Лицензией.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Ограничение ответственности. Ни в коем случае и ни в соответствии с какой правовой теорией, будь то в результате деликта (включая халатность), контракта или иным образом, за исключением случаев, предусмотренных применимым законодательством (например, преднамеренные и грубые небрежные действия) или согласованные в письменной форме, любой Вкладчик не несет ответственности перед Вами за ущерб, включая любые прямые, косвенные, специальные, случайный или косвенный ущерб любого характера, возникший в результате действия настоящей Лицензии или в результате использования или невозможности использования Произведения (включая, но не ограничиваясь ущербом в связи с потерей деловой репутации, остановкой работы, сбоем или неисправностью компьютера или любым другим коммерческим ущербом или убытками), даже если такой Вкладчик был предупрежден о возможности такого ущерба.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Принятие Гарантии или Дополнительной ответственности. Распространяя Произведение или Производные от него Произведения, Вы можете предложить и взимать плату за принятие поддержки, гарантии, возмещения убытков или других обязательств по ответственности и/или прав, соответствующих настоящей Лицензии. Однако, принимая такие обязательства, Вы можете действовать только от Своего имени и под Свою исключительную ответственность, а не от имени любого другого Участника, и только в том случае, если Вы согласны возместить, защитить и обезопасить каждого Участника от любой ответственности, понесенной таким Участником, или претензий, предъявленных к нему по причине вы принимаете любую такую гарантию или дополнительную ответственность.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;ОКОНЧАНИЕ ДЕЙСТВИЯ ПРАВИЛ И УСЛОВИЙ&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;ПРИЛОЖЕНИЕ: Как применить лицензию Apache к вашей работе.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Чтобы применить лицензию Apache к своей работе, приложите следующее&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;шаблонное уведомление с полями, заключенными в квадратные скобки &amp;quot;[]&amp;quot;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;заменен вашей собственной идентификационной информацией. (Не включайте&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;скобки!) Текст должен быть заключен в соответствующий&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;синтаксис комментария для формата файла. Мы также рекомендуем, чтобы&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;название файла или класса и описание назначения были включены на той&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;же &amp;quot;печатной странице&amp;quot;, что и уведомление об авторских правах, для облегчения&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;идентификации в сторонних архивах.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Авторское право [2022] [Макеев Антон Николаевич]&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Лицензирован по лицензии Apache версии 2.0 (&amp;quot;Лицензия&amp;quot;); вы не можете использовать этот файл, кроме как в соответствии с Лицензией. Вы можете получить копию Лицензии по адресу&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;http://www.apache.org/licenses/LICENSE-2.0&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                           </property>
                          </widget>
                         </item>
@@ -2615,6 +2673,18 @@ p, li { white-space: pre-wrap; }
                                 </property>
                                </widget>
                               </item>
+                              <item row="1" column="2">
+                               <widget class="QCheckBox" name="cb_full_check">
+                                <property name="font">
+                                 <font>
+                                  <pointsize>20</pointsize>
+                                 </font>
+                                </property>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                               </widget>
+                              </item>
                               <item row="1" column="0">
                                <widget class="QCheckBox" name="cb_fast_check">
                                 <property name="minimumSize">
@@ -2630,18 +2700,6 @@ p, li { white-space: pre-wrap; }
                                 </property>
                                 <property name="text">
                                  <string>`</string>
-                                </property>
-                               </widget>
-                              </item>
-                              <item row="1" column="2">
-                               <widget class="QCheckBox" name="cb_full_check">
-                                <property name="font">
-                                 <font>
-                                  <pointsize>20</pointsize>
-                                 </font>
-                                </property>
-                                <property name="text">
-                                 <string/>
                                 </property>
                                </widget>
                               </item>
@@ -2794,27 +2852,28 @@ QPushButton:pressed {
                         <string notr="true">color: rgb(255, 255, 255);</string>
                        </property>
                        <property name="text">
-                        <string>Дата создания | Действие |  Программа | ID процесса |  Память | Количество операций </string>
+                        <string>Программа | Действие | Процессор |  Память | Дата создания</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <widget class="QPlainTextEdit" name="plainTextEdit_for_activity_registration">
+                      <widget class="QListWidget" name="lw_activity_registration">
                        <property name="font">
                         <font>
-                         <pointsize>12</pointsize>
+                         <pointsize>16</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QPlainTextEdit {
+                        <string notr="true">QListWidget {
 	border: 5px groove #2c313c;
 	border-radius: 20px;
 	color: rgb(255, 255, 255);
-}
-</string>
-                       </property>
-                       <property name="readOnly">
-                        <bool>true</bool>
+}</string>
                        </property>
                       </widget>
                      </item>
@@ -2858,7 +2917,7 @@ QPushButton:pressed {
                         <string notr="true">background-color: rgb(255, 255, 255);</string>
                        </property>
                        <property name="currentIndex">
-                        <number>2</number>
+                        <number>0</number>
                        </property>
                        <widget class="QWidget" name="tab_1">
                         <property name="font">
@@ -2881,6 +2940,26 @@ QPushButton:pressed {
                              <bold>true</bold>
                             </font>
                            </property>
+                           <column>
+                            <property name="text">
+                             <string>Программа</string>
+                            </property>
+                           </column>
+                           <column>
+                            <property name="text">
+                             <string>ЦП</string>
+                            </property>
+                           </column>
+                           <column>
+                            <property name="text">
+                             <string>Память</string>
+                            </property>
+                           </column>
+                           <column>
+                            <property name="text">
+                             <string>Дата создания </string>
+                            </property>
+                           </column>
                           </widget>
                          </item>
                         </layout>
@@ -2953,7 +3032,7 @@ QPushButton:pressed {
                         <string notr="true">color: rgb(255, 255, 255);</string>
                        </property>
                        <property name="text">
-                        <string>Мануал</string>
+                        <string>Руководство пользователя для модуля &quot;Защита системы&quot;</string>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignCenter</set>
@@ -5235,7 +5314,7 @@ border-bottom-color: rgb(255, 255, 255);</string>
                         <string notr="true">color: rgb(255, 255, 255);</string>
                        </property>
                        <property name="text">
-                        <string>Мануал для сервера</string>
+                        <string>Руководство пользователя для модуля &quot;Сервер&quot;</string>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignCenter</set>
@@ -5381,7 +5460,7 @@ p, li { white-space: pre-wrap; }
                         <string notr="true">color: rgb(255, 255, 255);</string>
                        </property>
                        <property name="text">
-                        <string>Мануал для системы управления базой данных</string>
+                        <string>Руководство пользователя для модуля &quot;Сиситема управления базами данных&quot;</string>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignCenter</set>
@@ -5413,13 +5492,13 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:15pt; font-weight:600; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;Данная система управления базами данных предназначена для добавления новых пользвоателей данной Системой. При добавлении нового пользователя необходимо указать:&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;1. имя;&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;2. фамилия;&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;3. звание;&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;4. email;&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;5. логин;&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;6. пароль;&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;7. уровень допуска.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;- имя;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;- фамилия;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;- должность;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;- email;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;- логин;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;- пароль;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;- уровень допуска.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;Необходимо отметить 7 пункт - уровень допуска. На выбор доступно две роли:&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;1. Администратор - имеет доступ ко всем модулям Системы, может добавлять и удалять пользователей, а также изменять данные уже существущих пользователей Ссистемы;&lt;/span&gt;&lt;/p&gt;
@@ -5615,7 +5694,7 @@ p, li { white-space: pre-wrap; }
                               <string notr="true">color: rgb(255, 255, 255);</string>
                              </property>
                              <property name="text">
-                              <string>звание</string>
+                              <string>должность</string>
                              </property>
                              <property name="alignment">
                               <set>Qt::AlignCenter</set>
@@ -5623,7 +5702,7 @@ p, li { white-space: pre-wrap; }
                             </widget>
                            </item>
                            <item row="2" column="1">
-                            <widget class="QLineEdit" name="le_rank">
+                            <widget class="QLineEdit" name="le_position">
                              <property name="maximumSize">
                               <size>
                                <width>1000</width>
@@ -5973,6 +6052,179 @@ background-color: rgb(255, 255, 255);</string>
                   </item>
                  </layout>
                 </widget>
+                <widget class="QWidget" name="page">
+                 <layout class="QVBoxLayout" name="verticalLayout_69">
+                  <item>
+                   <widget class="QFrame" name="frame_49">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_70">
+                     <item alignment="Qt::AlignTop">
+                      <widget class="QFrame" name="frame_50">
+                       <property name="frameShape">
+                        <enum>QFrame::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Raised</enum>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_71">
+                        <item>
+                         <widget class="QLabel" name="label_47">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                          <property name="text">
+                           <string>Название базы данных</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLineEdit" name="lineEdit">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QLineEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}
+</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_48">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                          <property name="text">
+                           <string>Название таблицы</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLineEdit" name="lineEdit_2">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QLineEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}
+</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_49">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                          <property name="text">
+                           <string>Количество столбцов</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLineEdit" name="lineEdit_3">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QLineEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}
+</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="pushButton_2">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	border: 5px solid #1f232a;;
+	border-bottom-color: rgb(255, 255, 255);
+}
+
+QPushButton:pressed {
+    background-color: rgb(24, 24, 36);
+	border: 5px solid rgb(255, 255, 255);
+}
+</string>
+                          </property>
+                          <property name="text">
+                           <string>Подтвердить</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QFrame" name="frame_51">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="frameShape">
+                        <enum>QFrame::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Raised</enum>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
                 <widget class="QWidget" name="page_list_of_db">
                  <layout class="QVBoxLayout" name="verticalLayout_52">
                   <item>
@@ -6207,7 +6459,7 @@ background-color: rgb(255, 255, 255);</string>
                         <string notr="true">color: rgb(255, 255, 255);</string>
                        </property>
                        <property name="text">
-                        <string>Мануал для журнала логирования</string>
+                        <string>Руководство пользователя для модуля &quot;Журнал логирования&quot;</string>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignCenter</set>

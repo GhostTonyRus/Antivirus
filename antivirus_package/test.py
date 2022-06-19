@@ -1,62 +1,87 @@
-import datetime
+# def foo(bar, baz):
+#     print(f"hello {bar}")
+#     return "foo" + baz
+#
+# from multiprocessing.pool import ThreadPool
+# pool = ThreadPool()
+# async_result = pool.apply_async(foo, ("world", "foo"))
+#
+# return_val = async_result.get()
+# print(return_val)
+#
+# import sys
+# import time
+# import threading
+#
+# from PyQt5 import QtWidgets, QtCore
+#
+#
+# def thread(my_func):
+#     """
+#     Запускает функцию в отдельном потоке
+#     """
+#
+#     def wrapper(*args, **kwargs):
+#         my_thread = threading.Thread(target=my_func, args=args, kwargs=kwargs)
+#         my_thread.start()
+#
+#     return wrapper
+#
+#
+# @thread
+# def processing(signal):
+#     """
+#     Эмулирует обработку (скачивание) каких-то данных
+#     """
+#     res = [i for i in 'hello']
+#     time.sleep(5)
+#     signal.emit(res)  # Посылаем сигнал в котором передаём полученные данные
+#
+#
+# class MyWidget(QtWidgets.QWidget):
+#     my_signal = QtCore.pyqtSignal(list, name='my_signal')
+#
+#     def __init__(self, parent=None):
+#         super(MyWidget, self).__init__(parent)
+#         self.mainLayout = QtWidgets.QHBoxLayout()
+#         self.setLayout(self.mainLayout)
+#
+#         self.button = QtWidgets.QPushButton("Emit your signal!", self)
+#         self.mainLayout.addWidget(self.button)
+#
+#         # При нажатии на кнопку запускаем обработку данных
+#         self.button.clicked.connect(lambda: processing(self.my_signal))
+#
+#         # Обработчик сигнала
+#         self.my_signal.connect(self.mySignalHandler, QtCore.Qt.QueuedConnection)
+#
+#     def mySignalHandler(self, data):  # Вызывается для обработки сигнала
+#         print(data)
+#
+#
+# if __name__ == '__main__':
+#     app = QtWidgets.QApplication(sys.argv)
+#     window = MyWidget()
+#     window.show()
+#     app.exec_()
+import threading
 import time
+import queue
 
-import psutil
-
-def cpu():
-	cpu = psutil.cpu_count(False)
-	cpu_per = int(psutil.cpu_percent(1))
-	return cpu_per
-
-def network():
-	# network = psutil.net_io_counters()
-	network_sent = int(psutil.net_io_counters()[0]/8/1024)
-	network_recv = int(psutil.net_io_counters()[1]/8/1024)
-	network_info = f"""
-					network_sent: {network_sent}kb,
-					network_recv: {network_recv}kb,
-	"""
-	return network_info.replace("\t", "")
-
-def memory():
-	mem = psutil.virtual_memory()
-	mb = 100 * 1024 * 1024
-	print(mem.used)
-	print(mem.free)
-
-def disks():
-	disk = psutil.disk_partitions()
-	print(disk)
+q = queue.Queue()
 
 
-def main():
-	res = f"""
-	процессор: {print(cpu())}\n
-	оперативная память: {print(memory())}\n
-	сеть: {print(network())}\n
-	"""
-	return res.replace("\t", "")
+def thread_func(func):
+    def wrapper(*args, **kwargs):
+        thread = threading.Thread(target=func, args=(args, kwargs), name="my thread")
+        thread.start()
+    return wrapper
 
-# while True:
-# 	time.sleep(1)
-# 	print(main())
+@thread_func
+def test():
+    print(111)
+    time.sleep(5)
+    q.put("Hello")
+    return "hello"
 
-# while True:
-# 	time.sleep(1)
-# 	disks()
-
-# while True:
-# 	for proc in psutil.process_iter():
-# 		# print(f"{proc.pid} - {proc.name()} - {proc.status()} - {datetime.datetime.now()}")
-# 		with open("test.txt", "a", encoding="utf-8") as file:
-# 			with proc.oneshot():
-# 				file.write(f"""{proc.name()} - {proc.status()} - {str(psutil.cpu_percent(1))+"%"} - {round(proc.memory_info().rss / 1000000, 1)}МБ - {datetime.datetime.now().strftime('%H:%M:%S %m-%d-%Y')}
-# 						""".replace("\t", "").replace("running", "запущено"))
-
-# while True:
-# 	time.sleep(1)
-# 	print(psutil.net_io_counters())
-while True:
-	time.sleep(1)
-	for i in psutil.net_connections():
-		print(i)
+print(q.get())

@@ -1,17 +1,19 @@
 import os
 import subprocess
+from multiprocessing.pool import ThreadPool
 import sys
 import threading
 from PyQt5 import QtWidgets, QtGui, QtCore, Qt
 from PyQt5.QtCore import QPoint, QPropertyAnimation, QObject, QTimer
 from PyQt5.QtGui import QColor, QCloseEvent
 from PyQt5.QtSql import QSqlDatabase, QSqlQuery, QSqlQueryModel, QSqlTableModel, QSqlRecord
-from PyQt5.QtWidgets import QGraphicsDropShadowEffect, QSizeGrip, QDesktopWidget, QTableView, QLineEdit
+from PyQt5.QtWidgets import QGraphicsDropShadowEffect, QSizeGrip, QDesktopWidget, QTableView, QLineEdit, \
+    QTableWidgetItem
 # from system_gui_for_test_2 import Ui_MainWindow
 from system_gui_for_test_2_copy import Ui_MainWindow
 from database_dialog_view import Ui_Dialog
 # from system_gui import Ui_MainWindow
-from antivirus_package import Monitor, Two_factor_authentication, InfoSystem, PortScanner, GetProgramActivity, GetNetworkConnections, GetNetworkStatistics, UsbLock, CheckFile, AntivirusEngine
+from antivirus_package import Two_factor_authentication, InfoSystem, PortScanner, GetProgramActivity, GetNetworkConnections, GetNetworkStatistics, UsbLock, CheckFile, AntivirusEngine, SystemWatch
 from server_package import Server
 from database_package import CustomsofficersDataBase
 from logging_package import Logging
@@ -38,6 +40,17 @@ class ActivityRegistrationThread(QtCore.QThread):
             except FileExistsError as err:
                 self.signal.emit("НЕТ ДАННЫХ!")
 
+class CheckFilesThread(QtCore.QThread):
+    signal = QtCore.pyqtSignal(str)
+
+    def __init__(self):
+        super(CheckFilesThread, self).__init__()
+        self.check_file = CheckFile()
+
+    def run(self):
+        res = self.check_file.main()
+        self.signal.emit(res)
+
 class PortScannerThread(QtCore.QThread):
     signal = QtCore.pyqtSignal(str)
 
@@ -49,7 +62,6 @@ class PortScannerThread(QtCore.QThread):
     def run(self):
         res = self.port_scanner.main(self.value)
         self.signal.emit(res)
-
 
 class CheckUsbThread(QtCore.QThread):
     signal = QtCore.pyqtSignal(str)
@@ -80,7 +92,6 @@ class CheckFileThread(QtCore.QThread):
 
     def run(self):
         res = self.check_file.main()
-        print("Результат готов!")
         print(res)
         self.signal.emit(res)
         # time.sleep(60)
@@ -92,25 +103,6 @@ class CheckFileThread(QtCore.QThread):
         #             self.signal.emit(str(i))
         # except FileExistsError as err:
         #     self.signal.emit("НЕТ ДАННЫХ!")
-
-class ActivityThread(QtCore.QThread):
-    signal = QtCore.pyqtSignal(str)
-
-    def __init__(self):
-        super(ActivityThread, self).__init__()
-        self.activity = GetProgramActivity()
-
-    def run(self):
-        self.activity.main()
-        time.sleep(10)
-        while True:
-            time.sleep(3)
-            with open("C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\program_activity.txt", "r",
-                      encoding="utf-8") as file:
-                res = file.readlines()
-                for i in res:
-                    self.signal.emit(str(i))
-
 
 class ServerThread(QtCore.QThread):
     signal = QtCore.pyqtSignal(str)
@@ -151,12 +143,13 @@ class MyWindow(QtWidgets.QMainWindow):
         super(MyWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.antivirus_ = CheckFile()
-        self.antivirus = AntivirusEngine()
+        self.check_file = CheckFile()
+        self.antivirus_engine = AntivirusEngine()
         self.two_factor_authentication = Two_factor_authentication()
         self.info = InfoSystem()  # информация о системе
         self.usb_blocking = UsbLock()  # блокировка usb
         self.port_scanner = PortScanner()  # сканер портов
+        self.system_watch = SystemWatch()
         self.server = Server()
         self.customs_officers_database = CustomsofficersDataBase()
         self.register_actions = Logging()
@@ -174,6 +167,14 @@ class MyWindow(QtWidgets.QMainWindow):
 
         # устновка окна по умолчанию
         self.ui.stackedWidget.setCurrentWidget(self.ui.authorization_page)
+
+        # настройка кнопок с клавиатуры
+        self.ui.btn_login.setAutoDefault(True)  # нажатие <Enter>
+        self.ui.le_password.returnPressed.connect(self.ui.btn_login.click)  # нажатие <Enter>
+
+        self.ui.btn_accept_code.setAutoDefault(True)  # нажатие <Enter>
+        self.ui.le_email_code.returnPressed.connect(self.ui.btn_accept_code.click)  # нажатие <Enter>
+
 
         # настрйока кнопки входа
         self.ui.btn_login.clicked.connect(lambda: self.check_data())
@@ -219,10 +220,16 @@ class MyWindow(QtWidgets.QMainWindow):
 
         # настройка проверки файла
         self.ui.progressBar.hide()
-        self.check_file_thread = CheckFileThread()
-        self.check_file_thread.signal.connect(self.insert_check_file_value)
-        self.ui.btn_check_file.clicked.connect(self.show_check_file)
-        self.ui.btn_start_file_checking.clicked.connect(lambda: self.select_and_start_check_thread())
+        # self.check_file_thread = CheckFileThread()
+        self.ui.btn_check_file.clicked.connect(self.show_vulnerability_scanner_page)
+        self.ui.btn_start_file_checking.clicked.connect(self.get_variant_of_the_check)
+        # # self.check_file_thread.signal.connect(self.insert_check_file_value)
+        # # self.ui.btn_check_file.clicked.connect(self.show_check_file)
+        # # self.ui.btn_start_file_checking.clicked.connect(lambda: self.select_and_start_check_thread())
+
+        self.check_files_thread = CheckFilesThread()
+        self.check_files_thread.signal.connect(self.insert_check_file_value)
+        self.ui.btn_start_file_checking.clicked.connect(self.start_full_check)
 
         # блокировка usb
         self.usb_blocking_thread = CheckUsbThread()
@@ -268,7 +275,7 @@ class MyWindow(QtWidgets.QMainWindow):
 
         # отобразить данные из бд
         self.dataModel = QSqlTableModel()
-        self.dataModel.setTable("customs_officers")
+        self.dataModel.setTable("должностные лица")
         self.dataModel.select()
         self.ui.data_table_view.setModel(self.dataModel)
 
@@ -278,20 +285,20 @@ class MyWindow(QtWidgets.QMainWindow):
 
         # поиск записей в базе данных
         self.searchModel = QSqlQueryModel(self)
-        self.searchModel.setQuery("""SELECT * FROM `customs_officers`;""")
+        self.searchModel.setQuery("""SELECT * FROM `должностные лица`;""")
         self.ui.search_table_view.setModel(self.searchModel)
         self.ui.le_search_data_in_db.textEdited.connect(self.search_user_in_db)
 
         # зменение записей в базе данных
         self.changeModel = QSqlTableModel(self)
-        self.changeModel.setTable("customs_officers")
+        self.changeModel.setTable("должностные лица")
         self.changeModel.select()
         self.ui.change_table_view.setModel(self.changeModel)
         self.changeModel.beforeUpdate.connect(self.onmodificarModel_beforeUpdate)
 
         # удаление записей из БД
         self.deleteModel = QSqlTableModel(self)
-        self.deleteModel.setTable("customs_officers")
+        self.deleteModel.setTable("должностные лица")
         self.deleteModel.select()
         self.ui.delete_table_view.setModel(self.deleteModel)
         self.ui.delete_table_view.setEditTriggers(QTableView.NoEditTriggers)
@@ -318,6 +325,7 @@ class MyWindow(QtWidgets.QMainWindow):
         ###############################################
         self.start_activity_registration_thread() # запуск отслеживания процессов
         self.insert_information_about_usb() # запуск блокировки флешки
+        self.start_systemwatch_thread() # запуск лоигрвоания операционной системы
 
         # растяжение окна
         QSizeGrip(self.ui.size_grip)
@@ -369,10 +377,9 @@ class MyWindow(QtWidgets.QMainWindow):
         code_from_email = self.two_factor_authentication.generate_code()
         login_from_form, password_from_form = self.get_data()
         db_users = {}
-
         model = QSqlQueryModel()
         data = login_from_form
-        model.setQuery("SELECT * FROM `customs_officers` WHERE name LIKE '%" + data + "%';") # делаем запрос с логином из поля ввода
+        model.setQuery("SELECT * FROM `должностные лица` WHERE name LIKE '%" + data + "%';") # делаем запрос с логином из поля ввода
         for i in range(5): # при помощи получаем его данные
             user_id = model.record(i).value("user_id")
             login = model.record(i).value("login")
@@ -418,17 +425,16 @@ class MyWindow(QtWidgets.QMainWindow):
     def add_new_user_into_system(self):
         name = self.ui.le_name_new_user.text()
         soname = self.ui.le_soname_new_user.text()
-        rank = self.ui.le_rank_new_user.text()
+        position = self.ui.le_position_new_user.text()
         email = self.ui.le_email_new_user.text()
         login = self.ui.le_login_new_user.text()
         password = self.ui.le_password_new_user.text()
         access_level = self.ui.cb_role_new_user.currentText()
-        print(name, soname, rank, email, login, password, access_level)
 
         data = {}
         data["name"] = name
         data["soname"] = soname
-        data["rank"] = rank
+        data["position"] = position
         data["email"] = email
         data["login"] = login
         data["password"] = password
@@ -445,17 +451,17 @@ class MyWindow(QtWidgets.QMainWindow):
         if query.prepare(insert_query):
             query.addBindValue(name)
             query.addBindValue(soname)
-            query.addBindValue(rank)
+            query.addBindValue(position)
             query.addBindValue(email)
             query.addBindValue(login)
             query.addBindValue(password)
             query.addBindValue(access_level)
             if query.exec_():
-                QtWidgets.QMessageBox.information(self, "Уведомление", "Данные успешно давлены")
+                QtWidgets.QMessageBox.information(self, "Уведомление", "Данные успешно добавлены!")
                 self.register_actions.register_database_actions("Добавление данных")
                 self.ui.le_name.clear()
                 self.ui.le_soname.clear()
-                self.ui.le_rank.clear()
+                self.ui.le_position.clear()
                 self.ui.le_email.clear()
                 self.ui.le_login_2.clear()
                 self.ui.le_password_2.clear()
@@ -476,19 +482,56 @@ class MyWindow(QtWidgets.QMainWindow):
     def show_antivirus_manual(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_about_antivirus)
 
-    def test_file_check(self):
-        res = self.ui.cb_fast_check.text()
-        print(res)
+    def show_vulnerability_scanner_page(self):
+        """открыть страницу сканера файлов"""
+        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_check_file)
+
+    def get_variant_of_the_check(self):
+        """почаем информацию о выборе проверки"""
+        fast_check = self.ui.cb_fast_check.isChecked()
+        full_check = self.ui.cb_full_check.isChecked()
+        if fast_check:
+            self.ui.btn_start_file_checking.setEnabled(False)
+            self.ui.te_res_of_fast_check.clear()
+            self.ui.te_res_of_fast_check.append("Запуск быстрой проверки файлов")
+            self.start_fast_check()
+            self.start_progress_bar()
+        elif full_check:
+            self.ui.btn_start_file_checking.setEnabled(False)
+            self.ui.te_res_of_full_check.clear()
+            self.ui.te_res_of_full_check.append("Запуск полной проверки файлов")
+            self.start_progress_bar()
+            thread = threading.Thread(target=self.start_full_check)
+            thread.start()
+            thread.join()
+        elif full_check and fast_check:
+            QtWidgets.QMessageBox.information(self, "Ошибка", "Необходимо выбрать только один вариант проверки файлов")
+        else:
+            QtWidgets.QMessageBox.information(self, "Ошибка", "Необходимо выбрать один из вариантов проверки файлов")
+
+    def start_fast_check(self):
+        """запускаем быструю проверку файла через локульную бауз данных"""
+        # thread = threading.Thread(target=self.antivirus_engine.md5_hash_checker)
+        # thread.start()
+        thread_pool = ThreadPool()
+        thread_res = thread_pool.apply_async(self.antivirus_engine.md5_hash_checker)
+        thread_res.get()
+
+    def start_full_check(self):
+        """запускаем полную проверку файла через облако"""
+        self.check_files_thread.start()
+
+    def insert_check_file_value(self, value):
+        self.ui.te_res_of_full_check.append(value)
 
     ##########################################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ РАБОТЫ С РЕГИСТРАЦИЕЙ АКТИВНОСТИ #
     ##########################################################
     def show_activity_registration_page(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_registration_activity)
-        # self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_test_registration_activity)
 
     def insert_activity_registration_value(self, value):
-        self.ui.plainTextEdit_for_activity_registration.appendPlainText(value)
+        self.ui.lw_activity_registration.addItem(value)
 
     def start_activity_registration_thread(self):
         self.activity_registration_thread.start()
@@ -496,6 +539,7 @@ class MyWindow(QtWidgets.QMainWindow):
     #########################################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ РАБОТЫ С ПРОВЕРКОЙ ФАЙЛА        #
     #########################################################
+    # прогресс бар
     def show_check_file(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_check_file)
 
@@ -509,44 +553,6 @@ class MyWindow(QtWidgets.QMainWindow):
         if value == 100:
             time.sleep(1)
             self.ui.progressBar.hide()
-
-    def start_fast_check_file(self):
-        self.ui.te_res_of_fast_check.clear()
-        self.ui.btn_start_file_checking.setEnabled(False)
-        self.ui.progressBar.show()
-        self.start_progress_bar()
-        self.ui.te_res_of_fast_check.append("Запуск проверки файлов")
-        res_md5 = self.antivirus.md5_hash_checker()
-        res_sha256 = self.antivirus.sha256_hash_checker()
-        res_sha1 = self.antivirus.sha1_hash_checker()
-        self.ui.te_res_of_fast_check.append(res_md5)
-        time.sleep(1)
-        self.ui.te_res_of_fast_check.append(res_sha256)
-        time.sleep(1)
-        self.ui.te_res_of_fast_check.append(res_sha1)
-
-    def start_full_check_file(self):
-        self.ui.te_res_of_fast_check.clear()
-        self.ui.btn_start_file_checking.setEnabled(False)
-        self.ui.progressBar.show()
-        self.start_progress_bar()
-        self.ui.te_res_of_fast_check.append("Запуск проверки файлов")
-        self.check_file_thread.start()
-
-    def select_and_start_check_thread(self):
-        if self.ui.cb_fast_check.isChecked():
-            self.start_fast_check_file()
-            self.ui.btn_start_file_checking.setEnabled(True)
-        elif self.ui.cb_full_check.isChecked():
-            self.start_full_check_file()
-            self.ui.btn_start_file_checking.setEnabled(True)
-        else:
-            QtWidgets.QMessageBox.information(self, "Уведомление", "Нужно выбрать один из вариантов проверки")
-
-    def insert_check_file_value(self, value):
-        # self.ui.te_res_of_full_check.clear()
-        self.ui.te_res_of_full_check.append(value)
-        self.ui.btn_start_file_checking.setEnabled(False)
 
     #########################################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ ВЫВОДА ИНФОРМАЦИИ О СИСТЕМЕ     #
@@ -649,6 +655,13 @@ class MyWindow(QtWidgets.QMainWindow):
             pass
         self.ui.lw_incoming_connections.itemClicked.connect(self.on_connection_item_clicked)
 
+    ##########################################################
+    # НАСТРОЙКА МЕТОДОВ ДЛЯ ЛОГИРОВАНИЯ ОПЕРАЦИОННОЙ СИСТЕМЫ #
+    ##########################################################
+    def start_systemwatch_thread(self):
+        thread = threading.Thread(target=self.system_watch.main)
+        thread.start()
+
     ##############################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ С СЕРВЕРОМ           #
     ##############################################
@@ -671,25 +684,12 @@ class MyWindow(QtWidgets.QMainWindow):
     ##############################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ С БАЗОЙ ДАННЫХ       #
     ##############################################
-    # создание таблицы
-    # def prepareDatabase(self):
-    #     db_name = self.customs_officers_database.db_name
-    #     create_table_query = self.customs_officers_database.create_db()
-    #     db = QSqlDatabase().addDatabase("QSQLITE")
-    #     # db.setDatabaseName(self.dependencies_path+db_name)
-    #     db.setDatabaseName(db_name)
-    #     if db.open():
-    #         query = QSqlQuery()
-    #         if query.prepare(create_table_query):
-    #             if query.exec_():
-    #                 print("ТАБЛИЦА УСПЕШНО СОЗДАНА!")
-    #                 self.refreshTable()
 
     # получаем данные и вставляем в таблицу
     def get_data_from_le(self):
         name = self.ui.le_name.text()
         soname = self.ui.le_soname.text()
-        rank = self.ui.le_rank.text()
+        position = self.ui.le_position.text()
         email = self.ui.le_email.text()
         login = self.ui.le_login_2.text()
         password = self.ui.le_password_2.text()
@@ -699,7 +699,7 @@ class MyWindow(QtWidgets.QMainWindow):
         data = {}
         data["name"] = name
         data["soname"] = soname
-        data["rank"] = rank
+        data["position"] = position
         data["email"] = email
         data["login"] = login
         data["password"] = password
@@ -716,17 +716,17 @@ class MyWindow(QtWidgets.QMainWindow):
         if query.prepare(insert_query):
             query.addBindValue(name)
             query.addBindValue(soname)
-            query.addBindValue(rank)
+            query.addBindValue(position)
             query.addBindValue(email)
             query.addBindValue(login)
             query.addBindValue(password)
             query.addBindValue(access_level)
             if query.exec_():
-                QtWidgets.QMessageBox.information(self, "Уведомление", "Данные успешно давлены")
+                QtWidgets.QMessageBox.information(self, "Уведомление", "Данные успешно добавлены")
                 self.register_actions.register_database_actions("Добавление данных")
                 self.ui.le_name.clear()
                 self.ui.le_soname.clear()
-                self.ui.le_rank.clear()
+                self.ui.le_position.clear()
                 self.ui.le_email.clear()
                 self.ui.le_login_2.clear()
                 self.ui.le_password_2.clear()
@@ -750,7 +750,7 @@ class MyWindow(QtWidgets.QMainWindow):
 
     # обновление таблицы
     def refreshTable(self):
-        self.searchModel.setQuery("""SELECT * FROM `customs_officers`;""")
+        self.searchModel.setQuery("""SELECT * FROM `должностные лица`;""")
         self.dataModel.select()
         self.changeModel.select()
         self.deleteModel.select()
@@ -852,11 +852,11 @@ class MyWindow(QtWidgets.QMainWindow):
 def prepareDatabase():
     db = QSqlDatabase().addDatabase("QSQLITE")
     # db.setDatabaseName(self.dependencies_path+db_name)
-    db.setDatabaseName("customs_officers.db")
+    db.setDatabaseName("C:\\PycharmProjects\\Antivirus\\dependencies\\database_dir\\должностные лица домена.db")
     if db.open():
         query = QSqlQuery()
         if query.prepare("""
-        CREATE TABLE IF NOT EXISTS `customs_officers` (
+        CREATE TABLE IF NOT EXISTS `должностные лица` (
             user_id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT,
             soname TEXT,
@@ -867,7 +867,6 @@ def prepareDatabase():
             access_level INTEGER);"""):
             if query.exec_():
                 print("ТАБЛИЦА УСПЕШНО СОЗДАНА!")
-
 
 def main():
     app = QtWidgets.QApplication(sys.argv)

@@ -1,55 +1,71 @@
+import gc
 import hashlib
 import json
 import os
+import threading
+import time
+from datetime import datetime
+import psutil
+import uuid
+
+class DisksFromOs:
+    def __init__(self):
+        self.name_disks = psutil.disk_partitions()
+        self.__disks = []
+
+    def get_disks(self):
+        for disk in self.name_disks:
+            self.__disks.append(disk[0])
+
+    @property
+    def disks(self):
+        self.get_disks()
+        return self.__disks
 
 
 class AntivirusEngine:
-    def __init__(self, file=None):
-        self.filename = file
-        self.dirs = {
-            "antivirus": "C:\\PycharmProjects\\Antivirus\\antivirus_package",
-            "database": "C:\\PycharmProjects\\Antivirus\\database_package",
-            "server": "C:\\PycharmProjects\\Antivirus\\server_package",
-            "logging": "C:\\PycharmProjects\\Antivirus\\logging_package"
-        }
 
     def get_files_from_dirs(self):
-        """возвращает все файлы из директории"""
-        files = []
-        for value in self.dirs.values():
-            files.append(value)
-        # files = []
-        path = "C:\\PycharmProjects\\Antivirus\\antivirus_package"
-        # for item in files:
-        #     for dirpath, dirnames, filenames in os.walk(item):
-        #         for file in filenames:
-        #             files.append(file)
-        for dirpath, dirnames, filenames in os.walk(path):
-            for file in filenames:
-                if file.endswith(".py"):
-                    files.append(file)
-        return files[4:]
-        # print(files[4:])
+        files_from_dirs = []
+        try:
+            for dirpath, dirnames, filenames in os.walk("C:\\"):
+                for file in filenames:
+                    res = os.path.join(dirpath, file)
+                    last_change_file = str(str(time.ctime(os.stat(res).st_mtime)))
+                    if last_change_file.endswith("2022") and "Jun" in last_change_file:
+                        files_from_dirs.append(res)
+        except FileNotFoundError:
+            ...
+        except PermissionError:
+            ...
+        except OSError:
+            ...
+        return files_from_dirs
+
     #############################################
     #                   MD5                     #
     #############################################
     def get_md5_hashes(self):
-        files = self.get_files_from_dirs()
         md5_hashes = []
+        files = self.get_files_from_dirs()
         for file in files:
             try:
                 with open(file, "rb") as file:
                     bytes = file.read()
                     md5_hash = hashlib.md5(bytes).hexdigest()
                     md5_hashes.append(md5_hash)
-            except FileNotFoundError as err:
+            except FileNotFoundError:
+                ...
+            except PermissionError:
+                ...
+            except OSError:
                 ...
         return md5_hashes
 
     def md5_hash_checker(self):
-        path = "C:\\PycharmProjects\\Antivirus\\antivirus_package\\signatures\\MD5 Virus Hashes.txt"
+        path = "C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\signatures\\MD5 Virus Hashes.txt"
         file_hashes = self.get_md5_hashes()
-        clear_file = []
+        # clear_file = []
         virus_file = []
         with open(path, "r") as file:
             hashes = file.read().split()
@@ -57,9 +73,16 @@ class AntivirusEngine:
                 for item in file_hashes:
                     if hash == item:
                         virus_file.append(item)
-                    else:
-                        clear_file.append(item)
-        return len(virus_file) if len(virus_file) > 0 else "Вирусов нет!"
+                    # else:
+                    #     clear_file.append(item)
+        conditions = [
+            f"ID проверки: {uuid.uuid4()}\n",
+            f"Проверено {len(file_hashes)} файлов\n",
+            f"Вирусов обнаружено: {len(virus_file)}" if len(virus_file) > 0 else f"Вирусов нет\n"
+        ]
+        return " ".join(conditions)
+
+
     #############################################
     #                  SHA256                   #
     #############################################
@@ -135,21 +158,8 @@ class AntivirusEngine:
 
 
 if __name__ == '__main__':
-    a = AntivirusEngine()
-    print(a.get_sha1_hash())
-    print(a.sha1_hash_checker())
+    gc.collect()
+    t = AntivirusEngine()
+    print(t.md5_hash_checker())
 
-# from pathlib import Path
-# res = main().split("\\")
-# p = Path("\\".join(res))
-# with open(p, "rb") as file:
-# try:
-#     h = "C:\\PycharmProjects\\Antivirus\\antivirus_package\\bootTel.dat"
-#     with open(rf"{h}", "rb") as file:
-#         res = file.read()
-#         hash = hashlib.sha1(res).hexdigest()
-#         print(hash)
-# except FileNotFoundError as err:
-#     ...
-# finally:
-#     print("dfsf")
+

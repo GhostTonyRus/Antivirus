@@ -67,7 +67,7 @@ class UsersDataBase:
         self.__datetime = datetime.now()
         self.__custom_datetime = self.__datetime.strftime('%Y-%m-%d %H:%M:%S')
         self.database_name = database_name
-        self.__path = f"../dependencies/database_dir/customs_users.db"
+        self.__path = f"../dependencies/database_dir/пользователи домена.db"
         self.connection = sqlite3.connect(self.__path, check_same_thread=False)
         self.cursor = self.connection.cursor()
 
@@ -76,7 +76,7 @@ class UsersDataBase:
         try:
             with self.connection:
                 self.cursor.execute("""
-                 CREATE TABLE IF NOT EXISTS `customs_users` (
+                 CREATE TABLE IF NOT EXISTS `пользователи` (
                      user_id INTEGER PRIMARY KEY AUTOINCREMENT,
                      Имя TEXT,
                      Фамилия TEXT,
@@ -195,6 +195,7 @@ class UsersDataBase:
 
 if __name__ == '__main__':
     # users = UsersDataBase()
+    # users.create_table()
     # print(users.get_data_from_table("antonmakeev18@gmail.com", "12345"))
     path = "C:\\PycharmProjects\\Antivirus\\client_directory\\history.txt"
 
