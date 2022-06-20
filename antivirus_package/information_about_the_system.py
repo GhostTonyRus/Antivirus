@@ -60,10 +60,10 @@ class InfoSystem:
         info_about_disk = ""
         for i in range(len(disk)):
             info_about_disk += f"""
-            имя диска: {disk[i].Caption}
-            описание: {disk[i].Description}
-            размер: {str(round(int(disk[i].Size) / (1024.0 ** 3))) + " GB"}
-            файловая система: {disk[i].FileSystem}\n"""
+            имя диска: {disk.Caption}
+            описание: {disk.Description}
+            размер: {round(int(disk.Size) / (1024.0 ** 3)) if disk == None else "НЕТ ДАННЫХ"}
+            файловая система: {disk.FileSystem if disk.FileSystem != None else "НЕТ ДАННЫХ"}\n"""
 
         # раздел с мультимедией
         sound = wmi.WMI().Win32_SoundDevice()
