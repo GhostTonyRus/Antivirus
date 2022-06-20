@@ -25,6 +25,13 @@ class DisksFromOs:
 
 class AntivirusEngine:
 
+    def __init__(self):
+        self.res_of_scan =  []
+        self.virus_file_md5 = []
+        self.virus_file_sha256 = []
+        self.virus_file_sha1 = []
+
+
     def get_files_from_dirs(self):
         files_from_dirs = []
         try:
@@ -65,22 +72,21 @@ class AntivirusEngine:
     def md5_hash_checker(self):
         path = "C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\signatures\\MD5 Virus Hashes.txt"
         file_hashes = self.get_md5_hashes()
-        # clear_file = []
         virus_file = []
         with open(path, "r") as file:
             hashes = file.read().split()
             for hash in hashes:
                 for item in file_hashes:
                     if hash == item:
-                        virus_file.append(item)
+                        self.virus_file_md5.append(item)
                     # else:
                     #     clear_file.append(item)
-        conditions = [
-            f"ID проверки: {uuid.uuid4()}\n",
-            f"Проверено {len(file_hashes)} файлов\n",
-            f"Вирусов обнаружено: {len(virus_file)}" if len(virus_file) > 0 else f"Вирусов нет\n"
-        ]
-        return " ".join(conditions)
+        # conditions = [
+        #     f"ID проверки: {uuid.uuid4()}\n",
+        #     f"Проверено {len(file_hashes)} файлов\n",
+        #     f"Вирусов обнаружено: {len(virus_file)}" if len(virus_file) > 0 else f"Вирусов нет\n"
+        # ]
+        # return " ".join(conditions)
 
 
     #############################################
@@ -147,14 +153,20 @@ class AntivirusEngine:
                         clear_file.append(hash)
         return len(virus_file) if len(virus_file) > 0 else "Вирусов нет!"
 
+    def start(self):
+        thread = threading.Thread(target=self.md5_hash_checker)
+        thread.start()
+        thread.join()
 
     def main(self):
-        files = []
-        path = "C:\\PycharmProjects\\Antivirus\\antivirus_package"
-        for dirpath, dirnames, filenames in os.walk(path):
-            for file in filenames:
-                files.append(file)
-        print(files)
+        self.start()
+        conditions = [
+            f"ID проверки: {uuid.uuid4()}\n",
+            f"Проверено {len(self.virus_file_md5)} файлов\n",
+            f"Вирусов обнаружено: {len(self.virus_file_md5)}" if len(self.virus_file_md5) > 0 else f"Вирусов нет\n"
+        ]
+
+        return " ".join(conditions)
 
 
 if __name__ == '__main__':

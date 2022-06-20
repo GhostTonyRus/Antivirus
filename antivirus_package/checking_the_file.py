@@ -100,7 +100,7 @@ class CheckFile:
 
     def main(self):
         self.start()
-        return "res".join(self.res_of_scan)
+        return " ".join(self.res_of_scan)
 
 if __name__ == '__main__':
     test = CheckFile()
