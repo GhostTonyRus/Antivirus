@@ -20,7 +20,7 @@ class GetProgramActivity:
             for proc in psutil.process_iter():
                 with open(self.path, "a", encoding="utf-8") as file:
                     with proc.oneshot():
-                        data = f"{proc.name()} - {proc.status()} - {str(psutil.cpu_percent(1))+'%'} - {str(round(proc.memory_info().rss / 1000000, 1)) + 'МБ'} - {datetime.now().strftime('%H:%M:%S %m-%d-%Y')}".replace("\t", "").replace("running", "запущено")
+                        data = f"{proc.name()} - {proc.status()} - {str(psutil.cpu_percent(1))+'%'} - {str(round(proc.memory_info().rss / 1000000, 1)) + 'МБ'} - {datetime.now().strftime('%H:%M:%S %m-%d-%Y')}\n".replace("\t", "").replace("running", "запущено")
                         file.write(data)
 
     def main(self):

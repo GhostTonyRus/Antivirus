@@ -51,6 +51,18 @@ class CheckFilesThread(QtCore.QThread):
         res = self.check_file.main()
         self.signal.emit(res)
 
+class FileScannerThread(QtCore.QThread):
+    signal = QtCore.pyqtSignal(str)
+
+    def __init__(self):
+        super(FileScannerThread, self).__init__()
+        self.check_file = AntivirusEngine()
+
+    def run(self):
+        res = self.check_file.main()
+        self.signal.emit(res)
+
+
 class PortScannerThread(QtCore.QThread):
     signal = QtCore.pyqtSignal(str)
 
@@ -81,28 +93,6 @@ class CheckUsbThread(QtCore.QThread):
                         self.signal.emit(str(i))
             except FileExistsError as err:
                 self.signal.emit("НЕТ ДАННЫХ!")
-
-
-class CheckFileThread(QtCore.QThread):
-    signal = QtCore.pyqtSignal(str)
-
-    def __init__(self):
-        super(CheckFileThread, self).__init__()
-        self.check_file = CheckFile()
-
-    def run(self):
-        res = self.check_file.main()
-        print(res)
-        self.signal.emit(res)
-        # time.sleep(60)
-        # try:
-        #     with open("C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\report.txt", "r",
-        #               encoding="utf-8") as file:
-        #         res = file.readlines()
-        #         for i in res:
-        #             self.signal.emit(str(i))
-        # except FileExistsError as err:
-        #     self.signal.emit("НЕТ ДАННЫХ!")
 
 class ServerThread(QtCore.QThread):
     signal = QtCore.pyqtSignal(str)
@@ -220,16 +210,16 @@ class MyWindow(QtWidgets.QMainWindow):
 
         # настройка проверки файла
         self.ui.progressBar.hide()
-        # self.check_file_thread = CheckFileThread()
-        self.ui.btn_check_file.clicked.connect(self.show_vulnerability_scanner_page)
+
+        self.file_scanner_thread = FileScannerThread()
+        self.file_scanner_thread.signal.connect(self.insert_file_scanner_value)
         self.ui.btn_start_file_checking.clicked.connect(self.get_variant_of_the_check)
-        # # self.check_file_thread.signal.connect(self.insert_check_file_value)
-        # # self.ui.btn_check_file.clicked.connect(self.show_check_file)
-        # # self.ui.btn_start_file_checking.clicked.connect(lambda: self.select_and_start_check_thread())
 
         self.check_files_thread = CheckFilesThread()
         self.check_files_thread.signal.connect(self.insert_check_file_value)
-        self.ui.btn_start_file_checking.clicked.connect(self.start_full_check)
+        self.ui.btn_start_file_checking.clicked.connect(self.get_variant_of_the_check)
+
+        self.ui.btn_check_file.clicked.connect(self.show_vulnerability_scanner_page)
 
         # блокировка usb
         self.usb_blocking_thread = CheckUsbThread()
@@ -491,12 +481,16 @@ class MyWindow(QtWidgets.QMainWindow):
         fast_check = self.ui.cb_fast_check.isChecked()
         full_check = self.ui.cb_full_check.isChecked()
         if fast_check:
+            # запуск быстрой проверки файлов
             self.ui.btn_start_file_checking.setEnabled(False)
             self.ui.te_res_of_fast_check.clear()
             self.ui.te_res_of_fast_check.append("Запуск быстрой проверки файлов")
-            self.start_fast_check()
             self.start_progress_bar()
+            thread = threading.Thread(target=self.start_fast_check)
+            thread.start()
+            thread.join()
         elif full_check:
+            # запуск полной проверки файлов
             self.ui.btn_start_file_checking.setEnabled(False)
             self.ui.te_res_of_full_check.clear()
             self.ui.te_res_of_full_check.append("Запуск полной проверки файлов")
@@ -510,12 +504,10 @@ class MyWindow(QtWidgets.QMainWindow):
             QtWidgets.QMessageBox.information(self, "Ошибка", "Необходимо выбрать один из вариантов проверки файлов")
 
     def start_fast_check(self):
-        """запускаем быструю проверку файла через локульную бауз данных"""
-        # thread = threading.Thread(target=self.antivirus_engine.md5_hash_checker)
-        # thread.start()
-        thread_pool = ThreadPool()
-        thread_res = thread_pool.apply_async(self.antivirus_engine.md5_hash_checker)
-        thread_res.get()
+       self.file_scanner_thread.start()
+
+    def insert_file_scanner_value(self, value):
+        self.ui.te_res_of_fast_check.append(value)
 
     def start_full_check(self):
         """запускаем полную проверку файла через облако"""
