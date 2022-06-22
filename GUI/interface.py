@@ -384,6 +384,7 @@ class MyWindow(QtWidgets.QMainWindow):
                 email_from_db = value[2]
                 if login_from_form == login_from_db and password_from_form == password_from_db: # сравниваем данные из словаря и из полей ввода
                     self.two_factor_authentication.send_email(email=email_from_db, code=code_from_email) # отправляем письмо на почту
+                    self.register_actions.get_database_administrator_actions(f"{login_from_form} авторизоался в системе")
                     self.ui.stackedWidget.setCurrentWidget(self.ui.two_factor_authentication_page) # открываем окно с подтверждением кода
                     self.ui.le_login.clear()
                     self.ui.le_password.clear()
@@ -505,6 +506,7 @@ class MyWindow(QtWidgets.QMainWindow):
 
     def start_fast_check(self):
        self.file_scanner_thread.start()
+       self.register_actions.get_database_administrator_actions("запуск быстрой проверки")
 
     def insert_file_scanner_value(self, value):
         self.ui.te_res_of_fast_check.append(value)
@@ -512,6 +514,7 @@ class MyWindow(QtWidgets.QMainWindow):
     def start_full_check(self):
         """запускаем полную проверку файла через облако"""
         self.check_files_thread.start()
+        self.register_actions.get_database_administrator_actions("запуск полной проверки")
 
     def insert_check_file_value(self, value):
         self.ui.te_res_of_full_check.append(value)
@@ -521,12 +524,14 @@ class MyWindow(QtWidgets.QMainWindow):
     ##########################################################
     def show_activity_registration_page(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_registration_activity)
+        self.register_actions.get_database_administrator_actions("открыл страницу мониторинга активности программ")
 
     def insert_activity_registration_value(self, value):
         self.ui.lw_activity_registration.addItem(value)
 
     def start_activity_registration_thread(self):
         self.activity_registration_thread.start()
+        self.register_actions.get_database_administrator_actions("компонент 'Мониторинг активности программ' запущен")
 
     #########################################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ РАБОТЫ С ПРОВЕРКОЙ ФАЙЛА        #
@@ -559,6 +564,7 @@ class MyWindow(QtWidgets.QMainWindow):
     #########################################################
     def show_usb_block(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_usb_lock)
+        self.register_actions.get_database_administrator_actions("открыл страницу 'Блокировка USB-носителей'")
 
     def insert_information_about_usb(self):
         existent_disks, non_existent_disks = self.usb_blocking.monitorUSBStorage()
@@ -579,9 +585,11 @@ class MyWindow(QtWidgets.QMainWindow):
     def start_port_scanner_thread(self):
         self.ui.plainTextEdit_port_scanner.appendPlainText("Запуск сканера портов")
         self.port_scanner_thread.start()
+        self.register_actions.get_database_administrator_actions("запуск компонента 'Сканирование портов'")
 
     def show_port_scanner(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_port_scanner)
+        self.register_actions.get_database_administrator_actions("открыл страницу 'Сканирование портов'")
 
     def insert_value(self, value):
         self.ui.plainTextEdit_port_scanner.appendPlainText(value)
@@ -593,6 +601,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.lw_incoming_connections.clear()
         self.show_locked_connections()
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_firewall)
+        self.register_actions.get_database_administrator_actions("открыл страницу 'Пакетный фильтр'")
 
     # сохраняем заблокированные входящие соединения
     def save_locked_connection(self, value):
@@ -653,6 +662,7 @@ class MyWindow(QtWidgets.QMainWindow):
     def start_systemwatch_thread(self):
         thread = threading.Thread(target=self.system_watch.main)
         thread.start()
+        self.register_actions.get_database_administrator_actions("запущен компонент 'Логирование операционной сиситемы'")
 
     ##############################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ С СЕРВЕРОМ           #
@@ -666,6 +676,7 @@ class MyWindow(QtWidgets.QMainWindow):
     def start_server_thread(self):
         server_thread = threading.Thread(target=self.server.main)
         server_thread.start()
+        self.register_actions.get_database_administrator_actions("запуск модуля 'Сервер'")
 
     def start_show_info(self):
         self.server_thread.start()

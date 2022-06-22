@@ -73,6 +73,14 @@ class Logging:
         except FileExistsError as err:
             return err
 
+    def get_database_administrator_actions(self, administrator_action):
+        """РЕГИСТРИРУЕТ ДЕЙСТВИЯ АДМНИСТРТАОРА БАЗ ДАННЫХ"""
+        try:
+            with open(f"{self.log_path}дейтсвия администратора баз данных.txt", "a", encoding="utf-8") as file:
+                file.write(f"{administrator_action} | {datetime.now().strftime('%H:%M:%S %d-%m-%Y')}\n")
+        except FileExistsError as err:
+            return err
+
     def get_action(self):
         """ВЫВОДИМ ДАННЫЕ ИЗ ЖУРНАЛА ЛОГИРОВАНИЯ"""
         print(self.MANUAL)
