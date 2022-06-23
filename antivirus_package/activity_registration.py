@@ -46,12 +46,14 @@ class GetNetworkStatistics:
             connections = psutil.net_connections()
             for connection in connections:
                 for conn in connection:
-                    time.sleep(5)
+                    time.sleep(2)
                     print(conn)
 
 
 
 
 if __name__ == '__main__':
-    n = GetProgramActivity()
-    n.main()
+    # n = GetProgramActivity()
+    # n.main()
+    n = GetNetworkStatistics()
+    n.run()

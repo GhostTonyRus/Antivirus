@@ -101,6 +101,8 @@ class Client:
         thread_send_msg.start()
 
 if __name__ == '__main__':
-    lient = Client()
+    client = Client()
     client.connect_to_server(SERVER_ADDRESS)
-    client.send_msg("tony")
+    client.send_msg("antonmakeev18@gmail.com", "12345")
+    time.sleep(2)
+    client.send_msg("exit")

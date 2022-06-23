@@ -81,28 +81,6 @@ class Logging:
         except FileExistsError as err:
             return err
 
-    def get_action(self):
-        """ВЫВОДИМ ДАННЫЕ ИЗ ЖУРНАЛА ЛОГИРОВАНИЯ"""
-        print(self.MANUAL)
-        modules_dict = {
-            "1": f"{self.log_path}server_action.txt",
-            "2": f"{self.log_path}database_action.txt",
-            "3": f"{self.log_path}server_action.txt",
-        }
-        while True:
-            response = input(">>> ")
-            if response == "exit":
-                print("Выход из модуля журнала активности!")
-                break
-            elif response:
-                try:
-                    with open(modules_dict.get(str(response)), "r", encoding="utf-8") as file:
-                        res = file.readlines()
-                        for i in res:
-                            print(i)
-                except FileExistsError as err:
-                    print(err)
-
 if __name__ == '__main__':
     # log = Logging("loging")
     # log.get_action()

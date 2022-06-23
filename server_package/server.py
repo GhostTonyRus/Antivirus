@@ -181,13 +181,16 @@ class Server:
                     self.temporary_actions(f"Пользователь {self.client_addr}: прислал сообщение {data.decode('utf-8')}",
                                            datetime.now().strftime("%H:%M:%S %m-%d-%Y"))
                     all_data += data
+                    print(all_data, 184)
                     obj = json.loads(all_data)
-                    res = self.__user_db.get_data_from_table(obj) # получаем данные из базы данных
-                    if res:
-                        self.send_message(connection, "True")
-                        self.send_email_code(email="antonmakeev18@gmail.com", code=self.generate_code())
-                    elif res == False:
-                        self.send_message(connection, "False")
+                    print(obj, 186)
+                    break
+                    # res = self.__user_db.get_data_from_table(obj) # получаем данные из базы данных
+                    # if res:
+                    #     self.send_message(connection, "True")
+                    #     self.send_email_code(email="antonmakeev18@gmail.com", code=self.generate_code())
+                    # elif res == False:
+                    #     self.send_message(connection, "False")
             except socket.error as error:
                 self.close_connection(connection)
                 break

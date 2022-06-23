@@ -163,7 +163,7 @@ class AntivirusEngine:
         conditions = [
             f"ID проверки: {uuid.uuid4()}\n",
             f"Проверено {len(self.virus_file_md5)} файлов\n",
-            f"Вирусов обнаружено: {len(self.virus_file_md5)}" if len(self.virus_file_md5) > 0 else f"Вирусов нет\n"
+            f"Вирусов обнаружено: {len(self.virus_file_md5)}:\n{', '.join(self.virus_file_md5)}" if len(self.virus_file_md5) > 0 else f"Вирусов нет\n"
         ]
 
         return " ".join(conditions)

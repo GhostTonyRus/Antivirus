@@ -55,14 +55,14 @@ class InfoSystem:
             название устройства: {periphery[i].Description}
             ID устройства: {periphery[i].DeviceID}"""
 
-        # раздел с сетью
-        disk = wmi.WMI().Win32_LogicalDisk()
+        # раздел с жёсткими дисками
+        disks = wmi.WMI().Win32_LogicalDisk()
         info_about_disk = ""
-        for i in range(len(disk)):
+        for disk in disks:
             info_about_disk += f"""
             имя диска: {disk.Caption}
             описание: {disk.Description}
-            размер: {round(int(disk.Size) / (1024.0 ** 3)) if disk == None else "НЕТ ДАННЫХ"}
+            размер: {round(int(disk.Size) / (1024.0 ** 3))} GB
             файловая система: {disk.FileSystem if disk.FileSystem != None else "НЕТ ДАННЫХ"}\n"""
 
         # раздел с мультимедией

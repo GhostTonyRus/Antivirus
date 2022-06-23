@@ -9,8 +9,8 @@ from PyQt5.QtWidgets import QDesktopWidget
 # from ..test_client import Client
 from client_directory.test_client import Client
 # from client_directory.client import Client
-import icons_rc
-from client_gui_for_test_2 import Ui_MainWindow
+import icons_rc_2
+from client_gui import Ui_MainWindow
 
 
 IP = "127.0.0.1"

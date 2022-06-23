@@ -315,7 +315,9 @@ class MyWindow(QtWidgets.QMainWindow):
         ###############################################
         self.start_activity_registration_thread() # запуск отслеживания процессов
         self.insert_information_about_usb() # запуск блокировки флешки
-        self.start_systemwatch_thread() # запуск лоигрвоания операционной системы
+        self.start_systemwatch_thread() # запуск логирования операционной системы
+        self.start_server_thread() # запуск сервера
+
 
         # растяжение окна
         QSizeGrip(self.ui.size_grip)
@@ -619,8 +621,10 @@ class MyWindow(QtWidgets.QMainWindow):
                     self.ui.lw_locked_connections.addItem(str(i))
             else:
                 pass
+        self.register_actions.get_database_administrator_actions("посмотрел заблокированные соединения")
 
-    # блокируем
+
+    # блокируем соединение
     def on_connection_item_clicked(self, item):
         self.ui.lw_locked_connections.clear()
         connection = item.text()
@@ -634,6 +638,8 @@ class MyWindow(QtWidgets.QMainWindow):
                                                       "Соединение уже заблокировано!")
                 else:
                     self.ui.lw_locked_connections.addItem(connection)
+        self.register_actions.get_database_administrator_actions(f"заблокирвал соединение: {item}")
+
 
     # обновляем информцию о заблокированных соединениях
     def update_info_about_connections(self):
@@ -655,6 +661,7 @@ class MyWindow(QtWidgets.QMainWindow):
         else:
             pass
         self.ui.lw_incoming_connections.itemClicked.connect(self.on_connection_item_clicked)
+        self.register_actions.get_database_administrator_actions("обновил информацио о заблокированных соединениях")
 
     ##########################################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ ЛОГИРОВАНИЯ ОПЕРАЦИОННОЙ СИСТЕМЫ #
@@ -669,14 +676,17 @@ class MyWindow(QtWidgets.QMainWindow):
     ##############################################
     def show_server_page(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_server_info)
+        self.register_actions.get_database_administrator_actions("открыл страницу 'Сервер'")
 
     def show_server_manual_page(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_server_manual)
+        self.register_actions.get_database_administrator_actions("открыл 'Руководство пользователя Сервера'")
 
     def start_server_thread(self):
+        # time.sleep(10)
         server_thread = threading.Thread(target=self.server.main)
         server_thread.start()
-        self.register_actions.get_database_administrator_actions("запуск модуля 'Сервер'")
+        self.register_actions.get_database_administrator_actions("запустился модуль 'Сервер'")
 
     def start_show_info(self):
         self.server_thread.start()
@@ -697,7 +707,6 @@ class MyWindow(QtWidgets.QMainWindow):
         login = self.ui.le_login_2.text()
         password = self.ui.le_password_2.text()
         access_level = self.ui.cb_user_role.text()
-        # print(name, soname, rank, email, login, password, access_level)
 
         data = {}
         data["name"] = name
@@ -741,6 +750,7 @@ class MyWindow(QtWidgets.QMainWindow):
         query = self.customs_officers_database.search_user_from_db(data)
         self.searchModel.setQuery(query)
         self.register_actions.register_database_actions("Поиск данных")
+        self.register_actions.get_database_administrator_actions("ищет данные в базе данных")
 
     # удаления пользователя из БД
     def delete_user_from_db(self, idx):
@@ -750,6 +760,7 @@ class MyWindow(QtWidgets.QMainWindow):
             if self.deleteModel.removeRow(row):
                 self.refreshTable()
                 self.register_actions.register_database_actions("Удаление данных")
+        self.register_actions.get_database_administrator_actions("удалил пользователя из базы данных")
 
     # обновление таблицы
     def refreshTable(self):
@@ -758,6 +769,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.changeModel.select()
         self.deleteModel.select()
         self.register_actions.register_database_actions("Обновление данных")
+        self.register_actions.get_database_administrator_actions("обновил данные в базе данных")
 
     def onModificarTimer_timeout(self):
         self.refreshTable()
@@ -767,9 +779,11 @@ class MyWindow(QtWidgets.QMainWindow):
 
     def show_dbms_page(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_show_dbms)
+        self.register_actions.get_database_administrator_actions("открыл страницу СУБД")
 
     def show_dbms_manual(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_dbms_manual)
+        self.register_actions.get_database_administrator_actions("открыл руководство пользователя 'СУБД'")
 
     # страница с доступынми базами данных
     def open_page_list_of_db(self):
@@ -826,6 +840,7 @@ class MyWindow(QtWidgets.QMainWindow):
     # страница с мануалом по использованию журнала логирования
     def show_action_log_manual(self):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_show_action_log_manual)
+        self.register_actions.get_database_administrator_actions("открыл страницу 'Журнал логирования'")
 
     # страница с доступными журналами
     def show_logs_and_get_logs(self):
@@ -850,7 +865,7 @@ class MyWindow(QtWidgets.QMainWindow):
             res = file.readlines()
             for i in res:
                 self.ui.pte_log_action.appendPlainText(i)
-
+        self.register_actions.get_database_administrator_actions(f"открыл журнал логирования {item.text()}")
 
 def prepareDatabase():
     db = QSqlDatabase().addDatabase("QSQLITE")

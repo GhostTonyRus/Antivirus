@@ -85,7 +85,9 @@ background-color: #1f232a;</string>
             <property name="styleSheet">
              <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(45, 45, 45);
-background-color: rgb(9, 5, 13)</string>
+background-color: rgb(9, 5, 13);
+background-color: 16191d;
+</string>
             </property>
             <property name="text">
              <string>СИСТЕМА ОБЕСПЕЧЕНИЯ ИНФОРМАЦИОННОЙ БЕЗОПАСНОСТИ БАЗ ДАННЫХ</string>
@@ -98,7 +100,7 @@ background-color: rgb(9, 5, 13)</string>
          </layout>
         </widget>
        </item>
-       <item alignment="Qt::AlignRight|Qt::AlignVCenter">
+       <item alignment="Qt::AlignRight">
         <widget class="QFrame" name="frame_4">
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -281,13 +283,13 @@ QPushButton:pressed {
                 </property>
                 <property name="minimumSize">
                  <size>
-                  <width>0</width>
+                  <width>120</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>80</width>
+                  <width>120</width>
                   <height>40</height>
                  </size>
                 </property>
@@ -343,9 +345,15 @@ QPushButton:pressed {
               </item>
               <item alignment="Qt::AlignHCenter">
                <widget class="QLabel" name="label_3">
+                <property name="minimumSize">
+                 <size>
+                  <width>120</width>
+                  <height>0</height>
+                 </size>
+                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>90</width>
+                  <width>120</width>
                   <height>40</height>
                  </size>
                 </property>
@@ -1117,7 +1125,7 @@ background-color: #16191d;</string>
 background-color: #16191d;</string>
                    </property>
                    <property name="currentIndex">
-                    <number>0</number>
+                    <number>1</number>
                    </property>
                    <widget class="QWidget" name="page_antivirus_menu">
                     <property name="geometry">
@@ -1172,7 +1180,7 @@ QPushButton:pressed {
 </string>
                         </property>
                         <property name="text">
-                         <string>Рководство пользователя</string>
+                         <string>Руководство пользователя</string>
                         </property>
                        </widget>
                        <widget class="QPushButton" name="btn_activity_registration">
@@ -1353,8 +1361,8 @@ QPushButton:pressed {
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>100</width>
-                      <height>30</height>
+                      <width>278</width>
+                      <height>564</height>
                      </rect>
                     </property>
                     <attribute name="icon">
@@ -1492,8 +1500,8 @@ QPushButton:pressed {
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>100</width>
-                      <height>30</height>
+                      <width>278</width>
+                      <height>564</height>
                      </rect>
                     </property>
                     <attribute name="icon">
@@ -1604,8 +1612,8 @@ QPushButton:pressed {
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>100</width>
-                      <height>30</height>
+                      <width>278</width>
+                      <height>564</height>
                      </rect>
                     </property>
                     <attribute name="icon">
@@ -1848,7 +1856,7 @@ background-color: #1f232a;</string>
               <item>
                <widget class="QStackedWidget" name="stackedWidget_main">
                 <property name="currentIndex">
-                 <number>3</number>
+                 <number>11</number>
                 </property>
                 <widget class="QWidget" name="page_about_system">
                  <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -2852,10 +2860,10 @@ QPushButton:pressed {
                         <string notr="true">color: rgb(255, 255, 255);</string>
                        </property>
                        <property name="text">
-                        <string>Программа | Действие | Процессор |  Память | Дата создания</string>
+                        <string>Программа   |   Действие   |   Процессор   |    Память   |   Дата создания</string>
                        </property>
                        <property name="alignment">
-                        <set>Qt::AlignCenter</set>
+                        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                        </property>
                       </widget>
                      </item>
@@ -5204,6 +5212,7 @@ p, li { white-space: pre-wrap; }
                            <string notr="true">QListWidget {
 	border: 5px groove #2c313c;
 	border-radius: 20px;
+	color: rgb(255, 255, 255);
 }
 </string>
                           </property>
@@ -5367,13 +5376,25 @@ p, li { white-space: pre-wrap; }
                   </property>
                   <item>
                    <widget class="QFrame" name="frame_21">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
                     </property>
                     <property name="frameShadow">
                      <enum>QFrame::Raised</enum>
                     </property>
-                    <layout class="QVBoxLayout" name="verticalLayout_24">
+                    <layout class="QVBoxLayout" name="verticalLayout_72">
                      <item>
                       <widget class="QLabel" name="label_42">
                        <property name="font">
@@ -5396,9 +5417,15 @@ p, li { white-space: pre-wrap; }
                      </item>
                      <item>
                       <widget class="QPlainTextEdit" name="plainTextEdit_infromation_from_server">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="font">
                         <font>
-                         <pointsize>12</pointsize>
+                         <pointsize>14</pointsize>
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
@@ -5414,6 +5441,236 @@ p, li { white-space: pre-wrap; }
                        <property name="readOnly">
                         <bool>true</bool>
                        </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignBottom">
+                   <widget class="QFrame" name="frame_54">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>17</pointsize>
+                     </font>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_12">
+                     <item alignment="Qt::AlignLeft">
+                      <widget class="QFrame" name="frame_52">
+                       <property name="frameShape">
+                        <enum>QFrame::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Raised</enum>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_24">
+                        <item>
+                         <widget class="QLabel" name="label_50">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                          <property name="text">
+                           <string>Настройки сервера</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_51">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                          <property name="text">
+                           <string>IP адрес</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLineEdit" name="le_ip_address">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>50</weight>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QLineEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}
+</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_52">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                          <property name="text">
+                           <string>порт</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLineEdit" name="le_port">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>50</weight>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QLineEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}
+</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_53">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                          <property name="text">
+                           <string>Количество подключений</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLineEdit" name="le_number_of_connection">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QLineEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}
+</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="pushButton_3">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                          <property name="text">
+                           <string>ПОДТВЕРДИТЬ</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QFrame" name="frame_53">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="frameShape">
+                        <enum>QFrame::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Raised</enum>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_73">
+                        <item>
+                         <widget class="QLabel" name="label_54">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color: rgb(255, 255, 255);</string>
+                          </property>
+                          <property name="text">
+                           <string>Активность сети</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPlainTextEdit" name="plainTextEdit_network_activity">
+                          <property name="styleSheet">
+                           <string notr="true">QPlainTextEdit {
+	border: 5px groove #2c313c;
+	border-radius: 20px;
+	color: rgb(255, 255, 255);
+}
+</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
                       </widget>
                      </item>
                     </layout>
@@ -6541,7 +6798,7 @@ p, li { white-space: pre-wrap; }
                         <string notr="true">color: rgb(255, 255, 255);</string>
                        </property>
                        <property name="text">
-                        <string>Журналы логирования</string>
+                        <string>Журналы действий</string>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignCenter</set>
