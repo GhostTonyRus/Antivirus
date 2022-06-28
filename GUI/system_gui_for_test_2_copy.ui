@@ -1205,15 +1205,15 @@ background-color: #16191d;</string>
 background-color: #16191d;</string>
                    </property>
                    <property name="currentIndex">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <widget class="QWidget" name="page_antivirus_menu">
                     <property name="geometry">
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>257</width>
-                      <height>270</height>
+                      <width>278</width>
+                      <height>564</height>
                      </rect>
                     </property>
                     <attribute name="icon">
@@ -1580,8 +1580,8 @@ QPushButton:pressed {
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>100</width>
-                      <height>30</height>
+                      <width>278</width>
+                      <height>564</height>
                      </rect>
                     </property>
                     <attribute name="icon">
@@ -1692,8 +1692,8 @@ QPushButton:pressed {
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>100</width>
-                      <height>30</height>
+                      <width>278</width>
+                      <height>564</height>
                      </rect>
                     </property>
                     <attribute name="icon">
@@ -1936,7 +1936,7 @@ background-color: #1f232a;</string>
               <item>
                <widget class="QStackedWidget" name="stackedWidget_main">
                 <property name="currentIndex">
-                 <number>11</number>
+                 <number>0</number>
                 </property>
                 <widget class="QWidget" name="page_about_system">
                  <layout class="QVBoxLayout" name="verticalLayout_7">

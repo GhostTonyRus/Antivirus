@@ -68,7 +68,7 @@ class Logging:
     def register_user_actions(self, user_action):
         """ЖУРНАЛ ЛОГИРВОАНИЯ ДЛЯ ДЕЙСТВИЙ ПОЛЬЗОВАТЕЛЯ"""
         try:
-            with open(f"{self.log_path}client_action.txt", "a", encoding="utf-8") as file:
+            with open(f"{self.log_path}действия клиента.txt", "a", encoding="utf-8") as file:
                 file.write(f"{user_action} | {datetime.now().strftime('%H:%M:%S %d-%m-%Y')}\n")
         except FileExistsError as err:
             return err

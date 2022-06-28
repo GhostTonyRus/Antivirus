@@ -13,6 +13,7 @@ from client_directory.test_client import Client
 # from client_directory.client import Client
 import icons_rc_2
 from client_gui import Ui_MainWindow
+from logging_package.main import Logging
 
 
 IP = "127.0.0.1"
@@ -43,7 +44,7 @@ class MyWindow(QtWidgets.QMainWindow):
         super(MyWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        # self.client = Client()
+        self.logger = Logging()
 
         # удаляем заголовок
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
@@ -108,12 +109,15 @@ class MyWindow(QtWidgets.QMainWindow):
             res = file.readline()
             if res.strip() == "True":
                 self.ui.stackedWidget.setCurrentWidget(self.ui.two_factor_authentication_page)
+                self.logger.register_user_actions(f"Вход в программу пользвоателя: {login}")
             else:
                 QtWidgets.QMessageBox.information(self, "Ошбика", "Неверный адрес электронной почты или пароль")
+                self.logger.register_user_actions(f"Неудачный вход в программу пользвоателя: {login}")
 
 
     def show_main_page(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.main_container_page)
+        self.logger.register_user_actions(f"Открыл главную страницу")
 
     # перетаскивание окна
     def center(self):
@@ -158,6 +162,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_list_of_db)
         self.ui.lw_db_widget.itemClicked.connect(self.onDBClicked)
         self.ui.tv_for_db_view.setDisabled(True) # не даёт взаимодействовать с таблицей
+        self.logger.register_user_actions("Открыл страницу с базами данных")
 
     # открывает базу данных
     def onDBClicked(self, item):
@@ -178,6 +183,7 @@ class MyWindow(QtWidgets.QMainWindow):
             res = model.record(i).value("name")
             self.ui.lw_table_widget.addItem(res)
         self.ui.lw_table_widget.itemClicked.connect(self.onTableClicked)
+        self.logger.register_user_actions(f"открыл базу данных: {item}")
 
     # отображаем таблицу
     def onTableClicked(self, item):
@@ -192,6 +198,7 @@ class MyWindow(QtWidgets.QMainWindow):
         header = self.ui.tv_for_db_view.horizontalHeader()
         header.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
         self.ui.tv_for_db_view.setModel(self.model)
+        self.logger.register_user_actions(f"отобразил базу данных: {item}")
 
 if __name__ == '__main__':
     def my_excepthook(type, value, tback):
