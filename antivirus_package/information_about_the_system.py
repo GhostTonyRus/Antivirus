@@ -62,7 +62,7 @@ class InfoSystem:
             info_about_disk += f"""
             имя диска: {disk.Caption}
             описание: {disk.Description}
-            размер: {round(int(disk.Size) / (1024.0 ** 3))} GB
+            размер: {round(int(disk.Size) / (1024.0 ** 3)) if disk.Size != None else "НЕТ ДАННЫХ!"} GB
             файловая система: {disk.FileSystem if disk.FileSystem != None else "НЕТ ДАННЫХ"}\n"""
 
         # раздел с мультимедией

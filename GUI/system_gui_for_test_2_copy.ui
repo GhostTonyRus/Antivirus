@@ -675,7 +675,7 @@ QPushButton:pressed {
                    <string notr="true">color: rgb(255, 255, 255);</string>
                   </property>
                   <property name="text">
-                   <string>имя</string>
+                   <string>Имя</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -715,7 +715,7 @@ QPushButton:pressed {
                    <string notr="true">color: rgb(255, 255, 255);</string>
                   </property>
                   <property name="text">
-                   <string>фамилия</string>
+                   <string>Фамилия</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -742,8 +742,8 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="0">
-                 <widget class="QLabel" name="label_25">
+                <item row="3" column="0">
+                 <widget class="QLabel" name="label_55">
                   <property name="font">
                    <font>
                     <pointsize>14</pointsize>
@@ -755,7 +755,47 @@ QPushButton:pressed {
                    <string notr="true">color: rgb(255, 255, 255);</string>
                   </property>
                   <property name="text">
-                   <string>email</string>
+                   <string>Отчество</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QLineEdit" name="le_patronymic_new_user">
+                  <property name="maximumSize">
+                   <size>
+                    <width>1000</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 255);</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="0">
+                 <widget class="QLabel" name="label_24">
+                  <property name="font">
+                   <font>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 255);</string>
+                  </property>
+                  <property name="text">
+                   <string>Должность</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -763,7 +803,7 @@ QPushButton:pressed {
                  </widget>
                 </item>
                 <item row="4" column="1">
-                 <widget class="QLineEdit" name="le_email_new_user">
+                 <widget class="QLineEdit" name="le_position_new_user">
                   <property name="maximumSize">
                    <size>
                     <width>1000</width>
@@ -783,7 +823,7 @@ QPushButton:pressed {
                  </widget>
                 </item>
                 <item row="5" column="0">
-                 <widget class="QLabel" name="label_26">
+                 <widget class="QLabel" name="label_57">
                   <property name="font">
                    <font>
                     <pointsize>14</pointsize>
@@ -795,35 +835,15 @@ QPushButton:pressed {
                    <string notr="true">color: rgb(255, 255, 255);</string>
                   </property>
                   <property name="text">
-                   <string>логин</string>
+                   <string>Отдел</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
-                <item row="5" column="1">
-                 <widget class="QLineEdit" name="le_login_new_user">
-                  <property name="maximumSize">
-                   <size>
-                    <width>1000</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>14</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">color: rgb(255, 255, 255);</string>
-                  </property>
-                 </widget>
-                </item>
                 <item row="6" column="0">
-                 <widget class="QLabel" name="label_27">
+                 <widget class="QLabel" name="label_25">
                   <property name="font">
                    <font>
                     <pointsize>14</pointsize>
@@ -835,7 +855,7 @@ QPushButton:pressed {
                    <string notr="true">color: rgb(255, 255, 255);</string>
                   </property>
                   <property name="text">
-                   <string>пароль</string>
+                   <string>Email</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -843,7 +863,7 @@ QPushButton:pressed {
                  </widget>
                 </item>
                 <item row="6" column="1">
-                 <widget class="QLineEdit" name="le_password_new_user">
+                 <widget class="QLineEdit" name="le_email_new_user">
                   <property name="maximumSize">
                    <size>
                     <width>1000</width>
@@ -863,6 +883,86 @@ QPushButton:pressed {
                  </widget>
                 </item>
                 <item row="7" column="0">
+                 <widget class="QLabel" name="label_26">
+                  <property name="font">
+                   <font>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 255);</string>
+                  </property>
+                  <property name="text">
+                   <string>Логин</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="1">
+                 <widget class="QLineEdit" name="le_login_new_user">
+                  <property name="maximumSize">
+                   <size>
+                    <width>1000</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 255);</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="8" column="0">
+                 <widget class="QLabel" name="label_27">
+                  <property name="font">
+                   <font>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 255);</string>
+                  </property>
+                  <property name="text">
+                   <string>Пароль</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="8" column="1">
+                 <widget class="QLineEdit" name="le_password_new_user">
+                  <property name="maximumSize">
+                   <size>
+                    <width>1000</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 255);</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="9" column="0">
                  <widget class="QLabel" name="label_28">
                   <property name="font">
                    <font>
@@ -875,7 +975,7 @@ QPushButton:pressed {
                    <string notr="true">color: rgb(255, 255, 255);</string>
                   </property>
                   <property name="text">
-                   <string>роль</string>
+                   <string>Уровень доступа</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -885,7 +985,7 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
-                <item row="7" column="1">
+                <item row="9" column="1">
                  <widget class="QComboBox" name="cb_role_new_user">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -927,7 +1027,7 @@ QPushButton:pressed {
                   </item>
                  </widget>
                 </item>
-                <item row="8" column="1">
+                <item row="10" column="1">
                  <widget class="QPushButton" name="btn_add_new_user_into_system">
                   <property name="maximumSize">
                    <size>
@@ -961,7 +1061,7 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
-                <item row="9" column="1">
+                <item row="11" column="1">
                  <widget class="QPushButton" name="btn_return_to_login_page">
                   <property name="maximumSize">
                    <size>
@@ -995,28 +1095,8 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="0">
-                 <widget class="QLabel" name="label_24">
-                  <property name="font">
-                   <font>
-                    <pointsize>14</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">color: rgb(255, 255, 255);</string>
-                  </property>
-                  <property name="text">
-                   <string>должность</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignCenter</set>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="1">
-                 <widget class="QLineEdit" name="le_position_new_user">
+                <item row="5" column="1">
+                 <widget class="QLineEdit" name="le_department_new_user">
                   <property name="maximumSize">
                    <size>
                     <width>1000</width>
@@ -1132,8 +1212,8 @@ background-color: #16191d;</string>
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>278</width>
-                      <height>564</height>
+                      <width>257</width>
+                      <height>270</height>
                      </rect>
                     </property>
                     <attribute name="icon">
@@ -1500,8 +1580,8 @@ QPushButton:pressed {
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>278</width>
-                      <height>564</height>
+                      <width>100</width>
+                      <height>30</height>
                      </rect>
                     </property>
                     <attribute name="icon">
@@ -1612,8 +1692,8 @@ QPushButton:pressed {
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>278</width>
-                      <height>564</height>
+                      <width>100</width>
+                      <height>30</height>
                      </rect>
                     </property>
                     <attribute name="icon">
@@ -5659,14 +5739,20 @@ p, li { white-space: pre-wrap; }
                          </widget>
                         </item>
                         <item>
-                         <widget class="QPlainTextEdit" name="plainTextEdit_network_activity">
+                         <widget class="QListWidget" name="lw_network_activity">
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
                           <property name="styleSheet">
-                           <string notr="true">QPlainTextEdit {
+                           <string notr="true">QListWidget {
 	border: 5px groove #2c313c;
 	border-radius: 20px;
 	color: rgb(255, 255, 255);
-}
-</string>
+}</string>
                           </property>
                          </widget>
                         </item>
@@ -5871,7 +5957,7 @@ p, li { white-space: pre-wrap; }
                               <string notr="true">color: rgb(255, 255, 255);</string>
                              </property>
                              <property name="text">
-                              <string>имя</string>
+                              <string>Имя</string>
                              </property>
                              <property name="alignment">
                               <set>Qt::AlignCenter</set>
@@ -5911,7 +5997,7 @@ p, li { white-space: pre-wrap; }
                               <string notr="true">color: rgb(255, 255, 255);</string>
                              </property>
                              <property name="text">
-                              <string>фамилия</string>
+                              <string>Фамилия</string>
                              </property>
                              <property name="alignment">
                               <set>Qt::AlignCenter</set>
@@ -5938,7 +6024,7 @@ p, li { white-space: pre-wrap; }
                              </property>
                             </widget>
                            </item>
-                           <item row="2" column="0">
+                           <item row="3" column="0">
                             <widget class="QLabel" name="label_8">
                              <property name="font">
                               <font>
@@ -5951,14 +6037,14 @@ p, li { white-space: pre-wrap; }
                               <string notr="true">color: rgb(255, 255, 255);</string>
                              </property>
                              <property name="text">
-                              <string>должность</string>
+                              <string>Должность</string>
                              </property>
                              <property name="alignment">
                               <set>Qt::AlignCenter</set>
                              </property>
                             </widget>
                            </item>
-                           <item row="2" column="1">
+                           <item row="3" column="1">
                             <widget class="QLineEdit" name="le_position">
                              <property name="maximumSize">
                               <size>
@@ -5978,7 +6064,7 @@ p, li { white-space: pre-wrap; }
                              </property>
                             </widget>
                            </item>
-                           <item row="3" column="0">
+                           <item row="5" column="0">
                             <widget class="QLabel" name="label_9">
                              <property name="font">
                               <font>
@@ -5991,14 +6077,14 @@ p, li { white-space: pre-wrap; }
                               <string notr="true">color: rgb(255, 255, 255);</string>
                              </property>
                              <property name="text">
-                              <string>email</string>
+                              <string>Email</string>
                              </property>
                              <property name="alignment">
                               <set>Qt::AlignCenter</set>
                              </property>
                             </widget>
                            </item>
-                           <item row="3" column="1">
+                           <item row="5" column="1">
                             <widget class="QLineEdit" name="le_email">
                              <property name="maximumSize">
                               <size>
@@ -6018,7 +6104,7 @@ p, li { white-space: pre-wrap; }
                              </property>
                             </widget>
                            </item>
-                           <item row="4" column="0">
+                           <item row="6" column="0">
                             <widget class="QLabel" name="label_10">
                              <property name="font">
                               <font>
@@ -6031,14 +6117,14 @@ p, li { white-space: pre-wrap; }
                               <string notr="true">color: rgb(255, 255, 255);</string>
                              </property>
                              <property name="text">
-                              <string>логин</string>
+                              <string>Логин</string>
                              </property>
                              <property name="alignment">
                               <set>Qt::AlignCenter</set>
                              </property>
                             </widget>
                            </item>
-                           <item row="4" column="1">
+                           <item row="6" column="1">
                             <widget class="QLineEdit" name="le_login_2">
                              <property name="maximumSize">
                               <size>
@@ -6058,7 +6144,7 @@ p, li { white-space: pre-wrap; }
                              </property>
                             </widget>
                            </item>
-                           <item row="5" column="0">
+                           <item row="7" column="0">
                             <widget class="QLabel" name="label_11">
                              <property name="font">
                               <font>
@@ -6071,14 +6157,14 @@ p, li { white-space: pre-wrap; }
                               <string notr="true">color: rgb(255, 255, 255);</string>
                              </property>
                              <property name="text">
-                              <string>пароль</string>
+                              <string>Пароль</string>
                              </property>
                              <property name="alignment">
                               <set>Qt::AlignCenter</set>
                              </property>
                             </widget>
                            </item>
-                           <item row="5" column="1">
+                           <item row="7" column="1">
                             <widget class="QLineEdit" name="le_password_2">
                              <property name="maximumSize">
                               <size>
@@ -6098,7 +6184,7 @@ p, li { white-space: pre-wrap; }
                              </property>
                             </widget>
                            </item>
-                           <item row="6" column="0">
+                           <item row="8" column="0">
                             <widget class="QLabel" name="label_12">
                              <property name="font">
                               <font>
@@ -6111,7 +6197,7 @@ p, li { white-space: pre-wrap; }
                               <string notr="true">color: rgb(255, 255, 255);</string>
                              </property>
                              <property name="text">
-                              <string>уровень допуска</string>
+                              <string>Уровень допуска</string>
                              </property>
                              <property name="alignment">
                               <set>Qt::AlignCenter</set>
@@ -6121,7 +6207,7 @@ p, li { white-space: pre-wrap; }
                              </property>
                             </widget>
                            </item>
-                           <item row="6" column="1">
+                           <item row="8" column="1">
                             <widget class="QComboBox" name="cb_user_role">
                              <property name="maximumSize">
                               <size>
@@ -6151,7 +6237,7 @@ p, li { white-space: pre-wrap; }
                              </item>
                             </widget>
                            </item>
-                           <item row="7" column="1">
+                           <item row="9" column="1">
                             <widget class="QPushButton" name="btn_add_new_user">
                              <property name="maximumSize">
                               <size>
@@ -6181,6 +6267,86 @@ QPushButton:pressed {
                              </property>
                              <property name="text">
                               <string>Добавить пользователя</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="2" column="0">
+                            <widget class="QLabel" name="label_56">
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(255, 255, 255);</string>
+                             </property>
+                             <property name="text">
+                              <string>Отчество</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignCenter</set>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="2" column="1">
+                            <widget class="QLineEdit" name="le_patronymic">
+                             <property name="maximumSize">
+                              <size>
+                               <width>1000</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(255, 255, 255);</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="4" column="0">
+                            <widget class="QLabel" name="label_58">
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(255, 255, 255);</string>
+                             </property>
+                             <property name="text">
+                              <string>Отдел</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignCenter</set>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="4" column="1">
+                            <widget class="QLineEdit" name="le_department">
+                             <property name="maximumSize">
+                              <size>
+                               <width>1000</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(255, 255, 255);</string>
                              </property>
                             </widget>
                            </item>

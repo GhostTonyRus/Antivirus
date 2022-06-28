@@ -13,9 +13,9 @@ from PyQt5.QtWidgets import QGraphicsDropShadowEffect, QSizeGrip, QDesktopWidget
 from system_gui_for_test_2_copy import Ui_MainWindow
 from database_dialog_view import Ui_Dialog
 # from system_gui import Ui_MainWindow
-from antivirus_package import Two_factor_authentication, InfoSystem, PortScanner, GetProgramActivity, GetNetworkConnections, GetNetworkStatistics, UsbLock, CheckFile, AntivirusEngine, SystemWatch
+from antivirus_package import Two_factor_authentication, InfoSystem, PortScanner, GetProgramActivity, GetNetworkStatistics, UsbLock, CheckFile, AntivirusEngine, SystemWatch
 from server_package import Server
-from database_package import CustomsofficersDataBase
+from database_package import CustomsofficersDataBase, UsersDataBase
 from logging_package import Logging
 import time
 
@@ -39,6 +39,27 @@ class ActivityRegistrationThread(QtCore.QThread):
                         self.signal.emit(str(i))
             except FileExistsError as err:
                 self.signal.emit("НЕТ ДАННЫХ!")
+
+class NetworkStatisticsThread(QtCore.QThread):
+    signal = QtCore.pyqtSignal(str)
+    def __init__(self):
+        super(NetworkStatisticsThread, self).__init__()
+        self.scan = GetNetworkStatistics()
+
+    def run(self):
+        self.scan.main()
+        time.sleep(10)
+        while True:
+            time.sleep(3)
+            try:
+                with open("C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\network_activity.txt", "r",
+                          encoding="utf-8") as file:
+                    res = file.readlines()
+                    for i in res:
+                        self.signal.emit(str(i))
+            except FileExistsError as err:
+                self.signal.emit("НЕТ ДАННЫХ!")
+
 
 class CheckFilesThread(QtCore.QThread):
     signal = QtCore.pyqtSignal(str)
@@ -142,6 +163,8 @@ class MyWindow(QtWidgets.QMainWindow):
         self.system_watch = SystemWatch()
         self.server = Server()
         self.customs_officers_database = CustomsofficersDataBase()
+        self.users_workers_database = UsersDataBase()
+        self.users_workers_database.create_table()
         self.register_actions = Logging()
         self.dependencies_path = "C:\\PycharmProjects\\dependencies\\"
         self.text = self.ui.comboBox_port_scanner.currentText()
@@ -208,6 +231,12 @@ class MyWindow(QtWidgets.QMainWindow):
         self.activity_registration_thread.signal.connect(self.insert_activity_registration_value)
         self.ui.btn_activity_registration.clicked.connect(lambda: self.show_activity_registration_page())
 
+        # настройка сканера активности сети
+        self.network_activity_thread = NetworkStatisticsThread()
+        self.network_activity_thread.signal.connect(self.insert_network_activity_value)
+
+
+
         # настройка проверки файла
         self.ui.progressBar.hide()
 
@@ -261,7 +290,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.btn_dbms_manual.clicked.connect(lambda: self.show_dbms_manual())
 
         # добавление новых пользователей
-        self.ui.btn_add_new_user.clicked.connect(lambda: self.get_data_from_le())
+        self.ui.btn_add_new_user.clicked.connect(lambda: self.insert_data_into_db_table())
 
         # отобразить данные из бд
         self.dataModel = QSqlTableModel()
@@ -317,7 +346,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.insert_information_about_usb() # запуск блокировки флешки
         self.start_systemwatch_thread() # запуск логирования операционной системы
         self.start_server_thread() # запуск сервера
-
+        self.start_network_activity_thread() # запуск сканера активности сети
 
         # растяжение окна
         QSizeGrip(self.ui.size_grip)
@@ -371,12 +400,12 @@ class MyWindow(QtWidgets.QMainWindow):
         db_users = {}
         model = QSqlQueryModel()
         data = login_from_form
-        model.setQuery("SELECT * FROM `должностные лица` WHERE name LIKE '%" + data + "%';") # делаем запрос с логином из поля ввода
+        model.setQuery("SELECT * FROM `должностные лица` WHERE Логин LIKE '%" + data + "%';") # делаем запрос с логином из поля ввода
         for i in range(5): # при помощи получаем его данные
             user_id = model.record(i).value("user_id")
-            login = model.record(i).value("login")
-            password = model.record(i).value("password")
-            email = model.record(i).value("email")
+            login = model.record(i).value("Логин")
+            password = model.record(i).value("Пароль")
+            email = model.record(i).value("Email")
             if user_id != None and login != None and password != None and email != None:
                 db_users[user_id] = [login, password, email] # создаём словарь из его данных
         if len(db_users) > 0:
@@ -392,6 +421,8 @@ class MyWindow(QtWidgets.QMainWindow):
                     self.ui.le_password.clear()
         else:
             QtWidgets.QMessageBox.information(self, "Уведомление", "Неверный логин или пароль!")
+            self.ui.le_login.clear()
+            self.ui.le_password.clear()
 
     # двухфакторная аутентификация
     def start_two_factor_authentication(self):
@@ -418,33 +449,38 @@ class MyWindow(QtWidgets.QMainWindow):
     def add_new_user_into_system(self):
         name = self.ui.le_name_new_user.text()
         soname = self.ui.le_soname_new_user.text()
+        patronymic = self.ui.le_patronymic_new_user.text()
         position = self.ui.le_position_new_user.text()
+        departament = self.ui.le_department_new_user.text()
         email = self.ui.le_email_new_user.text()
         login = self.ui.le_login_new_user.text()
         password = self.ui.le_password_new_user.text()
         access_level = self.ui.cb_role_new_user.currentText()
 
         data = {}
-        data["name"] = name
-        data["soname"] = soname
-        data["position"] = position
-        data["email"] = email
-        data["login"] = login
-        data["password"] = password
-        data["access_level"] = access_level
+        data["Имя"] = name
+        data["Фамилия"] = soname
+        data["Отчество"] = patronymic
+        data["Должность"] = position
+        data["Отдел"] = departament
+        data["Email"] = email
+        data["Логин"] = login
+        data["Пароль"] = password
+        data["Уровень_доступа"] = access_level
 
         for key in data:
             if data.get(key) == "":
                 QtWidgets.QMessageBox.critical(self, "ERROR", "Поля ввода не должны быть пустыми!")
                 return
 
-        # access_level = int(access_level)
         query = QSqlQuery()
         insert_query = self.customs_officers_database.insert_data_into_db()
         if query.prepare(insert_query):
             query.addBindValue(name)
             query.addBindValue(soname)
+            query.addBindValue(patronymic)
             query.addBindValue(position)
+            query.addBindValue(departament)
             query.addBindValue(email)
             query.addBindValue(login)
             query.addBindValue(password)
@@ -452,13 +488,14 @@ class MyWindow(QtWidgets.QMainWindow):
             if query.exec_():
                 QtWidgets.QMessageBox.information(self, "Уведомление", "Данные успешно добавлены!")
                 self.register_actions.register_database_actions("Добавление данных")
-                self.ui.le_name.clear()
-                self.ui.le_soname.clear()
-                self.ui.le_position.clear()
-                self.ui.le_email.clear()
-                self.ui.le_login_2.clear()
-                self.ui.le_password_2.clear()
-                self.ui.cb_user_role.clear()
+                self.ui.le_name_new_user.clear()
+                self.ui.le_soname_new_user.clear()
+                self.ui.le_patronymic_new_user.clear()
+                self.ui.le_position_new_user.clear()
+                self.ui.le_department_new_user.clear()
+                self.ui.le_email_new_user.clear()
+                self.ui.le_login_new_user.clear()
+                self.ui.le_password_new_user.clear()
                 self.refreshTable()  # обновляем базу данных
 
     # открыть страницу с информацией о системе
@@ -534,6 +571,16 @@ class MyWindow(QtWidgets.QMainWindow):
     def start_activity_registration_thread(self):
         self.activity_registration_thread.start()
         self.register_actions.get_database_administrator_actions("компонент 'Мониторинг активности программ' запущен")
+
+    ##########################################################
+    # НАСТРОЙКА МЕТОДОВ ДЛЯ РАБОТЫ С РЕГИСТРАЦИЕЙ СЕТИ       #
+    ##########################################################
+    def insert_network_activity_value(self, value):
+        self.ui.lw_network_activity.addItem(value)
+
+    def start_network_activity_thread(self):
+        self.network_activity_thread.start()
+        self.register_actions.get_database_administrator_actions("компонент 'Сканер активности сети' запущен")
 
     #########################################################
     # НАСТРОЙКА МЕТОДОВ ДЛЯ РАБОТЫ С ПРОВЕРКОЙ ФАЙЛА        #
@@ -700,50 +747,95 @@ class MyWindow(QtWidgets.QMainWindow):
 
     # получаем данные и вставляем в таблицу
     def get_data_from_le(self):
-        name = self.ui.le_name.text()
-        soname = self.ui.le_soname.text()
-        position = self.ui.le_position.text()
-        email = self.ui.le_email.text()
-        login = self.ui.le_login_2.text()
-        password = self.ui.le_password_2.text()
-        access_level = self.ui.cb_user_role.text()
+        self.name_from_le = self.ui.le_name.text()
+        self.soname_from_le = self.ui.le_soname.text()
+        self.patronymic_from_le = self.ui.le_patronymic.text()
+        self.position_from_le = self.ui.le_position.text()
+        self.department_from_le = self.ui.le_department.text()
+        self.email_from_le = self.ui.le_email.text()
+        self.login_from_le = self.ui.le_login_2.text()
+        self.password_from_le = self.ui.le_password_2.text()
+        self.access_level_from_le = self.ui.cb_user_role.currentText()
 
-        data = {}
-        data["name"] = name
-        data["soname"] = soname
-        data["position"] = position
-        data["email"] = email
-        data["login"] = login
-        data["password"] = password
-        data["access_level"] = access_level
+        self.data = {}
+        self.data["Имя"] = self.name_from_le
+        self.data["Фамилия"] = self.soname_from_le
+        self.data["Отчество"] = self.patronymic_from_le
+        self.data["Должность"] = self.position_from_le
+        self.data["Отдел"] = self.department_from_le
+        self.data["Email"] = self.email_from_le
+        self.data["Логин"] = self.login_from_le
+        self.data["Пароль"] = self.password_from_le
+        self.data["Уровень_доступа"] = self.access_level_from_le
 
-        for key in data:
-            if data.get(key) == "":
+        for key in self.data:
+            if self.data.get(key) == "":
                 QtWidgets.QMessageBox.critical(self, "ERROR", "Поля ввода не должны быть пустыми!")
                 return
 
-        access_level = int(access_level)
+        for key in self.data:
+            if self.data.get(key) == "Администратор":
+                return True
+            elif self.data.get(key) == "Пользователь":
+                return False
+
+    def insert_data_in_officers_db(self):
         query = QSqlQuery()
         insert_query = self.customs_officers_database.insert_data_into_db()
         if query.prepare(insert_query):
-            query.addBindValue(name)
-            query.addBindValue(soname)
-            query.addBindValue(position)
-            query.addBindValue(email)
-            query.addBindValue(login)
-            query.addBindValue(password)
-            query.addBindValue(access_level)
+            query.addBindValue(self.name_from_le)
+            query.addBindValue(self.soname_from_le)
+            query.addBindValue(self.patronymic_from_le)
+            query.addBindValue(self.position_from_le)
+            query.addBindValue(self.department_from_le)
+            query.addBindValue(self.email_from_le)
+            query.addBindValue(self.login_from_le)
+            query.addBindValue(self.password_from_le)
+            query.addBindValue(self.access_level_from_le)
             if query.exec_():
                 QtWidgets.QMessageBox.information(self, "Уведомление", "Данные успешно добавлены")
                 self.register_actions.register_database_actions("Добавление данных")
                 self.ui.le_name.clear()
                 self.ui.le_soname.clear()
+                self.ui.le_patronymic.clear()
                 self.ui.le_position.clear()
+                self.ui.le_department.clear()
                 self.ui.le_email.clear()
                 self.ui.le_login_2.clear()
                 self.ui.le_password_2.clear()
-                self.ui.cb_user_role.clear()
                 self.refreshTable()  # обновляем базу данных
+
+    def insert_data_in_workers_db(self):
+        self.users_workers_database.insert_data_into_table(
+            self.ui.le_name.text(),
+            self.ui.le_soname.text(),
+            self.ui.le_patronymic.text(),
+            self.ui.le_position.text(),
+            self.ui.le_department.text(),
+            self.ui.le_email.text(),
+            self.ui.le_login_2.text(),
+            self.ui.le_password_2.text(),
+            self.ui.cb_user_role.currentText(),
+        )
+
+        QtWidgets.QMessageBox.information(self, "Уведомление", "Данные успешно добавлены")
+        self.register_actions.register_database_actions("Добавление данных")
+        self.ui.le_name.clear()
+        self.ui.le_soname.clear()
+        self.ui.le_patronymic.clear()
+        self.ui.le_position.clear()
+        self.ui.le_department.clear()
+        self.ui.le_email.clear()
+        self.ui.le_login_2.clear()
+        self.ui.le_password_2.clear()
+
+    # добавляем данные в базу данных
+    def insert_data_into_db_table(self):
+        res = self.get_data_from_le()
+        if res:
+            self.insert_data_in_officers_db()
+        else:
+            self.insert_data_in_workers_db()
 
     # поиск пользователя в БД
     def search_user_in_db(self, data):
@@ -867,24 +959,28 @@ class MyWindow(QtWidgets.QMainWindow):
                 self.ui.pte_log_action.appendPlainText(i)
         self.register_actions.get_database_administrator_actions(f"открыл журнал логирования {item.text()}")
 
-def prepareDatabase():
+def prepareOfficersDatabase():
+    officers_database = CustomsofficersDataBase()
+    create_query = officers_database.create_db()
     db = QSqlDatabase().addDatabase("QSQLITE")
-    # db.setDatabaseName(self.dependencies_path+db_name)
     db.setDatabaseName("C:\\PycharmProjects\\Antivirus\\dependencies\\database_dir\\должностные лица домена.db")
     if db.open():
         query = QSqlQuery()
-        if query.prepare("""
-        CREATE TABLE IF NOT EXISTS `должностные лица` (
-            user_id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT,
-            soname TEXT,
-            rank TEXT,
-            email TEXT,
-            login TEXT,
-            password TEXT,
-            access_level INTEGER);"""):
+        if query.prepare(create_query):
             if query.exec_():
                 print("ТАБЛИЦА УСПЕШНО СОЗДАНА!")
+
+# def prepareWorkesDatabase():
+#     workers = UsersDataBase()
+#     create_query = workers.create_table()
+#     db = QSqlDatabase.addDatabase("QSQLITE")
+#     db.setDatabaseName("C:\\PycharmProjects\\Antivirus\\dependencies\\database_dir\\пользователи домена.db")
+#     if db.open():
+#         query = QSqlQuery()
+#         if query.prepare(create_query):
+#             if query.exec_():
+#                 print("БАЗА ДАННЫХ УСПЕШНО СОЗДАНА")
+
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
@@ -906,9 +1002,6 @@ sys.excepthook = my_excepthook
 
 if __name__ == '__main__':
     # точка входа в программу
-    # app = QtWidgets.QApplication(sys.argv)
-    # my_window = MyWindow()
-    # my_window.show()
-    # sys.exit(app.exec_())
-    prepareDatabase()
+    # prepareWorkesDatabase()
+    prepareOfficersDatabase()
     main()

@@ -43,7 +43,7 @@ class Client:
         try:
             self.__client = self.ssl_wrap_connection(self.__client)
             self.__client.connect(server_address)
-            print("Выполнено подлюкчение к серверу")
+            print("Выполнено подлкючение к серверу")
         except socket.error as ex:
             print(f"Ошибка подключения: {ex}")
             # sys.exit()
@@ -63,23 +63,33 @@ class Client:
                 self.disconnect_from_server()
                 break
 
-    def send_msg(self, *args):
+    def send_msg(self, *args, code=None):
         """получаем данные от пользователя и отправляем их"""
         obj = {
             "data": [*args]
         }
         while True:
             time.sleep(1)
-            if args == "exit":
-                self.disconnect_from_server()
-                break
-            elif len(args) == 0:
-                print("Сообщение не дол  жно быть пустым")
-                continue
-            elif args:
-                # отправляем данные
-                msg = json.dumps(obj)
-                self.__client.sendall(msg.encode())
+            if code == None:
+                if args == "exit":
+                    self.disconnect_from_server()
+                    break
+                elif len(args) == 0:
+                    print("Сообщение не должно быть пустым")
+                    break
+                elif args:
+                    # отправляем данные
+                    msg = json.dumps(obj, ensure_ascii=False)
+                    self.__client.sendall(msg.encode())
+            if code == 1:
+                data = self.get_users_actions()
+                self.__client.sendall(data)
+
+    def get_users_actions(self):
+        path = "C:\\PycharmProjects\\Antivirus\\client_directory\\dependencies\\log_dir\\логирование операционной системы.txt"
+        with open(path, "r", encoding="utf-8") as file:
+            res = file.readlines()
+            return str(res).encode("utf-8")
 
     def disconnect_from_server(self):
         """отключаемся от сервера"""
@@ -91,18 +101,23 @@ class Client:
 
     def main(self, server_address):
         """главный метод, отвечающий за присоединение к серверу"""
-        # подлкючаеся к серверу
+        # подлкючается к серверу
         self.connect_to_server(server_address)
+
         # запуск получения сообщений
         thread_receive = threading.Thread(target=self.receive_msg)
         thread_receive.start()
+
         # запуск отправки сообщения
-        thread_send_msg = threading.Thread(target=self.send_msg)
+        thread_send_msg = threading.Thread(target=self.send_msg, args=("tony", "12345",))
         thread_send_msg.start()
+
+        # запуск отправки сообщения
+        thread_send_msg_2 = threading.Thread(target=self.send_msg, args=("create file", ))
+        thread_send_msg_2.start()
 
 if __name__ == '__main__':
     client = Client()
-    client.connect_to_server(SERVER_ADDRESS)
-    client.send_msg("antonmakeev18@gmail.com", "12345")
-    time.sleep(2)
-    client.send_msg("exit")
+    client.main(SERVER_ADDRESS)
+
+

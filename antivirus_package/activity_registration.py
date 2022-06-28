@@ -28,27 +28,25 @@ class GetProgramActivity:
         thread.start()
 
 
-class Netword:
-    def run(self):
-        while True:
-            time.sleep(2)
-            print(psutil.net_io_counters().values())
-
-class GetNetworkConnections:
-    def run(self):
-        while True:
-            time.sleep(2)
-            print(psutil.disk_io_counters(perdisk=True))
-
 class GetNetworkStatistics:
-    def run(self):
-        while True:
-            connections = psutil.net_connections()
-            for connection in connections:
-                for conn in connection:
-                    time.sleep(2)
-                    print(conn)
+    def __init__(self):
+        self.path = "C:\\PycharmProjects\\Antivirus\\dependencies\\antivirus_dir\\network_activity.txt"
+        with open(self.path, "w"):
+            ...
 
+    def run(self):
+        connections = psutil.net_connections()
+        while True:
+            time.sleep(3)
+            for connection in connections:
+                time.sleep(2)
+                with open(self.path, "a", encoding="utf-8") as file:
+                    data = f"{connection} | {datetime.now().strftime('%H:%M:%S %m-%d-%Y')}\n"
+                    file.write(data)
+
+    def main(self):
+        thread = threading.Thread(target=self.run)
+        thread.start()
 
 
 
@@ -56,4 +54,6 @@ if __name__ == '__main__':
     # n = GetProgramActivity()
     # n.main()
     n = GetNetworkStatistics()
-    n.run()
+    n.main()
+    # n = GetNetworkConnections()
+    # n.run()

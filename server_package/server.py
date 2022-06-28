@@ -175,25 +175,31 @@ class Server:
                                            datetime.now().strftime("%H:%M:%S %m-%d-%Y"))
                     self.close_connection(connection)
                     break
+                # если данные пришли
                 if data:
                     self.__action_log.register_server_actions(
                         f"Пользователь {self.client_addr} прислал сообщение: {data.decode('utf-8')}")
                     self.temporary_actions(f"Пользователь {self.client_addr}: прислал сообщение {data.decode('utf-8')}",
                                            datetime.now().strftime("%H:%M:%S %m-%d-%Y"))
                     all_data += data
-                    print(all_data, 184)
-                    obj = json.loads(all_data)
-                    print(obj, 186)
+                    # self.parse_message(all_data)
+                    data_from_user = json.loads(data.decode("utf-8"))
+                    res = self.__user_db.get_data_from_table(data_from_user) # получаем данные из базы данных
+                    if res:
+                        self.send_message(connection, "True")
+                        self.send_email_code(email="antonmakeev18@gmail.com", code=self.generate_code())
+                    elif res == False:
+                        self.send_message(connection, "False")
                     break
-                    # res = self.__user_db.get_data_from_table(obj) # получаем данные из базы данных
-                    # if res:
-                    #     self.send_message(connection, "True")
-                    #     self.send_email_code(email="antonmakeev18@gmail.com", code=self.generate_code())
-                    # elif res == False:
-                    #     self.send_message(connection, "False")
             except socket.error as error:
                 self.close_connection(connection)
                 break
+
+    def parse_message(self, data):
+        """парсим входящие данные"""
+        obj = json.loads(data)
+        print(obj)
+
 
     def send_message(self, connection, data):
         """отправляем полученное сообщение обратно клиенту"""

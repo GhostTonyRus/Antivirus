@@ -163,7 +163,7 @@ class DataBaseClass:
 
 class CustomsofficersDataBase:
     def __init__(self):
-        self.__db_name = "customs_users.db"
+        self.__db_name = "должностные лица домена.db"
 
     @property
     def db_name(self):
@@ -173,27 +173,29 @@ class CustomsofficersDataBase:
         query = """
         CREATE TABLE IF NOT EXISTS `должностные лица` (
             user_id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT,
-            soname TEXT,
-            rank TEXT,
-            email TEXT,
-            login TEXT,
-            password TEXT,
-            access_level TEXT);
+            Имя TEXT,
+            Фамилия TEXT,
+            Отчество TEXT,
+            Должность TEXT,
+            Отдел TEXT,
+            Email TEXT,
+            Логин TEXT,
+            Пароль TEXT,
+            Уровень_доступа TEXT);
         """
         return query
 
     def insert_data_into_db(self):
         query = """
         INSERT INTO 
-            `должностные лица` (name, soname, rank, email, login, password, access_level) 
+            `должностные лица` (Имя, Фамилия, Отчество, Должность, Отдел, Email, Логин, Пароль, Уровень_доступа) 
         VALUES (
-            ?, ?, ?, ?, ?, ?, ?);
+            ?, ?, ?, ?, ?, ?, ?, ?, ?);
         """
         return query
 
     def search_user_from_db(self, data):
-        query = "SELECT * FROM `должностные лица` WHERE name LIKE '%" + data + "%';"
+        query = "SELECT * FROM `должностные лица` WHERE Логин LIKE '%" + data + "%';"
         return query
 
     def refresh_data_in_db(self):

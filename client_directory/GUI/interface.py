@@ -1,11 +1,13 @@
 import json
+import os
 import sys
 import socket
 import time
 
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtCore import QPoint, QThread
-from PyQt5.QtWidgets import QDesktopWidget
+from PyQt5.QtSql import QSqlTableModel, QSqlDatabase, QSqlQueryModel
+from PyQt5.QtWidgets import QDesktopWidget, QLineEdit
 # from ..test_client import Client
 from client_directory.test_client import Client
 # from client_directory.client import Client
@@ -77,6 +79,20 @@ class MyWindow(QtWidgets.QMainWindow):
         self.my_thread.my_signal.connect(client.receive_msg)
         self.my_thread.start()
 
+        # отображаем новые базы данных
+        self.ui.btn_open_list_of_db.clicked.connect(lambda: self.open_page_list_of_db())
+
+        # настройка ввода пароля
+        self.ui.le_password.setEchoMode(QLineEdit.Password)
+        self.ui.le_email_code.setEchoMode(QLineEdit.Password)
+
+        # настройка кнопок с клавиатуры
+        self.ui.btn_login.setAutoDefault(True)  # нажатие <Enter>
+        self.ui.le_password.returnPressed.connect(self.ui.btn_login.click)  # нажатие <Enter>
+
+        self.ui.btn_accept_code.setAutoDefault(True)  # нажатие <Enter>
+        self.ui.le_email_code.returnPressed.connect(self.ui.btn_accept_code.click)  # нажатие <Enter>
+
     # вход в систему
     def login(self):
         path = "C:\\PycharmProjects\\Antivirus\\client_directory\\history.txt"
@@ -86,7 +102,7 @@ class MyWindow(QtWidgets.QMainWindow):
             client.connect_to_server(SERVER_ADDRESS)
             client.send_user_data(login, password)
         except socket.error as err:
-            ...
+            print(89)
         time.sleep(10)
         with open(path, "r") as file:
             res = file.readline()
@@ -127,6 +143,55 @@ class MyWindow(QtWidgets.QMainWindow):
 
     def show_login_page(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.authorization_page)
+
+    # страница с доступынми базами данных
+    def open_page_list_of_db(self):
+        self.ui.lw_db_widget.clear()
+        path = "C:\\PycharmProjects\\Antivirus\\dependencies\\database_dir"
+        dirs = os.listdir(path)
+        dbs = [file for file in dirs]
+        if len(dbs) > 0:
+            for db in dbs:
+                self.ui.lw_db_widget.addItem(db)
+        else:
+            self.ui.lw_db_widget.addItem("БАЗЫ ДАННЫХ ОТСУТСТВУЮТ")
+        self.ui.stackedWidget_main.setCurrentWidget(self.ui.page_list_of_db)
+        self.ui.lw_db_widget.itemClicked.connect(self.onDBClicked)
+        self.ui.tv_for_db_view.setDisabled(True) # не даёт взаимодействовать с таблицей
+
+    # открывает базу данных
+    def onDBClicked(self, item):
+        self.ui.lw_table_widget.clear()
+        file = item.text()
+        path = f"C:\\PycharmProjects\\Antivirus\\dependencies\\database_dir\\{file}"
+
+        # открываем базу данных по путю
+        self.db = QSqlDatabase.addDatabase('QSQLITE')
+        self.db.setDatabaseName(path)
+        self.db.open()
+
+        # поиск таблиц в базе данных
+        model = QSqlQueryModel()
+        model.setQuery(
+            """SELECT name FROM sqlite_master WHERE type='table';""")  # делаем запрос с логином из поля ввода
+        for i in range(5):  # при помощи получаем его данные
+            res = model.record(i).value("name")
+            self.ui.lw_table_widget.addItem(res)
+        self.ui.lw_table_widget.itemClicked.connect(self.onTableClicked)
+
+    # отображаем таблицу
+    def onTableClicked(self, item):
+        table = item.text()
+
+        # отображаем базу данных в таблице
+        self.model = QSqlTableModel(self)
+        self.model.setTable(table)
+        self.model.select()
+
+        # растягиваем таблицу по всей ширине
+        header = self.ui.tv_for_db_view.horizontalHeader()
+        header.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.ui.tv_for_db_view.setModel(self.model)
 
 if __name__ == '__main__':
     def my_excepthook(type, value, tback):
