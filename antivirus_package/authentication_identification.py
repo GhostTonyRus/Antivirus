@@ -27,9 +27,9 @@ class Two_factor_authentication:
 
     def send_email(self, email=None, code=None):
         # рабочая почта с которой будет отправлено письмо
-        work_email = "antonmakeev14@gmail.com"
+        work_email = ""
         # рабочий пароль
-        work_password = "nzse nmjz nioj btfl"
+        work_password = ""
         # почта на которую будет отправлено письмо
         receiver = email
         # создаём сообщение
