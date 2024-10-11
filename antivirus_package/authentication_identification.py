@@ -6,7 +6,7 @@ from email.header import Header
 
 class Two_factor_authentication:
     def __init__(self):
-        self.work_email = "antonmakeev14@gmail.com"
+        self.work_email = ""
 
     def generate_code(self):
         upper_letters = string.ascii_uppercase
